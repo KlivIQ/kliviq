@@ -1,70 +1,36 @@
 
 
-# Sri's Premium Animated Portfolio
+# Remove Lovable References
 
-## Overview
-A dark-themed, scroll-driven portfolio with progressive reveal animations, particle backgrounds, glassmorphism, and micro-interactions — designed to feel cinematic, not like a typical website.
+Strip all Lovable-related branding, metadata, and tooling references from the project so it reads as a standalone Srilancer codebase.
 
-## Design System
-- **Theme**: Dark base (`#0a0a0f`) with purple/teal gradient accents and subtle neon highlights
-- **Typography**: Bold, minimal — large headings with generous whitespace
-- **Effects**: Glassmorphism cards, soft glows, gradient borders, parallax depth layers
+## Changes
 
-## Sections & Interactions
+### 1. `index.html` — Remove Lovable OG/Twitter assets
+- Replace `og:image` (`https://lovable.dev/opengraph-image-p98pqg.png`) with a neutral placeholder (`/placeholder.svg`)
+- Change `twitter:site` from `@Lovable` to `@Srilancer`
+- Replace `twitter:image` similarly with `/placeholder.svg`
 
-### 1. Loading Screen
-- Animated logo/text "Srilancer" assembles letter by letter, then fades into the site
-- Feels like a product launch, not a spinner
+### 2. `README.md` — Rewrite
+- Replace "Welcome to your Lovable project" with a Srilancer-focused project description (overview, tech stack, dev commands).
 
-### 2. Hero Section
-- Full-viewport with animated particle/starfield background (canvas-based)
-- Headline text reveals word-by-word on load with staggered fade-up
-- Subtle floating gradient orbs that drift slowly
-- CTA button with glow pulse effect
-- Custom cursor dot that follows mouse with trailing effect
+### 3. `vite.config.ts` — Remove `lovable-tagger`
+- Remove the `import { componentTagger } from "lovable-tagger"` line
+- Simplify the `plugins` array to just `[react()]`
 
-### 3. About Section
-- Scroll-triggered: content slides in from opacity 0 as user reaches it
-- Key points appear as glassmorphism pills that pop in sequentially
-- Subtle parallax on background elements
+### 4. `package.json` — Remove `lovable-tagger` dependency
+- Drop `"lovable-tagger": "^1.1.13"` from `devDependencies`
 
-### 4. Services Section
-- 4 service cards in a grid, each with glassmorphism styling
-- Cards reveal one-by-one with staggered scale-in animation on scroll
-- Hover: card lifts with glow border and icon animation
-- Gradient icon accents (purple → teal)
+### 5. Hide the "Edit with Lovable" badge on published deployments
+- Use the publish-settings tool to set `hide_badge: true` (requires Pro plan; if unavailable, this step will surface an error and can be skipped).
 
-### 5. Projects Section
-- Horizontal-feeling showcase — cards slide in from alternating sides
-- Each project card has a gradient overlay, metric stat that counts up on scroll
-- Hover reveals subtle depth shift
+## Files left untouched (intentionally)
 
-### 6. Testimonials Section
-- Fade-and-slide transitions between quotes
-- Glassmorphism quote cards with subtle floating quotation marks
-- Auto-rotating with manual control
+- `playwright.config.ts` and `playwright-fixture.ts` import from `lovable-agent-playwright-config`. This is the **internal test harness** required for the project's test runner to function — removing it would break `npm test`/CI. These files are tooling-only, never shipped to users, and contain no Lovable branding visible in the app.
+- `package-lock.json` / `bun.lock` — auto-managed by the package manager; will refresh automatically when `lovable-tagger` is removed from `package.json`.
+- `tsconfig.node.tsbuildinfo` — build cache artifact, regenerates automatically.
 
-### 7. Process Section
-- Vertical timeline with connected nodes
-- Each step reveals as user scrolls past — node lights up with neon glow
-- Step content fades in beside the active node
+## Outcome
 
-### 8. Contact Section
-- Clean centered layout with glassmorphism card
-- Contact details with hover glow effects
-- CTA button matching hero style
-- Subtle background gradient animation
-
-### 9. Footer
-- Minimal single line with soft glow divider
-
-## Technical Approach
-- **Scroll animations**: Intersection Observer API for scroll-triggered reveals
-- **Particle background**: Lightweight canvas-based particle system (no heavy libraries)
-- **Cursor effects**: Custom cursor follower via mouse event listeners
-- **Counter animations**: requestAnimationFrame-based number counting
-- **Responsive**: Mobile-first with touch-optimized interactions; particles simplified on mobile; timeline adapts to single-column
-
-## Key Packages
-- `framer-motion` — for smooth scroll-triggered animations and layout transitions
+After these changes, nothing visible in the running app, build output, or repo documentation references Lovable. The only remaining mention will be inside the dev-only Playwright test harness package name.
 

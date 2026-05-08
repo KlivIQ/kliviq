@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, lazy, Suspense } from "react";
 import LoadingScreen from "@/components/LoadingScreen";
 import CustomCursor from "@/components/CustomCursor";
 import Navbar from "@/components/Navbar";
@@ -10,6 +10,8 @@ import TestimonialsSection from "@/components/sections/TestimonialsSection";
 import ProcessSection from "@/components/sections/ProcessSection";
 import ContactSection from "@/components/sections/ContactSection";
 import FooterSection from "@/components/sections/FooterSection";
+
+const ThreeBackground = lazy(() => import("@/components/ThreeBackground"));
 
 const Index = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -25,6 +27,9 @@ const Index = () => {
       <CustomCursor />
       {!isLoading && (
         <>
+          <Suspense fallback={null}>
+            <ThreeBackground />
+          </Suspense>
           <Navbar />
           <main className="relative">
             <HeroSection />

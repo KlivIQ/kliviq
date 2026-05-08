@@ -51,6 +51,11 @@
     overflow-x: hidden;
   }
 
+  main {
+    position: relative;
+    z-index: 1;
+  }
+
   ::selection {
     background: hsl(270 60% 60% / 0.3);
   }

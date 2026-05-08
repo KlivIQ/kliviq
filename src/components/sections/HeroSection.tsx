@@ -1,13 +1,10 @@
 import { motion } from "framer-motion";
-import ParticleBackground from "../ParticleBackground";
 
 const HeroSection = () => {
   const words = "Build Faster. Launch Smarter. Scale Without Chaos.".split(" ");
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      <ParticleBackground />
-
       {/* Gradient orbs */}
       <div className="absolute top-1/4 -left-32 w-96 h-96 rounded-full bg-primary/10 blur-[120px] animate-float" />
       <div className="absolute bottom-1/4 -right-32 w-96 h-96 rounded-full bg-secondary/10 blur-[120px] animate-float" style={{ animationDelay: "3s" }} />

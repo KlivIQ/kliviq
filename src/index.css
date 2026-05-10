@@ -4,41 +4,76 @@
 
 @layer base {
   :root {
-    --background: 240 20% 4%;
+    /* KlivIQ Emerald — Dark theme (default) */
+    --background: 224 51% 7%;        /* #0A0F1E */
     --foreground: 0 0% 95%;
 
-    --card: 240 15% 8%;
+    --card: 222 47% 11%;              /* #0F1729 */
     --card-foreground: 0 0% 95%;
 
-    --popover: 240 15% 8%;
+    --popover: 222 47% 11%;
     --popover-foreground: 0 0% 95%;
 
-    --primary: 270 60% 60%;
+    --primary: 142 64% 24%;           /* #166534 Forest */
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 180 60% 45%;
-    --secondary-foreground: 0 0% 100%;
+    --secondary: 142 71% 58%;         /* #4ADE80 Lime */
+    --secondary-foreground: 222 47% 11%;
 
-    --muted: 240 10% 14%;
-    --muted-foreground: 240 5% 55%;
+    --muted: 222 30% 16%;
+    --muted-foreground: 215 16% 65%;
 
-    --accent: 270 50% 50%;
+    --accent: 142 60% 20%;            /* #14532D Deep forest */
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 240 10% 18%;
-    --input: 240 10% 18%;
-    --ring: 270 60% 60%;
+    --border: 217 33% 17%;            /* #1E293B */
+    --input: 217 33% 17%;
+    --ring: 142 64% 24%;
 
     --radius: 0.75rem;
 
-    --neon-purple: 270 100% 70%;
-    --neon-teal: 174 100% 50%;
-    --brand-cyan: 187 100% 50%;
-    --glass: 240 15% 12%;
-    --glass-border: 240 10% 22%;
+    --neon-purple: 142 64% 24%;       /* repurposed: forest */
+    --neon-teal: 142 71% 58%;         /* repurposed: lime */
+    --brand-cyan: 142 71% 58%;        /* repurposed: lime */
+    --glass: 222 47% 11%;
+    --glass-border: 217 33% 25%;
+  }
+
+  .light {
+    /* KlivIQ Emerald — Light theme */
+    --background: 138 76% 97%;        /* #F0FDF4 mint white */
+    --foreground: 222 47% 11%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+
+    --primary: 142 64% 24%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 142 71% 45%;         /* #22C55E for contrast on light */
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 138 40% 92%;
+    --muted-foreground: 222 20% 35%;
+
+    --accent: 142 60% 20%;
+    --accent-foreground: 0 0% 100%;
+
+    --border: 142 30% 80%;
+    --input: 142 30% 80%;
+    --ring: 142 64% 24%;
+
+    --neon-purple: 142 64% 24%;
+    --neon-teal: 142 71% 45%;
+    --brand-cyan: 142 64% 24%;
+    --glass: 0 0% 100%;
+    --glass-border: 142 30% 75%;
   }
 }
 
@@ -58,7 +93,7 @@
   }
 
   ::selection {
-    background: hsl(270 60% 60% / 0.3);
+    background: hsl(var(--primary) / 0.3);
   }
 }
 
@@ -76,21 +111,21 @@
   }
 
   .gradient-text {
-    background: linear-gradient(135deg, hsl(var(--neon-purple)), hsl(var(--neon-teal)));
+    background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--secondary)));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
 
   .glow-purple {
-    box-shadow: 0 0 30px hsl(270 100% 70% / 0.15), 0 0 60px hsl(270 100% 70% / 0.05);
+    box-shadow: 0 0 30px hsl(var(--primary) / 0.4), 0 0 60px hsl(var(--primary) / 0.15);
   }
 
   .glow-teal {
-    box-shadow: 0 0 30px hsl(174 100% 50% / 0.15), 0 0 60px hsl(174 100% 50% / 0.05);
+    box-shadow: 0 0 30px hsl(var(--secondary) / 0.3), 0 0 60px hsl(var(--secondary) / 0.1);
   }
 
   .neon-line {
-    background: linear-gradient(180deg, hsl(var(--neon-purple)), hsl(var(--neon-teal)));
+    background: linear-gradient(180deg, hsl(var(--primary)), hsl(var(--secondary)));
   }
 }

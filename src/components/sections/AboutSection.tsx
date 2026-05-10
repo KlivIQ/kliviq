@@ -2,9 +2,9 @@ import { motion } from "framer-motion";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 
 const pills = [
-  "I turn rough ideas into polished, production-ready platforms",
-  "I use AI to automate workflows and unlock new possibilities",
-  "I build systems that are stable, scalable, and future-proof",
+  "We turn rough ideas into polished, production-ready platforms",
+  "We use AI to automate workflows and unlock new possibilities",
+  "We build systems that are stable, scalable, and future-proof",
 ];
 
 const AboutSection = () => {
@@ -27,7 +27,7 @@ const AboutSection = () => {
           animate={isVisible ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7 }}
         >
-          Not Just a Developer.{" "}
+          Not Just a Studio.{" "}
           <span className="gradient-text">Your Tech Partner.</span>
         </motion.h2>
 
@@ -37,8 +37,9 @@ const AboutSection = () => {
           animate={isVisible ? { opacity: 1, y: 0 } : {}}
           transition={{ delay: 0.2, duration: 0.7 }}
         >
-          I'm Sri — with 20+ years in IT and deep expertise in building scalable digital
-          products. I don't just write code. I solve business problems using technology.
+          We're a boutique tech studio powered by 20+ years of enterprise experience —
+          across Banking, Retail, Healthcare, and Logistics. We don't just write code.
+          We solve business problems with technology that scales.
         </motion.p>
 
         <div className="flex flex-col gap-4 mt-10">
@@ -61,7 +62,7 @@ const AboutSection = () => {
           animate={isVisible ? { opacity: 1 } : {}}
           transition={{ delay: 0.9, duration: 0.6 }}
         >
-          If it involves tech, performance, and growth — I'm in.
+          If it involves tech, performance, and growth — we're in.
         </motion.p>
       </div>
     </section>

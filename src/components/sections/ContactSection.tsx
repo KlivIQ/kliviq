@@ -3,9 +3,9 @@ import { useScrollReveal } from "@/hooks/useScrollReveal";
 import { Mail, Phone, Linkedin } from "lucide-react";
 
 const contactItems = [
-  { icon: Mail, label: "freelancewithsri@gmail.com", href: "mailto:freelancewithsri@gmail.com" },
-  { icon: Phone, label: "+91-9069026969", href: "tel:+919069026969" },
-  { icon: Linkedin, label: "linkedin.com/in/sriramr79", href: "https://linkedin.com/in/sriramr79" },
+  { icon: Mail, label: "hello@kliviq.com", href: "mailto:hello@kliviq.com" },
+  { icon: Phone, label: "+91-9069026969 (WhatsApp preferred)", href: "tel:+919069026969" },
+  { icon: Linkedin, label: "linkedin.com/company/kliviq", href: "https://linkedin.com/company/kliviq" },
 ];
 
 const ContactSection = () => {
@@ -71,7 +71,7 @@ const ContactSection = () => {
           </div>
 
           <motion.a
-            href="mailto:freelancewithsri@gmail.com"
+            href="mailto:hello@kliviq.com"
             className="inline-block mt-10 px-8 py-4 rounded-full font-semibold text-primary-foreground bg-gradient-to-r from-primary to-secondary animate-pulse-glow transition-transform hover:scale-105"
             initial={{ opacity: 0 }}
             animate={isVisible ? { opacity: 1 } : {}}

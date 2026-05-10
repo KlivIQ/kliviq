@@ -1,75 +1,66 @@
-import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 
 const testimonials = [
   {
-    text: "Working with Sri completely changed our product timeline — we launched faster and better than expected.",
+    quote:
+      "Sriram is a subject matter expert in Testing. He was brought in to help us automate regression test scripts that can be reused on future software releases for our project. He brings in a wealth of knowledge for test technologies and test processes. We used to run User Acceptance Testing manually and test management was very labor intensive and inefficient. Sriram helped us develop processes on using HP Quality Center for test management. He also helped us train all our users on HP Quality Center. He is very results oriented and collaborates well in a team environment. He also brings in a lot of fresh ideas on how we can improve on our existing test processes.",
+    name: "Jocelyn Ang, MBA",
+    title: "Global Senior Manager of IT Infrastructure Services, Medela",
   },
   {
-    text: "The AI solution saved us hours every week. This wasn't just development — it was transformation.",
+    quote:
+      "Sriram was an excellent Test Manager for a complex project integrating Software as a Service components with internal systems in R&D IT. He learned quickly, was proactive, and worked with high integrity. He established our offshore test team quickly and had them ready to begin, and coordinated efforts very effectively. Opportunity to work with him again will be much appreciated.",
+    name: "Terri Fleming",
+    title: "IT Program Management, Life Sciences Systems Delivery",
   },
 ];
 
 const TestimonialsSection = () => {
   const { ref, isVisible } = useScrollReveal();
-  const [active, setActive] = useState(0);
-
-  useEffect(() => {
-    if (!isVisible) return;
-    const interval = setInterval(() => {
-      setActive((prev) => (prev + 1) % testimonials.length);
-    }, 5000);
-    return () => clearInterval(interval);
-  }, [isVisible]);
 
   return (
     <section className="relative py-32 px-6">
-      <div className="max-w-3xl mx-auto text-center" ref={ref}>
+      <div className="max-w-6xl mx-auto" ref={ref}>
         <motion.p
-          className="text-sm uppercase tracking-widest text-secondary mb-4"
+          className="text-sm uppercase tracking-widest text-secondary mb-4 text-center"
           initial={{ opacity: 0 }}
           animate={isVisible ? { opacity: 1 } : {}}
         >
           Testimonials
         </motion.p>
         <motion.h2
-          className="text-3xl md:text-5xl font-bold mb-16"
+          className="text-3xl md:text-5xl font-bold mb-16 text-center"
           initial={{ opacity: 0, y: 30 }}
           animate={isVisible ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7 }}
         >
           What Happens When You{" "}
-          <span className="gradient-text">Work With Me</span>
+          <span className="gradient-text">Work With Us</span>
         </motion.h2>
 
-        <div className="relative min-h-[200px] flex items-center justify-center">
-          <AnimatePresence mode="wait">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {testimonials.map((t, i) => (
             <motion.div
-              key={active}
-              className="glass rounded-2xl p-10 md:p-14 glow-purple"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.5 }}
-            >
-              <span className="text-6xl gradient-text font-serif leading-none block mb-4">"</span>
-              <p className="text-lg md:text-xl text-foreground/90 leading-relaxed">
-                {testimonials[active].text}
-              </p>
-            </motion.div>
-          </AnimatePresence>
-        </div>
-
-        <div className="flex gap-2 justify-center mt-8">
-          {testimonials.map((_, i) => (
-            <button
               key={i}
-              onClick={() => setActive(i)}
-              className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                i === active ? "w-8 bg-primary" : "bg-muted-foreground/30"
-              }`}
-            />
+              className="glass rounded-2xl p-8 md:p-10 glow-purple flex flex-col"
+              initial={{ opacity: 0, y: 30 }}
+              animate={isVisible ? { opacity: 1, y: 0 } : {}}
+              transition={{ delay: 0.2 + i * 0.15, duration: 0.6 }}
+            >
+              <span className="text-5xl gradient-text font-serif leading-none block mb-3">"</span>
+              <p className="text-foreground/90 leading-relaxed mb-6 flex-1">
+                {t.quote}
+              </p>
+              <div className="mt-auto">
+                <p className="font-semibold text-foreground">{t.name}</p>
+                <p className="text-sm text-muted-foreground mb-3">{t.title}</p>
+                <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs text-muted-foreground bg-background/60 border border-brand-cyan/40">
+                  <span className="text-brand-cyan">★★★★★</span>
+                  LinkedIn Recommendation
+                </span>
+              </div>
+            </motion.div>
           ))}
         </div>
       </div>

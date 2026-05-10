@@ -5,10 +5,18 @@ import { Menu, X } from "lucide-react";
 const links = [
   { label: "About", href: "#about" },
   { label: "Services", href: "#services" },
-  { label: "Projects", href: "#projects" },
+  { label: "Work", href: "#projects" },
   { label: "Process", href: "#process" },
+  { label: "Pricing", href: "#pricing" },
   { label: "Contact", href: "#contact" },
 ];
+
+const Wordmark = () => (
+  <a href="#" className="text-xl font-bold">
+    <span className="text-foreground">Kliv</span>
+    <span className="text-brand-cyan">IQ</span>
+  </a>
+);
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -30,9 +38,7 @@ const Navbar = () => {
       transition={{ delay: 1.5, duration: 0.6 }}
     >
       <div className="max-w-6xl mx-auto px-6 flex items-center justify-between">
-        <a href="#" className="text-xl font-bold gradient-text">
-          Srilancer
-        </a>
+        <Wordmark />
 
         {/* Desktop */}
         <div className="hidden md:flex items-center gap-8">
@@ -45,6 +51,12 @@ const Navbar = () => {
               {link.label}
             </a>
           ))}
+          <a
+            href="#contact"
+            className="px-5 py-2 rounded-full text-sm font-semibold text-primary-foreground bg-gradient-to-r from-primary to-secondary transition-transform hover:scale-105"
+          >
+            Start a Project →
+          </a>
         </div>
 
         {/* Mobile toggle */}
@@ -73,6 +85,13 @@ const Navbar = () => {
               {link.label}
             </a>
           ))}
+          <a
+            href="#contact"
+            onClick={() => setOpen(false)}
+            className="mt-2 px-5 py-2 rounded-full text-sm font-semibold text-center text-primary-foreground bg-gradient-to-r from-primary to-secondary"
+          >
+            Start a Project →
+          </a>
         </motion.div>
       )}
     </motion.nav>

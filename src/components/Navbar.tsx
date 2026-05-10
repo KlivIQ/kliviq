@@ -12,10 +12,13 @@ const links = [
   { label: "Contact", href: "#contact" },
 ];
 
+import logoDark from "@/assets/kliviq-logo-dark.png";
+import logoLight from "@/assets/kliviq-logo-light.png";
+
 const Wordmark = () => (
-  <a href="#" className="text-xl font-bold">
-    <span className="text-foreground">Kliv</span>
-    <span className="text-brand-cyan">IQ</span>
+  <a href="#" aria-label="KlivIQ home" className="flex items-center">
+    <img src={logoDark} alt="KlivIQ" className="logo-dark h-9 md:h-10 w-auto" />
+    <img src={logoLight} alt="KlivIQ" className="logo-light h-9 md:h-10 w-auto" />
   </a>
 );
 

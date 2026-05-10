@@ -95,6 +95,11 @@
   ::selection {
     background: hsl(var(--primary) / 0.3);
   }
+
+  .logo-dark { display: block; }
+  .logo-light { display: none; }
+  .light .logo-dark { display: none; }
+  .light .logo-light { display: block; }
 }
 
 @layer utilities {

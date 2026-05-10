@@ -40,8 +40,8 @@ const HeroSection = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1, duration: 0.8 }}
         >
-          I design and build high-performance websites, mobile apps, and AI-powered tools
-          that don't just look good — they deliver results.
+          We design and build high-performance websites, mobile apps, and AI-powered
+          tools — with 20+ years of enterprise expertise behind every decision we make.
         </motion.p>
 
         <motion.a
@@ -53,6 +53,18 @@ const HeroSection = () => {
         >
           Start Your Project
         </motion.a>
+
+        <motion.div
+          className="mt-8 flex justify-center"
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 1.7, duration: 0.6 }}
+        >
+          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs md:text-sm text-muted-foreground bg-background/60 border border-brand-cyan/40 backdrop-blur-sm">
+            <span aria-hidden>⚡</span>
+            Currently accepting 2 new projects for Q3 2026
+          </span>
+        </motion.div>
       </div>
 
       {/* Scroll indicator */}

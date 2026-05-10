@@ -44,7 +44,7 @@ const ServicesSection = () => {
           animate={isVisible ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7 }}
         >
-          What I Can Do <span className="gradient-text">For You</span>
+          What We Build <span className="gradient-text">For You</span>
         </motion.h2>
         <motion.p
           className="text-muted-foreground text-center mb-16 text-lg"
@@ -52,7 +52,7 @@ const ServicesSection = () => {
           animate={isVisible ? { opacity: 1 } : {}}
           transition={{ delay: 0.2 }}
         >
-          From idea to execution — I handle the entire journey.
+          From idea to execution — we handle the entire journey.
         </motion.p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

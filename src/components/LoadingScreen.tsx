@@ -5,7 +5,7 @@ interface LoadingScreenProps {
 }
 
 const LoadingScreen = ({ isLoading }: LoadingScreenProps) => {
-  const letters = "Srilancer".split("");
+  const letters = "KlivIQ".split("").map((ch, i) => ({ ch, isIQ: i >= 4 }));
 
   return (
     <AnimatePresence>
@@ -16,15 +16,15 @@ const LoadingScreen = ({ isLoading }: LoadingScreenProps) => {
           transition={{ duration: 0.8, ease: "easeInOut" }}
         >
           <div className="flex">
-            {letters.map((letter, i) => (
+            {letters.map((l, i) => (
               <motion.span
                 key={i}
-                className="text-4xl md:text-6xl font-bold gradient-text"
+                className={`text-4xl md:text-6xl font-bold ${l.isIQ ? "text-brand-cyan" : "text-foreground"}`}
                 initial={{ opacity: 0, y: 40 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: i * 0.08, duration: 0.5, ease: "easeOut" }}
               >
-                {letter}
+                {l.ch}
               </motion.span>
             ))}
           </div>

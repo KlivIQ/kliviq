@@ -62,6 +62,10 @@ const ProjectsSection = () => {
             <ProjectCard key={i} project={p} index={i} />
           ))}
         </div>
+
+        <p className="mt-8 text-center text-xs text-muted-foreground">
+          *Results from enterprise projects delivered over 20+ years of industry experience.
+        </p>
       </div>
     </section>
   );

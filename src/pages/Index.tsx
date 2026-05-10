@@ -1,6 +1,7 @@
 import { useState, useEffect, lazy, Suspense } from "react";
 import LoadingScreen from "@/components/LoadingScreen";
 import CustomCursor from "@/components/CustomCursor";
+import FloatingActions from "@/components/FloatingActions";
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/sections/HeroSection";
 import AboutSection from "@/components/sections/AboutSection";
@@ -45,6 +46,7 @@ const Index = () => {
             <ContactSection />
             <FooterSection />
           </main>
+          <FloatingActions />
         </>
       )}
     </>

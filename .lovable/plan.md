@@ -1,70 +1,40 @@
-# Scroll-Morphing 3D Background
+## Add Pricing + FAQ sections
 
-Replace the current static 3D starfield with a single continuous 3D scene whose camera, geometry, and colors **transform as the user scrolls** through the site. One unified scene — no jarring scene swaps between sections — tuned to a moderate intensity (3/5): present and atmospheric, never competing with content.
+Two new sections inserted between Process and Contact in `src/pages/Index.tsx`. All existing design, animations, colors, and 3D background remain untouched. Reuse existing tokens (`gradient-text`, `glass-strong`, `glow-purple`, `--primary` indigo, `--brand-cyan`, `useScrollReveal`, framer-motion patterns from `ProcessSection`/`TestimonialsSection`).
 
-## The journey (one scene, scroll-driven)
+### 1. PricingSection (`src/components/sections/PricingSection.tsx`)
 
-```text
-Hero        →  Deep starfield, camera drifts slowly forward
-About       →  Stars condense into a faint wireframe sphere
-Services    →  Sphere unfolds into a slow-rotating icosahedron lattice
-Projects    →  Lattice disperses into a flowing particle grid (data feel)
-Testimonials→  Grid softens into ambient drifting motes (calm)
-Process     →  Motes align into a vertical neon flow line
-Contact     →  Flow line collapses back into a distant starfield (loop)
-```
+- Anchor: `id="pricing"` (matches existing navbar link).
+- Layout mirrors other sections: `relative py-32 px-6`, `max-w-6xl mx-auto`, label `PRICING` in `text-secondary uppercase tracking-widest`.
+- Headline: `Honest Pricing.` (white) + `No Surprises.` (gradient-text span).
+- Subline: muted, centered, two-line copy.
+- Region toggle: two pill buttons (`🇮🇳 India (₹)` / `🌍 Global ($)`) controlled by `useState<'india' | 'global'>`. Active = solid `bg-primary text-primary-foreground`; inactive = `border border-border/50 text-muted-foreground hover:text-foreground`. Animated with framer-motion `layoutId` highlight for smooth swap.
+- Grid: `grid md:grid-cols-2 gap-4` of pricing cards. Each card = `glass-strong` rounded panel with category chip (Web / Mobile / AI / Retainer color-coded via `bg-primary/10`, `bg-secondary/10`, `bg-brand-cyan/10`), title, and `from ₹X` price in gradient-text. Animate switch with `AnimatePresence` fade/slide.
+- Data arrays:
+  - `INDIA_PRICING` — 9 items (Landing Page 35k, Business 75k, E-Commerce 1,00,000, Custom Platform 2,50,000, MVP App 2,50,000, Flutter 4,00,000, AI Chatbot 60k, Custom AI 2,00,000, Retainer 12k/mo).
+  - `GLOBAL_PRICING` — 8 items as specified.
+- Notes block: `glass` rounded panel with 4 lines (✅ ✅ ✅ 📞).
+- CTA: centered `Get a Free Estimate →` button styled like Hero CTA (`bg-gradient-to-r from-primary to-secondary`, pulse glow), links to `#contact`.
 
-Each transition is interpolated by scroll progress — no hard cuts. Purple/teal palette stays constant; only density, formation, and camera position morph.
+### 2. FaqSection (`src/components/sections/FaqSection.tsx`)
 
-## Visual rules (intensity 3 / 5)
+- Anchor: `id="faq"`.
+- Reuses existing `src/components/ui/accordion.tsx` (Radix-based, already has rotating chevron).
+- Layout: `max-w-3xl mx-auto`, label `FAQ`, headline `Questions We Get Asked Most` with last 2 words wrapped in `gradient-text`.
+- 7 Q&A items as listed, rendered via `Accordion type="single" collapsible`. Items styled with `glass` border, padded, hover tint. Wrapping container uses `useScrollReveal` for fade-in.
 
-- Background is felt, not stared at — opacity ~0.7, blur on far plane via fog
-- Maximum motion at section boundaries; near-still mid-section so text reads cleanly
-- Glassmorphism cards already provide contrast — no extra overlay
-- Reduced-motion users get the static starfield (current behavior preserved)
-- Mobile gets the simplified version (lower particle count, no morphing — just gentle drift)
+### 3. Wire-up
 
-## Technical approach
+- `src/pages/Index.tsx`: import the two new sections, insert order:
+  ```
+  ProcessSection
+  PricingSection   ← new
+  FaqSection       ← new
+  ContactSection
+  ```
+- No other files touched. Navbar `#pricing` link will now resolve correctly.
 
-**New hook** `src/hooks/useScrollProgress.ts`
-- Tracks `window.scrollY / (scrollHeight - innerHeight)` → 0..1
-- Throttled with `requestAnimationFrame`, exposed as a `useRef` (avoids re-renders on scroll)
+### Out of scope
 
-**Rewrite** `src/components/ThreeBackground.tsx`
-- Single `<Canvas>` with one `<Points>` mesh of ~2,500 particles (600 mobile)
-- Each particle has **two target positions** stored in buffer attributes: `positionA` (current formation) and `positionB` (next formation). A uniform `uMix` (0..1) lerps between them inside a custom vertex shader.
-- A `formations` array holds 7 generators: `starfield`, `sphere`, `lattice`, `grid`, `motes`, `flowLine`, `starfieldFar`
-- `useFrame` reads the scroll progress ref:
-  - Determines current segment (e.g. progress 0.28 → between formation 1 and 2, local mix 0.4)
-  - Updates `positionB` buffer when crossing into a new segment (swap target)
-  - Smooths `uMix` toward target with damping (no snap)
-  - Drives camera Z and slight rotation along a Catmull-Rom spline through 7 keyframes
-- Custom `ShaderMaterial` (vertex + fragment) for:
-  - Position interpolation (`mix(positionA, positionB, uMix)`)
-  - Per-particle color blend purple→teal driven by progress
-  - Soft circular point sprite, additive blending, opacity falloff with depth
-- Fog `[#0a0a0f, 25, 70]` for depth fade
-
-**Edits**
-- `src/pages/Index.tsx` — no structural change; `ThreeBackground` already mounted
-- Memory file `mem://tech/animation-framework` — update note that bg is now scroll-morphing R3F scene
-
-**Performance**
-- Single draw call (one Points mesh, shader-driven morph) — cheap
-- `dpr={[1, 1.5]}`, `frameloop="always"` (needed for camera spline), `antialias: false`
-- Buffer swap only on segment crossings, not every frame
-- Mobile path skips morphing entirely (static starfield + slow drift)
-
-## Files
-
-- **Add** `src/hooks/useScrollProgress.ts`
-- **Rewrite** `src/components/ThreeBackground.tsx` (formations, shader, scroll-driven morph, camera spline)
-- **Update** `mem://tech/animation-framework`
-
-## Acceptance
-
-- Scrolling top→bottom feels like one continuous camera move through evolving formations
-- No section has a hard background change; transitions are felt as the scene reshaping
-- Text/cards always remain primary; background never overpowers
-- 60fps desktop, smooth on mid-range mobile (with simplified path)
-- Reduced-motion users see a static starfield
+- No changes to design tokens, 3D scene, hero, about, services, projects, testimonials, process, contact, footer, or meta tags.
+- No new dependencies (Accordion already installed).

@@ -6,6 +6,8 @@ const steps = [
   { title: "Design", desc: "Clear structure, wireframes, and direction before coding begins." },
   { title: "Build", desc: "Fast iterations with continuous feedback — no black box development." },
   { title: "Launch", desc: "Tested, stable, and ready to scale." },
+  { title: "Handover", desc: "Complete ownership transferred — source code, hosting access, credentials, and documentation. Plus 30 days post-launch support included." },
+  { title: "Grow (Optional)", desc: "Monthly retainer for updates, new features, and performance monitoring. Most clients stay. Either way — the door's always open." },
 ];
 
 const ProcessStep = ({ step, index }: { step: typeof steps[0]; index: number }) => {

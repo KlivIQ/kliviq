@@ -33,7 +33,7 @@ const CustomCursor = () => {
         top: pos.y - 16,
         width: 32,
         height: 32,
-        border: "1px solid hsl(270 100% 70% / 0.5)",
+        border: "1px solid hsl(var(--primary) / 0.6)",
         opacity: visible ? 1 : 0,
         background: "radial-gradient(circle, hsl(270 100% 70% / 0.08) 0%, transparent 70%)",
       }}

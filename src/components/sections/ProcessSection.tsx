@@ -20,7 +20,7 @@ const ProcessStep = ({ step, index }: { step: typeof steps[0]; index: number }) 
         <motion.div
           className="w-4 h-4 rounded-full border-2 border-primary relative z-10"
           initial={{ scale: 0 }}
-          animate={isVisible ? { scale: 1, backgroundColor: "hsl(270 60% 60%)" } : {}}
+          animate={isVisible ? { scale: 1, backgroundColor: "hsl(142 64% 24%)" } : {}}
           transition={{ duration: 0.4, delay: 0.2 }}
         >
           {isVisible && (

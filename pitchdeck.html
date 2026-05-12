@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>PitchDeck AI — Multilingual Startup Pitches | KlivIQ</title>
+<meta name="description" content="Generate a complete investor pitch deck in English, Hindi, Tamil, Telugu, Kannada and Malayalam in seconds. Powered by KlivIQ AI."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0A0F1E;--card:#111827;--card2:#1A2235;
+  --fg:#F0FDF4;--muted:#6B7A8D;--border:#1E2D40;
+  --green:#166534;--mgr:#1E8A47;--lime:#4ADE80;
+  --radius:14px;--mono:'DM Mono',monospace;
+}
+body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--bg);color:var(--fg);min-height:100vh}
+
+.topnav{background:#0D1B2A;border-bottom:1px solid var(--border);padding:12px 32px;display:flex;align-items:center;gap:12px}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.nav-mark{width:30px;height:30px;background:var(--green);border-radius:7px;display:flex;align-items:center;justify-content:center}
+.nav-mark svg{width:18px;height:18px}
+.nav-brand{font-family:'Syne',sans-serif;font-weight:800;font-size:16px;color:var(--fg)}
+.nav-brand span{color:var(--lime)}
+.nav-back{margin-left:auto;font-family:var(--mono);font-size:11px;color:var(--muted);text-decoration:none;transition:color 0.15s}
+.nav-back:hover{color:var(--lime)}
+.nav-tag{background:rgba(74,222,128,0.1);border:1px solid rgba(74,222,128,0.25);color:var(--lime);font-family:var(--mono);font-size:10px;padding:3px 10px;border-radius:20px;margin-left:10px}
+
+.app{max-width:940px;margin:0 auto;padding:36px 20px 80px}
+
+.hero{text-align:center;margin-bottom:36px}
+.hero-tag{display:inline-block;background:rgba(74,222,128,0.1);border:1px solid rgba(74,222,128,0.2);color:var(--lime);font-family:var(--mono);font-size:11px;padding:5px 14px;border-radius:20px;margin-bottom:16px}
+.hero h1{font-family:'Syne',sans-serif;font-weight:800;font-size:36px;line-height:1.15;margin-bottom:10px}
+.hero h1 .lime{color:var(--lime)}
+.hero p{color:var(--muted);font-size:15px;max-width:540px;margin:0 auto;line-height:1.7}
+
+.input-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:28px;margin-bottom:20px}
+
+.field-label{font-family:var(--mono);font-size:10px;color:var(--muted);letter-spacing:0.06em;text-transform:uppercase;margin-bottom:8px;display:block}
+
+textarea{width:100%;background:var(--card2);border:1px solid var(--border);border-radius:10px;padding:14px 16px;font-family:'Plus Jakarta Sans',sans-serif;font-size:14px;color:var(--fg);resize:vertical;min-height:120px;outline:none;transition:border-color 0.2s;line-height:1.6}
+textarea:focus{border-color:rgba(74,222,128,0.4)}
+textarea::placeholder{color:var(--muted)}
+
+.grid-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin-top:16px}
+@media(max-width:650px){.grid-3{grid-template-columns:1fr}}
+select{width:100%;background:var(--card2);border:1px solid var(--border);border-radius:10px;padding:10px 14px;font-family:'Plus Jakarta Sans',sans-serif;font-size:13px;color:var(--fg);outline:none;-webkit-appearance:none;appearance:none;cursor:pointer;transition:border-color 0.2s}
+select:focus{border-color:rgba(74,222,128,0.4)}
+.sel-wrap{position:relative}.sel-wrap::after{content:'▾';position:absolute;right:12px;top:50%;transform:translateY(-50%);color:var(--muted);font-size:12px;pointer-events:none}
+
+.lang-section{margin-top:20px}
+.lang-grid{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+.lang-btn{font-family:var(--mono);font-size:12px;padding:7px 14px;border-radius:8px;border:1px solid var(--border);background:var(--card2);color:var(--muted);cursor:pointer;transition:all 0.15s}
+.lang-btn.selected{background:rgba(74,222,128,0.1);border-color:rgba(74,222,128,0.4);color:var(--lime)}
+.lang-btn:hover:not(.selected){border-color:var(--muted)}
+
+.gen-btn{width:100%;margin-top:24px;background:var(--green);color:#fff;border:none;border-radius:10px;padding:17px;font-family:'Syne',sans-serif;font-size:16px;font-weight:800;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:10px;transition:all 0.2s;letter-spacing:0.02em}
+.gen-btn:hover{background:var(--mgr);box-shadow:0 4px 20px rgba(22,101,52,0.4)}
+.gen-btn:disabled{opacity:0.4;cursor:not-allowed;box-shadow:none}
+
+.spinner{width:18px;height:18px;border:2px solid rgba(255,255,255,0.3);border-top-color:#fff;border-radius:50%;animation:spin 0.7s linear infinite;display:none}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+.output{display:none}
+.output.visible{display:block;animation:up 0.4s ease}
+@keyframes up{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+
+.deck-meta-bar{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:20px;flex-wrap:wrap;gap:12px}
+.deck-name{font-family:'Syne',sans-serif;font-size:24px;font-weight:800;color:var(--fg)}
+.deck-tagline{font-size:13px;color:var(--muted);margin-top:4px}
+.out-actions{display:flex;gap:8px}
+.out-btn{font-family:var(--mono);font-size:11px;padding:8px 14px;border-radius:8px;border:1px solid var(--border);background:var(--card2);color:var(--muted);cursor:pointer;transition:all 0.15s}
+.out-btn:hover{border-color:var(--lime);color:var(--lime)}
+
+.lang-tabs{display:flex;gap:6px;margin-bottom:20px;flex-wrap:wrap}
+.lang-tab{font-family:var(--mono);font-size:11px;padding:7px 14px;border-radius:8px;border:1px solid var(--border);background:var(--card2);color:var(--muted);cursor:pointer;transition:all 0.15s}
+.lang-tab.active{background:rgba(74,222,128,0.1);border-color:rgba(74,222,128,0.4);color:var(--lime)}
+
+.slides-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:650px){.slides-grid{grid-template-columns:1fr}}
+.slide-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px;position:relative;overflow:hidden}
+.slide-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--green),var(--lime))}
+.slide-num{font-family:var(--mono);font-size:10px;color:var(--muted);margin-bottom:6px}
+.slide-title{font-family:'Syne',sans-serif;font-size:15px;font-weight:700;color:var(--fg);margin-bottom:4px}
+.slide-title-en{font-size:11px;color:rgba(74,222,128,0.6);font-family:var(--mono);margin-bottom:10px}
+.slide-points{list-style:none;display:flex;flex-direction:column;gap:6px}
+.slide-points li{font-size:13px;color:#94A3B8;line-height:1.5;padding-left:14px;position:relative}
+.slide-points li::before{content:'→';position:absolute;left:0;color:var(--lime);font-size:10px;top:2px}
+.slide-points li .en-tr{display:block;color:rgba(74,222,128,0.4);font-size:11px;margin-top:2px;font-style:italic}
+.talking{margin-top:12px;padding-top:10px;border-top:1px solid var(--border);font-size:11px;color:var(--muted);line-height:1.5;font-style:italic}
+.talking strong{color:#64748B;font-style:normal;font-family:var(--mono);font-size:10px}
+
+.loading-state{display:none;text-align:center;padding:40px 20px;background:var(--card);border:1px solid var(--border);border-radius:var(--radius);margin-top:8px}
+.loading-state.visible{display:block}
+.load-line{font-family:var(--mono);color:var(--lime);font-size:13px;margin-bottom:6px}
+.load-sub{color:var(--muted);font-size:12px}
+.load-progress{width:200px;height:2px;background:var(--border);border-radius:2px;margin:16px auto 0;overflow:hidden}
+.load-bar{height:100%;background:var(--lime);border-radius:2px;animation:progress 3s ease-in-out infinite}
+@keyframes progress{0%{width:5%}50%{width:80%}100%{width:95%}}
+
+.error-box{background:rgba(220,38,38,0.08);border:1px solid rgba(220,38,38,0.25);color:#FCA5A5;padding:14px;border-radius:10px;font-size:13px;display:none;margin-top:14px}
+.error-box.visible{display:block}
+
+.footer{text-align:center;padding:32px 20px;color:var(--muted);font-size:13px;border-top:1px solid var(--border);margin-top:40px}
+.footer a{color:var(--lime);text-decoration:none}
+.powered{display:inline-flex;align-items:center;gap:6px;background:rgba(74,222,128,0.08);border:1px solid rgba(74,222,128,0.2);border-radius:20px;padding:4px 12px;font-family:var(--mono);font-size:11px;color:var(--lime);margin-top:10px}
+</style>
+</head>
+<body>
+
+<nav class="topnav">
+  <a href="https://www.kliviq.com" class="nav-logo">
+    <div class="nav-mark">
+      <svg viewBox="0 0 24 24" fill="none">
+        <circle cx="5" cy="12" r="2.5" fill="white" opacity="0.5"/>
+        <circle cx="5" cy="5" r="2" fill="white" opacity="0.7"/>
+        <circle cx="5" cy="19" r="2" fill="white" opacity="0.7"/>
+        <circle cx="12" cy="5" r="2" fill="white" opacity="0.7"/>
+        <line x1="5" y1="5" x2="5" y2="19" stroke="white" stroke-width="1.5" opacity="0.6"/>
+        <line x1="5" y1="5" x2="12" y2="5" stroke="white" stroke-width="1.5" opacity="0.6"/>
+        <line x1="5" y1="12" x2="19" y2="19" stroke="#4ADE80" stroke-width="2"/>
+        <circle cx="19" cy="19" r="3" fill="none" stroke="#4ADE80" stroke-width="1.5"/>
+        <circle cx="19" cy="19" r="1.5" fill="#4ADE80"/>
+      </svg>
+    </div>
+    <div class="nav-brand">Kliv<span>IQ</span></div>
+  </a>
+  <span class="nav-tag">PitchDeck AI</span>
+  <a href="https://www.kliviq.com" class="nav-back">← Back to KlivIQ</a>
+</nav>
+
+<div class="app">
+  <div class="hero">
+    <div class="hero-tag">🇮🇳 Multilingual · Investor-Grade</div>
+    <h1>Your startup pitch,<br>in every language <span class="lime">investors speak.</span></h1>
+    <p>Describe your idea. Get a complete 10-slide investor pitch deck in English + Hindi, Tamil, Telugu, Kannada, and Malayalam — with talking points for every slide.</p>
+  </div>
+
+  <div class="input-card">
+    <label class="field-label" for="idea">Your Business Idea</label>
+    <textarea id="idea" placeholder="e.g. An AI-powered platform for small kirana stores in Tier-2/3 Indian cities to manage inventory, predict demand, and access working capital credit. Owners use a WhatsApp bot to log stock. The platform aggregates purchase data and connects stores with FMCG distributors at negotiated bulk prices..."></textarea>
+
+    <div class="grid-3">
+      <div>
+        <label class="field-label" for="stage">Funding Stage</label>
+        <div class="sel-wrap"><select id="stage">
+          <option>Idea Stage</option>
+          <option>MVP Ready</option>
+          <option selected>Pre-Seed</option>
+          <option>Seed Round</option>
+          <option>Series A</option>
+        </select></div>
+      </div>
+      <div>
+        <label class="field-label" for="investor">Target Investor</label>
+        <div class="sel-wrap"><select id="investor">
+          <option>Angel Investor</option>
+          <option selected>VC Fund (Indian)</option>
+          <option>VC Fund (Global)</option>
+          <option>Govt Grant (Startup India)</option>
+          <option>Corporate VC</option>
+        </select></div>
+      </div>
+      <div>
+        <label class="field-label" for="ask">Funding Ask</label>
+        <div class="sel-wrap"><select id="ask">
+          <option>₹25L – ₹1Cr</option>
+          <option selected>₹1Cr – ₹5Cr</option>
+          <option>₹5Cr – ₹25Cr</option>
+          <option>$500K – $2M</option>
+          <option>$2M – $10M</option>
+        </select></div>
+      </div>
+    </div>
+
+    <div class="lang-section">
+      <label class="field-label">Output Languages</label>
+      <div class="lang-grid">
+        <button class="lang-btn selected" onclick="toggleLang(this,'en')">🇬🇧 English</button>
+        <button class="lang-btn selected" onclick="toggleLang(this,'hi')">🇮🇳 Hindi</button>
+        <button class="lang-btn selected" onclick="toggleLang(this,'ta')">Tamil</button>
+        <button class="lang-btn selected" onclick="toggleLang(this,'te')">Telugu</button>
+        <button class="lang-btn selected" onclick="toggleLang(this,'kn')">Kannada</button>
+        <button class="lang-btn selected" onclick="toggleLang(this,'ml')">Malayalam</button>
+      </div>
+    </div>
+
+    <button class="gen-btn" id="genBtn" onclick="generateDeck()">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+      <span id="btnLabel">Generate Pitch Deck</span>
+      <div class="spinner" id="spinner"></div>
+    </button>
+    <div class="error-box" id="errorBox"></div>
+  </div>
+
+  <div class="loading-state" id="loadingState">
+    <div class="load-line" id="loadLine">⚡ Generating your pitch structure...</div>
+    <div class="load-sub">Building 10 slides with talking points in selected languages</div>
+    <div class="load-progress"><div class="load-bar"></div></div>
+  </div>
+
+  <div class="output" id="output">
+    <div class="deck-meta-bar">
+      <div>
+        <div class="deck-name" id="deckName">Pitch Deck</div>
+        <div class="deck-tagline" id="deckTagline"></div>
+      </div>
+      <div class="out-actions">
+        <button class="out-btn" onclick="copyDeck()">Copy Deck</button>
+        <button class="out-btn" onclick="cycleLang()">Switch Language ↻</button>
+      </div>
+    </div>
+    <div class="lang-tabs" id="langTabs"></div>
+    <div class="slides-grid" id="slidesGrid"></div>
+  </div>
+</div>
+
+<footer class="footer">
+  <div>Built by <a href="https://www.kliviq.com">KlivIQ Technologies</a> · AI-powered tools for modern businesses</div>
+  <div class="powered">⚡ Powered by Claude AI</div>
+</footer>
+
+<script>
+let selectedLangs=['en','hi','ta','te','kn','ml'];
+let currentLang='en';
+let deckData=null;
+let loadTimer=null;
+
+const langNames={en:'English',hi:'Hindi',ta:'Tamil',te:'Telugu',kn:'Kannada',ml:'Malayalam'};
+const langFlags={en:'🇬🇧',hi:'🇮🇳',ta:'',te:'',kn:'',ml:''};
+
+function toggleLang(el,code){
+  if(code==='en')return;
+  if(el.classList.contains('selected')){
+    el.classList.remove('selected');
+    selectedLangs=selectedLangs.filter(l=>l!==code);
+  }else{
+    el.classList.add('selected');
+    if(!selectedLangs.includes(code))selectedLangs.push(code);
+  }
+}
+
+function setLoading(on){
+  const btn=document.getElementById('genBtn');
+  document.getElementById('spinner').style.display=on?'block':'none';
+  document.getElementById('btnLabel').textContent=on?'Generating...':'Generate Pitch Deck';
+  btn.disabled=on;
+  const ls=document.getElementById('loadingState');
+  if(on){
+    ls.classList.add('visible');
+    const msgs=['⚡ Analyzing your business model...','🧠 Structuring investor narrative...','🌏 Translating to selected languages...','📊 Adding market size data...','✨ Crafting talking points...'];
+    let i=0;
+    loadTimer=setInterval(()=>{document.getElementById('loadLine').textContent=msgs[i%msgs.length];i++;},2000);
+  }else{
+    ls.classList.remove('visible');
+    if(loadTimer)clearInterval(loadTimer);
+  }
+}
+
+function showError(msg){const e=document.getElementById('errorBox');e.textContent=msg;e.classList.add('visible');}
+function hideError(){document.getElementById('errorBox').classList.remove('visible');}
+
+async function generateDeck(){
+  const idea=document.getElementById('idea').value.trim();
+  if(!idea){showError('Please describe your business idea first.');return;}
+  hideError();
+  setLoading(true);
+  document.getElementById('output').classList.remove('visible');
+
+  const stage=document.getElementById('stage').value;
+  const investor=document.getElementById('investor').value;
+  const ask=document.getElementById('ask').value;
+  const extraLangs=selectedLangs.filter(l=>l!=='en');
+
+  const langFields=extraLangs.map(l=>`"title${cap(l)}": "Slide title in ${langNames[l]}",\n"points${cap(l)}": ["${langNames[l]} bullet 1","${langNames[l]} bullet 2","${langNames[l]} bullet 3"]`).join(',\n');
+
+  const prompt=`You are a world-class startup pitch consultant with deep knowledge of the Indian startup ecosystem.
+
+Create a complete 10-slide pitch deck for:
+Idea: ${idea}
+Stage: ${stage}
+Investor: ${investor}
+Ask: ${ask}
+Languages needed besides English: ${extraLangs.map(l=>langNames[l]).join(', ')||'English only'}
+
+Return ONLY valid JSON (no markdown, no backticks):
+{
+  "startupName": "Catchy startup name (2 words max)",
+  "tagline": "Memorable one-line tagline",
+  "slides": [
+    {
+      "num": 1,
+      "titleEn": "Slide title",
+      ${extraLangs.map(l=>`"title${cap(l)}": "Title in ${langNames[l]}"`).join(',\n      ')},
+      "pointsEn": ["Bullet 1", "Bullet 2", "Bullet 3"],
+      ${extraLangs.map(l=>`"points${cap(l)}": ["${langNames[l]} 1","${langNames[l]} 2","${langNames[l]} 3"]`).join(',\n      ')},
+      "talkingPoint": "What to say (30 words, persuasive, investor-focused)"
+    }
+  ]
+}
+
+10 slides: 1)Cover/Hook 2)Problem 3)Solution 4)Market Size TAM/SAM/SOM 5)Business Model 6)Traction 7)Go-to-Market 8)Team 9)Financials 10)The Ask. India-specific, realistic, investor-grade.`;
+
+  try{
+    const res=await fetch('https://api.anthropic.com/v1/messages',{
+      method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:1000,messages:[{role:'user',content:prompt}]})
+    });
+    const data=await res.json();
+    if(data.error){showError('API error: '+data.error.message);setLoading(false);return;}
+    const text=data.content.filter(c=>c.type==='text').map(c=>c.text).join('');
+    deckData=JSON.parse(text.replace(/```json|```/g,'').trim());
+    currentLang='en';
+    renderDeck(deckData);
+    document.getElementById('output').classList.add('visible');
+  }catch(e){
+    showError('Generation failed: '+e.message);
+    console.error(e);
+  }
+  setLoading(false);
+}
+
+function cap(s){return s.charAt(0).toUpperCase()+s.slice(1);}
+
+function renderDeck(d){
+  document.getElementById('deckName').textContent=d.startupName||'Pitch Deck';
+  document.getElementById('deckTagline').textContent=(d.tagline||'')+' · '+document.getElementById('stage').value+' · '+document.getElementById('ask').value;
+
+  const tabs=document.getElementById('langTabs');
+  tabs.innerHTML='';
+  const activeLangs=['en',...selectedLangs.filter(l=>l!=='en')];
+  activeLangs.forEach(l=>{
+    const btn=document.createElement('button');
+    btn.className='lang-tab'+(l===currentLang?' active':'');
+    btn.textContent=(langFlags[l]||'')+' '+langNames[l];
+    btn.onclick=()=>{
+      currentLang=l;
+      renderSlides(d);
+      document.querySelectorAll('.lang-tab').forEach(t=>t.classList.remove('active'));
+      btn.classList.add('active');
+    };
+    tabs.appendChild(btn);
+  });
+  renderSlides(d);
+}
+
+function renderSlides(d){
+  const grid=document.getElementById('slidesGrid');
+  const lc=cap(currentLang);
+
+  grid.innerHTML=d.slides.map(slide=>{
+    const title=currentLang==='en'?slide.titleEn:(slide['title'+lc]||slide.titleEn);
+    const points=currentLang==='en'?slide.pointsEn:(slide['points'+lc]||slide.pointsEn);
+
+    const pts=(points||[]).map((p,i)=>{
+      const enVersion=(slide.pointsEn&&currentLang!=='en')?`<span class="en-tr">${slide.pointsEn[i]||''}</span>`:'';
+      return `<li>${p}${enVersion}</li>`;
+    }).join('');
+
+    return `<div class="slide-card">
+      <div class="slide-num">SLIDE ${slide.num} / 10</div>
+      <div class="slide-title">${title}</div>
+      ${currentLang!=='en'?`<div class="slide-title-en">${slide.titleEn}</div>`:''}
+      <ul class="slide-points">${pts}</ul>
+      <div class="talking"><strong>SAY THIS →</strong> ${slide.talkingPoint}</div>
+    </div>`;
+  }).join('');
+}
+
+function cycleLang(){
+  if(!deckData)return;
+  const activeLangs=['en',...selectedLangs.filter(l=>l!=='en')];
+  const idx=activeLangs.indexOf(currentLang);
+  currentLang=activeLangs[(idx+1)%activeLangs.length];
+  renderDeck(deckData);
+}
+
+function copyDeck(){
+  if(!deckData)return;
+  const text=`${deckData.startupName}\n"${deckData.tagline}"\n\n`+
+    deckData.slides.map(s=>`SLIDE ${s.num}: ${s.titleEn}\n${(s.pointsEn||[]).map(p=>'• '+p).join('\n')}\nSAY THIS: ${s.talkingPoint}`).join('\n\n')+
+    '\n\nGenerated by PitchDeck AI — kliviq.com';
+  navigator.clipboard.writeText(text).then(()=>{
+    const btn=document.querySelector('.out-btn');
+    btn.textContent='Copied!';
+    setTimeout(()=>btn.textContent='Copy Deck',2000);
+  });
+}
+</script>
+</body>
+</html>

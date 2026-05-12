@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>ClinicPing — AI Clinic Management | KlivIQ</title>
+<meta name="description" content="Smart appointment booking, AI-powered no-show prediction, and patient communication for modern clinics. Built by KlivIQ."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Mono:wght@400;500&family=Nunito:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#F8FAFF;--card:#fff;--fg:#0D1B2A;--muted:#64748B;
+  --green:#166534;--mgr:#1E8A47;--lime:#4ADE80;
+  --red:#DC2626;--amber:#D97706;--teal:#0F766E;
+  --border:#E2E8F0;--subtle:#F0FDF4;
+  --radius:14px;--mono:'DM Mono',monospace;
+}
+body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--fg)}
+
+.topnav{background:var(--green);padding:12px 32px;display:flex;align-items:center;gap:12px}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.nav-mark{width:30px;height:30px;background:rgba(255,255,255,0.15);border-radius:7px;display:flex;align-items:center;justify-content:center}
+.nav-mark svg{width:18px;height:18px}
+.nav-brand{font-family:'Syne',sans-serif;font-weight:800;font-size:16px;color:#fff}
+.nav-brand span{color:var(--lime)}
+.nav-back{margin-left:auto;font-family:var(--mono);font-size:11px;color:rgba(255,255,255,0.6);text-decoration:none;transition:color 0.15s}
+.nav-back:hover{color:#fff}
+.nav-tag{background:rgba(74,222,128,0.15);border:1px solid rgba(74,222,128,0.3);color:var(--lime);font-family:var(--mono);font-size:10px;padding:3px 10px;border-radius:20px;margin-left:10px}
+
+.app{max-width:960px;margin:0 auto;padding:24px 20px 80px}
+
+.dash-header{background:var(--green);border-radius:14px;padding:20px 24px;display:flex;align-items:center;gap:14px;margin-bottom:24px}
+.dh-icon{width:42px;height:42px;background:rgba(255,255,255,0.15);border-radius:10px;display:flex;align-items:center;justify-content:center}
+.dh-icon svg{width:24px;height:24px}
+.dh-title{color:#fff;font-family:'Syne',sans-serif;font-weight:800;font-size:18px}
+.dh-sub{color:rgba(255,255,255,0.55);font-size:12px;font-family:var(--mono);margin-top:2px}
+.dh-right{margin-left:auto;text-align:right}
+.clinic-name{color:#fff;font-weight:600;font-size:15px}
+.clinic-sub{color:rgba(255,255,255,0.5);font-size:11px;font-family:var(--mono);margin-top:2px}
+
+.stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:20px}
+@media(max-width:700px){.stats-row{grid-template-columns:repeat(2,1fr)}}
+.stat-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:14px 16px}
+.stat-label{font-size:11px;color:var(--muted);font-family:var(--mono);margin-bottom:4px}
+.stat-val{font-family:'Syne',sans-serif;font-size:24px;font-weight:800;color:var(--fg)}
+.stat-val.g{color:var(--green)}.stat-val.r{color:var(--red)}.stat-val.a{color:var(--amber)}
+.stat-delta{font-size:11px;color:var(--muted);margin-top:2px}
+
+.tabs{display:flex;gap:6px;margin-bottom:16px;overflow-x:auto}
+.tab{font-family:var(--mono);font-size:12px;padding:9px 18px;border-radius:8px;border:1px solid var(--border);background:var(--card);color:var(--muted);cursor:pointer;white-space:nowrap;transition:all 0.15s}
+.tab.active{background:var(--green);color:#fff;border-color:var(--green)}
+.tab:hover:not(.active){border-color:var(--mgr);color:var(--green)}
+
+.tab-panel{display:none}
+.tab-panel.active{display:block;animation:fi 0.2s ease}
+@keyframes fi{from{opacity:0}to{opacity:1}}
+
+.panel-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:22px}
+
+.appt-row{display:grid;grid-template-columns:64px 1fr auto auto;gap:12px;align-items:center;padding:13px 0;border-bottom:1px solid var(--border)}
+.appt-row:last-of-type{border-bottom:none}
+.appt-time{font-family:var(--mono);font-size:11px;color:var(--muted);text-align:center;background:var(--bg);padding:6px 8px;border-radius:7px;line-height:1.3}
+.appt-name{font-weight:600;font-size:14px;color:var(--fg)}
+.appt-detail{font-size:12px;color:var(--muted);margin-top:2px}
+.status-pill{font-family:var(--mono);font-size:10px;padding:4px 10px;border-radius:20px;white-space:nowrap}
+.s-confirmed{background:#DCFCE7;color:#166534}
+.s-pending{background:#FEF9C3;color:#854D0E}
+.s-noshow{background:#FEE2E2;color:#991B1B}
+.s-completed{background:#E0F2FE;color:#075985}
+.risk-badge{font-family:var(--mono);font-size:10px;padding:3px 8px;border-radius:4px}
+.risk-high{background:#FEE2E2;color:#991B1B}
+.risk-med{background:#FEF9C3;color:#854D0E}
+.risk-low{background:#DCFCE7;color:#166534}
+
+.action-row{display:flex;gap:8px;margin-top:16px;flex-wrap:wrap}
+.action-btn{padding:9px 14px;border-radius:8px;border:1px solid var(--border);background:var(--card);font-family:var(--mono);font-size:11px;color:var(--fg);cursor:pointer;transition:all 0.15s;display:flex;align-items:center;gap:6px}
+.action-btn:hover{border-color:var(--green);color:var(--green)}
+.action-btn.primary{background:var(--green);color:#fff;border-color:var(--green)}
+.action-btn.primary:hover{background:var(--mgr)}
+
+.mini-spinner{width:13px;height:13px;border:2px solid rgba(255,255,255,0.3);border-top-color:#fff;border-radius:50%;animation:spin 0.7s linear infinite;display:none}
+@keyframes spin{to{transform:rotate(360deg)}}
+.mini-spinner.dark{border:2px solid rgba(0,0,0,0.15);border-top-color:var(--green)}
+
+.predict-box{background:var(--subtle);border:1px solid #BBF7D0;border-radius:10px;padding:16px;margin-top:12px;display:none}
+.predict-box.visible{display:block;animation:fi 0.3s ease}
+.predict-title{font-family:var(--mono);font-size:11px;color:var(--green);font-weight:500;margin-bottom:8px}
+.predict-body{font-size:13px;color:var(--fg);line-height:1.7;white-space:pre-wrap}
+
+.section-title{font-family:'Syne',sans-serif;font-size:14px;font-weight:700;color:var(--fg);margin-bottom:16px;display:flex;align-items:center;gap:8px}
+.section-title::before{content:'';width:3px;height:16px;background:var(--lime);border-radius:2px}
+
+.two-col{display:grid;grid-template-columns:1fr 300px;gap:14px}
+@media(max-width:750px){.two-col{grid-template-columns:1fr}}
+
+.patient-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:650px){.patient-grid{grid-template-columns:1fr}}
+.patient-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:16px}
+.p-header{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+.p-avatar{width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;font-family:'Syne',sans-serif;flex-shrink:0}
+.p-name{font-weight:600;font-size:14px}.p-id{font-family:var(--mono);font-size:10px;color:var(--muted)}
+.p-row{display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid var(--border);font-size:12px}
+.p-row:last-child{border-bottom:none}
+.p-key{color:var(--muted)}.p-val{font-weight:500}
+
+.msg-form-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}
+@media(max-width:600px){.msg-form-grid{grid-template-columns:1fr}}
+.field-label{font-family:var(--mono);font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:6px;display:block}
+select,input[type=text]{width:100%;border:1px solid var(--border);border-radius:8px;padding:9px 12px;font-family:'Nunito',sans-serif;font-size:13px;color:var(--fg);background:var(--bg);outline:none;-webkit-appearance:none;appearance:none}
+select:focus,input:focus{border-color:var(--green)}
+.sel-wrap{position:relative}.sel-wrap::after{content:'▾';position:absolute;right:11px;top:50%;transform:translateY(-50%);color:var(--muted);font-size:12px;pointer-events:none}
+textarea.msg-box{width:100%;border:1px solid var(--border);border-radius:8px;padding:12px;font-family:'Nunito',sans-serif;font-size:13px;color:var(--fg);background:var(--bg);resize:vertical;min-height:90px;outline:none;margin-bottom:12px}
+textarea.msg-box:focus{border-color:var(--green)}
+
+.msg-item{border:1px solid var(--border);border-radius:10px;padding:14px;background:var(--card);margin-bottom:10px}
+.msg-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:4px}
+.msg-to{font-weight:600;font-size:13px}.msg-time{font-family:var(--mono);font-size:10px;color:var(--muted)}
+.msg-channel{font-size:11px;color:var(--teal);font-family:var(--mono);margin-bottom:6px;display:block}
+.msg-body{font-size:13px;color:var(--muted);line-height:1.5}
+.msg-status{display:inline-block;margin-top:6px;font-family:var(--mono);font-size:10px;padding:2px 8px;border-radius:4px;background:#DCFCE7;color:#166534}
+
+.ai-btn{background:var(--green);color:#fff;border:none;border-radius:8px;padding:9px 16px;font-family:var(--mono);font-size:12px;cursor:pointer;display:flex;align-items:center;gap:8px;transition:all 0.15s}
+.ai-btn:hover{background:var(--mgr)}
+.ai-btn:disabled{opacity:0.5;cursor:not-allowed}
+
+.footer{text-align:center;padding:32px 20px;color:var(--muted);font-size:13px;border-top:1px solid var(--border);margin-top:40px}
+.footer a{color:var(--green);text-decoration:none}
+.powered{display:inline-flex;align-items:center;gap:6px;background:var(--subtle);border:1px solid #BBF7D0;border-radius:20px;padding:4px 12px;font-family:var(--mono);font-size:11px;color:var(--green);margin-top:12px}
+
+.cal-mini{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:16px;margin-bottom:12px}
+.cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:3px;margin-top:12px}
+.cal-d{text-align:center;padding:5px 3px;border-radius:5px;font-size:11px}
+.cal-h{font-family:var(--mono);font-size:9px;color:var(--muted)}
+.cal-n{font-size:12px;font-weight:600;color:var(--fg);margin-top:1px}
+.cal-dot{width:3px;height:3px;background:var(--lime);border-radius:50%;margin:2px auto 0}
+.cal-today{background:var(--green);border-radius:6px}
+.cal-today .cal-n{color:#fff}
+.cal-busy{background:#F0FDF4}
+.quick-stats{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:16px}
+</style>
+</head>
+<body>
+
+<nav class="topnav">
+  <a href="https://www.kliviq.com" class="nav-logo">
+    <div class="nav-mark">
+      <svg viewBox="0 0 24 24" fill="none">
+        <circle cx="5" cy="12" r="2.5" fill="white" opacity="0.5"/>
+        <circle cx="5" cy="5" r="2" fill="white" opacity="0.7"/>
+        <circle cx="5" cy="19" r="2" fill="white" opacity="0.7"/>
+        <circle cx="12" cy="5" r="2" fill="white" opacity="0.7"/>
+        <line x1="5" y1="5" x2="5" y2="19" stroke="white" stroke-width="1.5" opacity="0.6"/>
+        <line x1="5" y1="5" x2="12" y2="5" stroke="white" stroke-width="1.5" opacity="0.6"/>
+        <line x1="5" y1="12" x2="19" y2="19" stroke="#4ADE80" stroke-width="2"/>
+        <circle cx="19" cy="19" r="3" fill="none" stroke="#4ADE80" stroke-width="1.5"/>
+        <circle cx="19" cy="19" r="1.5" fill="#4ADE80"/>
+      </svg>
+    </div>
+    <div class="nav-brand">Kliv<span>IQ</span></div>
+  </a>
+  <span class="nav-tag">ClinicPing</span>
+  <a href="https://www.kliviq.com" class="nav-back">← Back to KlivIQ</a>
+</nav>
+
+<div class="app">
+  <div class="dash-header">
+    <div class="dh-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8">
+        <rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>
+      </svg>
+    </div>
+    <div>
+      <div class="dh-title">ClinicPing</div>
+      <div class="dh-sub">AI-Powered Clinic Management</div>
+    </div>
+    <div class="dh-right">
+      <div class="clinic-name">Dr. Priya Sharma's Clinic</div>
+      <div class="clinic-sub">Bangalore · General Practice</div>
+    </div>
+  </div>
+
+  <div class="stats-row">
+    <div class="stat-card"><div class="stat-label">Today's Appointments</div><div class="stat-val">14</div><div class="stat-delta">↑ 2 from yesterday</div></div>
+    <div class="stat-card"><div class="stat-label">Confirmed</div><div class="stat-val g">11</div><div class="stat-delta">78% confirmation rate</div></div>
+    <div class="stat-card"><div class="stat-label">No-shows (7 days)</div><div class="stat-val r">3</div><div class="stat-delta">↓ from 5 last week</div></div>
+    <div class="stat-card"><div class="stat-label">Revenue at Risk</div><div class="stat-val a">₹2.4K</div><div class="stat-delta">today · unconfirmed</div></div>
+  </div>
+
+  <div class="tabs">
+    <button class="tab active" onclick="switchTab('appt',this)">📅 Appointments</button>
+    <button class="tab" onclick="switchTab('patients',this)">👥 Patients</button>
+    <button class="tab" onclick="switchTab('comms',this)">💬 Communication</button>
+  </div>
+
+  <!-- APPOINTMENTS -->
+  <div class="tab-panel active" id="tab-appt">
+    <div class="two-col">
+      <div class="panel-card">
+        <div class="section-title">Tuesday, 13 May 2025</div>
+        <div class="appt-row">
+          <div class="appt-time">09:00<br>AM</div>
+          <div><div class="appt-name">Rekha Nair</div><div class="appt-detail">Follow-up · BP Monitoring · 20 min</div></div>
+          <span class="risk-badge risk-low">Low</span><span class="status-pill s-confirmed">Confirmed</span>
+        </div>
+        <div class="appt-row">
+          <div class="appt-time">09:30<br>AM</div>
+          <div><div class="appt-name">Mohan Reddy</div><div class="appt-detail">New Patient · General Checkup · 30 min</div></div>
+          <span class="risk-badge risk-high">High</span><span class="status-pill s-pending">Pending</span>
+        </div>
+        <div class="appt-row">
+          <div class="appt-time">10:00<br>AM</div>
+          <div><div class="appt-name">Sunita Pillai</div><div class="appt-detail">Diabetes Review · Lab Results · 30 min</div></div>
+          <span class="risk-badge risk-med">Med</span><span class="status-pill s-confirmed">Confirmed</span>
+        </div>
+        <div class="appt-row">
+          <div class="appt-time">11:00<br>AM</div>
+          <div><div class="appt-name">Arjun Mehta</div><div class="appt-detail">Consultation · Back Pain · 20 min</div></div>
+          <span class="risk-badge risk-low">Low</span><span class="status-pill s-confirmed">Confirmed</span>
+        </div>
+        <div class="appt-row">
+          <div class="appt-time">02:00<br>PM</div>
+          <div><div class="appt-name">Kavya Krishnan</div><div class="appt-detail">Post-op Follow-up · 15 min</div></div>
+          <span class="risk-badge risk-high">High</span><span class="status-pill s-pending">Pending</span>
+        </div>
+        <div class="appt-row">
+          <div class="appt-time">03:30<br>PM</div>
+          <div><div class="appt-name">Ramesh Iyer</div><div class="appt-detail">Blood Test Review · 20 min</div></div>
+          <span class="risk-badge risk-low">Low</span><span class="status-pill s-completed">Completed</span>
+        </div>
+        <div class="action-row">
+          <button class="action-btn primary" onclick="runPredictor()">
+            ⚡ AI No-Show Predictor
+            <div class="mini-spinner" id="pred-spin"></div>
+          </button>
+          <button class="action-btn" onclick="alert('Reminders sent via WhatsApp + SMS! (Demo)')">📲 Send Reminders</button>
+        </div>
+        <div class="predict-box" id="predictBox">
+          <div class="predict-title">⚡ AI RISK ANALYSIS</div>
+          <div class="predict-body" id="predictBody">Analyzing...</div>
+        </div>
+      </div>
+      <div>
+        <div class="cal-mini">
+          <div class="section-title" style="font-size:12px;margin-bottom:8px">May 2025</div>
+          <div class="cal-grid">
+            <div class="cal-d cal-h">Su</div><div class="cal-d cal-h">Mo</div><div class="cal-d cal-h">Tu</div><div class="cal-d cal-h">We</div><div class="cal-d cal-h">Th</div><div class="cal-d cal-h">Fr</div><div class="cal-d cal-h">Sa</div>
+            <div class="cal-d"></div><div class="cal-d"></div><div class="cal-d"></div><div class="cal-d"><div class="cal-n">1</div><div class="cal-dot"></div></div><div class="cal-d"><div class="cal-n">2</div><div class="cal-dot"></div></div><div class="cal-d"><div class="cal-n">3</div></div><div class="cal-d"><div class="cal-n">4</div></div>
+            <div class="cal-d"><div class="cal-n">5</div></div><div class="cal-d cal-busy"><div class="cal-n">6</div><div class="cal-dot"></div></div><div class="cal-d cal-busy"><div class="cal-n">7</div><div class="cal-dot"></div></div><div class="cal-d"><div class="cal-n">8</div></div><div class="cal-d cal-busy"><div class="cal-n">9</div><div class="cal-dot"></div></div><div class="cal-d"><div class="cal-n">10</div></div><div class="cal-d"><div class="cal-n">11</div></div>
+            <div class="cal-d"><div class="cal-n">12</div></div><div class="cal-d cal-today"><div class="cal-n">13</div></div><div class="cal-d cal-busy"><div class="cal-n">14</div><div class="cal-dot"></div></div><div class="cal-d cal-busy"><div class="cal-n">15</div><div class="cal-dot"></div></div><div class="cal-d"><div class="cal-n">16</div></div><div class="cal-d cal-busy"><div class="cal-n">17</div><div class="cal-dot"></div></div><div class="cal-d"><div class="cal-n">18</div></div>
+          </div>
+        </div>
+        <div class="quick-stats">
+          <div class="section-title" style="font-size:12px;margin-bottom:12px">Quick Stats</div>
+          <div class="p-row"><span class="p-key" style="color:var(--muted);font-size:12px">Avg wait time</span><span style="font-weight:500;font-size:12px;color:var(--teal)">12 min</span></div>
+          <div class="p-row"><span class="p-key" style="color:var(--muted);font-size:12px">Reminders sent</span><span style="font-weight:500;font-size:12px">8 today</span></div>
+          <div class="p-row"><span class="p-key" style="color:var(--muted);font-size:12px">WhatsApp delivered</span><span style="font-weight:500;font-size:12px;color:var(--green)">8/8</span></div>
+          <div class="p-row"><span class="p-key" style="color:var(--muted);font-size:12px">SMS delivered</span><span style="font-weight:500;font-size:12px;color:var(--green)">7/8</span></div>
+          <div class="p-row" style="border-bottom:none"><span class="p-key" style="color:var(--muted);font-size:12px">No-show rate (MTD)</span><span style="font-weight:500;font-size:12px;color:var(--amber)">14%</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PATIENTS -->
+  <div class="tab-panel" id="tab-patients">
+    <div class="patient-grid">
+      <div class="patient-card">
+        <div class="p-header"><div class="p-avatar" style="background:#DCFCE7;color:#166534">RN</div><div><div class="p-name">Rekha Nair</div><div class="p-id">PT-0041 · F, 54</div></div></div>
+        <div class="p-row"><span class="p-key">Last visit</span><span class="p-val">28 Apr 2025</span></div>
+        <div class="p-row"><span class="p-key">Condition</span><span class="p-val">Hypertension</span></div>
+        <div class="p-row"><span class="p-key">No-show history</span><span class="p-val" style="color:var(--green)">0 / 8 visits</span></div>
+        <div class="p-row" style="border:none"><span class="p-key">Risk</span><span class="p-val"><span class="risk-badge risk-low">Low</span></span></div>
+      </div>
+      <div class="patient-card">
+        <div class="p-header"><div class="p-avatar" style="background:#FEE2E2;color:#991B1B">MR</div><div><div class="p-name">Mohan Reddy</div><div class="p-id">PT-0078 · M, 38</div></div></div>
+        <div class="p-row"><span class="p-key">Last visit</span><span class="p-val">First visit</span></div>
+        <div class="p-row"><span class="p-key">Condition</span><span class="p-val">General checkup</span></div>
+        <div class="p-row"><span class="p-key">No-show history</span><span class="p-val" style="color:var(--red)">Unknown</span></div>
+        <div class="p-row" style="border:none"><span class="p-key">Risk</span><span class="p-val"><span class="risk-badge risk-high">High</span></span></div>
+      </div>
+      <div class="patient-card">
+        <div class="p-header"><div class="p-avatar" style="background:#FEF9C3;color:#854D0E">SP</div><div><div class="p-name">Sunita Pillai</div><div class="p-id">PT-0023 · F, 61</div></div></div>
+        <div class="p-row"><span class="p-key">Last visit</span><span class="p-val">15 Apr 2025</span></div>
+        <div class="p-row"><span class="p-key">Condition</span><span class="p-val">Type 2 Diabetes</span></div>
+        <div class="p-row"><span class="p-key">No-show history</span><span class="p-val" style="color:var(--amber)">1 / 12 visits</span></div>
+        <div class="p-row" style="border:none"><span class="p-key">Risk</span><span class="p-val"><span class="risk-badge risk-med">Medium</span></span></div>
+      </div>
+      <div class="patient-card">
+        <div class="p-header"><div class="p-avatar" style="background:#FEE2E2;color:#991B1B">KK</div><div><div class="p-name">Kavya Krishnan</div><div class="p-id">PT-0055 · F, 29</div></div></div>
+        <div class="p-row"><span class="p-key">Last visit</span><span class="p-val">2 May 2025</span></div>
+        <div class="p-row"><span class="p-key">Condition</span><span class="p-val">Post-op Recovery</span></div>
+        <div class="p-row"><span class="p-key">No-show history</span><span class="p-val" style="color:var(--red)">2 / 4 visits</span></div>
+        <div class="p-row" style="border:none"><span class="p-key">Risk</span><span class="p-val"><span class="risk-badge risk-high">High</span></span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- COMMS -->
+  <div class="tab-panel" id="tab-comms">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
+      <div class="panel-card">
+        <div class="section-title">Compose Message</div>
+        <div class="msg-form-grid">
+          <div><label class="field-label">Patient</label><div class="sel-wrap"><select id="msgPatient"><option>Mohan Reddy (High Risk)</option><option>Kavya Krishnan (High Risk)</option><option>Sunita Pillai</option><option>All Pending</option></select></div></div>
+          <div><label class="field-label">Channel</label><div class="sel-wrap"><select id="msgChannel"><option>WhatsApp</option><option>SMS</option><option>Both</option></select></div></div>
+        </div>
+        <div style="margin-bottom:12px"><label class="field-label">Template</label><div class="sel-wrap"><select onchange="loadTemplate(this.value)"><option value="reminder">Appointment Reminder</option><option value="confirm">Confirm Appointment</option><option value="followup">Follow-up Request</option><option value="custom">Custom</option></select></div></div>
+        <label class="field-label">Message</label>
+        <textarea class="msg-box" id="msgBody">Hi {patient_name}, this is a reminder for your appointment with Dr. Priya Sharma tomorrow at {time}. Please confirm by replying YES. Call 080-XXXX-XXXX to reschedule. — ClinicPing</textarea>
+        <div style="display:flex;gap:8px">
+          <button class="ai-btn" onclick="aiDraftMsg()">⚡ AI Draft<div class="mini-spinner" id="msg-spin"></div></button>
+          <button class="action-btn primary" onclick="alert('Message sent! (Connects to Twilio/WhatsApp API in production)')">Send Now</button>
+        </div>
+      </div>
+      <div class="panel-card">
+        <div class="section-title">Message Log</div>
+        <div class="msg-item">
+          <div class="msg-top"><span class="msg-to">Rekha Nair</span><span class="msg-time">Today 8:00 AM</span></div>
+          <span class="msg-channel">WhatsApp</span>
+          <div class="msg-body">Hi Rekha, reminder for your BP checkup today at 9:00 AM with Dr. Sharma...</div>
+          <div class="msg-status">✓ Delivered</div>
+        </div>
+        <div class="msg-item">
+          <div class="msg-top"><span class="msg-to">Mohan Reddy</span><span class="msg-time">Today 8:01 AM</span></div>
+          <span class="msg-channel">SMS + WhatsApp</span>
+          <div class="msg-body">Hi Mohan, your first appointment is at 9:30 AM today. Please confirm...</div>
+          <div class="msg-status" style="background:#FEF9C3;color:#854D0E">⏳ Awaiting reply</div>
+        </div>
+        <div class="msg-item">
+          <div class="msg-top"><span class="msg-to">Kavya Krishnan</span><span class="msg-time">Yesterday 5:00 PM</span></div>
+          <span class="msg-channel">WhatsApp</span>
+          <div class="msg-body">Hi Kavya, your post-op follow-up is tomorrow 2:00 PM. Please don't miss this one...</div>
+          <div class="msg-status" style="background:#FEE2E2;color:#991B1B">✗ No response</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="footer">
+  <div>Built by <a href="https://www.kliviq.com">KlivIQ Technologies</a> · AI-powered tools for modern businesses</div>
+  <div class="powered">⚡ Powered by Claude AI</div>
+</footer>
+
+<script>
+function switchTab(name,el){
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
+  el.classList.add('active');
+  document.getElementById('tab-'+name).classList.add('active');
+}
+
+const templates={
+  reminder:"Hi {patient_name}, reminder for your appointment with Dr. Priya Sharma tomorrow at {time}. Reply YES to confirm or call 080-XXXX-XXXX to reschedule. — ClinicPing",
+  confirm:"Hi {patient_name}, please CONFIRM your slot with Dr. Sharma on {date} at {time}. Reply YES or NO. We'll hold it for 2 hours. — ClinicPing",
+  followup:"Hi {patient_name}, Dr. Sharma recommends a follow-up visit. Your last visit was {last_visit}. Book now: [link] — ClinicPing",
+  custom:""
+};
+function loadTemplate(v){document.getElementById('msgBody').value=templates[v]||'';}
+
+async function runPredictor(){
+  const spin=document.getElementById('pred-spin');
+  const box=document.getElementById('predictBox');
+  const body=document.getElementById('predictBody');
+  spin.style.display='block';
+  box.classList.add('visible');
+  body.textContent='Analyzing patient risk factors...';
+  try{
+    const res=await fetch('https://api.anthropic.com/v1/messages',{
+      method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:1000,messages:[{role:'user',content:`You are a clinic AI. Give a concise 5-6 line no-show risk report for these appointments:
+1. Rekha Nair 9AM - BP monitoring, confirmed, 0 prior no-shows → LOW RISK
+2. Mohan Reddy 9:30AM - New patient, pending, no history → HIGH RISK
+3. Sunita Pillai 10AM - Diabetes review, confirmed, 1 no-show in 12 → MEDIUM RISK
+4. Arjun Mehta 11AM - Back pain, confirmed, 0 no-shows → LOW RISK
+5. Kavya Krishnan 2PM - Post-op follow-up, pending, 2 no-shows in 4 → HIGH RISK
+Be direct and actionable. Plain text only.`}]})
+    });
+    const data=await res.json();
+    body.textContent=data.content[0].text;
+  }catch(e){body.textContent='Could not connect to AI. Check console.';}
+  spin.style.display='none';
+}
+
+async function aiDraftMsg(){
+  const spin=document.getElementById('msg-spin');
+  spin.style.display='block';
+  const patient=document.getElementById('msgPatient').value;
+  const channel=document.getElementById('msgChannel').value;
+  try{
+    const res=await fetch('https://api.anthropic.com/v1/messages',{
+      method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:1000,messages:[{role:'user',content:`Write a short warm appointment reminder for ${patient} via ${channel} from Dr. Priya Sharma's Clinic Bangalore. Under 2 sentences, include a call to action. Sign off: ClinicPing. Plain text only.`}]})
+    });
+    const data=await res.json();
+    document.getElementById('msgBody').value=data.content[0].text;
+  }catch(e){alert('AI draft failed.');}
+  spin.style.display='none';
+}
+</script>
+</body>
+</html>

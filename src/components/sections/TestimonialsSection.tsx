@@ -43,13 +43,13 @@ const TestimonialsSection = () => {
           {testimonials.map((t, i) => (
             <motion.div
               key={i}
-              className="glass rounded-2xl p-8 md:p-10 glow-purple flex flex-col"
+              className="glass rounded-2xl p-6 md:p-10 glow-purple flex flex-col"
               initial={{ opacity: 0, y: 30 }}
               animate={isVisible ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: 0.2 + i * 0.15, duration: 0.6 }}
             >
-              <span className="text-5xl gradient-text font-serif leading-none block mb-3">"</span>
-              <p className="text-foreground/90 leading-relaxed mb-6 flex-1">
+              <span className="text-4xl md:text-5xl gradient-text font-serif leading-none block mb-3">"</span>
+              <p className="text-sm md:text-base text-foreground/90 leading-relaxed mb-6 flex-1">
                 {t.quote}
               </p>
               <div className="mt-auto">

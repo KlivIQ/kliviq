@@ -1,40 +1,36 @@
-## Add Pricing + FAQ sections
+# Mobile-only polish
 
-Two new sections inserted between Process and Contact in `src/pages/Index.tsx`. All existing design, animations, colors, and 3D background remain untouched. Reuse existing tokens (`gradient-text`, `glass-strong`, `glow-purple`, `--primary` indigo, `--brand-cyan`, `useScrollReveal`, framer-motion patterns from `ProcessSection`/`TestimonialsSection`).
+All changes are gated by mobile breakpoints (`md:` Tailwind prefix or `useIsMobile`). Desktop and tablet output stays byte-identical.
 
-### 1. PricingSection (`src/components/sections/PricingSection.tsx`)
+## 1. Hero "Currently accepting" pill overlap
+File: `src/components/sections/HeroSection.tsx`
+- The pill sits right above the bottom scroll indicator and overlaps it on short mobile viewports.
+- Fix: hide the bottom scroll indicator on mobile (`hidden md:flex`) and add bottom padding (`pb-24 md:pb-0`) on the section so the pill clears the new floating bottom nav.
 
-- Anchor: `id="pricing"` (matches existing navbar link).
-- Layout mirrors other sections: `relative py-32 px-6`, `max-w-6xl mx-auto`, label `PRICING` in `text-secondary uppercase tracking-widest`.
-- Headline: `Honest Pricing.` (white) + `No Surprises.` (gradient-text span).
-- Subline: muted, centered, two-line copy.
-- Region toggle: two pill buttons (`🇮🇳 India (₹)` / `🌍 Global ($)`) controlled by `useState<'india' | 'global'>`. Active = solid `bg-primary text-primary-foreground`; inactive = `border border-border/50 text-muted-foreground hover:text-foreground`. Animated with framer-motion `layoutId` highlight for smooth swap.
-- Grid: `grid md:grid-cols-2 gap-4` of pricing cards. Each card = `glass-strong` rounded panel with category chip (Web / Mobile / AI / Retainer color-coded via `bg-primary/10`, `bg-secondary/10`, `bg-brand-cyan/10`), title, and `from ₹X` price in gradient-text. Animate switch with `AnimatePresence` fade/slide.
-- Data arrays:
-  - `INDIA_PRICING` — 9 items (Landing Page 35k, Business 75k, E-Commerce 1,00,000, Custom Platform 2,50,000, MVP App 2,50,000, Flutter 4,00,000, AI Chatbot 60k, Custom AI 2,00,000, Retainer 12k/mo).
-  - `GLOBAL_PRICING` — 8 items as specified.
-- Notes block: `glass` rounded panel with 4 lines (✅ ✅ ✅ 📞).
-- CTA: centered `Get a Free Estimate →` button styled like Hero CTA (`bg-gradient-to-r from-primary to-secondary`, pulse glow), links to `#contact`.
+## 2. Animated background not visible on mobile
+File: `src/components/ThreeBackground.tsx`
+- Currently `MorphScene` early-returns when `isMobile` is true (only a static rotation, no morph, no color progress) and the wrapper still mounts — but the scene reads as nearly empty because `uProgress` stays 0 and camera never moves.
+- Fix: on mobile, run a lighter version of the same scene — keep particle count low (already 600), but allow the morph + camera interpolation to run with a slower delta multiplier. Drop the `reducedMotion || isMobile` short-circuit so mobile also gets the morph; keep the early-out only for `reducedMotion`.
+- Also bump opacity slightly on mobile so the dark canvas reads against `#0A0F1E`.
 
-### 2. FaqSection (`src/components/sections/FaqSection.tsx`)
+## 3. Tiny WhatsApp button on mobile
+File: `src/components/FloatingActions.tsx`
+- The WhatsApp FAB is currently `w-14 h-14` always. Make it `w-11 h-11 md:w-14 md:h-14` and shrink the icon to `w-5 h-5 md:w-7 md:h-7`. Tooltip already hidden on touch (no hover) — leave as-is.
+- Reposition container to `bottom-20 md:bottom-6` so it sits above the new mobile bottom nav.
 
-- Anchor: `id="faq"`.
-- Reuses existing `src/components/ui/accordion.tsx` (Radix-based, already has rotating chevron).
-- Layout: `max-w-3xl mx-auto`, label `FAQ`, headline `Questions We Get Asked Most` with last 2 words wrapped in `gradient-text`.
-- 7 Q&A items as listed, rendered via `Accordion type="single" collapsible`. Items styled with `glass` border, padded, hover tint. Wrapping container uses `useScrollReveal` for fade-in.
+## 4. Static mobile bottom nav
+New file: `src/components/MobileBottomNav.tsx`, mounted in `src/pages/Index.tsx`.
+- Fixed bar at `bottom-0`, `md:hidden`, glassmorphism (`glass-strong`), safe-area padding.
+- 5 icon+label items linking to `#about`, `#services`, `#projects`, `#pricing`, `#contact` (lucide icons: User, Briefcase, FolderKanban, Tag, Mail).
+- Height ~64px. Uses existing design tokens (`text-muted-foreground`, active `text-primary`).
+- The existing top `Navbar` stays untouched — hamburger menu remains available.
 
-### 3. Wire-up
+## 5. Smaller testimonial text on mobile
+File: `src/components/sections/TestimonialsSection.tsx`
+- Card padding: `p-6 md:p-10` (currently `p-8 md:p-10`).
+- Quote paragraph: add `text-sm md:text-base` and `leading-relaxed` (already there). Reduces visual weight of the long Jocelyn quote on mobile.
+- Quote mark: `text-4xl md:text-5xl`.
+- No content edits.
 
-- `src/pages/Index.tsx`: import the two new sections, insert order:
-  ```
-  ProcessSection
-  PricingSection   ← new
-  FaqSection       ← new
-  ContactSection
-  ```
-- No other files touched. Navbar `#pricing` link will now resolve correctly.
-
-### Out of scope
-
-- No changes to design tokens, 3D scene, hero, about, services, projects, testimonials, process, contact, footer, or meta tags.
-- No new dependencies (Accordion already installed).
+## Out of scope
+No changes to desktop layouts, content, colors, or any other section.

@@ -1,36 +1,44 @@
-# Mobile-only polish
+## Goal
 
-All changes are gated by mobile breakpoints (`md:` Tailwind prefix or `useIsMobile`). Desktop and tablet output stays byte-identical.
+Showcase the 3 new client apps (`/scopesnap`, `/pitchdeck`, `/clinicping`) inside the existing **Projects** section of the portfolio, each with a real screenshot thumbnail, a 1-liner description, a "Built for a client" tag, and an animated link that opens the live page in a new browser tab.
 
-## 1. Hero "Currently accepting" pill overlap
-File: `src/components/sections/HeroSection.tsx`
-- The pill sits right above the bottom scroll indicator and overlaps it on short mobile viewports.
-- Fix: hide the bottom scroll indicator on mobile (`hidden md:flex`) and add bottom padding (`pb-24 md:pb-0`) on the section so the pill clears the new floating bottom nav.
+## Implementation
 
-## 2. Animated background not visible on mobile
-File: `src/components/ThreeBackground.tsx`
-- Currently `MorphScene` early-returns when `isMobile` is true (only a static rotation, no morph, no color progress) and the wrapper still mounts — but the scene reads as nearly empty because `uProgress` stays 0 and camera never moves.
-- Fix: on mobile, run a lighter version of the same scene — keep particle count low (already 600), but allow the morph + camera interpolation to run with a slower delta multiplier. Drop the `reducedMotion || isMobile` short-circuit so mobile also gets the morph; keep the early-out only for `reducedMotion`.
-- Also bump opacity slightly on mobile so the dark canvas reads against `#0A0F1E`.
+### 1. Capture thumbnails
+Use `browser--screenshot` against the live preview URLs for each page:
+- `/scopesnap`
+- `/pitchdeck`
+- `/clinicping`
 
-## 3. Tiny WhatsApp button on mobile
-File: `src/components/FloatingActions.tsx`
-- The WhatsApp FAB is currently `w-14 h-14` always. Make it `w-11 h-11 md:w-14 md:h-14` and shrink the icon to `w-5 h-5 md:w-7 md:h-7`. Tooltip already hidden on touch (no hover) — leave as-is.
-- Reposition container to `bottom-20 md:bottom-6` so it sits above the new mobile bottom nav.
+Save the images as:
+- `src/assets/thumb-scopesnap.jpg`
+- `src/assets/thumb-pitchdeck.jpg`
+- `src/assets/thumb-clinicping.jpg`
 
-## 4. Static mobile bottom nav
-New file: `src/components/MobileBottomNav.tsx`, mounted in `src/pages/Index.tsx`.
-- Fixed bar at `bottom-0`, `md:hidden`, glassmorphism (`glass-strong`), safe-area padding.
-- 5 icon+label items linking to `#about`, `#services`, `#projects`, `#pricing`, `#contact` (lucide icons: User, Briefcase, FolderKanban, Tag, Mail).
-- Height ~64px. Uses existing design tokens (`text-muted-foreground`, active `text-primary`).
-- The existing top `Navbar` stays untouched — hamburger menu remains available.
+### 2. New component `src/components/sections/FeaturedWorkSection.tsx` (or append into `ProjectsSection.tsx`)
 
-## 5. Smaller testimonial text on mobile
-File: `src/components/sections/TestimonialsSection.tsx`
-- Card padding: `p-6 md:p-10` (currently `p-8 md:p-10`).
-- Quote paragraph: add `text-sm md:text-base` and `leading-relaxed` (already there). Reduces visual weight of the long Jocelyn quote on mobile.
-- Quote mark: `text-4xl md:text-5xl`.
-- No content edits.
+Decision: **Augment `ProjectsSection.tsx`** — keep the existing metric cards (proof points), and add a new "Client Work" grid above them so it lives under the same `#projects` anchor used by nav.
+
+Each card:
+- Thumbnail image (object-cover, 16:10) with hover zoom + subtle gradient overlay
+- Project name + 1-liner
+- "Built for a client" badge (uses `--secondary` token)
+- Animated CTA: "Open Live →" with arrow translate-x on hover, opens via `<a target="_blank" rel="noopener noreferrer">`
+- Whole card clickable; uses framer-motion scroll reveal consistent with existing pattern
+- Glassmorphism + neon hover ring matching project's design system (no hardcoded colors)
+
+Copy:
+- **ScopeSnap** — AI project scoping tool that turns a one-line brief into deliverables, timeline, cost and tech stack. Built for a client.
+- **PitchDeckAI** — Generates investor-ready 10-slide pitch decks in 6 Indian languages from a single idea. Built for a client.
+- **ClinicPing** — Clinic ops dashboard with AI no-show prediction and multilingual patient messaging. Built for a client.
+
+### 3. Wiring
+No changes needed to `App.tsx` (routes already exist). Links use absolute project URLs (`/scopesnap`, etc.) with `target="_blank"`.
+
+### 4. Verification
+- Confirm build passes (auto)
+- Visually verify the 3 cards render with thumbnails on mobile + desktop
+- Confirm links open in a new tab
 
 ## Out of scope
-No changes to desktop layouts, content, colors, or any other section.
+No changes to the metric cards, no changes to desktop nav, no changes to mobile nav (Projects already linked).

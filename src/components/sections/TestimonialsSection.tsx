@@ -49,7 +49,7 @@ const TestimonialsSection = () => {
               transition={{ delay: 0.2 + i * 0.15, duration: 0.6 }}
             >
               <span className="text-4xl md:text-5xl gradient-text font-serif leading-none block mb-3">"</span>
-              <p className="text-sm md:text-base text-foreground/90 leading-relaxed mb-6 flex-1">
+              <p className="text-xs md:text-base text-foreground/90 leading-relaxed mb-6 flex-1">
                 {t.quote}
               </p>
               <div className="mt-auto">

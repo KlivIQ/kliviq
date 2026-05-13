@@ -11,7 +11,7 @@ const items = [
 const MobileBottomNav = () => {
   return (
     <nav
-      className="md:hidden fixed bottom-0 left-0 right-0 z-40 glass-strong border-t border-glass-border/40"
+      className="md:hidden fixed bottom-0 left-0 right-0 z-40 glass-strong border-t border-border/40"
       style={{ paddingBottom: "env(safe-area-inset-bottom)" }}
       aria-label="Mobile navigation"
     >

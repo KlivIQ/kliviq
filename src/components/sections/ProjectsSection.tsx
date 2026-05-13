@@ -25,10 +25,10 @@ const clientWork = [
   },
   {
     title: "PitchDeckAI",
-    blurb: "Generates investor-ready 10-slide pitch decks in 6 Indian languages from a single idea. CLIENT WORK.",
+    blurb: "Generates investor-ready 10-slide pitch decks in 6 Indian languages from a single idea. Concept work.",
     href: "/pitchdeck",
     image: thumbPitchDeck,
-    badge: "CLIENT WORK",
+    badge: "Concept",
     cta: "Open Prototype",
   },
   {

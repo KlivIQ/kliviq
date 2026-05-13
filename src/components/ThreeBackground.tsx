@@ -200,7 +200,7 @@ const MorphScene = ({ count, reducedMotion, isMobile }: SceneProps) => {
     if (!matRef.current || !pointsRef.current) return;
     uniforms.uTime.value += delta;
 
-    if (reducedMotion || isMobile) {
+    if (reducedMotion) {
       // static / drift only
       pointsRef.current.rotation.y += delta * 0.01;
       uniforms.uProgress.value = 0;
@@ -300,7 +300,7 @@ const ThreeBackground = () => {
   return (
     <div
       className="fixed inset-0 pointer-events-none"
-      style={{ zIndex: 0, opacity: 0.85 }}
+      style={{ zIndex: 0, opacity: isMobile ? 0.95 : 0.85 }}
       aria-hidden="true"
     >
       <Canvas

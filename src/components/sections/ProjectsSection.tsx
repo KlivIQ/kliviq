@@ -67,7 +67,8 @@ const ClientWorkCard = ({ item, index }: { item: typeof clientWork[0]; index: nu
           <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
         </span>
       </div>
-    </motion.a>
+      </motion.a>
+    </div>
   );
 };
 

@@ -4,25 +4,40 @@ import { useScrollReveal, useCountUp } from "@/hooks/useScrollReveal";
 import thumbScopeSnap from "@/assets/thumb-scopesnap.png";
 import thumbPitchDeck from "@/assets/thumb-pitchdeck.png";
 import thumbClinicPing from "@/assets/thumb-clinicping.png";
+import thumbFaco from "@/assets/thumb-faco.png";
 
 const clientWork = [
   {
+    title: "FACO",
+    blurb: "Real landing page designed for a coffee store client — Fathima Coffee Works, Kodaikanal.",
+    href: "https://faco-site.lovable.app",
+    image: thumbFaco,
+    badge: "Client Work",
+    cta: "Open live",
+  },
+  {
     title: "ScopeSnap",
-    blurb: "AI project scoping tool that turns a one-line brief into deliverables, timeline, cost and tech stack. Built for a client.",
+    blurb: "AI project scoping tool that turns a one-line brief into deliverables, timeline, cost and tech stack. Concept work.",
     href: "/scopesnap",
     image: thumbScopeSnap,
+    badge: "Concept Work",
+    cta: "Open Prototype",
   },
   {
     title: "PitchDeckAI",
-    blurb: "Generates investor-ready 10-slide pitch decks in 6 Indian languages from a single idea. Built for a client.",
+    blurb: "Generates investor-ready 10-slide pitch decks in 6 Indian languages from a single idea. Concept work.",
     href: "/pitchdeck",
     image: thumbPitchDeck,
+    badge: "Concept Work",
+    cta: "Open Prototype",
   },
   {
     title: "ClinicPing",
-    blurb: "Clinic ops dashboard with AI no-show prediction and multilingual patient messaging. Built for a client.",
+    blurb: "Clinic ops dashboard with AI no-show prediction and multilingual patient messaging. Concept work.",
     href: "/clinicping",
     image: thumbClinicPing,
+    badge: "Concept",
+    cta: "Open Prototype",
   },
 ];
 

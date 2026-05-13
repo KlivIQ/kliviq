@@ -1,0 +1,47 @@
+<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" role="img">
+<title>KlivIQ icon mark</title>
+<desc>KlivIQ Circuit K logo mark — Forest Green with Lime IQ terminal node</desc>
+
+<!-- Green rounded square background -->
+<rect width="100" height="100" rx="19" fill="#166534"/>
+
+<!-- Spine: left vertical of K -->
+<line x1="28" y1="18" x2="28" y2="82"
+  stroke="white" stroke-width="7" stroke-linecap="round"/>
+
+<!-- Upper arm: junction to top-right -->
+<line x1="28" y1="50" x2="72" y2="18"
+  stroke="white" stroke-width="6.5" stroke-linecap="round"/>
+
+<!-- Lower arm: IQ branch — lime green -->
+<line x1="28" y1="50" x2="76" y2="82"
+  stroke="#4ADE80" stroke-width="6.5" stroke-linecap="round"/>
+
+<!-- NODE 1: Spine top -->
+<circle cx="28" cy="18" r="9.5" fill="#1E8A47"/>
+<circle cx="28" cy="18" r="6.5" fill="white"/>
+<circle cx="28" cy="18" r="3"   fill="#166534"/>
+
+<!-- NODE 2: Junction — largest, branching point -->
+<circle cx="28" cy="50" r="12"  fill="#1E8A47"/>
+<circle cx="28" cy="50" r="8.5" fill="white"/>
+<circle cx="28" cy="50" r="3.8" fill="#166534"/>
+
+<!-- NODE 3: Spine bottom -->
+<circle cx="28" cy="82" r="9.5" fill="#1E8A47"/>
+<circle cx="28" cy="82" r="6.5" fill="white"/>
+<circle cx="28" cy="82" r="3"   fill="#166534"/>
+
+<!-- NODE 4: Upper arm tip — passive, faded -->
+<circle cx="72" cy="18" r="8.5" fill="#1E8A47"/>
+<circle cx="72" cy="18" r="5.8" fill="white" opacity="0.65"/>
+<circle cx="72" cy="18" r="2.6" fill="#166534" opacity="0.65"/>
+
+<!-- NODE 5: IQ Terminal — hero node, 4 rings -->
+<circle cx="76" cy="82" r="16"  fill="none" stroke="#4ADE80" stroke-width="2" opacity="0.3"/>
+<circle cx="76" cy="82" r="12.5" fill="#4ADE80"/>
+<circle cx="76" cy="82" r="9"   fill="#166534"/>
+<circle cx="76" cy="82" r="6"   fill="#4ADE80"/>
+<circle cx="76" cy="82" r="2.8" fill="white"/>
+
+</svg>

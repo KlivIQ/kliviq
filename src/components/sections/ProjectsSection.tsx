@@ -128,6 +128,12 @@ const ProjectsSection = () => {
           </motion.h2>
         </div>
 
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
+          {clientWork.map((item, i) => (
+            <ClientWorkCard key={item.title} item={item} index={i} />
+          ))}
+        </div>
+
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {projects.map((p, i) => (
             <ProjectCard key={i} project={p} index={i} />

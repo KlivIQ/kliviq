@@ -11,6 +11,7 @@ import PitchDeckAI from "./pages/PitchDeckAI";
 
 const queryClient = new QueryClient();
 
+
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>

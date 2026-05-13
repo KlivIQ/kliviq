@@ -63,7 +63,7 @@ const ClientWorkCard = ({ item, index }: { item: typeof clientWork[0]; index: nu
         />
         <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-background/0 to-background/0 opacity-60 group-hover:opacity-30 transition-opacity duration-500" />
         <div className="absolute top-3 left-3 px-2.5 py-1 rounded-full text-[10px] font-semibold tracking-wide uppercase glass-strong text-secondary border border-secondary/30">
-          Client Work
+          {item.badge}
         </div>
         <div className="absolute top-3 right-3 w-9 h-9 rounded-full glass-strong flex items-center justify-center text-foreground translate-y-1 opacity-0 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500">
           <ArrowUpRight className="w-4 h-4" />
@@ -78,7 +78,7 @@ const ClientWorkCard = ({ item, index }: { item: typeof clientWork[0]; index: nu
         </h3>
         <p className="text-sm text-muted-foreground leading-relaxed">{item.blurb}</p>
         <span className="mt-2 text-xs font-medium text-secondary inline-flex items-center gap-1 opacity-80 group-hover:opacity-100">
-          Open live
+          {item.cta}
           <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
         </span>
       </div>
@@ -143,7 +143,7 @@ const ProjectsSection = () => {
           </motion.h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
           {clientWork.map((item, i) => (
             <ClientWorkCard key={item.title} item={item} index={i} />
           ))}

@@ -1,4 +1,9 @@
+import { useState } from "react";
+import LegalDialog from "@/components/LegalDialog";
+
 const FooterSection = () => {
+  const [openDialog, setOpenDialog] = useState<"privacy" | "terms" | null>(null);
+
   return (
     <footer className="relative py-12 px-6">
       <div className="max-w-6xl mx-auto">
@@ -16,13 +21,21 @@ const FooterSection = () => {
           <p>© 2026 KlivIQ Technologies. All rights reserved.</p>
 
           <div className="flex items-center gap-4">
-            <a href="/privacy" className="hover:text-foreground transition-colors">
+            <button
+              type="button"
+              onClick={() => setOpenDialog("privacy")}
+              className="hover:text-foreground transition-colors"
+            >
               Privacy Policy
-            </a>
+            </button>
             <span className="opacity-40">·</span>
-            <a href="/terms" className="hover:text-foreground transition-colors">
+            <button
+              type="button"
+              onClick={() => setOpenDialog("terms")}
+              className="hover:text-foreground transition-colors"
+            >
               Terms of Service
-            </a>
+            </button>
             <span className="opacity-40">·</span>
             <a
               href="mailto:hello@kliviq.com"
@@ -35,6 +48,12 @@ const FooterSection = () => {
           <p>Made in India 🇮🇳 · Delivered Globally 🌍</p>
         </div>
       </div>
+
+      <LegalDialog
+        open={openDialog !== null}
+        onOpenChange={(open) => !open && setOpenDialog(null)}
+        type={openDialog ?? "privacy"}
+      />
     </footer>
   );
 };

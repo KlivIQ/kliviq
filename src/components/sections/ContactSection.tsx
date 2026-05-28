@@ -4,7 +4,7 @@ import { Mail, Phone, Linkedin } from "lucide-react";
 
 const contactItems = [
   { icon: Mail, label: "hello@kliviq.com", href: "mailto:hello@kliviq.com" },
-  { icon: Phone, label: "+91-9069026969 (WhatsApp Only)", href: "tel:+919069026969" },
+  { icon: Phone, label: "+91-9884797937 (WhatsApp Only)", href: "tel:+919884797937" },
   { icon: Linkedin, label: "linkedin.com/company/kliviq", href: "https://linkedin.com/company/kliviq" },
 ];
 

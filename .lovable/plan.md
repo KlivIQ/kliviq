@@ -1,28 +1,31 @@
-## Problem
+## Goal
 
-`/scopesnap`, `/pitchdeck`, `/clinicping` are React Router routes. On Lovable hosting they work because the platform falls back to `index.html` for unknown paths. On Vercel, without a rewrite, hitting those URLs directly (or opening them in a new tab via `target="_blank"`) returns 404 because no matching static file exists.
+1. Replace the old phone number (+91-9069026969) everywhere with **+91-9884797937**.
+2. Remove every "Lovable" reference from the codebase and set the author metadata to **KlivIQ Technologies**.
 
-## Fix
+## Changes
 
-Add a `vercel.json` at the project root that rewrites all non-asset requests to `index.html`, letting React Router handle the route on the client.
+### 1. Phone number update (3 files)
+- `src/components/FloatingActions.tsx` — WhatsApp link → `https://wa.me/919884797937?text=...`
+- `src/components/sections/ContactSection.tsx` — label `+91-9884797937 (WhatsApp Only)`, href `tel:+919884797937`
+- `src/components/sections/FooterSection.tsx` — WhatsApp link → `https://wa.me/919884797937?text=...`
 
-```json
-{
-  "rewrites": [
-    { "source": "/((?!.*\\.).*)", "destination": "/index.html" }
-  ]
-}
-```
+### 2. Author / branding
+- `index.html` — change `<meta name="author" content="KlivIQ" />` to `KlivIQ Technologies`.
 
-This pattern only rewrites paths without a file extension, so real assets (`/sitemap.xml`, `/robots.txt`, `/kliviq-og.png`, JS/CSS bundles) are still served directly.
+### 3. Remove Lovable references
+- `.lovable/plan.md` — delete the file (internal planning doc that mentions Lovable hosting).
+- `src/components/sections/ProjectsSection.tsx` — the Faco project links currently point to `https://faco-site.lovable.app` (lines 13 and 105). See decision needed below.
 
-## Steps
+## Decision needed — Faco project link
 
-1. Create `vercel.json` at the repo root with the rewrite above.
-2. Redeploy on Vercel.
-3. Verify `https://www.kliviq.com/scopesnap`, `/pitchdeck`, `/clinicping` load the React app instead of 404.
+The Faco card links to `faco-site.lovable.app`, which is a Lovable-hosted URL. Options:
+- **A.** Replace with a non-Lovable URL you own (e.g. `https://faco.in` or any custom domain).
+- **B.** Remove the link entirely and keep the card as a static showcase (no CTA).
+- **C.** Keep it as-is (would violate the "no Lovable anywhere" rule).
 
-## Notes
+Please confirm which option, and provide the replacement URL if option A.
 
-- No code changes to `ProjectsSection.tsx` or the routes themselves are needed — the links and `App.tsx` routes are correct.
-- The stray root-level `scopesnap.html`, `pitchdeck.html`, `clinicping.html` files are not in `public/` so they are not deployed and are unrelated to the 404. They can be deleted in a follow-up if you want a cleaner repo.
+## Out of scope
+- No visual/UX changes.
+- No content changes beyond the number and author string.

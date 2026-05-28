@@ -8,6 +8,7 @@ import HeroSection from "@/components/sections/HeroSection";
 import AboutSection from "@/components/sections/AboutSection";
 import ServicesSection from "@/components/sections/ServicesSection";
 import ProjectsSection from "@/components/sections/ProjectsSection";
+import WhyKliviqSection from "@/components/sections/WhyKliviqSection";
 import TestimonialsSection from "@/components/sections/TestimonialsSection";
 import ProcessSection from "@/components/sections/ProcessSection";
 import PricingSection from "@/components/sections/PricingSection";
@@ -34,8 +35,9 @@ const Index = () => {
             <HeroSection />
             <div className="section-bg"><AboutSection /></div>
             <div className="section-bg-alt"><ServicesSection /></div>
-            <div className="section-bg"><ProjectsSection /></div>
-            <div className="section-bg-alt"><TestimonialsSection /></div>
+            <div className="section-bg"><WhyKliviqSection /></div>
+            <div className="section-bg-alt"><ProjectsSection /></div>
+            <div className="section-bg"><TestimonialsSection /></div>
             <div className="section-bg"><ProcessSection /></div>
             <div className="section-bg-alt"><PricingSection /></div>
             <div className="section-bg"><FaqSection /></div>

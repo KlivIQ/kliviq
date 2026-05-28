@@ -41,8 +41,8 @@ const PricingSection = () => {
   const items = region === "india" ? INDIA_PRICING : GLOBAL_PRICING;
 
   return (
-    <section id="pricing" className="relative py-32 px-6">
-      <div className="max-w-6xl mx-auto" ref={ref}>
+    <section id="pricing" className="relative py-32 px-4 sm:px-6 overflow-hidden">
+      <div className="max-w-6xl mx-auto w-full" ref={ref}>
         <motion.p
           className="text-sm uppercase tracking-widest text-secondary mb-4 text-center"
           initial={{ opacity: 0 }}

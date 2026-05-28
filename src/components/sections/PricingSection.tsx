@@ -84,18 +84,21 @@ const PricingSection = () => {
                 <button
                   key={r}
                   onClick={() => setRegion(r)}
-                  className={`relative z-10 px-5 py-2 rounded-full text-sm font-medium transition-colors duration-300 ${
-                    active ? "text-primary-foreground" : "text-muted-foreground hover:text-foreground"
+                  aria-pressed={active}
+                  className={`relative z-10 px-5 py-2 rounded-full text-sm font-medium transition-all duration-300 ease-out ${
+                    active
+                      ? "text-primary-foreground scale-105"
+                      : "text-muted-foreground hover:text-foreground"
                   }`}
                 >
                   {active && (
                     <motion.span
                       layoutId="region-pill"
-                      className="absolute inset-0 rounded-full bg-primary"
-                      transition={{ type: "spring", stiffness: 400, damping: 30 }}
+                      className="absolute inset-0 rounded-full bg-gradient-to-r from-primary to-secondary glow-teal"
+                      transition={{ type: "spring", stiffness: 350, damping: 28 }}
                     />
                   )}
-                  <span className="relative">
+                  <span className="relative font-semibold tracking-wide">
                     {r === "india" ? "🇮🇳 India (₹)" : "🌍 Global ($)"}
                   </span>
                 </button>

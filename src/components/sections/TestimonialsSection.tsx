@@ -35,8 +35,8 @@ const TestimonialsSection = () => {
           animate={isVisible ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7 }}
         >
-          What Happens When You{" "}
-          <span className="gradient-text">Work With Us</span>
+          <span className="text-foreground">Don't Take Our Word</span>{" "}
+          <span style={{ color: "#4ADE80" }}>For It</span>
         </motion.h2>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

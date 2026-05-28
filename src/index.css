@@ -164,4 +164,9 @@
   .light .section-bg-alt::before {
     background-image: radial-gradient(circle, #0A0F1E 1px, transparent 1px);
   }
+
+  @keyframes scroll {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
 }

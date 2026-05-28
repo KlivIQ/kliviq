@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
-import { useScrollReveal, useCountUp } from "@/hooks/useScrollReveal";
+import { useScrollReveal } from "@/hooks/useScrollReveal";
 import thumbScopeSnap from "@/assets/thumb-scopesnap.png";
 import thumbPitchDeck from "@/assets/thumb-pitchdeck.png";
 import thumbClinicPing from "@/assets/thumb-clinicping.png";
@@ -87,37 +87,97 @@ const ClientWorkCard = ({ item, index }: { item: typeof clientWork[0]; index: nu
   );
 };
 
-const projects = [
-  { title: "AI Content Platform", metric: 75, suffix: "%", label: "Faster content production" },
-  { title: "E-commerce Mobile App", metric: 40, suffix: "%", label: "Boost in conversion rates" },
-  { title: "SaaS Dashboard", metric: 5000, suffix: "+", label: "Users with simplified workflows" },
-  { title: "HealthTech Platform", metric: 10000, suffix: "+", label: "Users connected in real-time" },
+type StatCard = {
+  title: string;
+  tag?: string;
+  number?: string;
+  sub?: string;
+  description: string;
+  cta?: { label: string; href: string };
+  accent: "primary" | "secondary";
+};
+
+const statCards: StatCard[] = [
+  {
+    title: "Faco",
+    tag: "Brand & Web Platform · Live",
+    description: "Brand identity and web platform for a growing D2C business.",
+    cta: { label: "View Project →", href: "https://faco-site.lovable.app" },
+    accent: "secondary",
+  },
+  {
+    title: "2 Projects In Delivery",
+    tag: "AI Implementation · In Progress",
+    description: "Client case studies dropping Q3 2026.",
+    accent: "primary",
+  },
+  {
+    title: "Enterprise Background",
+    number: "20+",
+    sub: "Years of enterprise delivery",
+    description: "Platforms built across BFSI, Retail, Healthcare, and Logistics at scale.",
+    accent: "secondary",
+  },
+  {
+    title: "Average Delivery",
+    number: "4–6",
+    sub: "Weeks from contract to live",
+    description: "Not months. Weeks.",
+    accent: "primary",
+  },
 ];
 
-const ProjectCard = ({ project, index }: { project: typeof projects[0]; index: number }) => {
+const techLogos = [
+  "React", "Next.js", "Flutter", "Node.js", "Python",
+  "OpenAI", "Anthropic", "Firebase", "AWS", "Vercel", "n8n",
+];
+
+const StatCardItem = ({ card, index }: { card: StatCard; index: number }) => {
   const { ref, isVisible } = useScrollReveal(0.2);
-  const count = useCountUp(project.metric, isVisible);
   const fromLeft = index % 2 === 0;
 
   return (
     <motion.div
       ref={ref}
-      className="glass rounded-2xl p-8 md:p-10 relative overflow-hidden group hover:-translate-y-1 transition-transform duration-500"
+      className="glass rounded-2xl p-8 md:p-10 relative overflow-hidden group hover:-translate-y-1 transition-transform duration-500 flex flex-col"
       initial={{ opacity: 0, x: fromLeft ? -60 : 60 }}
       animate={isVisible ? { opacity: 1, x: 0 } : {}}
       transition={{ duration: 0.7 }}
     >
       <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-secondary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-      <div className="relative z-10">
-        <h3 className="text-xl md:text-2xl font-bold mb-2">{project.title}</h3>
-        <div className="text-4xl md:text-5xl font-bold gradient-text mb-2">
-          {count.toLocaleString()}{project.suffix}
-        </div>
-        <p className="text-muted-foreground">{project.label}</p>
+      <div className="relative z-10 flex flex-col h-full">
+        {card.tag && (
+          <span
+            className="inline-block self-start text-[10px] font-semibold uppercase tracking-widest px-2.5 py-1 rounded-full border mb-3"
+            style={{ color: "#4ADE80", borderColor: "rgba(74,222,128,0.4)" }}
+          >
+            {card.tag}
+          </span>
+        )}
+        <h3 className="text-xl md:text-2xl font-bold mb-2">{card.title}</h3>
+        {card.number && (
+          <div className="text-4xl md:text-5xl font-bold gradient-text mb-1">
+            {card.number}
+          </div>
+        )}
+        {card.sub && <p className="text-sm text-foreground/80 mb-2">{card.sub}</p>}
+        <p className="text-muted-foreground">{card.description}</p>
+        {card.cta && (
+          <a
+            href={card.cta.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-4 inline-flex items-center gap-1 text-sm font-medium"
+            style={{ color: "#4ADE80" }}
+          >
+            {card.cta.label}
+          </a>
+        )}
       </div>
     </motion.div>
   );
 };
+
 
 const ProjectsSection = () => {
   const { ref, isVisible } = useScrollReveal();
@@ -150,14 +210,33 @@ const ProjectsSection = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {projects.map((p, i) => (
-            <ProjectCard key={i} project={p} index={i} />
+          {statCards.map((c, i) => (
+            <StatCardItem key={i} card={c} index={i} />
           ))}
         </div>
 
         <p className="mt-8 text-center text-xs text-muted-foreground">
           *Results from enterprise projects delivered over 20+ years of industry experience.
         </p>
+
+        {/* Tech logos strip */}
+        <div className="mt-20">
+          <p className="text-xs uppercase tracking-widest text-muted-foreground text-center mb-6">
+            Technologies We Build With
+          </p>
+          <div className="relative overflow-hidden">
+            <div className="flex gap-10 animate-[scroll_30s_linear_infinite] whitespace-nowrap">
+              {[...techLogos, ...techLogos].map((name, i) => (
+                <span
+                  key={i}
+                  className="text-lg md:text-xl font-semibold text-foreground/40 hover:text-foreground transition-colors duration-300 shrink-0"
+                >
+                  {name}
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );

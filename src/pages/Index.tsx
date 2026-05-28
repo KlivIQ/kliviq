@@ -1,4 +1,4 @@
-import { useState, useEffect, lazy, Suspense } from "react";
+import { useState, useEffect } from "react";
 import LoadingScreen from "@/components/LoadingScreen";
 import CustomCursor from "@/components/CustomCursor";
 import FloatingActions from "@/components/FloatingActions";
@@ -15,8 +15,6 @@ import FaqSection from "@/components/sections/FaqSection";
 import ContactSection from "@/components/sections/ContactSection";
 import FooterSection from "@/components/sections/FooterSection";
 
-const ThreeBackground = lazy(() => import("@/components/ThreeBackground"));
-
 const Index = () => {
   const [isLoading, setIsLoading] = useState(true);
 
@@ -31,21 +29,18 @@ const Index = () => {
       <CustomCursor />
       {!isLoading && (
         <>
-          <Suspense fallback={null}>
-            <ThreeBackground />
-          </Suspense>
           <Navbar />
           <main className="relative">
             <HeroSection />
-            <AboutSection />
-            <ServicesSection />
-            <ProjectsSection />
-            <TestimonialsSection />
-            <ProcessSection />
-            <PricingSection />
-            <FaqSection />
-            <ContactSection />
-            <FooterSection />
+            <div className="section-bg"><AboutSection /></div>
+            <div className="section-bg-alt"><ServicesSection /></div>
+            <div className="section-bg"><ProjectsSection /></div>
+            <div className="section-bg-alt"><TestimonialsSection /></div>
+            <div className="section-bg"><ProcessSection /></div>
+            <div className="section-bg-alt"><PricingSection /></div>
+            <div className="section-bg"><FaqSection /></div>
+            <div className="section-bg-alt"><ContactSection /></div>
+            <div className="section-bg"><FooterSection /></div>
           </main>
           <FloatingActions />
           <MobileBottomNav />

@@ -299,7 +299,7 @@ const ThreeBackground = () => {
 
   return (
     <div
-      className="fixed inset-0 pointer-events-none"
+      className="absolute inset-0 pointer-events-none"
       style={{ zIndex: 0, opacity: isMobile ? 0.95 : 0.85 }}
       aria-hidden="true"
     >

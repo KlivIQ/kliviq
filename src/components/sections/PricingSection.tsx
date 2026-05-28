@@ -11,26 +11,21 @@ type PricingItem = {
 };
 
 const INDIA_PRICING: PricingItem[] = [
-  { category: "Web", title: "Landing Page", price: "from ₹35,000" },
-  { category: "Web", title: "Business Website", price: "from ₹75,000" },
-  { category: "Web", title: "E-Commerce", price: "from ₹1,00,000" },
-  { category: "Web", title: "Custom Platform", price: "from ₹2,50,000" },
-  { category: "Mobile", title: "MVP App", price: "from ₹2,50,000" },
-  { category: "Mobile", title: "Cross-Platform Flutter", price: "from ₹4,00,000" },
-  { category: "AI", title: "Chatbot / Assistant", price: "from ₹60,000" },
+  { category: "Retainer", title: "Fractional CTO Retainer", price: "from ₹40,000/month" },
+  { category: "AI", title: "AI Implementation", price: "from ₹75,000" },
+  { category: "AI", title: "AI Chatbot / Automation", price: "from ₹60,000" },
+  { category: "Web", title: "Web Platform", price: "from ₹75,000" },
+  { category: "Mobile", title: "Mobile App MVP", price: "from ₹2,50,000" },
   { category: "AI", title: "Custom AI Tool", price: "from ₹2,00,000" },
-  { category: "Retainer", title: "Monthly Support", price: "from ₹12,000/month" },
 ];
 
 const GLOBAL_PRICING: PricingItem[] = [
-  { category: "Web", title: "Landing Page", price: "from $800" },
-  { category: "Web", title: "Business Website", price: "from $2,000" },
-  { category: "Web", title: "E-Commerce", price: "from $3,000" },
-  { category: "Mobile", title: "MVP App", price: "from $5,000" },
-  { category: "Mobile", title: "Cross-Platform", price: "from $10,000" },
-  { category: "AI", title: "Chatbot", price: "from $1,500" },
+  { category: "Retainer", title: "Fractional CTO Retainer", price: "from $800/month" },
+  { category: "AI", title: "AI Implementation", price: "from $2,000" },
+  { category: "AI", title: "AI Chatbot / Automation", price: "from $1,500" },
+  { category: "Web", title: "Web Platform", price: "from $2,000" },
+  { category: "Mobile", title: "Mobile App MVP", price: "from $5,000" },
   { category: "AI", title: "Custom AI Tool", price: "from $5,000" },
-  { category: "Retainer", title: "Monthly Support", price: "from $300/month" },
 ];
 
 const categoryStyles: Record<PricingItem["category"], string> = {
@@ -70,9 +65,9 @@ const PricingSection = () => {
           animate={isVisible ? { opacity: 1 } : {}}
           transition={{ delay: 0.2 }}
         >
-          Fixed-price projects. Milestone payments.
+          Fixed price. Milestone payments (30 · 40 · 30).
           <br />
-          Scoped together on a free 30-minute call.
+          Scoped on a free 30-minute call.
         </motion.p>
 
         {/* Region toggle */}
@@ -156,7 +151,7 @@ const PricingSection = () => {
             <li>✅ Fixed-price · milestone payments (30% · 40% · 30%)</li>
             <li>✅ GST invoices for Indian clients</li>
             <li>✅ International payments via Wise / Payoneer</li>
-            <li>📞 Not sure? Book a free 30-min scoping call.</li>
+            <li>📞 Free 30-min scoping call before any commitment</li>
           </ul>
         </motion.div>
 
@@ -171,7 +166,7 @@ const PricingSection = () => {
             href="#contact"
             className="px-8 py-4 rounded-full font-semibold text-primary-foreground bg-gradient-to-r from-primary to-secondary animate-pulse-glow transition-transform hover:scale-105"
           >
-            Get a Free Estimate →
+            Book a Free Scoping Call →
           </a>
         </motion.div>
       </div>

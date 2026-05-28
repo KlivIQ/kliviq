@@ -9,32 +9,36 @@ import {
 
 const faqs = [
   {
-    q: "Do you work solo or with a team?",
-    a: "You work directly with a senior engineer on every project — 20+ years experience, not a junior assigned after you sign. For larger builds, trusted specialists are brought in and managed by us.",
+    q: "What is AI implementation?",
+    a: "We analyse your business processes, identify where AI creates the most value, then build and integrate the tools — chatbots, automation workflows, intelligent dashboards — directly into how you work. You see ROI in weeks, not quarters.",
   },
   {
-    q: "Can you handle both design and development?",
-    a: "Yes — end to end. UI/UX, development, testing, deployment, and documentation. No separate vendors, no handoff gaps.",
+    q: "What is a Fractional CTO?",
+    a: "A senior technology leader who works with you part-time — typically 10–20 hours/week on retainer. If you're making technology decisions without a senior tech person in the room, you need one. We strategy and build — not just advise.",
   },
   {
-    q: "How do you handle Indian and global clients?",
-    a: "Same quality, same standards. Different pricing (INR vs USD), payment methods (Razorpay for India, Wise/Payoneer globally), and timezone communication. We're set up for both.",
+    q: "How do you deliver in weeks when others take months?",
+    a: "AI-assisted development, focused sprints, no agency overhead. No account managers, no briefing chains. You work directly with the person building.",
   },
   {
-    q: "What if scope changes mid-project?",
-    a: "Additions beyond agreed scope are quoted separately before we proceed. No surprises on your invoice.",
+    q: "Do you work with Indian and global clients?",
+    a: "Yes — separate INR and USD pricing, Razorpay for India, Wise/Payoneer internationally. Same quality, same standards.",
+  },
+  {
+    q: "How does pricing work?",
+    a: "Fixed price agreed upfront. 30% to start, 40% mid-project, 30% on delivery. No surprises.",
   },
   {
     q: "Do you sign NDAs?",
-    a: "Absolutely — before any sensitive discussion.",
+    a: "Immediately and without question.",
   },
   {
     q: "What technologies do you use?",
-    a: "Web: React, Next.js, Node.js. Mobile: Flutter. Backend: Python, PostgreSQL, Firebase. AI: OpenAI, Anthropic, Gemini, LangChain. Cloud: AWS, Vercel.",
+    a: "AI: OpenAI, Claude, Gemini, LangChain, n8n. Web: React, Next.js, Node.js. Mobile: Flutter. Backend: Python, PostgreSQL, Firebase. Cloud: AWS, Vercel, Google Cloud.",
   },
   {
     q: "How do I get started?",
-    a: "Book a free 30-minute discovery call — no commitment, no pitch. Just an honest conversation.",
+    a: "Book a free 30-minute scoping call. No pitch, no commitment — just an honest conversation.",
   },
 ];
 
@@ -57,8 +61,8 @@ const FaqSection = () => {
           animate={isVisible ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7 }}
         >
-          Questions We Get{" "}
-          <span className="gradient-text">Asked Most</span>
+          <span className="text-foreground">Questions We Get</span>{" "}
+          <span style={{ color: "#4ADE80" }}>Asked</span>
         </motion.h2>
 
         <motion.div

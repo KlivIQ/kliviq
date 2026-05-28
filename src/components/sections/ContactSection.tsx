@@ -63,7 +63,7 @@ const ContactSection = () => {
                 <div className="w-10 h-10 shrink-0 rounded-lg bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center group-hover:from-primary/40 group-hover:to-secondary/40 transition-all duration-300">
                   <item.icon className="w-5 h-5" />
                 </div>
-                <span className="text-lg">{item.label}</span>
+                <span className="text-base sm:text-lg min-w-0 break-all sm:break-words">{item.label}</span>
               </motion.a>
             ))}
           </div>

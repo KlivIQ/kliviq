@@ -43,7 +43,7 @@ const ContactSection = () => {
         </motion.p>
 
         <motion.div
-          className="glass-strong rounded-2xl p-8 md:p-12 glow-purple"
+          className="glass-strong rounded-2xl p-5 sm:p-8 md:p-12 glow-purple"
           initial={{ opacity: 0, scale: 0.95 }}
           animate={isVisible ? { opacity: 1, scale: 1 } : {}}
           transition={{ delay: 0.3, duration: 0.6 }}

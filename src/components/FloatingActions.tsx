@@ -17,7 +17,10 @@ const FloatingActions = () => {
   }, []);
 
   return (
-    <div className="fixed bottom-20 md:bottom-6 right-4 md:right-6 z-40 flex flex-col items-end gap-3">
+    <div
+      className="fixed bottom-24 md:bottom-6 right-4 md:right-6 z-50 flex flex-col items-end gap-3"
+      style={{ paddingBottom: "env(safe-area-inset-bottom)" }}
+    >
       <AnimatePresence>
         {showTop && (
           <motion.button

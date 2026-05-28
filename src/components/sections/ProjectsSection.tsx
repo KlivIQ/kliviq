@@ -10,7 +10,7 @@ const clientWork = [
   {
     title: "FACO",
     blurb: "Real landing page designed for a coffee store client — Fathima Coffee Works, Kodaikanal.",
-    href: "https://faco-site.lovable.app",
+    href: "#contact",
     image: thumbFaco,
     badge: "CLIENT WORK",
     cta: "Open live",
@@ -102,7 +102,6 @@ const statCards: StatCard[] = [
     title: "Faco",
     tag: "Brand & Web Platform · Live",
     description: "Brand identity and web platform for a growing D2C business.",
-    cta: { label: "View Project →", href: "https://faco-site.lovable.app" },
     accent: "secondary",
   },
   {

@@ -4,7 +4,7 @@ import { Mail, Phone, Linkedin } from "lucide-react";
 
 const contactItems = [
   { icon: Mail, label: "hello@kliviq.com", href: "mailto:hello@kliviq.com" },
-  { icon: Phone, label: "+91-9069026969 (WhatsApp preferred)", href: "tel:+919069026969" },
+  { icon: Phone, label: "+91-9069026969 (WhatsApp Only)", href: "tel:+919069026969" },
   { icon: Linkedin, label: "linkedin.com/company/kliviq", href: "https://linkedin.com/company/kliviq" },
 ];
 
@@ -43,7 +43,7 @@ const ContactSection = () => {
         </motion.p>
 
         <motion.div
-          className="glass-strong rounded-2xl p-8 md:p-12 glow-purple"
+          className="glass-strong rounded-2xl p-5 sm:p-8 md:p-12 glow-purple"
           initial={{ opacity: 0, scale: 0.95 }}
           animate={isVisible ? { opacity: 1, scale: 1 } : {}}
           transition={{ delay: 0.3, duration: 0.6 }}
@@ -55,15 +55,15 @@ const ContactSection = () => {
                 href={item.href}
                 target={item.href.startsWith("http") ? "_blank" : undefined}
                 rel="noopener noreferrer"
-                className="flex items-center gap-4 text-foreground/80 hover:text-foreground group transition-colors duration-300"
+                className="flex items-center gap-4 text-foreground/80 hover:text-foreground group transition-colors duration-300 min-w-0"
                 initial={{ opacity: 0, x: -20 }}
                 animate={isVisible ? { opacity: 1, x: 0 } : {}}
                 transition={{ delay: 0.5 + i * 0.1, duration: 0.5 }}
               >
-                <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center group-hover:from-primary/40 group-hover:to-secondary/40 transition-all duration-300">
+                <div className="w-10 h-10 shrink-0 rounded-lg bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center group-hover:from-primary/40 group-hover:to-secondary/40 transition-all duration-300">
                   <item.icon className="w-5 h-5" />
                 </div>
-                <span className="text-lg">{item.label}</span>
+                <span className="text-base sm:text-lg min-w-0 break-all sm:break-words">{item.label}</span>
               </motion.a>
             ))}
           </div>

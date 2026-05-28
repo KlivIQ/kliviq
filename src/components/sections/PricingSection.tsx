@@ -41,8 +41,8 @@ const PricingSection = () => {
   const items = region === "india" ? INDIA_PRICING : GLOBAL_PRICING;
 
   return (
-    <section id="pricing" className="relative py-32 px-6">
-      <div className="max-w-6xl mx-auto" ref={ref}>
+    <section id="pricing" className="relative py-32 px-4 sm:px-6 overflow-hidden">
+      <div className="max-w-6xl mx-auto w-full" ref={ref}>
         <motion.p
           className="text-sm uppercase tracking-widest text-secondary mb-4 text-center"
           initial={{ opacity: 0 }}
@@ -120,21 +120,21 @@ const PricingSection = () => {
             {items.map((item, i) => (
               <motion.div
                 key={`${region}-${i}`}
-                className="glass-strong rounded-2xl p-6 flex items-center justify-between gap-4 hover:border-primary/40 transition-colors"
+                className="glass-strong rounded-2xl p-5 sm:p-6 flex items-center justify-between gap-3 sm:gap-4 hover:border-primary/40 transition-colors min-w-0"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: i * 0.04 }}
               >
-                <div className="min-w-0">
+                <div className="min-w-0 flex-1">
                   <span
                     className={`inline-block text-[10px] uppercase tracking-widest px-2 py-0.5 rounded-full border mb-2 ${categoryStyles[item.category]}`}
                   >
                     {item.category}
                   </span>
-                  <h3 className="text-lg font-semibold truncate">{item.title}</h3>
+                  <h3 className="text-base sm:text-lg font-semibold truncate">{item.title}</h3>
                 </div>
                 <div className="text-right shrink-0">
-                  <span className="text-base md:text-lg font-bold gradient-text whitespace-nowrap">
+                  <span className="text-sm sm:text-base md:text-lg font-bold gradient-text whitespace-nowrap">
                     {item.price}
                   </span>
                 </div>

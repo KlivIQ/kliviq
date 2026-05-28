@@ -13,10 +13,8 @@ const ContactSection = () => {
 
   return (
     <section id="contact" className="relative py-32 px-6">
-      {/* Background glow */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-primary/5 blur-[150px]" />
-      </div>
+
+
 
       <div className="max-w-2xl mx-auto relative z-10" ref={ref}>
         <motion.p

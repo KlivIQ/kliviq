@@ -55,12 +55,12 @@ const ContactSection = () => {
                 href={item.href}
                 target={item.href.startsWith("http") ? "_blank" : undefined}
                 rel="noopener noreferrer"
-                className="flex items-center gap-4 text-foreground/80 hover:text-foreground group transition-colors duration-300"
+                className="flex items-center gap-4 text-foreground/80 hover:text-foreground group transition-colors duration-300 min-w-0"
                 initial={{ opacity: 0, x: -20 }}
                 animate={isVisible ? { opacity: 1, x: 0 } : {}}
                 transition={{ delay: 0.5 + i * 0.1, duration: 0.5 }}
               >
-                <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center group-hover:from-primary/40 group-hover:to-secondary/40 transition-all duration-300">
+                <div className="w-10 h-10 shrink-0 rounded-lg bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center group-hover:from-primary/40 group-hover:to-secondary/40 transition-all duration-300">
                   <item.icon className="w-5 h-5" />
                 </div>
                 <span className="text-lg">{item.label}</span>

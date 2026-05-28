@@ -134,7 +134,7 @@ const PricingSection = () => {
                   <h3 className="text-base sm:text-lg font-semibold truncate">{item.title}</h3>
                 </div>
                 <div className="text-right shrink-0">
-                  <span className="text-base md:text-lg font-bold gradient-text whitespace-nowrap">
+                  <span className="text-sm sm:text-base md:text-lg font-bold gradient-text whitespace-nowrap">
                     {item.price}
                   </span>
                 </div>

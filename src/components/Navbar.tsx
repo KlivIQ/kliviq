@@ -4,9 +4,9 @@ import { Menu, X } from "lucide-react";
 import ThemeToggle from "@/components/ThemeToggle";
 
 const links = [
-  { label: "About", href: "#about" },
   { label: "Services", href: "#services" },
   { label: "Work", href: "#projects" },
+  { label: "About", href: "#about" },
   { label: "Process", href: "#process" },
   { label: "Pricing", href: "#pricing" },
   { label: "Contact", href: "#contact" },

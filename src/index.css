@@ -133,4 +133,35 @@
   .neon-line {
     background: linear-gradient(180deg, hsl(var(--primary)), hsl(var(--secondary)));
   }
+
+  .section-bg,
+  .section-bg-alt {
+    position: relative;
+    isolation: isolate;
+  }
+  .section-bg { background-color: #0A0F1E; }
+  .section-bg-alt { background-color: #0F1729; }
+  .section-bg::before,
+  .section-bg-alt::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.04;
+    background-image: radial-gradient(circle, #ffffff 1px, transparent 1px);
+    background-size: 22px 22px;
+  }
+  .section-bg > *,
+  .section-bg-alt > * {
+    position: relative;
+    z-index: 1;
+  }
+
+  .light .section-bg { background-color: #F0FDF4; }
+  .light .section-bg-alt { background-color: #E7F8EC; }
+  .light .section-bg::before,
+  .light .section-bg-alt::before {
+    background-image: radial-gradient(circle, #0A0F1E 1px, transparent 1px);
+  }
 }

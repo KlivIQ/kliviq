@@ -188,15 +188,11 @@ const ProjectsSection = () => {
           ))}
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="max-w-xl mx-auto">
           {statCards.map((c, i) => (
             <StatCardItem key={i} card={c} index={i} />
           ))}
         </div>
-
-        <p className="mt-8 text-center text-xs text-muted-foreground">
-          *Results from enterprise projects delivered over 20+ years of industry experience.
-        </p>
 
         {/* Tech logos strip */}
         <div className="mt-20">

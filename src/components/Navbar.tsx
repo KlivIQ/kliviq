@@ -29,6 +29,8 @@ const Navbar = () => {
   const [open, setOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
   const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
+  const [resourcesOpen, setResourcesOpen] = useState(false);
+  const [mobileResourcesOpen, setMobileResourcesOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
@@ -99,6 +101,36 @@ const Navbar = () => {
               {link.label}
             </a>
           ))}
+
+          {/* Resources dropdown */}
+          <div
+            className="relative"
+            onMouseEnter={() => setResourcesOpen(true)}
+            onMouseLeave={() => setResourcesOpen(false)}
+          >
+            <button
+              className="text-sm text-muted-foreground hover:text-foreground transition-colors duration-300 flex items-center gap-1"
+              aria-haspopup="true"
+              aria-expanded={resourcesOpen}
+              onClick={() => setResourcesOpen((s) => !s)}
+            >
+              Resources <ChevronDown className="w-3.5 h-3.5" />
+            </button>
+            {resourcesOpen && (
+              <div className="absolute top-full left-1/2 -translate-x-1/2 pt-3 min-w-[200px]">
+                <div className="glass-strong rounded-2xl p-2 shadow-xl">
+                  <Link
+                    to="/glossary"
+                    onClick={() => setResourcesOpen(false)}
+                    className="block px-4 py-2.5 rounded-lg text-sm text-foreground/80 hover:text-foreground hover:bg-foreground/5 transition-colors"
+                  >
+                    Glossary
+                  </Link>
+                </div>
+              </div>
+            )}
+          </div>
+
           <ThemeToggle />
           <a
             href="/#contact"

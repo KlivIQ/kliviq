@@ -15,6 +15,8 @@ const services = [
       "OpenAI, Gemini, Claude API integrations",
       "RAG pipelines and knowledge bases",
     ],
+    link: "/services/ai-consulting",
+    linkLabel: "AI Consulting",
   },
   {
     icon: Compass,
@@ -27,6 +29,8 @@ const services = [
       "Vendor and team oversight",
       "10–20 hrs/week on monthly retainer",
     ],
+    link: "/services/fractional-cto",
+    linkLabel: "Fractional CTO",
   },
   {
     icon: Layers,
@@ -39,6 +43,8 @@ const services = [
       "Full product in 6–10 weeks",
       "AI-assisted development throughout",
     ],
+    link: "/services/custom-app-development",
+    linkLabel: "Custom App Development",
   },
   {
     icon: Zap,
@@ -51,6 +57,8 @@ const services = [
       "API integrations and SaaS MVPs",
       "Automation frameworks",
     ],
+    link: "/services/mvp-development",
+    linkLabel: "MVP Development",
   },
 ];
 

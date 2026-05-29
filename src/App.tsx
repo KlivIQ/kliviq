@@ -8,6 +8,7 @@ import NotFound from "./pages/NotFound.tsx";
 import ScopeSnap from "./pages/ScopeSnap";
 import ClinicPing from "./pages/ClinicPing";
 import PitchDeckAI from "./pages/PitchDeckAI";
+import ServicePage from "./pages/ServicePage";
 
 const queryClient = new QueryClient();
 

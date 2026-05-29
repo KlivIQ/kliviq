@@ -8,6 +8,7 @@ import NotFound from "./pages/NotFound.tsx";
 import ScopeSnap from "./pages/ScopeSnap";
 import ClinicPing from "./pages/ClinicPing";
 import PitchDeckAI from "./pages/PitchDeckAI";
+import ServicePage from "./pages/ServicePage";
 
 const queryClient = new QueryClient();
 
@@ -23,6 +24,7 @@ const App = () => (
           <Route path="/scopesnap" element={<ScopeSnap />} />
           <Route path="/clinicping" element={<ClinicPing />} />
           <Route path="/pitchdeck" element={<PitchDeckAI />} />
+          <Route path="/services/:slug" element={<ServicePage />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

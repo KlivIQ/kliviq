@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
-import { Sparkles, Compass, Layers, Zap } from "lucide-react";
+import { Sparkles, Compass, Layers, Zap, ArrowRight } from "lucide-react";
 
 const services = [
   {
@@ -14,6 +15,8 @@ const services = [
       "OpenAI, Gemini, Claude API integrations",
       "RAG pipelines and knowledge bases",
     ],
+    link: "/services/ai-consulting",
+    linkLabel: "AI Consulting",
   },
   {
     icon: Compass,
@@ -26,6 +29,8 @@ const services = [
       "Vendor and team oversight",
       "10–20 hrs/week on monthly retainer",
     ],
+    link: "/services/fractional-cto",
+    linkLabel: "Fractional CTO",
   },
   {
     icon: Layers,
@@ -38,6 +43,8 @@ const services = [
       "Full product in 6–10 weeks",
       "AI-assisted development throughout",
     ],
+    link: "/services/custom-app-development",
+    linkLabel: "Custom App Development",
   },
   {
     icon: Zap,
@@ -50,6 +57,8 @@ const services = [
       "API integrations and SaaS MVPs",
       "Automation frameworks",
     ],
+    link: "/services/mvp-development",
+    linkLabel: "MVP Development",
   },
 ];
 
@@ -99,7 +108,7 @@ const ServicesSection = () => {
               </div>
               <h3 className="text-xl font-semibold mb-3 text-foreground">{s.title}</h3>
               <p className="text-muted-foreground leading-relaxed mb-5">{s.desc}</p>
-              <ul className="space-y-2 mt-auto">
+              <ul className="space-y-2 mb-6">
                 {s.bullets.map((b, j) => (
                   <li key={j} className="text-sm text-foreground/80 flex gap-2">
                     <span style={{ color: "#4ADE80" }}>→</span>
@@ -107,6 +116,14 @@ const ServicesSection = () => {
                   </li>
                 ))}
               </ul>
+              <Link
+                to={s.link}
+                className="mt-auto inline-flex items-center gap-1.5 text-sm font-semibold transition-colors hover:opacity-80"
+                style={{ color: "#4ADE80" }}
+                aria-label={`Learn more about ${s.linkLabel}`}
+              >
+                Learn more about {s.linkLabel} <ArrowRight className="w-4 h-4" />
+              </Link>
             </motion.div>
           ))}
         </div>

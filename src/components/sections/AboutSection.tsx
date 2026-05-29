@@ -75,13 +75,6 @@ const AboutSection = () => {
           transition={{ delay: 0.9, duration: 0.6 }}
         >
           If it involves AI, technology, and growth — we're in.
-        <motion.p
-          className="text-muted-foreground mt-8 text-lg"
-          initial={{ opacity: 0 }}
-          animate={isVisible ? { opacity: 1 } : {}}
-          transition={{ delay: 0.9, duration: 0.6 }}
-        >
-          If it involves AI, technology, and growth — we're in.
         </motion.p>
 
         {/* Founder block */}

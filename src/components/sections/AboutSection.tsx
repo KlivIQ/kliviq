@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { Linkedin } from "lucide-react";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 
 const pills = [

@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Linkedin } from "lucide-react";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
+import sriramPhoto from "@/assets/sriram-ramkumar.jpeg";
 
 const pills = [
   "We implement AI that creates measurable business ROI",
@@ -84,15 +85,12 @@ const AboutSection = () => {
           animate={isVisible ? { opacity: 1, y: 0 } : {}}
           transition={{ delay: 1.0, duration: 0.7 }}
         >
-          <div
-            className="w-24 h-24 md:w-28 md:h-28 rounded-full flex items-center justify-center text-2xl font-bold text-primary-foreground shrink-0"
-            style={{
-              background: "linear-gradient(135deg, hsl(var(--primary)), hsl(var(--secondary)))",
-            }}
-            aria-label="Sriram Ramkumar"
-          >
-            SR
-          </div>
+          <img
+            src={sriramPhoto}
+            alt="Sriram Ramkumar, Co-Founder & CTO of KlivIQ"
+            loading="lazy"
+            className="w-28 h-28 md:w-32 md:h-32 rounded-full object-cover shrink-0 ring-2 ring-secondary/40"
+          />
           <div className="text-center sm:text-left">
             <p className="text-xs uppercase tracking-widest text-secondary mb-1">
               Meet the Founder

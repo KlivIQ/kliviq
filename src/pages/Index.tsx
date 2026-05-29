@@ -36,7 +36,8 @@ const Index = () => {
             <HeroSection />
             <div className="section-bg"><AboutSection /></div>
             <div className="section-bg-alt"><ServicesSection /></div>
-            <div className="section-bg"><WhyKliviqSection /></div>
+            <div className="section-bg"><ProductsSection /></div>
+            <div className="section-bg-alt"><WhyKliviqSection /></div>
             <div className="section-bg-alt"><ProjectsSection /></div>
             <div className="section-bg"><TestimonialsSection /></div>
             <div className="section-bg"><ProcessSection /></div>

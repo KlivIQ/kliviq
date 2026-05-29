@@ -4,6 +4,7 @@ import CustomCursor from "@/components/CustomCursor";
 import FloatingActions from "@/components/FloatingActions";
 import MobileBottomNav from "@/components/MobileBottomNav";
 import Navbar from "@/components/Navbar";
+import HeroSection from "@/components/sections/HeroSection";
 import ProductsSection from "@/components/sections/ProductsSection";
 import AboutSection from "@/components/sections/AboutSection";
 import ServicesSection from "@/components/sections/ServicesSection";

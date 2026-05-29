@@ -61,10 +61,26 @@ const HeroSection = () => {
             Implement AI in My Business →
           </a>
           <a
-            href="#process"
+            href="https://calendly.com/"
+            target="_blank"
+            rel="noopener noreferrer"
             className="inline-block px-8 py-4 rounded-full font-semibold text-foreground border border-border/60 glass hover:border-secondary/60 transition-colors"
           >
-            See How We Work ↓
+            Book a Free Consultation
+          </a>
+        </motion.div>
+
+        <motion.div
+          className="mt-4 flex justify-center"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1.0, duration: 0.6 }}
+        >
+          <a
+            href="#process"
+            className="text-xs md:text-sm text-muted-foreground hover:text-foreground transition-colors"
+          >
+            See how we work ↓
           </a>
         </motion.div>
 

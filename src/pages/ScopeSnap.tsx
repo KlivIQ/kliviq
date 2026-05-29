@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Helmet } from "react-helmet-async";
 
 const ANTHROPIC_API = "https://api.anthropic.com/v1/messages";
 
@@ -108,6 +109,24 @@ Be specific, practical, India-market aware. 5-7 phases, 6-10 timeline items, rea
         <a href="/" style={{ marginLeft: "auto", fontFamily: "'DM Mono', monospace", fontSize: 11, color: "rgba(255,255,255,0.6)", textDecoration: "none" }}>← Back to KlivIQ</a>
       </nav>
 
+      <Helmet>
+        <title>ScopeSnap — Instant Project Scope & Cost Estimator | KlivIQ</title>
+        <meta name="description" content="ScopeSnap turns any project brief into a full scope of work, cost estimate, timeline, and tech stack in seconds. Built by KlivIQ." />
+        <link rel="canonical" href="https://kliviq.lovable.app/scopesnap" />
+        <meta property="og:title" content="ScopeSnap — Instant Project Scope & Cost Estimator" />
+        <meta property="og:description" content="Generate a complete scope, cost, timeline, and tech stack from any project brief." />
+        <meta property="og:url" content="https://kliviq.lovable.app/scopesnap" />
+        <meta property="og:type" content="website" />
+        <script type="application/ld+json">{JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "SoftwareApplication",
+          "name": "ScopeSnap",
+          "description": "AI tool that turns a project brief into a full scope of work, cost estimate, timeline, and tech stack.",
+          "applicationCategory": "BusinessApplication",
+          "operatingSystem": "Web",
+          "offers": { "@type": "Offer", "price": "0", "priceCurrency": "INR" }
+        })}</script>
+      </Helmet>
       <div style={{ maxWidth: 860, margin: "0 auto", padding: "32px 20px 80px" }}>
         {/* HERO */}
         <div style={{ marginBottom: 32 }}>
@@ -182,9 +201,9 @@ Be specific, practical, India-market aware. 5-7 phases, 6-10 timeline items, rea
               {/* SCOPE TAB */}
               {tab === "scope" && data.deliverables.map((phase, pi) => (
                 <div key={pi} style={{ marginBottom: 24 }}>
-                  <h3 style={{ fontFamily: "'Syne', sans-serif", fontSize: 12, fontWeight: 700, color: "#166534", letterSpacing: "0.06em", textTransform: "uppercase" as const, marginBottom: 12, display: "flex", alignItems: "center", gap: 8 }}>
+                  <h2 style={{ fontFamily: "'Syne', sans-serif", fontSize: 12, fontWeight: 700, color: "#166534", letterSpacing: "0.06em", textTransform: "uppercase" as const, marginBottom: 12, display: "flex", alignItems: "center", gap: 8 }}>
                     <span style={{ width: 3, height: 14, background: "#4ADE80", borderRadius: 2, display: "inline-block" }} />{phase.phase}
-                  </h3>
+                  </h2>
                   {phase.items.map((item, ii) => (
                     <div key={ii} style={{ display: "flex", alignItems: "flex-start", gap: 10, padding: "10px 0", borderBottom: ii < phase.items.length - 1 ? "1px solid #E2E8DF" : "none" }}>
                       <div style={{ width: 18, height: 18, background: "#F0FDF4", border: "1px solid #BBF7D0", borderRadius: 4, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, marginTop: 2 }}>
@@ -233,9 +252,9 @@ Be specific, practical, India-market aware. 5-7 phases, 6-10 timeline items, rea
                   {(["frontend", "backend", "database", "infrastructure", "integrations"] as const).map(cat => (
                     data.techStack[cat]?.length > 0 && (
                       <div key={cat} style={{ marginBottom: 24 }}>
-                        <h3 style={{ fontFamily: "'Syne', sans-serif", fontSize: 12, fontWeight: 700, color: "#166534", letterSpacing: "0.06em", textTransform: "uppercase" as const, marginBottom: 12, display: "flex", alignItems: "center", gap: 8 }}>
+                        <h2 style={{ fontFamily: "'Syne', sans-serif", fontSize: 12, fontWeight: 700, color: "#166534", letterSpacing: "0.06em", textTransform: "uppercase" as const, marginBottom: 12, display: "flex", alignItems: "center", gap: 8 }}>
                           <span style={{ width: 3, height: 14, background: "#4ADE80", borderRadius: 2, display: "inline-block" }} />{cat}
-                        </h3>
+                        </h2>
                         <div style={{ display: "flex", flexWrap: "wrap" as const, gap: 8 }}>
                           {data.techStack[cat].map((t, i) => (
                             <span key={i} style={{ fontFamily: "'DM Mono', monospace", fontSize: 12, background: "#0A0F1E", color: "#4ADE80", padding: "6px 14px", borderRadius: 6 }}>{t}</span>

@@ -17,8 +17,8 @@ import logoLight from "@/assets/kliviq-logo-light.png";
 
 const Wordmark = () => (
   <a href="#" aria-label="KlivIQ home" className="flex items-center">
-    <img src={logoDark} alt="KlivIQ" className="logo-dark h-9 md:h-10 w-auto" />
-    <img src={logoLight} alt="KlivIQ" className="logo-light h-9 md:h-10 w-auto" />
+    <img src={logoDark} alt="KlivIQ — AI Business Solutions" className="logo-dark h-9 md:h-10 w-auto" />
+    <img src={logoLight} alt="KlivIQ — AI Business Solutions" className="logo-light h-9 md:h-10 w-auto" />
   </a>
 );
 
@@ -70,6 +70,8 @@ const Navbar = () => {
           <button
             className="text-foreground"
             onClick={() => setOpen(!open)}
+            aria-label="Toggle menu"
+            aria-expanded={open}
           >
             {open ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>

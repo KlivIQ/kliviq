@@ -72,16 +72,16 @@ const Navbar = () => {
                       key={s.slug}
                       to={s.path}
                       onClick={() => setServicesOpen(false)}
-                      className="block px-4 py-2.5 rounded-lg text-sm text-foreground/80 hover:text-foreground hover:bg-glass/60 transition-colors"
+                      className="block px-4 py-2.5 rounded-lg text-sm text-foreground/80 hover:text-foreground hover:bg-foreground/5 transition-colors"
                     >
                       {s.navLabel}
                     </Link>
                   ))}
-                  <div className="border-t border-glass-border/30 my-2" />
+                  <div className="border-t border-foreground/15 my-2" />
                   <a
                     href="/#services"
                     onClick={() => setServicesOpen(false)}
-                    className="block px-4 py-2.5 rounded-lg text-sm text-muted-foreground hover:text-foreground hover:bg-glass/60 transition-colors"
+                    className="block px-4 py-2.5 rounded-lg text-sm text-muted-foreground hover:text-foreground hover:bg-foreground/5 transition-colors"
                   >
                     All services overview →
                   </a>
@@ -142,7 +142,7 @@ const Navbar = () => {
               />
             </button>
             {mobileServicesOpen && (
-              <div className="mt-3 ml-3 pl-3 border-l border-glass-border/40 flex flex-col gap-3">
+              <div className="mt-3 ml-3 pl-3 border-l border-foreground/15 flex flex-col gap-3">
                 {serviceLandingPages.map((s) => (
                   <Link
                     key={s.slug}

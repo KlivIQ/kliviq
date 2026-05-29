@@ -104,20 +104,6 @@ const statCards: StatCard[] = [
     description: "Client case studies dropping Q3 2026.",
     accent: "primary",
   },
-  {
-    title: "Enterprise Background",
-    number: "20+",
-    sub: "Years of enterprise delivery",
-    description: "Platforms built across BFSI, Retail, Healthcare, and Logistics at scale.",
-    accent: "secondary",
-  },
-  {
-    title: "Average Delivery",
-    number: "4–6",
-    sub: "Weeks from contract to live",
-    description: "Not months. Weeks.",
-    accent: "primary",
-  },
 ];
 
 const techLogos = [

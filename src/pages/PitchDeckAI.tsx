@@ -121,6 +121,24 @@ Return ONLY valid JSON (no markdown, no backticks):
         <a href="/" style={{ marginLeft: "auto", fontFamily: mono, fontSize: 11, color: muted, textDecoration: "none" }}>← Back to KlivIQ</a>
       </nav>
 
+      <Helmet>
+        <title>PitchDeck AI — Multilingual Investor Pitch Decks | KlivIQ</title>
+        <meta name="description" content="Generate a 10-slide investor pitch deck in English plus Hindi, Tamil, Telugu, Kannada, and Malayalam — with talking points for every slide." />
+        <link rel="canonical" href="https://kliviq.lovable.app/pitchdeck" />
+        <meta property="og:title" content="PitchDeck AI — Multilingual Investor Pitch Decks" />
+        <meta property="og:description" content="Investor-grade 10-slide pitch decks in English and 5 Indian languages." />
+        <meta property="og:url" content="https://kliviq.lovable.app/pitchdeck" />
+        <meta property="og:type" content="website" />
+        <script type="application/ld+json">{JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "SoftwareApplication",
+          "name": "PitchDeck AI",
+          "description": "Generates investor-grade pitch decks from a business idea in English plus Hindi, Tamil, Telugu, Kannada, and Malayalam.",
+          "applicationCategory": "BusinessApplication",
+          "operatingSystem": "Web",
+          "offers": { "@type": "Offer", "price": "0", "priceCurrency": "INR" }
+        })}</script>
+      </Helmet>
       <div style={{ maxWidth: 940, margin: "0 auto", padding: "36px 20px 80px" }}>
         {/* HERO */}
         <div style={{ textAlign: "center" as const, marginBottom: 36 }}>

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Helmet } from "react-helmet-async";
 
 const ANTHROPIC_API = "https://api.anthropic.com/v1/messages";
 
@@ -108,6 +109,24 @@ Be specific, practical, India-market aware. 5-7 phases, 6-10 timeline items, rea
         <a href="/" style={{ marginLeft: "auto", fontFamily: "'DM Mono', monospace", fontSize: 11, color: "rgba(255,255,255,0.6)", textDecoration: "none" }}>← Back to KlivIQ</a>
       </nav>
 
+      <Helmet>
+        <title>ScopeSnap — Instant Project Scope & Cost Estimator | KlivIQ</title>
+        <meta name="description" content="ScopeSnap turns any project brief into a full scope of work, cost estimate, timeline, and tech stack in seconds. Built by KlivIQ." />
+        <link rel="canonical" href="https://kliviq.lovable.app/scopesnap" />
+        <meta property="og:title" content="ScopeSnap — Instant Project Scope & Cost Estimator" />
+        <meta property="og:description" content="Generate a complete scope, cost, timeline, and tech stack from any project brief." />
+        <meta property="og:url" content="https://kliviq.lovable.app/scopesnap" />
+        <meta property="og:type" content="website" />
+        <script type="application/ld+json">{JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "SoftwareApplication",
+          "name": "ScopeSnap",
+          "description": "AI tool that turns a project brief into a full scope of work, cost estimate, timeline, and tech stack.",
+          "applicationCategory": "BusinessApplication",
+          "operatingSystem": "Web",
+          "offers": { "@type": "Offer", "price": "0", "priceCurrency": "INR" }
+        })}</script>
+      </Helmet>
       <div style={{ maxWidth: 860, margin: "0 auto", padding: "32px 20px 80px" }}>
         {/* HERO */}
         <div style={{ marginBottom: 32 }}>

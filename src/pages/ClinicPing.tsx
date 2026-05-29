@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Helmet } from "react-helmet-async";
 
 const API = "https://api.anthropic.com/v1/messages";
 type Tab = "appt" | "patients" | "comms";
@@ -102,6 +103,28 @@ export default function ClinicPing() {
         <span style={{ background: "rgba(74,222,128,0.15)", border: "1px solid rgba(74,222,128,0.3)", color: lime, fontFamily: mono, fontSize: 10, padding: "3px 10px", borderRadius: 20 }}>ClinicPing</span>
         <a href="/" style={{ marginLeft: "auto", fontFamily: mono, fontSize: 11, color: "rgba(255,255,255,0.6)", textDecoration: "none" }}>← Back to KlivIQ</a>
       </nav>
+
+      <Helmet>
+        <title>ClinicPing — AI-Powered Clinic Management | KlivIQ</title>
+        <meta name="description" content="ClinicPing is an AI clinic management demo: appointment reminders, no-show prediction, and patient communication for Indian clinics." />
+        <link rel="canonical" href="https://kliviq.lovable.app/clinicping" />
+        <meta property="og:title" content="ClinicPing — AI-Powered Clinic Management" />
+        <meta property="og:description" content="AI clinic management: appointment reminders, no-show prediction, and patient communication." />
+        <meta property="og:url" content="https://kliviq.lovable.app/clinicping" />
+        <meta property="og:type" content="website" />
+        <script type="application/ld+json">{JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "SoftwareApplication",
+          "name": "ClinicPing",
+          "description": "AI-powered clinic management: appointment reminders, no-show prediction, patient communication.",
+          "applicationCategory": "HealthApplication",
+          "operatingSystem": "Web",
+          "offers": { "@type": "Offer", "price": "0", "priceCurrency": "INR" }
+        })}</script>
+      </Helmet>
+      <h1 style={{ position: "absolute", width: 1, height: 1, padding: 0, margin: -1, overflow: "hidden", clip: "rect(0,0,0,0)", whiteSpace: "nowrap" as const, border: 0 }}>
+        ClinicPing — AI-Powered Clinic Management
+      </h1>
 
       <div style={{ maxWidth: 960, margin: "0 auto", padding: "24px 20px 80px" }}>
         {/* DASH HEADER */}

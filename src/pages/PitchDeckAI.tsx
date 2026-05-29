@@ -125,10 +125,10 @@ Return ONLY valid JSON (no markdown, no backticks):
       <Helmet>
         <title>PitchDeck AI — Multilingual Investor Pitch Decks | KlivIQ</title>
         <meta name="description" content="Generate a 10-slide investor pitch deck in English plus Hindi, Tamil, Telugu, Kannada, and Malayalam — with talking points for every slide." />
-        <link rel="canonical" href="https://kliviq.lovable.app/pitchdeck" />
+        <link rel="canonical" href="https://www.kliviq.com/pitchdeck" />
         <meta property="og:title" content="PitchDeck AI — Multilingual Investor Pitch Decks" />
         <meta property="og:description" content="Investor-grade 10-slide pitch decks in English and 5 Indian languages." />
-        <meta property="og:url" content="https://kliviq.lovable.app/pitchdeck" />
+        <meta property="og:url" content="https://www.kliviq.com/pitchdeck" />
         <meta property="og:type" content="website" />
         <script type="application/ld+json">{JSON.stringify({
           "@context": "https://schema.org",

@@ -18,12 +18,30 @@ import ContactSection from "@/components/sections/ContactSection";
 import FooterSection from "@/components/sections/FooterSection";
 
 const Index = () => {
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(() => !window.location.hash);
 
   useEffect(() => {
+    if (!isLoading) return;
     const timer = setTimeout(() => setIsLoading(false), 2200);
     return () => clearTimeout(timer);
-  }, []);
+  }, [isLoading]);
+
+  useEffect(() => {
+    if (isLoading) return;
+    const hash = window.location.hash;
+    if (!hash) return;
+    // Wait a tick for sections to mount
+    const id = hash.replace("#", "");
+    const tryScroll = (attempt = 0) => {
+      const el = document.getElementById(id);
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth", block: "start" });
+      } else if (attempt < 10) {
+        setTimeout(() => tryScroll(attempt + 1), 100);
+      }
+    };
+    tryScroll();
+  }, [isLoading]);
 
   return (
     <>

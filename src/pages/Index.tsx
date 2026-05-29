@@ -18,12 +18,13 @@ import ContactSection from "@/components/sections/ContactSection";
 import FooterSection from "@/components/sections/FooterSection";
 
 const Index = () => {
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(() => !window.location.hash);
 
   useEffect(() => {
+    if (!isLoading) return;
     const timer = setTimeout(() => setIsLoading(false), 2200);
     return () => clearTimeout(timer);
-  }, []);
+  }, [isLoading]);
 
   useEffect(() => {
     if (isLoading) return;

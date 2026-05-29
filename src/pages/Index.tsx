@@ -25,6 +25,23 @@ const Index = () => {
     return () => clearTimeout(timer);
   }, []);
 
+  useEffect(() => {
+    if (isLoading) return;
+    const hash = window.location.hash;
+    if (!hash) return;
+    // Wait a tick for sections to mount
+    const id = hash.replace("#", "");
+    const tryScroll = (attempt = 0) => {
+      const el = document.getElementById(id);
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth", block: "start" });
+      } else if (attempt < 10) {
+        setTimeout(() => tryScroll(attempt + 1), 100);
+      }
+    };
+    tryScroll();
+  }, [isLoading]);
+
   return (
     <>
       <LoadingScreen isLoading={isLoading} />

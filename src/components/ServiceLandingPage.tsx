@@ -124,7 +124,7 @@ const ServiceLandingPage = ({ content }: Props) => {
             </p>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
               {content.proof.metrics.map((m, i) => (
-                <div key={i} className="rounded-xl border border-glass-border/40 p-5 bg-glass/30">
+                <div key={i} className="glass rounded-xl p-5">
                   <div className="text-2xl md:text-3xl font-bold mb-1" style={{ color: "#4ADE80" }}>
                     {m.value}
                   </div>

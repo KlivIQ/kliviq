@@ -1,31 +1,34 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ChevronDown } from "lucide-react";
+import { Link } from "react-router-dom";
 import ThemeToggle from "@/components/ThemeToggle";
+import { serviceLandingPages } from "@/data/serviceLandingPages";
 
 const links = [
-  { label: "Services", href: "#services" },
-  { label: "Products", href: "#products" },
-  { label: "Work", href: "#projects" },
-  { label: "About", href: "#about" },
-  { label: "Process", href: "#process" },
-  { label: "Pricing", href: "#pricing" },
-  { label: "Contact", href: "#contact" },
+  { label: "Products", href: "/#products" },
+  { label: "Work", href: "/#projects" },
+  { label: "About", href: "/#about" },
+  { label: "Process", href: "/#process" },
+  { label: "Pricing", href: "/#pricing" },
+  { label: "Contact", href: "/#contact" },
 ];
 
 import logoDark from "@/assets/kliviq-logo-dark.png";
 import logoLight from "@/assets/kliviq-logo-light.png";
 
 const Wordmark = () => (
-  <a href="#" aria-label="KlivIQ home" className="flex items-center">
+  <Link to="/" aria-label="KlivIQ home" className="flex items-center">
     <img src={logoDark} alt="KlivIQ — AI Business Solutions" className="logo-dark h-9 md:h-10 w-auto" />
     <img src={logoLight} alt="KlivIQ — AI Business Solutions" className="logo-light h-9 md:h-10 w-auto" />
-  </a>
+  </Link>
 );
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const [servicesOpen, setServicesOpen] = useState(false);
+  const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
@@ -40,13 +43,53 @@ const Navbar = () => {
       }`}
       initial={{ y: -100 }}
       animate={{ y: 0 }}
-      transition={{ delay: 1.5, duration: 0.6 }}
+      transition={{ delay: 0.2, duration: 0.6 }}
     >
       <div className="max-w-6xl mx-auto px-6 flex items-center justify-between">
         <Wordmark />
 
         {/* Desktop */}
         <div className="hidden md:flex items-center gap-8">
+          {/* Services dropdown */}
+          <div
+            className="relative"
+            onMouseEnter={() => setServicesOpen(true)}
+            onMouseLeave={() => setServicesOpen(false)}
+          >
+            <button
+              className="text-sm text-muted-foreground hover:text-foreground transition-colors duration-300 flex items-center gap-1"
+              aria-haspopup="true"
+              aria-expanded={servicesOpen}
+              onClick={() => setServicesOpen((s) => !s)}
+            >
+              Services <ChevronDown className="w-3.5 h-3.5" />
+            </button>
+            {servicesOpen && (
+              <div className="absolute top-full left-1/2 -translate-x-1/2 pt-3 min-w-[260px]">
+                <div className="glass-strong rounded-2xl p-2 shadow-xl">
+                  {serviceLandingPages.map((s) => (
+                    <Link
+                      key={s.slug}
+                      to={s.path}
+                      onClick={() => setServicesOpen(false)}
+                      className="block px-4 py-2.5 rounded-lg text-sm text-foreground/80 hover:text-foreground hover:bg-glass/60 transition-colors"
+                    >
+                      {s.navLabel}
+                    </Link>
+                  ))}
+                  <div className="border-t border-glass-border/30 my-2" />
+                  <a
+                    href="/#services"
+                    onClick={() => setServicesOpen(false)}
+                    className="block px-4 py-2.5 rounded-lg text-sm text-muted-foreground hover:text-foreground hover:bg-glass/60 transition-colors"
+                  >
+                    All services overview →
+                  </a>
+                </div>
+              </div>
+            )}
+          </div>
+
           {links.map((link) => (
             <a
               key={link.href}
@@ -58,7 +101,7 @@ const Navbar = () => {
           ))}
           <ThemeToggle />
           <a
-            href="#contact"
+            href="/#contact"
             className="px-5 py-2 rounded-full text-sm font-semibold text-primary-foreground bg-gradient-to-r from-primary to-secondary transition-transform hover:scale-105"
           >
             Start a Project →
@@ -86,6 +129,41 @@ const Navbar = () => {
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
         >
+          {/* Mobile services nested */}
+          <div>
+            <button
+              className="w-full flex items-center justify-between text-foreground/80 hover:text-foreground transition-colors"
+              onClick={() => setMobileServicesOpen((s) => !s)}
+              aria-expanded={mobileServicesOpen}
+            >
+              <span>Services</span>
+              <ChevronDown
+                className={`w-4 h-4 transition-transform ${mobileServicesOpen ? "rotate-180" : ""}`}
+              />
+            </button>
+            {mobileServicesOpen && (
+              <div className="mt-3 ml-3 pl-3 border-l border-glass-border/40 flex flex-col gap-3">
+                {serviceLandingPages.map((s) => (
+                  <Link
+                    key={s.slug}
+                    to={s.path}
+                    onClick={() => setOpen(false)}
+                    className="text-sm text-foreground/75 hover:text-foreground transition-colors"
+                  >
+                    {s.navLabel}
+                  </Link>
+                ))}
+                <a
+                  href="/#services"
+                  onClick={() => setOpen(false)}
+                  className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                >
+                  All services overview →
+                </a>
+              </div>
+            )}
+          </div>
+
           {links.map((link) => (
             <a
               key={link.href}
@@ -97,7 +175,7 @@ const Navbar = () => {
             </a>
           ))}
           <a
-            href="#contact"
+            href="/#contact"
             onClick={() => setOpen(false)}
             className="mt-2 px-5 py-2 rounded-full text-sm font-semibold text-center text-primary-foreground bg-gradient-to-r from-primary to-secondary"
           >

@@ -5,6 +5,7 @@ import FloatingActions from "@/components/FloatingActions";
 import MobileBottomNav from "@/components/MobileBottomNav";
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/sections/HeroSection";
+import ProductsSection from "@/components/sections/ProductsSection";
 import AboutSection from "@/components/sections/AboutSection";
 import ServicesSection from "@/components/sections/ServicesSection";
 import ProjectsSection from "@/components/sections/ProjectsSection";
@@ -35,7 +36,8 @@ const Index = () => {
             <HeroSection />
             <div className="section-bg"><AboutSection /></div>
             <div className="section-bg-alt"><ServicesSection /></div>
-            <div className="section-bg"><WhyKliviqSection /></div>
+            <div className="section-bg"><ProductsSection /></div>
+            <div className="section-bg-alt"><WhyKliviqSection /></div>
             <div className="section-bg-alt"><ProjectsSection /></div>
             <div className="section-bg"><TestimonialsSection /></div>
             <div className="section-bg"><ProcessSection /></div>

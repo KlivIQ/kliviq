@@ -1,0 +1,12 @@
+# KlivIQ Technologies
+
+> Boutique tech studio delivering AI implementation, fractional CTO services, and high-performance web/mobile/AI tools. India-based, globally positioned. Fixed pricing, delivery in weeks.
+
+KlivIQ helps businesses implement AI and build software. Services include AI integration (chatbots, automation, intelligent dashboards), fractional CTO engagements, web and mobile app development, and custom AI tools.
+
+## Pages
+
+- [Home](/): Services, work, pricing, FAQ, and contact for KlivIQ Technologies.
+- [ScopeSnap](/scopesnap): AI tool that turns a project brief into a complete scope of work, cost estimate, timeline, and tech stack.
+- [ClinicPing](/clinicping): AI-powered clinic management demo — appointment reminders, no-show prediction, patient communication.
+- [PitchDeck AI](/pitchdeck): Generates investor pitch decks from a business idea in English plus Hindi, Tamil, Telugu, Kannada, and Malayalam.

@@ -108,7 +108,7 @@ const ServicesSection = () => {
               </div>
               <h3 className="text-xl font-semibold mb-3 text-foreground">{s.title}</h3>
               <p className="text-muted-foreground leading-relaxed mb-5">{s.desc}</p>
-              <ul className="space-y-2 mt-auto">
+              <ul className="space-y-2 mb-6">
                 {s.bullets.map((b, j) => (
                   <li key={j} className="text-sm text-foreground/80 flex gap-2">
                     <span style={{ color: "#4ADE80" }}>→</span>
@@ -116,6 +116,14 @@ const ServicesSection = () => {
                   </li>
                 ))}
               </ul>
+              <Link
+                to={s.link}
+                className="mt-auto inline-flex items-center gap-1.5 text-sm font-semibold transition-colors hover:opacity-80"
+                style={{ color: "#4ADE80" }}
+                aria-label={`Learn more about ${s.linkLabel}`}
+              >
+                Learn more about {s.linkLabel} <ArrowRight className="w-4 h-4" />
+              </Link>
             </motion.div>
           ))}
         </div>

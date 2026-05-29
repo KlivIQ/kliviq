@@ -107,10 +107,10 @@ export default function ClinicPing() {
       <Helmet>
         <title>ClinicPing — AI-Powered Clinic Management | KlivIQ</title>
         <meta name="description" content="ClinicPing is an AI clinic management demo: appointment reminders, no-show prediction, and patient communication for Indian clinics." />
-        <link rel="canonical" href="https://kliviq.lovable.app/clinicping" />
+        <link rel="canonical" href="https://www.kliviq.com/clinicping" />
         <meta property="og:title" content="ClinicPing — AI-Powered Clinic Management" />
         <meta property="og:description" content="AI clinic management: appointment reminders, no-show prediction, and patient communication." />
-        <meta property="og:url" content="https://kliviq.lovable.app/clinicping" />
+        <meta property="og:url" content="https://www.kliviq.com/clinicping" />
         <meta property="og:type" content="website" />
         <script type="application/ld+json">{JSON.stringify({
           "@context": "https://schema.org",

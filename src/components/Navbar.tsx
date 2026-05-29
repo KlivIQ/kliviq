@@ -206,6 +206,31 @@ const Navbar = () => {
               {link.label}
             </a>
           ))}
+
+          {/* Mobile resources nested */}
+          <div>
+            <button
+              className="w-full flex items-center justify-between text-foreground/80 hover:text-foreground transition-colors"
+              onClick={() => setMobileResourcesOpen((s) => !s)}
+              aria-expanded={mobileResourcesOpen}
+            >
+              <span>Resources</span>
+              <ChevronDown
+                className={`w-4 h-4 transition-transform ${mobileResourcesOpen ? "rotate-180" : ""}`}
+              />
+            </button>
+            {mobileResourcesOpen && (
+              <div className="mt-3 ml-3 pl-3 border-l border-foreground/15 flex flex-col gap-3">
+                <Link
+                  to="/glossary"
+                  onClick={() => setOpen(false)}
+                  className="text-sm text-foreground/75 hover:text-foreground transition-colors"
+                >
+                  Glossary
+                </Link>
+              </div>
+            )}
+          </div>
           <a
             href="/#contact"
             onClick={() => setOpen(false)}

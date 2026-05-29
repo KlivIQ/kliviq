@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
-import { Sparkles, Compass, Layers, Zap } from "lucide-react";
+import { Sparkles, Compass, Layers, Zap, ArrowRight } from "lucide-react";
 
 const services = [
   {

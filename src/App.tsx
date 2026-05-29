@@ -9,6 +9,8 @@ import ScopeSnap from "./pages/ScopeSnap";
 import ClinicPing from "./pages/ClinicPing";
 import PitchDeckAI from "./pages/PitchDeckAI";
 import ServicePage from "./pages/ServicePage";
+import GlossaryIndex from "./pages/GlossaryIndex";
+import GlossaryTerm from "./pages/GlossaryTerm";
 
 const queryClient = new QueryClient();
 
@@ -25,6 +27,8 @@ const App = () => (
           <Route path="/clinicping" element={<ClinicPing />} />
           <Route path="/pitchdeck" element={<PitchDeckAI />} />
           <Route path="/services/:slug" element={<ServicePage />} />
+          <Route path="/glossary" element={<GlossaryIndex />} />
+          <Route path="/glossary/:slug" element={<GlossaryTerm />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

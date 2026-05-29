@@ -45,4 +45,19 @@
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+  <url>
+    <loc>https://kliviq.lovable.app/glossary</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url><loc>https://kliviq.lovable.app/glossary/fractional-cto</loc><priority>0.6</priority></url>
+  <url><loc>https://kliviq.lovable.app/glossary/ai-consulting</loc><priority>0.6</priority></url>
+  <url><loc>https://kliviq.lovable.app/glossary/ai-implementation</loc><priority>0.6</priority></url>
+  <url><loc>https://kliviq.lovable.app/glossary/mvp-development</loc><priority>0.6</priority></url>
+  <url><loc>https://kliviq.lovable.app/glossary/rag</loc><priority>0.6</priority></url>
+  <url><loc>https://kliviq.lovable.app/glossary/ai-strategy</loc><priority>0.6</priority></url>
+  <url><loc>https://kliviq.lovable.app/glossary/llm</loc><priority>0.6</priority></url>
+  <url><loc>https://kliviq.lovable.app/glossary/workflow-automation</loc><priority>0.6</priority></url>
+  <url><loc>https://kliviq.lovable.app/glossary/custom-software-development</loc><priority>0.6</priority></url>
+  <url><loc>https://kliviq.lovable.app/glossary/digital-transformation</loc><priority>0.6</priority></url>
 </urlset>

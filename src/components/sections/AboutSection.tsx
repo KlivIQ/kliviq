@@ -93,7 +93,7 @@ const AboutSection = () => {
           />
           <div className="text-center sm:text-left">
             <p className="text-xs uppercase tracking-widest text-secondary mb-1">
-              Meet the Founder
+              Meet the Co-Founder
             </p>
             <h3 className="text-xl md:text-2xl font-bold text-foreground">
               Sriram Ramkumar

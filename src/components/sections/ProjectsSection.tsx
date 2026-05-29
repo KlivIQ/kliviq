@@ -99,13 +99,6 @@ type StatCard = {
 
 const statCards: StatCard[] = [
   {
-    title: "Faco",
-    tag: "Brand & Web Platform · Live",
-    description: "Brand identity and web platform for a growing D2C business.",
-    cta: { label: "View Project →", href: "https://faco-site.lovable.app" },
-    accent: "secondary",
-  },
-  {
     title: "2 Projects In Delivery",
     tag: "AI Implementation · In Progress",
     description: "Client case studies dropping Q3 2026.",

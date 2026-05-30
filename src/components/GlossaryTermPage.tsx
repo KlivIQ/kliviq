@@ -12,7 +12,7 @@ import {
 } from "@/components/ui/accordion";
 import type { GlossaryTerm } from "@/data/glossary";
 
-const SITE = "https://kliviq.lovable.app";
+const SITE = "https://www.kliviq.com";
 
 const GlossaryTermPage = ({ term }: { term: GlossaryTerm }) => {
   const canonical = `${SITE}${term.path}`;

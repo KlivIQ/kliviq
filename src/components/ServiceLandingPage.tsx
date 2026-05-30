@@ -12,7 +12,7 @@ import {
 } from "@/components/ui/accordion";
 import type { ServiceLandingContent } from "@/data/serviceLandingPages";
 
-const SITE = "https://kliviq.lovable.app";
+const SITE = "https://www.kliviq.com";
 
 interface Props {
   content: ServiceLandingContent;

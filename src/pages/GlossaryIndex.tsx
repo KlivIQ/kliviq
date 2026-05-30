@@ -6,7 +6,7 @@ import Navbar from "@/components/Navbar";
 import FooterSection from "@/components/sections/FooterSection";
 import { glossaryTerms } from "@/data/glossary";
 
-const SITE = "https://kliviq.lovable.app";
+const SITE = "https://www.kliviq.com";
 
 const GlossaryIndex = () => {
   const canonical = `${SITE}/glossary`;

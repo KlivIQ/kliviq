@@ -61,7 +61,7 @@ const HeroSection = () => {
             Implement AI in My Business →
           </a>
           <a
-            href="https://calendly.com/"
+            href="https://calendly.com/kliviq-tech"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-block px-8 py-4 rounded-full font-semibold text-foreground border border-border/60 glass hover:border-secondary/60 transition-colors"

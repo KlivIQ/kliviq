@@ -20,9 +20,9 @@ export const glossaryTerms: GlossaryTerm[] = [
     term: "Fractional CTO",
     h1: "What Is a Fractional CTO?",
     shortDef: "A part-time senior technology leader who provides full CTO value without the full-time cost.",
-    metaTitle: "What Is a Fractional CTO? | KlivIQ Glossary",
+    metaTitle: "What Is a Fractional CTO? Definition, Role & Cost | KlivIQ",
     metaDescription:
-      "A fractional CTO is a senior tech leader working part-time with a company. Learn what they do, when to hire one, and how KlivIQ delivers fractional CTO services.",
+      "A Fractional CTO is a senior tech leader working part-time on retainer. Learn when you need one and what they do.",
     definition: [
       "A fractional CTO is a senior technology leader who works with a company on a part-time or project basis — typically 10–20 hours per week on a monthly retainer. They provide the same strategic value as a full-time CTO (technology roadmap, architecture decisions, team leadership, vendor selection) without the full-time cost or commitment.",
       "The model is common in early-stage startups, growing SMEs, and businesses going through digital transformation who need senior tech leadership but aren't ready to hire full-time. A fractional CTO typically sets the technical vision, owns critical architecture decisions, hires and mentors engineers, and translates between business goals and engineering execution.",
@@ -48,9 +48,9 @@ export const glossaryTerms: GlossaryTerm[] = [
     term: "AI Consulting",
     h1: "What Is AI Consulting?",
     shortDef: "Helping businesses identify, plan, and implement AI solutions that create measurable business value.",
-    metaTitle: "What Is AI Consulting? | KlivIQ Glossary",
+    metaTitle: "What Is AI Consulting? Definition & How It Works | KlivIQ",
     metaDescription:
-      "AI consulting helps businesses find and ship high-ROI AI use cases. Learn what AI consultants do and how KlivIQ delivers working systems, not slide decks.",
+      "AI consulting helps businesses identify, plan, and implement AI. Learn what AI consultants do and how to choose one.",
     definition: [
       "AI consulting is the practice of helping businesses identify, plan, and implement artificial intelligence solutions that create measurable business value. Unlike general IT consulting, AI consulting focuses on finding high-ROI use cases for AI — automating repetitive processes, improving decision-making with data, building intelligent customer experiences — and then executing them.",
       "The best AI consultants don't just advise: they build and ship the solution. The outcome is a working AI system, not a strategy deck. A good engagement starts with a discovery phase to map operations, identifies two or three high-leverage opportunities, then moves directly into implementation.",
@@ -76,9 +76,9 @@ export const glossaryTerms: GlossaryTerm[] = [
     term: "AI Implementation",
     h1: "What Is AI Implementation?",
     shortDef: "Turning an AI strategy into working software running inside a real business.",
-    metaTitle: "What Is AI Implementation? | KlivIQ Glossary",
+    metaTitle: "What Is AI Implementation? Steps & Best Practices | KlivIQ",
     metaDescription:
-      "AI implementation is where strategy becomes working software. Learn what it involves and how KlivIQ ships production AI systems for SMEs and startups.",
+      "AI implementation is the process of deploying AI tools into your business workflows. Learn what it involves.",
     definition: [
       "AI implementation is the process of taking an AI strategy and turning it into working software running inside a real business. It covers everything from selecting the right AI model (OpenAI, Gemini, Claude, open-source) to building the integration, training the system on business data, testing it, and deploying it into production.",
       "Implementation is where most AI projects fail — the strategy is clear, but the execution stalls. Common blockers include messy data, missing integrations, unclear success metrics, and underestimated engineering effort. A proper implementation partner handles the full build, not just the plan.",
@@ -104,9 +104,9 @@ export const glossaryTerms: GlossaryTerm[] = [
     term: "MVP Development",
     h1: "What Is MVP Development?",
     shortDef: "Building the simplest version of a product that can be shipped and tested with real users.",
-    metaTitle: "What Is MVP Development? | KlivIQ Glossary",
+    metaTitle: "What Is MVP Development? Definition & Process | KlivIQ",
     metaDescription:
-      "MVP development is the practice of shipping the simplest viable product to learn fast. Learn what makes a good MVP and how KlivIQ builds them in weeks.",
+      "An MVP is the smallest functional product that validates your core assumption. Learn how MVP development works.",
     definition: [
       "MVP stands for Minimum Viable Product — the simplest version of a product that can be built, shipped, and tested with real users. MVP development is the practice of scoping only the core features needed to validate an idea, building them to production quality, and launching fast.",
       "A good MVP is not a prototype or a demo — it is a live, working product that real users can use. The goal is speed to market and learning, not perfection. The features cut from version one are just as important as the ones kept.",
@@ -132,9 +132,9 @@ export const glossaryTerms: GlossaryTerm[] = [
     term: "RAG (Retrieval-Augmented Generation)",
     h1: "What Is RAG (Retrieval-Augmented Generation)?",
     shortDef: "A technique that improves AI chatbots by connecting them to your own business data.",
-    metaTitle: "What Is RAG (Retrieval-Augmented Generation)? | KlivIQ Glossary",
+    metaTitle: "What Is RAG? Retrieval-Augmented Generation Explained | KlivIQ",
     metaDescription:
-      "RAG connects AI chatbots to your business data for accurate, specific answers. Learn how RAG works and how KlivIQ uses it in production AI systems.",
+      "RAG gives AI models access to your documents at inference time. Learn how Retrieval-Augmented Generation works.",
     definition: [
       "RAG stands for Retrieval-Augmented Generation — a technique that improves AI chatbots and assistants by connecting them to your own business data. Instead of answering only from general training data, a RAG system searches a knowledge base (your documents, manuals, support tickets, product catalogue) and uses that information to generate accurate, specific answers.",
       "RAG is what makes a generic AI chatbot into an intelligent business tool. It powers customer support bots, internal knowledge assistants, and document Q&A systems. A well-built RAG pipeline indexes your content, retrieves the most relevant chunks for each question, and passes them to an LLM that composes the final answer.",
@@ -160,9 +160,9 @@ export const glossaryTerms: GlossaryTerm[] = [
     term: "AI Strategy",
     h1: "What Is AI Strategy?",
     shortDef: "A plan that defines how a business will adopt and use AI to achieve specific goals.",
-    metaTitle: "What Is AI Strategy? | KlivIQ Glossary",
+    metaTitle: "What Is an AI Strategy? Definition & Components | KlivIQ",
     metaDescription:
-      "An AI strategy maps the highest-ROI AI use cases to business goals. Learn what a good AI strategy includes and how KlivIQ delivers one in weeks.",
+      "An AI strategy defines how your organisation will adopt and govern AI. Learn what a good AI strategy includes.",
     definition: [
       "An AI strategy is a plan that defines how a business will adopt and use artificial intelligence to achieve specific goals — reducing costs, improving customer experience, automating operations, or creating new revenue streams.",
       "A good AI strategy identifies the highest-ROI use cases first, defines the tools and models to use, maps the implementation timeline, and measures success with clear KPIs. It also covers data readiness, build-vs-buy decisions, vendor selection, and the team structure needed to execute.",
@@ -188,9 +188,9 @@ export const glossaryTerms: GlossaryTerm[] = [
     term: "LLM (Large Language Model)",
     h1: "What Is an LLM (Large Language Model)?",
     shortDef: "An AI trained on vast text data that can understand and generate human language.",
-    metaTitle: "What Is an LLM (Large Language Model)? | KlivIQ Glossary",
+    metaTitle: "What Is an LLM? Large Language Models Explained | KlivIQ",
     metaDescription:
-      "LLMs power tools like ChatGPT, Gemini, and Claude. Learn what large language models are, how businesses use them, and how KlivIQ builds on top of them.",
+      "LLMs are AI models trained on text to understand and generate language. Learn how GPT-4, Claude, and Gemini work.",
     definition: [
       "A Large Language Model (LLM) is a type of AI trained on vast amounts of text data that can understand and generate human language. LLMs power tools like ChatGPT, Google Gemini, and Anthropic Claude.",
       "Businesses use LLMs to build chatbots, automate document processing, generate content, analyse customer feedback, and power internal knowledge tools. LLMs are the engine — the product your business uses is built on top of them, customised for your specific data and use case.",
@@ -216,9 +216,9 @@ export const glossaryTerms: GlossaryTerm[] = [
     term: "Workflow Automation",
     h1: "What Is Workflow Automation?",
     shortDef: "Using technology to perform repetitive business tasks without human involvement.",
-    metaTitle: "What Is Workflow Automation? | KlivIQ Glossary",
+    metaTitle: "What Is Workflow Automation? Definition & AI Use Cases | KlivIQ",
     metaDescription:
-      "Workflow automation removes repetitive manual work using tools like n8n, Zapier, and custom AI integrations. Learn how KlivIQ ships automation that scales.",
+      "Workflow automation removes manual tasks from business processes. Learn how AI makes it smarter.",
     definition: [
       "Workflow automation is the use of technology to perform repetitive business tasks without human involvement — sending emails, updating records, generating reports, processing data, routing approvals.",
       "With AI, workflow automation goes further: it can handle tasks that require judgment, like reading a document, extracting key information, and deciding what to do next. Tools like n8n, Zapier, and custom integrations are common building blocks.",
@@ -244,9 +244,9 @@ export const glossaryTerms: GlossaryTerm[] = [
     term: "Custom Software Development",
     h1: "What Is Custom Software Development?",
     shortDef: "Building software designed specifically for one business's requirements instead of buying off-the-shelf.",
-    metaTitle: "What Is Custom Software Development? | KlivIQ Glossary",
+    metaTitle: "What Is Custom Software Development? | KlivIQ",
     metaDescription:
-      "Custom software fits your exact workflow and scales with your business. Learn when custom development makes sense and how KlivIQ delivers it.",
+      "Custom software is built to your exact requirements. Learn when it beats off-the-shelf and how the process works.",
     definition: [
       "Custom software development is building a software application designed specifically for one business's requirements — rather than buying an off-the-shelf product. Custom software fits the exact workflow, integrates with existing tools, and scales as the business grows.",
       "The trade-off versus ready-made software is higher upfront cost but better long-term fit. Businesses choose custom development when no existing product solves their problem, when they need a competitive advantage, or when they're building a product to sell to others.",
@@ -272,9 +272,9 @@ export const glossaryTerms: GlossaryTerm[] = [
     term: "Digital Transformation",
     h1: "What Is Digital Transformation?",
     shortDef: "Integrating digital technology into all areas of a business to fundamentally change how it operates.",
-    metaTitle: "What Is Digital Transformation? | KlivIQ Glossary",
+    metaTitle: "What Is Digital Transformation? Definition & Examples | KlivIQ",
     metaDescription:
-      "Digital transformation modernises how a business operates — from cloud and software to AI. Learn what it involves and how KlivIQ leads it for SMEs.",
+      "Digital transformation is how businesses integrate technology to change how they operate. Learn what it involves.",
     definition: [
       "Digital transformation is the process of integrating digital technology into all areas of a business — fundamentally changing how it operates and delivers value.",
       "For Indian SMEs in 2026, this usually means moving from manual or paper-based processes to software, adopting cloud tools, building an online presence, and increasingly using AI to automate and improve operations.",

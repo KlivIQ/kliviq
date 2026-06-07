@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Head as Helmet } from "vite-react-ssg";
 import LoadingScreen from "@/components/LoadingScreen";
 import CustomCursor from "@/components/CustomCursor";
 import FloatingActions from "@/components/FloatingActions";
@@ -47,6 +48,15 @@ const Index = () => {
 
   return (
     <>
+      <Helmet>
+        <title>KlivIQ | AI Consulting & Fractional CTO — India & Global</title>
+        <meta name="description" content="KlivIQ helps businesses adopt AI and build high-performance software. AI consulting that actually ships, fractional CTO services, web, mobile, and AI tools. Delivered in weeks, not months." />
+        <link rel="canonical" href="https://www.kliviq.com/" />
+        <meta property="og:title" content="KlivIQ | AI Consulting & Fractional CTO — India & Global" />
+        <meta property="og:description" content="KlivIQ helps businesses adopt AI and build high-performance software. AI consulting that actually ships, fractional CTO services, web, mobile, and AI tools. Delivered in weeks, not months." />
+        <meta property="og:url" content="https://www.kliviq.com/" />
+        <meta property="og:type" content="website" />
+      </Helmet>
       <LoadingScreen isLoading={isLoading} />
       <CustomCursor />
       {!isLoading && (

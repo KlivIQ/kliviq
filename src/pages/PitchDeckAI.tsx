@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Helmet } from "react-helmet-async";
+import { Head as Helmet } from "vite-react-ssg";
 
 const API = "https://api.anthropic.com/v1/messages";
 const langNames: Record<string, string> = { en: "English", hi: "Hindi", ta: "Tamil", te: "Telugu", kn: "Kannada", ml: "Malayalam" };
@@ -123,11 +123,11 @@ Return ONLY valid JSON (no markdown, no backticks):
       </nav>
 
       <Helmet>
-        <title>PitchDeck AI — Multilingual Investor Pitch Decks | KlivIQ</title>
-        <meta name="description" content="Generate a 10-slide investor pitch deck in English plus Hindi, Tamil, Telugu, Kannada, and Malayalam — with talking points for every slide." />
+        <title>PitchDeck — AI Pitch Deck Builder | KlivIQ</title>
+        <meta name="description" content="Create investor-ready pitch decks in minutes. AI-assisted, founder-focused, structured for fundraising." />
         <link rel="canonical" href="https://www.kliviq.com/pitchdeck" />
-        <meta property="og:title" content="PitchDeck AI — Multilingual Investor Pitch Decks" />
-        <meta property="og:description" content="Investor-grade 10-slide pitch decks in English and 5 Indian languages." />
+        <meta property="og:title" content="PitchDeck — AI Pitch Deck Builder | KlivIQ" />
+        <meta property="og:description" content="Create investor-ready pitch decks in minutes. AI-assisted, founder-focused, structured for fundraising." />
         <meta property="og:url" content="https://www.kliviq.com/pitchdeck" />
         <meta property="og:type" content="website" />
         <script type="application/ld+json">{JSON.stringify({

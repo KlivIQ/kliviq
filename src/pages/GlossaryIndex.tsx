@@ -1,4 +1,4 @@
-import { Helmet } from "react-helmet-async";
+import { Head as Helmet } from "vite-react-ssg";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowRight, ChevronRight } from "lucide-react";
@@ -10,9 +10,9 @@ const SITE = "https://www.kliviq.com";
 
 const GlossaryIndex = () => {
   const canonical = `${SITE}/glossary`;
-  const title = "AI & Software Glossary | KlivIQ";
+  const title = "AI & Tech Glossary | KlivIQ";
   const description =
-    "Plain-English definitions of AI, software, and digital transformation terms — written by senior engineers for business leaders.";
+    "Plain-English definitions of AI, software, and startup terms — written by the team that builds with them.";
 
   const breadcrumbSchema = {
     "@context": "https://schema.org",

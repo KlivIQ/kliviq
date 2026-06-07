@@ -1,4 +1,4 @@
-import { Helmet } from "react-helmet-async";
+import { Head as Helmet } from "vite-react-ssg";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ChevronRight, ArrowRight } from "lucide-react";

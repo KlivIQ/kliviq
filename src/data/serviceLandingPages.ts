@@ -20,9 +20,9 @@ export const serviceLandingPages: ServiceLandingContent[] = [
     slug: "ai-consulting",
     path: "/services/ai-consulting",
     navLabel: "AI Consulting",
-    metaTitle: "AI Consulting Services for SMEs in India | KlivIQ",
+    metaTitle: "AI Consulting Services | KlivIQ",
     metaDescription:
-      "AI consulting for Indian SMEs and global teams. We turn AI from buzzword to working systems — delivered in weeks, not months.",
+      "AI consulting that actually ships. KlivIQ identifies where AI creates value in your business, then builds and integrates the tools.",
     eyebrow: "AI Consulting",
     h1: "AI Consulting Services Built for Small & Medium Businesses",
     intro:
@@ -93,9 +93,9 @@ export const serviceLandingPages: ServiceLandingContent[] = [
     slug: "fractional-cto",
     path: "/services/fractional-cto",
     navLabel: "Fractional CTO",
-    metaTitle: "Fractional CTO Services in India & Globally | KlivIQ",
+    metaTitle: "Fractional CTO Services for Startups & Scaleups | KlivIQ",
     metaDescription:
-      "Hire a fractional CTO with 20+ years of enterprise tech leadership. Strategy, architecture, and team guidance — without a full-time salary.",
+      "Senior tech leadership, part-time. KlivIQ Fractional CTO: strategy and build, 10-20 hrs/week, India & Global.",
     eyebrow: "Fractional CTO",
     h1: "Fractional CTO Services — Senior Tech Leadership On Demand",
     intro:
@@ -168,9 +168,9 @@ export const serviceLandingPages: ServiceLandingContent[] = [
     slug: "ai-strategy",
     path: "/services/ai-strategy",
     navLabel: "AI Strategy",
-    metaTitle: "AI Strategy Consulting for SMEs | KlivIQ",
+    metaTitle: "AI Strategy Consulting | KlivIQ",
     metaDescription:
-      "Don't know where to start with AI? We map the high-ROI use cases in your business and give you a clear roadmap to implement them.",
+      "Build a clear AI adoption roadmap. KlivIQ identifies your highest-value AI use cases and creates a plan your team can execute.",
     eyebrow: "AI Strategy",
     h1: "AI Strategy Consulting — From \"Where Do We Start?\" to a Plan",
     intro:
@@ -242,9 +242,9 @@ export const serviceLandingPages: ServiceLandingContent[] = [
     slug: "custom-app-development",
     path: "/services/custom-app-development",
     navLabel: "Custom App Development",
-    metaTitle: "Custom App Development Services India | KlivIQ",
+    metaTitle: "Custom App Development | KlivIQ",
     metaDescription:
-      "Custom web and mobile apps engineered by senior architects. Fixed scope, fixed price, delivered in weeks — for SMEs ready to scale.",
+      "Web, mobile, and AI-powered apps built to spec. React, Next.js, Flutter. Fixed price, delivered in weeks.",
     eyebrow: "Custom App Development",
     h1: "Custom Application Development for Growing Businesses",
     intro:
@@ -317,9 +317,9 @@ export const serviceLandingPages: ServiceLandingContent[] = [
     slug: "mvp-development",
     path: "/services/mvp-development",
     navLabel: "MVP Development",
-    metaTitle: "MVP Development for AI-First Startups | KlivIQ",
+    metaTitle: "MVP Development for Startups | KlivIQ",
     metaDescription:
-      "Ship your AI MVP in 4–8 weeks. Fixed scope, senior engineers, production-grade from day one. Built for founders ready to launch.",
+      "Go from idea to working product in weeks. KlivIQ builds lean, deployable MVPs for founders and startups.",
     eyebrow: "MVP Development",
     h1: "MVP Development — Launch Your AI Product in Weeks",
     intro:

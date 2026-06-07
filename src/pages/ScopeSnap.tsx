@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Helmet } from "react-helmet-async";
+import { Head as Helmet } from "vite-react-ssg";
 
 const ANTHROPIC_API = "https://api.anthropic.com/v1/messages";
 

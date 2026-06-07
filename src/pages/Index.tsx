@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Helmet } from "react-helmet-async";
+import { Head as Helmet } from "vite-react-ssg";
 import LoadingScreen from "@/components/LoadingScreen";
 import CustomCursor from "@/components/CustomCursor";
 import FloatingActions from "@/components/FloatingActions";

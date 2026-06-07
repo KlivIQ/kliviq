@@ -116,6 +116,21 @@ const ServiceLandingPage = ({ content }: Props) => {
         <script type="application/ld+json">{JSON.stringify(breadcrumbSchema)}</script>
       </Helmet>
       {serviceSchemas[content.slug] && <JsonLd data={serviceSchemas[content.slug]} />}
+      <JsonLd data={{
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "author": {
+          "@type": "Person",
+          "name": "Sriram Ramkumar",
+          "jobTitle": "Founder & Fractional CTO, KlivIQ",
+          "url": "https://www.linkedin.com/in/sriram79"
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": "KlivIQ",
+          "url": "https://www.kliviq.com"
+        }
+      }} />
 
       <Navbar />
 

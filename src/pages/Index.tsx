@@ -65,7 +65,7 @@ const Index = () => {
         "url": "https://www.kliviq.com/",
         "logo": "https://www.kliviq.com/kliviq-og.png",
         "description": "KlivIQ helps businesses adopt AI and build high-performance software. AI consulting that actually ships, fractional CTO services, web, mobile, and AI tools.",
-        "sameAs": ["https://twitter.com/kliviq", "https://www.linkedin.com/company/kliviq"]
+        "sameAs": ["https://twitter.com/kliviq", "https://www.linkedin.com/company/117713997"]
       }} />
       <JsonLd data={{
         "@context": "https://schema.org",

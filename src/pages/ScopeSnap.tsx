@@ -110,11 +110,11 @@ Be specific, practical, India-market aware. 5-7 phases, 6-10 timeline items, rea
       </nav>
 
       <Helmet>
-        <title>ScopeSnap — Instant Project Scope & Cost Estimator | KlivIQ</title>
-        <meta name="description" content="ScopeSnap turns any project brief into a full scope of work, cost estimate, timeline, and tech stack in seconds. Built by KlivIQ." />
+        <title>ScopeSnap — AI Project Scoping Tool | KlivIQ</title>
+        <meta name="description" content="Define project scope clearly and fast. Turn rough requirements into structured briefs that set projects up to deliver." />
         <link rel="canonical" href="https://www.kliviq.com/scopesnap" />
-        <meta property="og:title" content="ScopeSnap — Instant Project Scope & Cost Estimator" />
-        <meta property="og:description" content="Generate a complete scope, cost, timeline, and tech stack from any project brief." />
+        <meta property="og:title" content="ScopeSnap — AI Project Scoping Tool | KlivIQ" />
+        <meta property="og:description" content="Define project scope clearly and fast. Turn rough requirements into structured briefs that set projects up to deliver." />
         <meta property="og:url" content="https://www.kliviq.com/scopesnap" />
         <meta property="og:type" content="website" />
         <script type="application/ld+json">{JSON.stringify({

@@ -10,9 +10,9 @@ const SITE = "https://www.kliviq.com";
 
 const GlossaryIndex = () => {
   const canonical = `${SITE}/glossary`;
-  const title = "AI & Software Glossary | KlivIQ";
+  const title = "AI & Tech Glossary | KlivIQ";
   const description =
-    "Plain-English definitions of AI, software, and digital transformation terms — written by senior engineers for business leaders.";
+    "Plain-English definitions of AI, software, and startup terms — written by the team that builds with them.";
 
   const breadcrumbSchema = {
     "@context": "https://schema.org",

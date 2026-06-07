@@ -1,4 +1,5 @@
 export interface GlossaryFaq { q: string; a: string }
+export interface GlossarySection { heading: string; paragraphs: string[] }
 export interface GlossaryTerm {
   slug: string;
   path: string;
@@ -8,6 +9,7 @@ export interface GlossaryTerm {
   metaTitle: string;
   metaDescription: string;
   definition: string[];
+  body?: GlossarySection[];
   kliviqUse: string;
   kliviqLink: { label: string; path: string };
   faqs: GlossaryFaq[];

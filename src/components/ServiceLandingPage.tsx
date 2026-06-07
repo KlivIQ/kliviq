@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { ChevronRight, ArrowRight } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import FooterSection from "@/components/sections/FooterSection";
+import { JsonLd } from "@/components/JsonLd";
 import {
   Accordion,
   AccordionContent,
@@ -13,6 +14,64 @@ import {
 import type { ServiceLandingContent } from "@/data/serviceLandingPages";
 
 const SITE = "https://www.kliviq.com";
+
+const serviceSchemas: Record<string, object> = {
+  "ai-consulting": {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "AI Consulting",
+    "url": "https://www.kliviq.com/services/ai-consulting",
+    "provider": { "@type": "Organization", "name": "KlivIQ", "url": "https://www.kliviq.com" },
+    "serviceType": "AI Consulting",
+    "description": "KlivIQ analyses your business processes, identifies where AI creates the most value, then builds and integrates the tools — chatbots, automation workflows, intelligent dashboards — directly into how you work.",
+    "areaServed": [{ "@type": "Country", "name": "India" }, { "@type": "AdministrativeArea", "name": "Global" }],
+    "offers": {
+      "@type": "Offer",
+      "description": "Fixed-price AI consulting engagements.",
+      "priceSpecification": { "@type": "PriceSpecification", "priceCurrency": "INR" }
+    }
+  },
+  "fractional-cto": {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Fractional CTO",
+    "url": "https://www.kliviq.com/services/fractional-cto",
+    "provider": { "@type": "Organization", "name": "KlivIQ", "url": "https://www.kliviq.com" },
+    "serviceType": "Fractional CTO",
+    "description": "A senior technology leader who works with you part-time — typically 10 to 20 hours per week on retainer. Strategy and build — not just advise.",
+    "areaServed": [{ "@type": "Country", "name": "India" }, { "@type": "AdministrativeArea", "name": "Global" }]
+  },
+  "ai-strategy": {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "AI Strategy",
+    "url": "https://www.kliviq.com/services/ai-strategy",
+    "provider": { "@type": "Organization", "name": "KlivIQ", "url": "https://www.kliviq.com" },
+    "serviceType": "AI Strategy Consulting",
+    "description": "KlivIQ develops AI adoption roadmaps — identifying highest-value use cases, evaluating build vs. buy decisions, and creating an implementation plan that fits your team's capacity.",
+    "areaServed": [{ "@type": "Country", "name": "India" }, { "@type": "AdministrativeArea", "name": "Global" }]
+  },
+  "custom-app-development": {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Custom App Development",
+    "url": "https://www.kliviq.com/services/custom-app-development",
+    "provider": { "@type": "Organization", "name": "KlivIQ", "url": "https://www.kliviq.com" },
+    "serviceType": "Custom Software Development",
+    "description": "KlivIQ builds web apps, mobile apps, and AI-powered tools using React, Next.js, Flutter, and Python. Fixed price, delivered in weeks.",
+    "areaServed": [{ "@type": "Country", "name": "India" }, { "@type": "AdministrativeArea", "name": "Global" }]
+  },
+  "mvp-development": {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "MVP Development",
+    "url": "https://www.kliviq.com/services/mvp-development",
+    "provider": { "@type": "Organization", "name": "KlivIQ", "url": "https://www.kliviq.com" },
+    "serviceType": "MVP Development",
+    "description": "KlivIQ builds minimum viable products for startups and founders — functional, deployable, and investor-ready in weeks.",
+    "areaServed": [{ "@type": "Country", "name": "India" }, { "@type": "AdministrativeArea", "name": "Global" }]
+  }
+};
 
 interface Props {
   content: ServiceLandingContent;
@@ -56,6 +115,7 @@ const ServiceLandingPage = ({ content }: Props) => {
         <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
         <script type="application/ld+json">{JSON.stringify(breadcrumbSchema)}</script>
       </Helmet>
+      {serviceSchemas[content.slug] && <JsonLd data={serviceSchemas[content.slug]} />}
 
       <Navbar />
 

@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { ChevronRight, ArrowRight } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import FooterSection from "@/components/sections/FooterSection";
+import { JsonLd } from "@/components/JsonLd";
 import {
   Accordion,
   AccordionContent,
@@ -13,6 +14,81 @@ import {
 import type { GlossaryTerm } from "@/data/glossary";
 
 const SITE = "https://www.kliviq.com";
+
+const glossarySchemas: Record<string, object> = {
+  "fractional-cto": {
+    "@context": "https://schema.org", "@type": "DefinedTerm",
+    "name": "Fractional CTO",
+    "description": "A Fractional CTO is a senior technology leader who works with a company part-time — typically 10 to 20 hours per week on a monthly retainer — providing CTO-level strategy, architecture decisions, team guidance, and hands-on execution without the cost of a full-time hire.",
+    "inDefinedTermSet": { "@type": "DefinedTermSet", "name": "KlivIQ AI & Tech Glossary", "url": "https://www.kliviq.com/glossary" },
+    "url": "https://www.kliviq.com/glossary/fractional-cto"
+  },
+  "ai-consulting": {
+    "@context": "https://schema.org", "@type": "DefinedTerm",
+    "name": "AI Consulting",
+    "description": "AI consulting is the practice of helping businesses identify, plan, and implement artificial intelligence solutions. An AI consultant analyses existing processes, recommends where AI creates the most value, and builds or integrates the tools to make it happen.",
+    "inDefinedTermSet": { "@type": "DefinedTermSet", "name": "KlivIQ AI & Tech Glossary", "url": "https://www.kliviq.com/glossary" },
+    "url": "https://www.kliviq.com/glossary/ai-consulting"
+  },
+  "ai-implementation": {
+    "@context": "https://schema.org", "@type": "DefinedTerm",
+    "name": "AI Implementation",
+    "description": "AI implementation is the process of deploying artificial intelligence tools into a business's existing workflows — including integration with current software, staff training, and ongoing monitoring. It is the execution phase that follows AI strategy.",
+    "inDefinedTermSet": { "@type": "DefinedTermSet", "name": "KlivIQ AI & Tech Glossary", "url": "https://www.kliviq.com/glossary" },
+    "url": "https://www.kliviq.com/glossary/ai-implementation"
+  },
+  "mvp-development": {
+    "@context": "https://schema.org", "@type": "DefinedTerm",
+    "name": "MVP Development",
+    "description": "MVP (Minimum Viable Product) development is the process of building the smallest functional version of a product that delivers core value to early users and generates learning for the next iteration.",
+    "inDefinedTermSet": { "@type": "DefinedTermSet", "name": "KlivIQ AI & Tech Glossary", "url": "https://www.kliviq.com/glossary" },
+    "url": "https://www.kliviq.com/glossary/mvp-development"
+  },
+  "rag": {
+    "@context": "https://schema.org", "@type": "DefinedTerm",
+    "name": "RAG (Retrieval-Augmented Generation)",
+    "alternateName": "Retrieval-Augmented Generation",
+    "description": "RAG is an AI architecture pattern where a language model is given access to an external knowledge base at inference time. Instead of relying solely on its training data, the model retrieves relevant documents and uses them to generate more accurate, up-to-date responses.",
+    "inDefinedTermSet": { "@type": "DefinedTermSet", "name": "KlivIQ AI & Tech Glossary", "url": "https://www.kliviq.com/glossary" },
+    "url": "https://www.kliviq.com/glossary/rag"
+  },
+  "ai-strategy": {
+    "@context": "https://schema.org", "@type": "DefinedTerm",
+    "name": "AI Strategy",
+    "description": "An AI strategy is a structured plan that defines how an organisation will adopt, deploy, and govern artificial intelligence to achieve its business goals. It covers use case prioritisation, build-vs-buy decisions, data readiness, team capability, and success metrics.",
+    "inDefinedTermSet": { "@type": "DefinedTermSet", "name": "KlivIQ AI & Tech Glossary", "url": "https://www.kliviq.com/glossary" },
+    "url": "https://www.kliviq.com/glossary/ai-strategy"
+  },
+  "llm": {
+    "@context": "https://schema.org", "@type": "DefinedTerm",
+    "name": "LLM (Large Language Model)",
+    "alternateName": "Large Language Model",
+    "description": "A Large Language Model (LLM) is a type of AI model trained on vast amounts of text data to understand and generate human language. LLMs like GPT-4, Claude, and Gemini power chatbots, code generation, document summarisation, and content creation.",
+    "inDefinedTermSet": { "@type": "DefinedTermSet", "name": "KlivIQ AI & Tech Glossary", "url": "https://www.kliviq.com/glossary" },
+    "url": "https://www.kliviq.com/glossary/llm"
+  },
+  "workflow-automation": {
+    "@context": "https://schema.org", "@type": "DefinedTerm",
+    "name": "Workflow Automation",
+    "description": "Workflow automation is the use of software to perform repetitive business tasks with minimal human intervention. Modern AI-powered workflow automation uses LLMs and intelligent agents to handle variable, judgment-requiring tasks.",
+    "inDefinedTermSet": { "@type": "DefinedTermSet", "name": "KlivIQ AI & Tech Glossary", "url": "https://www.kliviq.com/glossary" },
+    "url": "https://www.kliviq.com/glossary/workflow-automation"
+  },
+  "custom-software-development": {
+    "@context": "https://schema.org", "@type": "DefinedTerm",
+    "name": "Custom Software Development",
+    "description": "Custom software development is the process of designing and building software specifically for a client's unique requirements, rather than using off-the-shelf solutions.",
+    "inDefinedTermSet": { "@type": "DefinedTermSet", "name": "KlivIQ AI & Tech Glossary", "url": "https://www.kliviq.com/glossary" },
+    "url": "https://www.kliviq.com/glossary/custom-software-development"
+  },
+  "digital-transformation": {
+    "@context": "https://schema.org", "@type": "DefinedTerm",
+    "name": "Digital Transformation",
+    "description": "Digital transformation is the process of integrating digital technology into all areas of a business to fundamentally change how it operates and delivers value to customers — including cloud infrastructure, process automation, and AI implementation.",
+    "inDefinedTermSet": { "@type": "DefinedTermSet", "name": "KlivIQ AI & Tech Glossary", "url": "https://www.kliviq.com/glossary" },
+    "url": "https://www.kliviq.com/glossary/digital-transformation"
+  }
+};
 
 const GlossaryTermPage = ({ term }: { term: GlossaryTerm }) => {
   const canonical = `${SITE}${term.path}`;
@@ -52,6 +128,7 @@ const GlossaryTermPage = ({ term }: { term: GlossaryTerm }) => {
         <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
         <script type="application/ld+json">{JSON.stringify(breadcrumbSchema)}</script>
       </Helmet>
+      {glossarySchemas[term.slug] && <JsonLd data={glossarySchemas[term.slug]} />}
 
       <Navbar />
 

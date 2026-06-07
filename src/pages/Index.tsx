@@ -18,7 +18,9 @@ import ContactSection from "@/components/sections/ContactSection";
 import FooterSection from "@/components/sections/FooterSection";
 
 const Index = () => {
-  const [isLoading, setIsLoading] = useState(() => !window.location.hash);
+  // SSR-safe: render content immediately. Loading screen is skipped on
+  // statically-rendered pages so crawlers and first-paint see real HTML.
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     if (!isLoading) return;

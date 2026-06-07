@@ -136,6 +136,14 @@ export const glossaryTerms: GlossaryTerm[] = [
       "A good MVP is not a prototype or a demo — it is a live, working product that real users can use. The goal is speed to market and learning, not perfection. The features cut from version one are just as important as the ones kept.",
       "Most MVPs take 4–8 weeks to build with the right team and clear scope. Beyond that, you're usually building features the market hasn't asked for yet. The discipline is in shipping early, listening, and iterating with real data instead of opinions.",
     ],
+    body: [
+      { heading: "One-line definition", paragraphs: ["An MVP — Minimum Viable Product — is the smallest functional version of a product that delivers core value to real users and generates enough learning to decide what to build next. MVP development is the process of building it."] },
+      { heading: "What minimum viable actually means", paragraphs: ["The word minimum is frequently misunderstood. An MVP is not a prototype. It is not a mock-up. It is not half a product. It is a complete, working product — just scoped to the single most important thing it needs to do.", "The viable part matters as much as the minimum part. A viable product works reliably, looks credible enough that real users will trust it, and does its core job without critical failures."] },
+      { heading: "What an MVP is for", paragraphs: ["An MVP exists to answer a question. Before building an MVP, the question should be explicit: Will users pay for this? Can we acquire users through this channel at a viable cost? Does this workflow save the time we think it will? Is this technically feasible at the quality level we need? If the question is not defined before the build begins, the MVP will produce no useful learning."] },
+      { heading: "What is typically in an MVP", paragraphs: ["Included: the single core user flow, authentication, basic error handling and reliability, enough design to be credible.", "Excluded: secondary features that are nice to have, admin dashboards and internal tooling, deep third-party integrations, mobile apps (ship web first unless mobile is the core value)."] },
+      { heading: "How long does MVP development take", paragraphs: ["A well-scoped MVP with a focused team takes 4–8 weeks. Longer timelines usually indicate scope creep — features being added before the core is proven."] },
+      { heading: "How KlivIQ builds MVPs", paragraphs: ["KlivIQ builds lean, deployable MVPs for founders and startups using AI-assisted development and focused sprints. Most projects deliver a live product in 2–6 weeks. Fixed price, no surprises."] },
+    ],
     kliviqUse:
       "KlivIQ ships production-quality MVPs in 4–8 weeks. We scope ruthlessly, design clean architecture from day one, and launch live products — not prototypes.",
     kliviqLink: { label: "Explore our MVP Development service", path: "/services/mvp-development" },

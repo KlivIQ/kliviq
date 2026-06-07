@@ -167,6 +167,25 @@ const GlossaryTermPage = ({ term }: { term: GlossaryTerm }) => {
             ))}
           </article>
 
+          {term.body && term.body.length > 0 && (
+            <article className="space-y-10 mb-16">
+              {term.body.map((section, i) => (
+                <section key={i}>
+                  <h2 className="text-2xl md:text-3xl font-semibold mb-4 text-foreground">
+                    {section.heading}
+                  </h2>
+                  <div className="space-y-4">
+                    {section.paragraphs.map((p, j) => (
+                      <p key={j} className="text-muted-foreground leading-relaxed text-base md:text-lg">
+                        {p}
+                      </p>
+                    ))}
+                  </div>
+                </section>
+              ))}
+            </article>
+          )}
+
           <section className="glass rounded-2xl p-7 md:p-9 mb-16">
             <p className="text-sm uppercase tracking-widest mb-3" style={{ color: "#4ADE80" }}>
               How KlivIQ uses this

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Head as Helmet } from "vite-react-ssg";
+import { JsonLd } from "@/components/JsonLd";
 
 const ANTHROPIC_API = "https://api.anthropic.com/v1/messages";
 
@@ -117,16 +118,17 @@ Be specific, practical, India-market aware. 5-7 phases, 6-10 timeline items, rea
         <meta property="og:description" content="Define project scope clearly and fast. Turn rough requirements into structured briefs that set projects up to deliver." />
         <meta property="og:url" content="https://www.kliviq.com/scopesnap" />
         <meta property="og:type" content="website" />
-        <script type="application/ld+json">{JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "SoftwareApplication",
-          "name": "ScopeSnap",
-          "description": "AI tool that turns a project brief into a full scope of work, cost estimate, timeline, and tech stack.",
-          "applicationCategory": "BusinessApplication",
-          "operatingSystem": "Web",
-          "offers": { "@type": "Offer", "price": "0", "priceCurrency": "INR" }
-        })}</script>
       </Helmet>
+      <JsonLd data={{
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "ScopeSnap",
+        "url": "https://www.kliviq.com/scopesnap",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "Web",
+        "provider": { "@type": "Organization", "name": "KlivIQ", "url": "https://www.kliviq.com" },
+        "description": "ScopeSnap helps teams define project scope clearly and fast — turning rough requirements into structured briefs that reduce back-and-forth."
+      }} />
       <div style={{ maxWidth: 860, margin: "0 auto", padding: "32px 20px 80px" }}>
         {/* HERO */}
         <div style={{ marginBottom: 32 }}>

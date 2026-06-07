@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Head as Helmet } from "vite-react-ssg";
+import { JsonLd } from "@/components/JsonLd";
 
 const API = "https://api.anthropic.com/v1/messages";
 const langNames: Record<string, string> = { en: "English", hi: "Hindi", ta: "Tamil", te: "Telugu", kn: "Kannada", ml: "Malayalam" };
@@ -130,16 +131,17 @@ Return ONLY valid JSON (no markdown, no backticks):
         <meta property="og:description" content="Create investor-ready pitch decks in minutes. AI-assisted, founder-focused, structured for fundraising." />
         <meta property="og:url" content="https://www.kliviq.com/pitchdeck" />
         <meta property="og:type" content="website" />
-        <script type="application/ld+json">{JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "SoftwareApplication",
-          "name": "PitchDeck AI",
-          "description": "Generates investor-grade pitch decks from a business idea in English plus Hindi, Tamil, Telugu, Kannada, and Malayalam.",
-          "applicationCategory": "BusinessApplication",
-          "operatingSystem": "Web",
-          "offers": { "@type": "Offer", "price": "0", "priceCurrency": "INR" }
-        })}</script>
       </Helmet>
+      <JsonLd data={{
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "PitchDeck",
+        "url": "https://www.kliviq.com/pitchdeck",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "Web",
+        "provider": { "@type": "Organization", "name": "KlivIQ", "url": "https://www.kliviq.com" },
+        "description": "KlivIQ PitchDeck is an AI-assisted tool for founders to create investor-ready pitch decks quickly."
+      }} />
       <div style={{ maxWidth: 940, margin: "0 auto", padding: "36px 20px 80px" }}>
         {/* HERO */}
         <div style={{ textAlign: "center" as const, marginBottom: 36 }}>

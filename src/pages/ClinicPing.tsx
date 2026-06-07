@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Head as Helmet } from "vite-react-ssg";
+import { JsonLd } from "@/components/JsonLd";
 
 const API = "https://api.anthropic.com/v1/messages";
 type Tab = "appt" | "patients" | "comms";
@@ -112,16 +113,17 @@ export default function ClinicPing() {
         <meta property="og:description" content="AI-powered appointment management and patient communication for healthcare providers." />
         <meta property="og:url" content="https://www.kliviq.com/clinicping" />
         <meta property="og:type" content="website" />
-        <script type="application/ld+json">{JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "SoftwareApplication",
-          "name": "ClinicPing",
-          "description": "AI-powered clinic management: appointment reminders, no-show prediction, patient communication.",
-          "applicationCategory": "HealthApplication",
-          "operatingSystem": "Web",
-          "offers": { "@type": "Offer", "price": "0", "priceCurrency": "INR" }
-        })}</script>
       </Helmet>
+      <JsonLd data={{
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "ClinicPing",
+        "url": "https://www.kliviq.com/clinicping",
+        "applicationCategory": "HealthApplication",
+        "operatingSystem": "Web",
+        "provider": { "@type": "Organization", "name": "KlivIQ", "url": "https://www.kliviq.com" },
+        "description": "ClinicPing is an AI-powered patient communication and appointment management tool for clinics and healthcare providers."
+      }} />
       <h1 style={{ position: "absolute", width: 1, height: 1, padding: 0, margin: -1, overflow: "hidden", clip: "rect(0,0,0,0)", whiteSpace: "nowrap" as const, border: 0 }}>
         ClinicPing — AI-Powered Clinic Management
       </h1>

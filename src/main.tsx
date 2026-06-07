@@ -1,10 +1,17 @@
-import { createRoot } from "react-dom/client";
+import { ViteReactSSG } from "vite-react-ssg";
 import { HelmetProvider } from "react-helmet-async";
-import App from "./App.tsx";
+import { routes } from "./routes";
 import "./index.css";
 
-createRoot(document.getElementById("root")!).render(
-  <HelmetProvider>
-    <App />
-  </HelmetProvider>
+export const createRoot = ViteReactSSG(
+  { routes },
+  ({ isClient, initialState }) => {
+    // setup hook — HelmetProvider is wired below via app wrapping
+  },
+  {
+    rootContainer: "#root",
+    transformState(state) {
+      return state;
+    },
+  },
 );

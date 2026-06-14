@@ -1,4 +1,6 @@
-import heroThreeQuestions from "@/assets/blog-3-questions-hero.jpg";
+// Hero images live in /public so this data module stays import-free
+// and can be loaded by the Node-side sitemap generator.
+const heroThreeQuestions = "/blog/three-questions-hero.jpg";
 
 export type BlogCategory =
   | "AI"

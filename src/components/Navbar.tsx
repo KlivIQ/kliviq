@@ -120,6 +120,13 @@ const Navbar = () => {
               <div className="absolute top-full left-1/2 -translate-x-1/2 pt-3 min-w-[200px]">
                 <div className="glass-strong rounded-2xl p-2 shadow-xl">
                   <Link
+                    to="/blog"
+                    onClick={() => setResourcesOpen(false)}
+                    className="block px-4 py-2.5 rounded-lg text-sm text-foreground/80 hover:text-foreground hover:bg-foreground/5 transition-colors"
+                  >
+                    Blog / Insights
+                  </Link>
+                  <Link
                     to="/glossary"
                     onClick={() => setResourcesOpen(false)}
                     className="block px-4 py-2.5 rounded-lg text-sm text-foreground/80 hover:text-foreground hover:bg-foreground/5 transition-colors"
@@ -221,6 +228,13 @@ const Navbar = () => {
             </button>
             {mobileResourcesOpen && (
               <div className="mt-3 ml-3 pl-3 border-l border-foreground/15 flex flex-col gap-3">
+                <Link
+                  to="/blog"
+                  onClick={() => setOpen(false)}
+                  className="text-sm text-foreground/75 hover:text-foreground transition-colors"
+                >
+                  Blog / Insights
+                </Link>
                 <Link
                   to="/glossary"
                   onClick={() => setOpen(false)}

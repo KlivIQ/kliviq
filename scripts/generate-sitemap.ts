@@ -3,6 +3,7 @@ import { writeFileSync } from "fs";
 import { resolve } from "path";
 import { serviceLandingPages } from "../src/data/serviceLandingPages";
 import { glossaryTerms } from "../src/data/glossary";
+import { blogPosts } from "../src/data/blog";
 
 const BASE_URL = "https://www.kliviq.com";
 
@@ -27,6 +28,12 @@ const entries: SitemapEntry[] = [
     path: t.path,
     changefreq: "monthly" as const,
     priority: "0.6",
+  })),
+  { path: "/blog", changefreq: "weekly", priority: "0.8" },
+  ...blogPosts.map((p) => ({
+    path: p.path,
+    changefreq: "monthly" as const,
+    priority: "0.7",
   })),
 ];
 

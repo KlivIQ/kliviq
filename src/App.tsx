@@ -11,6 +11,8 @@ import PitchDeckAI from "./pages/PitchDeckAI";
 import ServicePage from "./pages/ServicePage";
 import GlossaryIndex from "./pages/GlossaryIndex";
 import GlossaryTerm from "./pages/GlossaryTerm";
+import BlogIndex from "./pages/BlogIndex";
+import BlogPost from "./pages/BlogPost";
 
 const queryClient = new QueryClient();
 
@@ -29,6 +31,8 @@ const App = () => (
           <Route path="/services/:slug" element={<ServicePage />} />
           <Route path="/glossary" element={<GlossaryIndex />} />
           <Route path="/glossary/:slug" element={<GlossaryTerm />} />
+          <Route path="/blog" element={<BlogIndex />} />
+          <Route path="/blog/:slug" element={<BlogPost />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

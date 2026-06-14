@@ -2,6 +2,7 @@ import type { RouteRecord } from "vite-react-ssg";
 import Layout from "./Layout";
 import { serviceLandingPages } from "./data/serviceLandingPages";
 import { glossaryTerms } from "./data/glossary";
+import { blogPosts } from "./data/blog";
 
 export const routes: RouteRecord[] = [
   {
@@ -66,6 +67,23 @@ export const routes: RouteRecord[] = [
         },
         entry: "src/pages/GlossaryTerm.tsx",
         getStaticPaths: () => glossaryTerms.map((t) => `glossary/${t.slug}`),
+      },
+      {
+        path: "blog",
+        lazy: async () => {
+          const m = await import("./pages/BlogIndex");
+          return { Component: m.default };
+        },
+        entry: "src/pages/BlogIndex.tsx",
+      },
+      {
+        path: "blog/:slug",
+        lazy: async () => {
+          const m = await import("./pages/BlogPost");
+          return { Component: m.default };
+        },
+        entry: "src/pages/BlogPost.tsx",
+        getStaticPaths: () => blogPosts.map((p) => `blog/${p.slug}`),
       },
       {
         path: "*",

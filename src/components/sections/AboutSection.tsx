@@ -1,7 +1,6 @@
 import { motion } from "framer-motion";
-import { Linkedin } from "lucide-react";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
-import sriramPhoto from "@/assets/sriram-ramkumar.jpeg";
+
 
 const pills = [
   "We implement AI that creates measurable business ROI",

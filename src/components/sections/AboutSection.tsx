@@ -76,46 +76,6 @@ const AboutSection = () => {
         >
           If it involves AI, technology, and growth — we're in.
         </motion.p>
-
-        {/* Founder block */}
-        <motion.div
-          className="mt-16 glass rounded-2xl p-6 md:p-8 flex flex-col sm:flex-row items-center sm:items-start gap-6"
-          initial={{ opacity: 0, y: 30 }}
-          animate={isVisible ? { opacity: 1, y: 0 } : {}}
-          transition={{ delay: 1.0, duration: 0.7 }}
-        >
-          <img
-            src={sriramPhoto}
-            alt="Sriram Ramkumar, Co-Founder & CTO of KlivIQ"
-            loading="lazy"
-            className="w-28 h-28 md:w-32 md:h-32 rounded-full object-cover shrink-0 ring-2 ring-secondary/40"
-          />
-          <div className="text-center sm:text-left">
-            <p className="text-xs uppercase tracking-widest text-secondary mb-1">
-              Meet the Co-Founder
-            </p>
-            <h3 className="text-xl md:text-2xl font-bold text-foreground">
-              Sriram Ramkumar
-            </h3>
-            <p className="text-sm text-muted-foreground mb-3">
-              Co-Founder &amp; CTO, KlivIQ
-            </p>
-            <p className="text-foreground/85 max-w-xl mb-4">
-              20+ years building enterprise software across Banking, Retail, Healthcare,
-              and Logistics. Now helping growing businesses adopt AI and ship products —
-              without the enterprise price tag or the full-time hire.
-            </p>
-            <a
-              href="https://www.linkedin.com/in/sriram79"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium glass hover:border-secondary/60 transition-colors"
-            >
-              <Linkedin className="w-4 h-4" />
-              Connect on LinkedIn
-            </a>
-          </div>
-        </motion.div>
       </div>
     </section>
   );

@@ -1,7 +1,6 @@
 import { motion } from "framer-motion";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 
-
 const pills = [
   "We implement AI that creates measurable business ROI",
   "We build and ship in weeks using AI-assisted delivery",

@@ -50,11 +50,11 @@ const Index = () => {
   return (
     <>
       <Helmet>
-        <title>KlivIQ | AI Consulting & Fractional CTO — India & Global</title>
-        <meta name="description" content="KlivIQ helps businesses adopt AI and build high-performance software. AI consulting that actually ships, fractional CTO services, web, mobile, and AI tools. Delivered in weeks, not months." />
+        <title>KlivIQ | AI Consulting, Fractional CTO, AI Visibility Scoring & WhatsApp AI Chatbots</title>
+        <meta name="description" content="KlivIQ helps businesses adopt AI and build high-performance software. AI consulting, fractional CTO, AI Visibility Scoring (Seenzo), WhatsApp AI Chatbots (KlivIQ Connect), web, mobile & AI tools. Delivered in weeks." />
         <link rel="canonical" href="https://www.kliviq.com/" />
-        <meta property="og:title" content="KlivIQ | AI Consulting & Fractional CTO — India & Global" />
-        <meta property="og:description" content="KlivIQ helps businesses adopt AI and build high-performance software. AI consulting that actually ships, fractional CTO services, web, mobile, and AI tools. Delivered in weeks, not months." />
+        <meta property="og:title" content="KlivIQ | AI Consulting, Fractional CTO, AI Visibility & WhatsApp AI Chatbots" />
+        <meta property="og:description" content="KlivIQ helps businesses adopt AI and build high-performance software. AI consulting, fractional CTO, AI Visibility Scoring, WhatsApp AI Chatbots, web, mobile & AI tools." />
         <meta property="og:url" content="https://www.kliviq.com/" />
         <meta property="og:type" content="website" />
       </Helmet>
@@ -64,8 +64,34 @@ const Index = () => {
         "name": "KlivIQ",
         "url": "https://www.kliviq.com/",
         "logo": "https://www.kliviq.com/kliviq-og.png",
-        "description": "KlivIQ helps businesses adopt AI and build high-performance software. AI consulting that actually ships, fractional CTO services, web, mobile, and AI tools.",
-        "sameAs": ["https://twitter.com/kliviq", "https://www.linkedin.com/company/117713997"]
+        "description": "KlivIQ helps businesses adopt AI and build high-performance software. AI consulting, fractional CTO, AI Visibility Scoring (Seenzo), WhatsApp AI Chatbots (KlivIQ Connect), web, mobile, and AI tools.",
+        "sameAs": ["https://twitter.com/kliviq", "https://www.linkedin.com/company/117713997"],
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": "KlivIQ Products & Services",
+          "itemListElement": [
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Product",
+                "name": "Seenzo",
+                "url": "https://seenzo.in",
+                "brand": { "@type": "Brand", "name": "KlivIQ" },
+                "description": "AI Visibility scoring platform that scans and scores how visible your business is to ChatGPT, Gemini, and Perplexity across 6 categories, 0–100."
+              }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Product",
+                "name": "KlivIQ Connect",
+                "url": "https://www.kliviq.com/#contact",
+                "brand": { "@type": "Brand", "name": "KlivIQ" },
+                "description": "Customizable WhatsApp AI chatbot platform for Indian SMBs — bookings, reminders, broadcasts, and AI answers in 7 Indian languages including Tamil, Hindi, and Sanskrit."
+              }
+            }
+          ]
+        }
       }} />
       <JsonLd data={{
         "@context": "https://schema.org",
@@ -81,7 +107,7 @@ const Index = () => {
         "description": "KlivIQ helps businesses adopt AI and build high-performance software. AI consulting that actually ships, fractional CTO services, web, mobile, and AI tools. India-based, globally positioned.",
         "founder": { "@type": "Person", "name": "Sriram Ramkumar" },
         "areaServed": ["India", "Global"],
-        "serviceType": ["AI Consulting", "Fractional CTO", "Web Development", "Mobile App Development", "AI Tools"],
+        "serviceType": ["AI Consulting", "Fractional CTO", "AI Visibility Scoring", "WhatsApp AI Chatbot Development", "Generative Engine Optimisation (GEO)", "Web Development", "Mobile App Development", "AI Tools"],
         "priceRange": "$$",
         "email": "hello@kliviq.com"
       }} />
@@ -89,6 +115,8 @@ const Index = () => {
         "@context": "https://schema.org",
         "@type": "FAQPage",
         "mainEntity": [
+          {"@type":"Question","name":"What is Seenzo?","acceptedAnswer":{"@type":"Answer","text":"Seenzo is KlivIQ's AI Visibility platform that scans and scores how visible your business is to AI engines like ChatGPT, Gemini, and Perplexity — then helps you fix what's broken. Get a free score in under 5 minutes at seenzo.in."}},
+          {"@type":"Question","name":"What is KlivIQ Connect?","acceptedAnswer":{"@type":"Answer","text":"KlivIQ Connect is a customizable WhatsApp chatbot platform built for Indian SMBs — clinics, salons, CA firms, and D2C brands — handling bookings, reminders, broadcasts, and AI-powered customer queries in 7 Indian languages including Tamil, Hindi, and Sanskrit. Live in 7 working days."}},
           {"@type":"Question","name":"What is AI implementation?","acceptedAnswer":{"@type":"Answer","text":"We analyse your business processes, identify where AI creates the most value, then build and integrate the tools — chatbots, automation workflows, intelligent dashboards — directly into how you work. You see ROI in weeks, not quarters."}},
           {"@type":"Question","name":"What is a Fractional CTO?","acceptedAnswer":{"@type":"Answer","text":"A senior technology leader who works with you part-time — typically 10–20 hours/week on retainer. If you're making technology decisions without a senior tech person in the room, you need one. We strategy and build — not just advise."}},
           {"@type":"Question","name":"How do you deliver in weeks when others take months?","acceptedAnswer":{"@type":"Answer","text":"AI-assisted development, focused sprints, no agency overhead. No account managers, no briefing chains. You work directly with the person building."}},

@@ -5,6 +5,7 @@ import thumbScopeSnap from "@/assets/thumb-scopesnap.png";
 import thumbPitchDeck from "@/assets/thumb-pitchdeck.png";
 import thumbClinicPing from "@/assets/thumb-clinicping.png";
 import thumbFaco from "@/assets/thumb-faco.png";
+import thumbZeroRupees from "@/assets/thumb-zero-rupees.jpg";
 
 const clientWork = [
   {
@@ -38,6 +39,14 @@ const clientWork = [
     image: thumbClinicPing,
     badge: "CLIENT WORK",
     cta: "Open Prototype",
+  },
+  {
+    title: "Zero Rupees",
+    blurb: "A free fake-shopping experience built for the scroll-and-cart generation — add to cart, checkout, get the 'Order Placed' dopamine hit, spend zero rupees. No card, no signup friction, just the satisfaction loop of online shopping without the bill.",
+    href: "https://zero-rupees.vercel.app/",
+    image: thumbZeroRupees,
+    badge: "EXPERIMENT",
+    cta: "Open live",
   },
 ];
 

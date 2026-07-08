@@ -87,6 +87,21 @@ const glossarySchemas: Record<string, object> = {
     "description": "Digital transformation is the process of integrating digital technology into all areas of a business to fundamentally change how it operates and delivers value to customers — including cloud infrastructure, process automation, and AI implementation.",
     "inDefinedTermSet": { "@type": "DefinedTermSet", "name": "KlivIQ AI & Tech Glossary", "url": "https://www.kliviq.com/glossary" },
     "url": "https://www.kliviq.com/glossary/digital-transformation"
+  },
+  "ai-visibility": {
+    "@context": "https://schema.org", "@type": "DefinedTerm",
+    "name": "AI Visibility",
+    "description": "AI Visibility is a measure of how discoverable, understandable, and citable a business is to generative AI engines like ChatGPT, Gemini, and Perplexity. It is scored across six categories including entity clarity, structured data, content depth, citation footprint, technical crawlability, and freshness.",
+    "inDefinedTermSet": { "@type": "DefinedTermSet", "name": "KlivIQ AI & Tech Glossary", "url": "https://www.kliviq.com/glossary" },
+    "url": "https://www.kliviq.com/glossary/ai-visibility"
+  },
+  "geo-generative-engine-optimisation": {
+    "@context": "https://schema.org", "@type": "DefinedTerm",
+    "name": "GEO (Generative Engine Optimisation)",
+    "alternateName": "Generative Engine Optimisation",
+    "description": "GEO is the practice of optimising a website, its content, and its entity signals so that generative AI engines — ChatGPT, Gemini, Claude, and Perplexity — discover it, understand it, and cite it in their generated answers.",
+    "inDefinedTermSet": { "@type": "DefinedTermSet", "name": "KlivIQ AI & Tech Glossary", "url": "https://www.kliviq.com/glossary" },
+    "url": "https://www.kliviq.com/glossary/geo-generative-engine-optimisation"
   }
 };
 

@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
-import { Camera, Sparkles, Users } from "lucide-react";
+import { Camera, Sparkles, Users, Radar, MessageCircle } from "lucide-react";
 
 interface ProductCard {
   icon: React.ReactNode;
@@ -68,6 +68,111 @@ const ProductsSection = () => {
           Building repeatable AI tools that solve real enterprise problems — open-source at the core, commercial where it counts.
         </motion.p>
 
+        {/* Featured live products: Seenzo (amber ad-callout) + KlivIQ Connect */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+          {/* Seenzo — bold ad-style callout, amber accent */}
+          <motion.a
+            href="https://seenzo.in"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="md:col-span-2 relative rounded-2xl p-8 md:p-10 overflow-hidden group hover:-translate-y-1 transition-transform duration-500 flex flex-col border-2"
+            style={{
+              borderColor: "rgba(245,158,11,0.55)",
+              background:
+                "linear-gradient(135deg, rgba(245,158,11,0.12) 0%, rgba(10,15,30,0.6) 60%)",
+              boxShadow: "0 20px 60px -20px rgba(245,158,11,0.35)",
+            }}
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={isVisible ? { opacity: 1, scale: 1 } : {}}
+            transition={{ delay: 0.25, duration: 0.5 }}
+          >
+            <div className="absolute -top-16 -right-16 w-64 h-64 rounded-full blur-3xl opacity-40" style={{ background: "#F59E0B" }} />
+            <div className="relative z-10 flex flex-col h-full">
+              <div className="flex items-center gap-3 mb-5 flex-wrap">
+                <div
+                  className="w-12 h-12 rounded-xl flex items-center justify-center"
+                  style={{ background: "linear-gradient(135deg,#F59E0B,#D97706)" }}
+                >
+                  <Radar className="w-6 h-6 text-background" />
+                </div>
+                <span className="text-2xl font-extrabold tracking-tight" style={{ color: "#F59E0B" }}>
+                  Seenzo
+                </span>
+                <span
+                  className="inline-block text-[10px] font-semibold uppercase tracking-widest px-2 py-0.5 rounded-full border text-muted-foreground"
+                  style={{ borderColor: "rgba(148,163,184,0.35)" }}
+                >
+                  by KlivIQ
+                </span>
+                <span
+                  className="ml-auto inline-block text-[10px] font-semibold uppercase tracking-widest px-2.5 py-1 rounded-full border"
+                  style={{ color: "#F59E0B", borderColor: "rgba(245,158,11,0.5)" }}
+                >
+                  Free • 5 min
+                </span>
+              </div>
+
+              <h3 className="text-2xl md:text-4xl font-extrabold mb-3 text-foreground leading-tight">
+                Does ChatGPT Know Your <span style={{ color: "#F59E0B" }}>Business Exists?</span>
+              </h3>
+              <p className="text-foreground/85 text-base md:text-lg leading-relaxed mb-3">
+                Get your free AI Visibility Score in under 5 minutes. See exactly how invisible — or visible — you are to ChatGPT, Gemini, and Perplexity.
+              </p>
+              <p className="text-muted-foreground leading-relaxed mb-6">
+                Seenzo scans your website and scores it 0–100 on AI visibility across 6 categories. Most Indian businesses score below 30. We show you exactly what's broken and fix it.
+              </p>
+
+              <span
+                className="mt-auto inline-flex items-center gap-2 self-start px-5 py-3 rounded-full text-sm font-bold text-background transition-transform group-hover:scale-105"
+                style={{ background: "linear-gradient(135deg,#F59E0B,#D97706)" }}
+              >
+                Get My Free Seenzo Score →
+              </span>
+            </div>
+          </motion.a>
+
+          {/* KlivIQ Connect */}
+          <motion.a
+            href="#contact"
+            className="glass rounded-2xl p-8 md:p-10 relative overflow-hidden group hover:-translate-y-1 transition-transform duration-500 flex flex-col"
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={isVisible ? { opacity: 1, scale: 1 } : {}}
+            transition={{ delay: 0.35, duration: 0.5 }}
+          >
+            <div className="absolute inset-0 bg-background/30 pointer-events-none z-0" />
+            <div className="relative z-10 flex flex-col h-full">
+              <div className="flex items-center gap-3 mb-5">
+                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-primary to-secondary flex items-center justify-center">
+                  <MessageCircle className="w-6 h-6" style={{ color: "#25D366" }} />
+                </div>
+                <span
+                  className="inline-block text-[10px] font-semibold uppercase tracking-widest px-2.5 py-1 rounded-full border"
+                  style={{ color: "#4ADE80", borderColor: "rgba(74,222,128,0.4)" }}
+                >
+                  Now Booking Setup
+                </span>
+              </div>
+
+              <h3 className="text-xl md:text-2xl font-bold mb-3 text-foreground leading-snug">
+                Your Own AI Chatbot on WhatsApp — Built For Your Business
+              </h3>
+              <p className="text-foreground/85 leading-relaxed mb-3">
+                Customizable, done-for-you WhatsApp chatbots for clinics, salons, CA firms, and D2C brands. No code. No per-message markup. Just results.
+              </p>
+              <p className="text-muted-foreground leading-relaxed mb-6 text-sm">
+                KlivIQ Connect is a multi-tenant WhatsApp-first chatbot engine — bookings, reminders, broadcasts, AI-powered answers in 7 Indian languages including Tamil, Hindi, and Sanskrit. Senior-led setup, live in 7 working days.
+              </p>
+
+              <span
+                className="mt-auto inline-flex items-center gap-2 text-sm font-semibold self-start transition-opacity group-hover:opacity-80"
+                style={{ color: "#4ADE80" }}
+              >
+                Talk to Us About Connect →
+              </span>
+            </div>
+          </motion.a>
+        </div>
+
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {products.map((product, index) => (
             <motion.div
@@ -75,7 +180,7 @@ const ProductsSection = () => {
               className="glass rounded-2xl p-8 md:p-10 relative overflow-hidden group hover:-translate-y-1 transition-transform duration-500 flex flex-col"
               initial={{ opacity: 0, scale: 0.9 }}
               animate={isVisible ? { opacity: 1, scale: 1 } : {}}
-              transition={{ delay: 0.3 + index * 0.1, duration: 0.5 }}
+              transition={{ delay: 0.45 + index * 0.1, duration: 0.5 }}
             >
               <div className="absolute inset-0 bg-background/30 pointer-events-none z-0" />
 

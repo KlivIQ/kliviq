@@ -50,11 +50,11 @@ const Index = () => {
   return (
     <>
       <Helmet>
-        <title>KlivIQ | AI Consulting & Fractional CTO — India & Global</title>
-        <meta name="description" content="KlivIQ helps businesses adopt AI and build high-performance software. AI consulting that actually ships, fractional CTO services, web, mobile, and AI tools. Delivered in weeks, not months." />
+        <title>KlivIQ | AI Consulting, Fractional CTO, AI Visibility Scoring & WhatsApp AI Chatbots</title>
+        <meta name="description" content="KlivIQ helps businesses adopt AI and build high-performance software. AI consulting, fractional CTO, AI Visibility Scoring (Seenzo), WhatsApp AI Chatbots (KlivIQ Connect), web, mobile & AI tools. Delivered in weeks." />
         <link rel="canonical" href="https://www.kliviq.com/" />
-        <meta property="og:title" content="KlivIQ | AI Consulting & Fractional CTO — India & Global" />
-        <meta property="og:description" content="KlivIQ helps businesses adopt AI and build high-performance software. AI consulting that actually ships, fractional CTO services, web, mobile, and AI tools. Delivered in weeks, not months." />
+        <meta property="og:title" content="KlivIQ | AI Consulting, Fractional CTO, AI Visibility & WhatsApp AI Chatbots" />
+        <meta property="og:description" content="KlivIQ helps businesses adopt AI and build high-performance software. AI consulting, fractional CTO, AI Visibility Scoring, WhatsApp AI Chatbots, web, mobile & AI tools." />
         <meta property="og:url" content="https://www.kliviq.com/" />
         <meta property="og:type" content="website" />
       </Helmet>
@@ -64,8 +64,34 @@ const Index = () => {
         "name": "KlivIQ",
         "url": "https://www.kliviq.com/",
         "logo": "https://www.kliviq.com/kliviq-og.png",
-        "description": "KlivIQ helps businesses adopt AI and build high-performance software. AI consulting that actually ships, fractional CTO services, web, mobile, and AI tools.",
-        "sameAs": ["https://twitter.com/kliviq", "https://www.linkedin.com/company/117713997"]
+        "description": "KlivIQ helps businesses adopt AI and build high-performance software. AI consulting, fractional CTO, AI Visibility Scoring (Seenzo), WhatsApp AI Chatbots (KlivIQ Connect), web, mobile, and AI tools.",
+        "sameAs": ["https://twitter.com/kliviq", "https://www.linkedin.com/company/117713997"],
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": "KlivIQ Products & Services",
+          "itemListElement": [
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Product",
+                "name": "Seenzo",
+                "url": "https://seenzo.in",
+                "brand": { "@type": "Brand", "name": "KlivIQ" },
+                "description": "AI Visibility scoring platform that scans and scores how visible your business is to ChatGPT, Gemini, and Perplexity across 6 categories, 0–100."
+              }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Product",
+                "name": "KlivIQ Connect",
+                "url": "https://www.kliviq.com/#contact",
+                "brand": { "@type": "Brand", "name": "KlivIQ" },
+                "description": "Customizable WhatsApp AI chatbot platform for Indian SMBs — bookings, reminders, broadcasts, and AI answers in 7 Indian languages including Tamil, Hindi, and Sanskrit."
+              }
+            }
+          ]
+        }
       }} />
       <JsonLd data={{
         "@context": "https://schema.org",

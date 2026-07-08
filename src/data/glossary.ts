@@ -374,6 +374,84 @@ export const glossaryTerms: GlossaryTerm[] = [
       },
     ],
   },
+  {
+    slug: "ai-visibility",
+    path: "/glossary/ai-visibility",
+    term: "AI Visibility",
+    h1: "What Is AI Visibility?",
+    shortDef: "How discoverable and citable your business is to generative AI engines like ChatGPT, Gemini, and Perplexity.",
+    metaTitle: "What Is AI Visibility? Definition, Scoring & How to Improve It | KlivIQ",
+    metaDescription:
+      "AI Visibility is how discoverable your business is to ChatGPT, Gemini, and Perplexity. Learn what drives it and how to score and improve yours.",
+    definition: [
+      "AI Visibility is a measure of how discoverable, understandable, and citable your business is to generative AI engines — ChatGPT, Gemini, Claude, and Perplexity. It is the AI-era equivalent of SEO rankings: when a user asks an AI engine for a recommendation, a solution, or a comparison in your category, AI Visibility determines whether your business is named, described accurately, and linked.",
+      "Unlike traditional search, AI engines synthesise answers from structured data, authoritative content, and cross-referenced mentions across the open web. Businesses with strong AI Visibility have clear entity signals, structured data (schema.org markup), authoritative descriptions of their products and services, and consistent naming across their own site and third-party sources.",
+      "Most Indian SMBs score below 30 out of 100 on AI Visibility. The businesses that are winning in AI-driven discovery are the ones that have deliberately optimised for it — through Generative Engine Optimisation (GEO), structured content, and entity-level SEO.",
+    ],
+    body: [
+      { heading: "One-line definition", paragraphs: ["AI Visibility is how discoverable, understandable, and citable your business is to generative AI engines like ChatGPT, Gemini, and Perplexity when users ask questions in your category."] },
+      { heading: "What drives AI Visibility", paragraphs: ["Six categories drive AI Visibility: entity clarity (does the AI understand who you are and what you do), structured data (schema.org JSON-LD covering Organization, Product, Service, FAQ), content depth (long-form authoritative pages on your services and category), citation footprint (mentions and links from third-party sources the AI trusts), technical crawlability (are AI crawlers allowed and served real HTML, not JS-only content), and freshness (recent, dated content signals an active business)."] },
+      { heading: "How AI Visibility is scored", paragraphs: ["Seenzo — KlivIQ's AI Visibility platform — scans your website and scores it 0–100 across those six categories. The scan surfaces exactly what is missing, what is misconfigured, and what is invisible to AI crawlers. Most Indian SMBs score below 30. A score above 70 typically requires deliberate work on structured data, entity signals, and content."] },
+      { heading: "AI Visibility vs. SEO", paragraphs: ["SEO optimises for keyword rankings in blue-link search results. AI Visibility optimises for being named, quoted, and linked when AI engines generate answers. The two overlap — clean semantic HTML, structured data, and authoritative content help both — but AI Visibility places far more weight on entity signals, JSON-LD schema coverage, and how consistently your business is described across the open web."] },
+      { heading: "How KlivIQ helps", paragraphs: ["KlivIQ built Seenzo to make AI Visibility measurable and fixable. The free score gives you a 0–100 rating with a category-level breakdown. From there, KlivIQ implements the fixes — structured data, entity optimisation, content, and technical crawlability — so your business shows up when AI engines answer questions in your category."] },
+    ],
+    kliviqUse:
+      "KlivIQ built Seenzo to make AI Visibility measurable in under 5 minutes — free — and then implements the fixes across your site so ChatGPT, Gemini, and Perplexity actually cite you.",
+    kliviqLink: { label: "Get your free Seenzo score", path: "/#products" },
+    faqs: [
+      {
+        q: "How is AI Visibility different from SEO?",
+        a: "SEO optimises for keyword rankings in Google's blue-link results. AI Visibility optimises for being named, quoted, and linked when generative AI engines like ChatGPT and Gemini synthesise answers. Structured data, entity signals, and content authority matter far more for AI Visibility.",
+      },
+      {
+        q: "How do I measure my AI Visibility?",
+        a: "The fastest way is to run Seenzo — KlivIQ's free AI Visibility platform — which scans your website and scores it 0–100 across six categories in under 5 minutes. Most Indian SMBs score below 30.",
+      },
+      {
+        q: "Can I improve AI Visibility on my own?",
+        a: "Some of it — cleaning up meta descriptions, adding basic Organization JSON-LD, and publishing FAQ content are do-it-yourself wins. Deeper improvements (entity optimisation, category-level content, cross-web citations) usually need senior SEO and technical work.",
+      },
+    ],
+  },
+  {
+    slug: "geo-generative-engine-optimisation",
+    path: "/glossary/geo-generative-engine-optimisation",
+    term: "GEO (Generative Engine Optimisation)",
+    h1: "What Is GEO (Generative Engine Optimisation)?",
+    shortDef: "The practice of optimising a website and its content to be discovered, understood, and cited by generative AI engines.",
+    metaTitle: "What Is GEO (Generative Engine Optimisation)? Definition & Tactics | KlivIQ",
+    metaDescription:
+      "GEO is the practice of optimising a website to be cited by ChatGPT, Gemini, and Perplexity. Learn what it is and how it differs from SEO.",
+    definition: [
+      "GEO (Generative Engine Optimisation) is the practice of optimising a website, its content, and its entity signals so that generative AI engines — ChatGPT, Gemini, Claude, and Perplexity — discover it, understand it, and cite it in their generated answers.",
+      "GEO is the successor discipline to SEO for the AI era. SEO optimises for ranked blue-link results in traditional search engines. GEO optimises for being included, named, and linked when an AI engine synthesises an answer to a user's question.",
+      "The tactics overlap with SEO but the weightings differ sharply. GEO places heavy emphasis on structured data (JSON-LD), entity clarity, semantic HTML, authoritative long-form content, FAQ pages, glossary pages, and consistent cross-web mentions — because these are the signals AI engines rely on when they generate answers.",
+    ],
+    body: [
+      { heading: "One-line definition", paragraphs: ["GEO is the practice of optimising a website and its content to be discovered, understood, and cited by generative AI engines like ChatGPT, Gemini, Claude, and Perplexity."] },
+      { heading: "Core GEO tactics", paragraphs: ["Comprehensive schema.org JSON-LD (Organization, Product, Service, FAQPage, Article, BreadcrumbList). Semantic HTML rendered server-side or pre-rendered — AI crawlers frequently do not execute JavaScript. Long-form authoritative content on category-level questions. Glossary and FAQ pages that answer specific user questions in isolation. Consistent entity naming and description across your site, LinkedIn, directories, and press. Fast, crawlable pages with clean canonical URLs."] },
+      { heading: "GEO vs. SEO", paragraphs: ["SEO optimises for keyword rankings in the traditional blue-link SERP. GEO optimises for being cited in AI-generated answers. Both benefit from clean content and technical hygiene, but GEO places much heavier weight on structured data, entity signals, and content that answers user questions the way a human would ask them — because that is how users query AI engines."] },
+      { heading: "How to measure GEO progress", paragraphs: ["The most direct measure is AI Visibility — how your business scores when scanned across the categories AI engines rely on. KlivIQ's Seenzo platform gives a free 0–100 AI Visibility score in under 5 minutes, so you can measure baseline, implement GEO improvements, and re-measure."] },
+      { heading: "How KlivIQ applies GEO", paragraphs: ["Every KlivIQ site — including this one — is built with GEO principles: structured data across every page type, pre-rendered HTML, semantic markup, glossary and FAQ coverage, consistent entity signals. We apply the same playbook to client sites through Seenzo scoring and hands-on implementation."] },
+    ],
+    kliviqUse:
+      "KlivIQ practices GEO on every project we ship — structured data, pre-rendered HTML, semantic content — and productises it through Seenzo, our free AI Visibility scoring platform.",
+    kliviqLink: { label: "Score your site with Seenzo", path: "/#products" },
+    faqs: [
+      {
+        q: "Is GEO replacing SEO?",
+        a: "No — it is layering on top of it. Traditional search is still important. GEO addresses a growing share of user queries that now happen inside AI engines rather than search engines. Businesses that ignore GEO will become invisible in AI-generated answers even if they still rank on Google.",
+      },
+      {
+        q: "What is the fastest GEO win for a small business?",
+        a: "Adding comprehensive Organization, Service, and FAQPage JSON-LD to your homepage and core service pages. It takes hours, not weeks, and immediately makes your business more legible to AI engines.",
+      },
+      {
+        q: "How is GEO related to AI Visibility?",
+        a: "GEO is the practice. AI Visibility is the measurable outcome. You do GEO work; your AI Visibility score improves.",
+      },
+    ],
+  },
 ];
 
 export const getGlossaryTermBySlug = (slug: string) =>

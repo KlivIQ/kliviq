@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
-import { Camera, Sparkles, Users } from "lucide-react";
+import { Camera, Sparkles, Users, Radar, MessageCircle } from "lucide-react";
 
 interface ProductCard {
   icon: React.ReactNode;

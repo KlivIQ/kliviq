@@ -9,6 +9,14 @@ import {
 
 const faqs = [
   {
+    q: "What is Seenzo?",
+    a: "Seenzo is KlivIQ's AI Visibility platform that scans and scores how visible your business is to AI engines like ChatGPT, Gemini, and Perplexity — then helps you fix what's broken. Get a free score in under 5 minutes at seenzo.in.",
+  },
+  {
+    q: "What is KlivIQ Connect?",
+    a: "KlivIQ Connect is a customizable WhatsApp chatbot platform built for Indian SMBs — clinics, salons, CA firms, and D2C brands — handling bookings, reminders, broadcasts, and AI-powered customer queries in 7 Indian languages. No code. No per-message markup. Live in 7 working days.",
+  },
+  {
     q: "What is AI implementation?",
     a: "We analyse your business processes, identify where AI creates the most value, then build and integrate the tools — chatbots, automation workflows, intelligent dashboards — directly into how you work. You see ROI in weeks, not quarters.",
   },

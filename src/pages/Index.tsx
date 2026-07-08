@@ -107,7 +107,7 @@ const Index = () => {
         "description": "KlivIQ helps businesses adopt AI and build high-performance software. AI consulting that actually ships, fractional CTO services, web, mobile, and AI tools. India-based, globally positioned.",
         "founder": { "@type": "Person", "name": "Sriram Ramkumar" },
         "areaServed": ["India", "Global"],
-        "serviceType": ["AI Consulting", "Fractional CTO", "Web Development", "Mobile App Development", "AI Tools"],
+        "serviceType": ["AI Consulting", "Fractional CTO", "AI Visibility Scoring", "WhatsApp AI Chatbot Development", "Generative Engine Optimisation (GEO)", "Web Development", "Mobile App Development", "AI Tools"],
         "priceRange": "$$",
         "email": "hello@kliviq.com"
       }} />
@@ -115,6 +115,8 @@ const Index = () => {
         "@context": "https://schema.org",
         "@type": "FAQPage",
         "mainEntity": [
+          {"@type":"Question","name":"What is Seenzo?","acceptedAnswer":{"@type":"Answer","text":"Seenzo is KlivIQ's AI Visibility platform that scans and scores how visible your business is to AI engines like ChatGPT, Gemini, and Perplexity — then helps you fix what's broken. Get a free score in under 5 minutes at seenzo.in."}},
+          {"@type":"Question","name":"What is KlivIQ Connect?","acceptedAnswer":{"@type":"Answer","text":"KlivIQ Connect is a customizable WhatsApp chatbot platform built for Indian SMBs — clinics, salons, CA firms, and D2C brands — handling bookings, reminders, broadcasts, and AI-powered customer queries in 7 Indian languages including Tamil, Hindi, and Sanskrit. Live in 7 working days."}},
           {"@type":"Question","name":"What is AI implementation?","acceptedAnswer":{"@type":"Answer","text":"We analyse your business processes, identify where AI creates the most value, then build and integrate the tools — chatbots, automation workflows, intelligent dashboards — directly into how you work. You see ROI in weeks, not quarters."}},
           {"@type":"Question","name":"What is a Fractional CTO?","acceptedAnswer":{"@type":"Answer","text":"A senior technology leader who works with you part-time — typically 10–20 hours/week on retainer. If you're making technology decisions without a senior tech person in the room, you need one. We strategy and build — not just advise."}},
           {"@type":"Question","name":"How do you deliver in weeks when others take months?","acceptedAnswer":{"@type":"Answer","text":"AI-assisted development, focused sprints, no agency overhead. No account managers, no briefing chains. You work directly with the person building."}},

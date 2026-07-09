@@ -27,11 +27,12 @@ const ProductsSection = () => {
     {
       icon: <Camera className="w-6 h-6 text-primary-foreground" />,
       badge: "In Development",
-      title: "SareeTry AI",
+      title: "KlivIQ TryOn",
       description:
-        "A plug-and-play AI try-on widget for online saree stores. Customers upload a photo and instantly visualise how a saree looks on them — engineered to reduce returns and lift conversions.",
-      mailSubject: "Waitlist%20for%20SareeTry%20AI%20Widget",
+        "An AI-powered online trial room for saree e-commerce. Shoppers upload a photo and instantly see exactly how each saree looks on them — no more guessing before they buy. Built to lift conversions and cut returns for online saree stores.",
+      mailSubject: "Waitlist%20for%20KlivIQ%20TryOn",
     },
+
     {
       icon: <Users className="w-6 h-6 text-primary-foreground" />,
       badge: "Private Beta",

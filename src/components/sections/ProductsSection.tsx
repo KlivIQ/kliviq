@@ -92,11 +92,11 @@ const ProductsSection = () => {
             <div className="relative z-10 flex flex-col h-full">
               <div className="flex items-center gap-3 mb-5 flex-wrap">
                 <div
-                  className="w-12 h-12 rounded-xl flex items-center justify-center"
-                  style={{ background: "linear-gradient(135deg,#F59E0B,#D97706)" }}
+                  className="w-12 h-12 rounded-xl flex items-center justify-center bg-white/95"
                 >
-                  <Radar className="w-6 h-6 text-background" />
+                  <img src={seenzoLogo.url} alt="Seenzo logo" className="w-9 h-9 object-contain" />
                 </div>
+
                 <span className="text-2xl font-extrabold tracking-tight" style={{ color: "#F59E0B" }}>
                   Seenzo
                 </span>

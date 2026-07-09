@@ -1,6 +1,8 @@
 import { motion } from "framer-motion";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
-import { Camera, Sparkles, Users, Radar, MessageCircle } from "lucide-react";
+import { Camera, Sparkles, Users, MessageCircle } from "lucide-react";
+import seenzoLogo from "@/assets/seenzo-logo.png.asset.json";
+
 
 interface ProductCard {
   icon: React.ReactNode;

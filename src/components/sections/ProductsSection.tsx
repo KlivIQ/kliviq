@@ -1,6 +1,8 @@
 import { motion } from "framer-motion";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
-import { Camera, Sparkles, Users, Radar, MessageCircle } from "lucide-react";
+import { Camera, Sparkles, Users, MessageCircle } from "lucide-react";
+import seenzoLogo from "@/assets/seenzo-logo.png.asset.json";
+
 
 interface ProductCard {
   icon: React.ReactNode;
@@ -25,11 +27,12 @@ const ProductsSection = () => {
     {
       icon: <Camera className="w-6 h-6 text-primary-foreground" />,
       badge: "In Development",
-      title: "SareeTry AI",
+      title: "KlivIQ TryOn",
       description:
-        "A plug-and-play AI try-on widget for online saree stores. Customers upload a photo and instantly visualise how a saree looks on them — engineered to reduce returns and lift conversions.",
-      mailSubject: "Waitlist%20for%20SareeTry%20AI%20Widget",
+        "An AI-powered online trial room for saree e-commerce. Shoppers upload a photo and instantly see exactly how each saree looks on them — no more guessing before they buy. Built to lift conversions and cut returns for online saree stores.",
+      mailSubject: "Waitlist%20for%20KlivIQ%20TryOn",
     },
+
     {
       icon: <Users className="w-6 h-6 text-primary-foreground" />,
       badge: "Private Beta",
@@ -90,11 +93,11 @@ const ProductsSection = () => {
             <div className="relative z-10 flex flex-col h-full">
               <div className="flex items-center gap-3 mb-5 flex-wrap">
                 <div
-                  className="w-12 h-12 rounded-xl flex items-center justify-center"
-                  style={{ background: "linear-gradient(135deg,#F59E0B,#D97706)" }}
+                  className="w-12 h-12 rounded-xl flex items-center justify-center bg-white/95"
                 >
-                  <Radar className="w-6 h-6 text-background" />
+                  <img src={seenzoLogo.url} alt="Seenzo logo" className="w-9 h-9 object-contain" />
                 </div>
+
                 <span className="text-2xl font-extrabold tracking-tight" style={{ color: "#F59E0B" }}>
                   Seenzo
                 </span>
@@ -134,22 +137,34 @@ const ProductsSection = () => {
           {/* KlivIQ Connect */}
           <motion.a
             href="#contact"
-            className="glass rounded-2xl p-8 md:p-10 relative overflow-hidden group hover:-translate-y-1 transition-transform duration-500 flex flex-col"
+            className="relative rounded-2xl p-8 md:p-10 overflow-hidden group hover:-translate-y-1 transition-transform duration-500 flex flex-col border-2"
+            style={{
+              borderColor: "rgba(59,130,246,0.55)",
+              background:
+                "linear-gradient(135deg, rgba(59,130,246,0.14) 0%, rgba(10,15,30,0.6) 60%)",
+              boxShadow: "0 20px 60px -20px rgba(59,130,246,0.4)",
+            }}
             initial={{ opacity: 0, scale: 0.95 }}
             animate={isVisible ? { opacity: 1, scale: 1 } : {}}
             transition={{ delay: 0.35, duration: 0.5 }}
           >
-            <div className="absolute inset-0 bg-background/30 pointer-events-none z-0" />
+            <div className="absolute -top-16 -right-16 w-64 h-64 rounded-full blur-3xl opacity-40" style={{ background: "#3B82F6" }} />
             <div className="relative z-10 flex flex-col h-full">
-              <div className="flex items-center gap-3 mb-5">
-                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-primary to-secondary flex items-center justify-center">
+              <div className="flex items-center gap-3 mb-5 flex-wrap">
+                <div
+                  className="w-12 h-12 rounded-xl flex items-center justify-center"
+                  style={{ background: "linear-gradient(135deg,#3B82F6,#1D4ED8)" }}
+                >
                   <MessageCircle className="w-6 h-6" style={{ color: "#25D366" }} />
                 </div>
+                <span className="text-2xl font-extrabold tracking-tight" style={{ color: "#60A5FA" }}>
+                  KlivIQ Connect
+                </span>
                 <span
-                  className="inline-block text-[10px] font-semibold uppercase tracking-widest px-2.5 py-1 rounded-full border"
-                  style={{ color: "#4ADE80", borderColor: "rgba(74,222,128,0.4)" }}
+                  className="ml-auto inline-block text-[10px] font-semibold uppercase tracking-widest px-2.5 py-1 rounded-full border"
+                  style={{ color: "#60A5FA", borderColor: "rgba(96,165,250,0.5)" }}
                 >
-                  Now Booking Setup
+                  Now Booking
                 </span>
               </div>
 
@@ -160,17 +175,18 @@ const ProductsSection = () => {
                 Customizable, done-for-you WhatsApp chatbots for clinics, salons, CA firms, and D2C brands. No code. No per-message markup. Just results.
               </p>
               <p className="text-muted-foreground leading-relaxed mb-6 text-sm">
-                KlivIQ Connect is a multi-tenant WhatsApp-first chatbot engine — bookings, reminders, broadcasts, AI-powered answers in 7 Indian languages including Tamil, Hindi, and Sanskrit. Senior-led setup, live in 7 working days.
+                <span className="text-foreground font-extrabold text-lg" style={{ color: "#60A5FA" }}>KlivIQ Connect</span> is a multi-tenant WhatsApp-first chatbot engine — bookings, reminders, broadcasts, AI-powered answers in 7 Indian languages including Tamil, Hindi, and Sanskrit. Senior-led setup, live in 7 working days.
               </p>
 
               <span
-                className="mt-auto inline-flex items-center gap-2 text-sm font-semibold self-start transition-opacity group-hover:opacity-80"
-                style={{ color: "#4ADE80" }}
+                className="mt-auto inline-flex items-center gap-2 px-5 py-3 rounded-full text-sm font-bold text-background self-start transition-transform group-hover:scale-105"
+                style={{ background: "linear-gradient(135deg,#3B82F6,#1D4ED8)" }}
               >
                 Talk to Us About Connect →
               </span>
             </div>
           </motion.a>
+
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">

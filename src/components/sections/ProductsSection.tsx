@@ -95,7 +95,7 @@ const ProductsSection = () => {
                 <div
                   className="w-12 h-12 rounded-xl flex items-center justify-center bg-white/95"
                 >
-                  <img src={seenzoLogo.url} alt="Seenzo logo" className="w-9 h-9 object-contain" />
+                  <img src={seenzoLogo} alt="Seenzo logo" className="w-9 h-9 object-contain" />
                 </div>
 
                 <span className="text-2xl font-extrabold tracking-tight" style={{ color: "#F59E0B" }}>

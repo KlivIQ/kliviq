@@ -71,19 +71,19 @@ export const ta: Dict = {
     },
   },
   why: {
-    eyebrow: "ஏன் KlivIQ",
-    heading1: "வித்தியாசமாக கட்டப்பட்டது.",
-    heading2: "நோக்கத்துடன்.",
+    eyebrow: "வித்தியாசம்",
+    heading1: "மாதங்கள் அல்ல, வாரங்கள்.",
+    heading2: "இதுதான் KlivIQ வித்தியாசம்.",
   },
   projects: {
-    eyebrow: "பணிகள்",
-    heading1: "நிஜமான தயாரிப்புகள்.",
-    heading2: "நிஜமான தாக்கம்.",
+    eyebrow: "திட்டங்கள்",
+    heading1: "நிரூபணம்.",
+    heading2: "வாக்குறுதிகள் அல்ல.",
   },
   testimonials: {
     eyebrow: "பரிந்துரைகள்",
-    heading1: "வாடிக்கையாளர்கள்",
-    heading2: "என்ன சொல்கிறார்கள்",
+    heading1: "எங்கள் சொல்லை நம்பாதீர்கள்",
+    heading2: "இதை பாருங்கள்",
   },
   process: {
     eyebrow: "செயல்முறை",
@@ -99,9 +99,9 @@ export const ta: Dict = {
     regionGlobal: "🌍 உலகம் ($)",
   },
   faq: {
-    eyebrow: "அடிக்கடி கேட்கப்படுபவை",
-    heading1: "கேள்விகள்,",
-    heading2: "பதில்கள்.",
+    eyebrow: "கேள்வி பதில்",
+    heading1: "நாங்கள் கேட்கப்படும்",
+    heading2: "கேள்விகள்",
   },
   contact: {
     eyebrow: "தொடர்பு",

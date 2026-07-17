@@ -3,11 +3,14 @@ import { useScrollReveal } from "@/hooks/useScrollReveal";
 import { useLang } from "@/i18n/LanguageContext";
 import { Mail, Phone, Linkedin } from "lucide-react";
 
-const contactItems = [
-  { icon: Mail, label: "hello@kliviq.com", href: "mailto:hello@kliviq.com" },
-  { icon: Phone, label: "+91-9840497937 (WhatsApp Only)", href: "tel:+919840497937" },
-  { icon: Linkedin, label: "linkedin.com/company/kliviq", href: "https://linkedin.com/company/kliviq" },
-];
+const ContactSection = () => {
+  const { ref, isVisible } = useScrollReveal();
+  const { t } = useLang();
+  const contactItems = [
+    { icon: Mail, label: "hello@kliviq.com", href: "mailto:hello@kliviq.com" },
+    { icon: Phone, label: t.contact.phoneNote, href: "tel:+919840497937" },
+    { icon: Linkedin, label: "linkedin.com/company/kliviq", href: "https://linkedin.com/company/kliviq" },
+  ];
 
 const ContactSection = () => {
   const { ref, isVisible } = useScrollReveal();

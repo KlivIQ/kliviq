@@ -2,12 +2,6 @@ import { motion } from "framer-motion";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 import { useLang } from "@/i18n/LanguageContext";
 
-const pills = [
-  "We implement AI that creates measurable business ROI",
-  "We build and ship in weeks using AI-assisted delivery",
-  "We bring 20+ years of enterprise expertise to every project",
-];
-
 const AboutSection = () => {
   const { ref, isVisible } = useScrollReveal();
   const { t } = useLang();
@@ -39,24 +33,13 @@ const AboutSection = () => {
           animate={isVisible ? { opacity: 1, y: 0 } : {}}
           transition={{ delay: 0.2, duration: 0.7 }}
         >
-          <p>
-            KlivIQ was built on one idea: businesses that implement AI now will outpace
-            those that wait.
-          </p>
-          <p>
-            We've spent 20+ years delivering enterprise software across Banking, Retail,
-            Healthcare, and Logistics. Now we bring that same expertise to growing
-            businesses — without the enterprise price tag.
-          </p>
-          <p>
-            When you work with KlivIQ, you get a senior technology partner who thinks
-            strategically and builds hands-on. No junior developers. No handoffs. Direct
-            delivery from day one.
-          </p>
+          <p>{t.about.body1}</p>
+          <p>{t.about.body2}</p>
+          <p>{t.about.body3}</p>
         </motion.div>
 
         <div className="flex flex-col gap-4 mt-10">
-          {pills.map((text, i) => (
+          {t.about.pills.map((text, i) => (
             <motion.div
               key={i}
               className="glass rounded-xl px-6 py-4 glow-purple"
@@ -75,7 +58,7 @@ const AboutSection = () => {
           animate={isVisible ? { opacity: 1 } : {}}
           transition={{ delay: 0.9, duration: 0.6 }}
         >
-          If it involves AI, technology, and growth — we're in.
+          {t.about.closing}
         </motion.p>
       </div>
     </section>

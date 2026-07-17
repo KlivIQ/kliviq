@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
+import { useLang } from "@/i18n/LanguageContext";
 
 const steps = [
   { title: "Understand", desc: "We align on goals, scope, and outcomes. No assumptions." },

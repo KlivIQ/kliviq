@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
+import { useLang } from "@/i18n/LanguageContext";
 import { Mail, Phone, Linkedin } from "lucide-react";
 
 const contactItems = [
@@ -10,6 +11,8 @@ const contactItems = [
 
 const ContactSection = () => {
   const { ref, isVisible } = useScrollReveal();
+  const { t } = useLang();
+
 
   return (
     <section id="contact" className="relative py-32 px-6">
@@ -22,7 +25,7 @@ const ContactSection = () => {
           initial={{ opacity: 0 }}
           animate={isVisible ? { opacity: 1 } : {}}
         >
-          Contact
+          {t.contact.eyebrow}
         </motion.p>
         <motion.h2
           className="text-3xl md:text-5xl font-bold text-center mb-6"
@@ -30,8 +33,8 @@ const ContactSection = () => {
           animate={isVisible ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7 }}
         >
-          Let's Build Something{" "}
-          <span className="gradient-text">That Matters</span>
+          {t.contact.heading1}{" "}
+          <span className="gradient-text">{t.contact.heading2}</span>
         </motion.h2>
         <motion.p
           className="text-muted-foreground text-center text-lg mb-12"
@@ -39,7 +42,7 @@ const ContactSection = () => {
           animate={isVisible ? { opacity: 1 } : {}}
           transition={{ delay: 0.2 }}
         >
-          If you're serious about building something impactful — let's talk.
+          {t.contact.intro}
         </motion.p>
 
         <motion.div

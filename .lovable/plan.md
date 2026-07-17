@@ -1,65 +1,36 @@
-## Plan: Add Seenzo, KlivIQ Connect, Zero Rupees, and supporting SEO/GEO updates
+# Full Tamil & Hindi Coverage
 
-### 1. Products section (`src/components/sections/ProductsSection.tsx`)
-Add two new cards in front of the existing three (Kroviq Studio, SareeTry AI, Aacharam). The product grid becomes 5 cards — keep `md:grid-cols-3` so it wraps to a second row cleanly.
+Extend the existing i18n system so every user-visible string on the marketing site renders in the selected language. No new infrastructure — just expanding dictionaries and wiring the remaining hardcoded strings through `t.*`.
 
-**Card A — Seenzo (styled as a bold ad callout, amber accent)**
-- Distinct treatment: amber border `border-[#F59E0B]/50`, amber glow ring, amber badge chip. Icon: `Radar` from lucide-react.
-- Badge row: `Seenzo` wordmark bold + small muted "by KlivIQ" pill next to it.
-- Amber-accented headline: "Does ChatGPT Know Your Business Exists?"
-- Subhead + body copy exactly as user provided.
-- CTA: solid amber button "Get My Free Seenzo Score →" → `https://seenzo.in` (target=_blank, rel="noopener noreferrer").
-- Card spans 2 grid columns on `md:` to look ad-like and stand out.
+## Sections to complete
 
-**Card B — KlivIQ Connect (standard KlivIQ green treatment, WhatsApp accent icon)**
-- Icon: `MessageCircle` (lucide) with a subtle WhatsApp-green tint on the icon only; card itself keeps existing emerald/lime brand accents so it stays on-brand.
-- Badge: "Now Booking Setup Slots".
-- Headline / subhead / body exactly as provided.
-- CTA: "Talk to Us About Connect →" linking to `#contact` (existing on-page contact CTA). No external URL.
+1. **Hero** — onboarding pill fine print
+2. **About** — 3 body paragraphs, 3 pill statements, closing line
+3. **Services** — intro paragraph, 4 card titles, descriptions, all bullet lists, "Learn more about…" CTA labels
+4. **Why KlivIQ** — "Without KlivIQ" / "With KlivIQ" headers, all 5+5 comparison rows, all 5 stat labels
+5. **Process** — "Step N" label, all 6 step titles and descriptions
+6. **Projects** — card titles, descriptions, tags, CTAs
+7. **Testimonials** — quotes, names, roles/companies
+8. **Pricing** — plan names, prices, feature bullets, CTAs, disclaimers
+9. **FAQ** — all questions and full answers
+10. **Contact section** — all body text and labels
+11. **Footer** — column headers, link labels, tagline, legal line
 
-Existing three product cards remain unchanged below.
+## Approach
 
-### 2. Portfolio: add "Zero Rupees" (`src/components/sections/ProjectsSection.tsx`)
-- Append to `clientWork` array with title `Zero Rupees`, description as provided, href `https://zero-rupees.vercel.app/`, badge `EXPERIMENT`, cta `Open live`.
-- Generate a new thumbnail image `src/assets/thumb-zero-rupees.jpg` (premium imagegen, on-brand dark + emerald with faux "Order Placed" UI motif — no purple/teal).
-- Grid stays `lg:grid-cols-4`; the row wraps to a fifth tile on the next line, which is fine.
+- Expand each dictionary (`en.ts`, `ta.ts`, `hi.ts`) with the new keys, grouped by section (e.g. `t.services.cards[0].title`, `t.faq.items[i].q/a`).
+- Convert the local `const` arrays inside each section component into references built from `t.*` (so ordering stays identical, only strings change).
+- Keep tone native-quality marketing (not literal) as previously approved. Preserve brand names (KlivIQ, Kliviq TryOn, OpenAI, Gemini, Claude, n8n, React, Next.js, Flutter, MVP, CTO, RAG, API) untranslated.
+- Keep numeric values (₹20L–₹50L+, 4–6 weeks, 20+ Years) in numerals across all languages.
+- No changes to layout, styling, animations, or the language switcher.
 
-### 3. Homepage SEO/GEO (`src/pages/Index.tsx`, `index.html`)
-- Update `<title>` and meta description in `src/pages/Index.tsx` Helmet to include "AI Visibility Scoring" and "WhatsApp AI Chatbots".
-- Mirror the description update in `index.html` static head so pre-JS crawlers see it too.
-- Extend the `ProfessionalService` JSON-LD `serviceType` array to include "AI Visibility Scoring" and "WhatsApp AI Chatbot Development".
-- Add a `hasOfferCatalog` block to the Organization JSON-LD naming Seenzo and KlivIQ Connect as offers with `url` (https://seenzo.in and https://www.kliviq.com/#contact) so AI crawlers associate both products with KlivIQ.
-- Append two entries to the `FAQPage` JSON-LD: "What is Seenzo?" and "What is KlivIQ Connect?" (answers as provided).
+## Verification
 
-### 4. Visible FAQ (`src/components/sections/FaqSection.tsx`)
-- Add the same two FAQ items to the rendered accordion so the JSON-LD is backed by crawlable body text.
+- Typecheck.
+- Playwright: switch to `ta` and `hi`, screenshot each section, confirm no English leaks remain (spot-check via visible-text scrape).
+- Build.
 
-### 5. Glossary (`src/data/glossary.ts`, `scripts/generate-sitemap.ts` auto-picks them up)
-Add two new entries following the existing `GlossaryTerm` shape:
-- `ai-visibility` → `/glossary/ai-visibility` — defines AI Visibility, references Seenzo in the `kliviqUse` field with `kliviqLink` pointing to `https://seenzo.in` (external link supported by existing renderer, will confirm during build; if the renderer forces internal, we link to the homepage Seenzo card via `/#products`).
-- `geo-generative-engine-optimisation` → `/glossary/geo-generative-engine-optimisation` — defines GEO, cross-links to the AI Visibility entry and Seenzo.
-Each entry ships with `metaTitle`, `metaDescription`, `definition`, `body` sections, `faqs`, matching the pattern used by every existing glossary term. No pricing figures anywhere.
+## Out of scope
 
-### 6. Sitemap
-`scripts/generate-sitemap.ts` already maps over `glossaryTerms`, so the two new glossary URLs appear automatically on next `predev`/`prebuild`. The static `public/sitemap.xml` in the repo will be regenerated by the prebuild hook. No manual edit needed beyond running the build (which the harness does).
-
-### 7. Static rendering / GEO
-All new components are plain React server-renderable (no `use client`-only APIs, no `window` reads at module scope). Because the project uses `vite-react-ssg`, the new Products cards, portfolio tile, FAQ entries, and glossary pages will be prerendered into raw HTML — verified after build by grepping `dist/index.html` and `dist/glossary/ai-visibility/index.html` for the new copy.
-
-### Technical notes
-- Colors: amber `#F59E0B` used only inside the Seenzo card (border, badge, CTA). All other new elements use existing brand tokens (`#4ADE80` lime accent, emerald gradients, `text-foreground`, `text-muted-foreground`).
-- No hardcoded pricing anywhere in new copy.
-- All new external links use `target="_blank"` + `rel="noopener noreferrer"`.
-- Canonical/OG URLs continue to use `https://www.kliviq.com`.
-- Verification: `bun run build` → grep `dist/index.html` for "Seenzo", "KlivIQ Connect", "Zero Rupees", "AI Visibility Scoring"; open `dist/glossary/ai-visibility/index.html` to confirm SSG output.
-
-### Files touched
-- `src/components/sections/ProductsSection.tsx` (edit)
-- `src/components/sections/ProjectsSection.tsx` (edit)
-- `src/components/sections/FaqSection.tsx` (edit)
-- `src/pages/Index.tsx` (edit — Helmet + JSON-LD)
-- `index.html` (edit — static meta description/title fallback)
-- `src/data/glossary.ts` (edit — 2 new terms)
-- `src/assets/thumb-zero-rupees.jpg` (new — generated)
-
-No routes file changes needed (glossary route is dynamic on `glossaryTerms`).
+- Blog posts, glossary, service landing pages, legal dialogs (long-form content pages — can be a later phase if desired).
+- SEO meta tags per language.

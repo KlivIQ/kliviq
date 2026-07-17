@@ -27,11 +27,72 @@ export const en = {
     eyebrow: "About",
     heading1: "Not Just a Studio.",
     heading2: "Your AI & Technology Partner.",
+    body1: "KlivIQ was built on one idea: businesses that implement AI now will outpace those that wait.",
+    body2: "We've spent 20+ years delivering enterprise software across Banking, Retail, Healthcare, and Logistics. Now we bring that same expertise to growing businesses — without the enterprise price tag.",
+    body3: "When you work with KlivIQ, you get a senior technology partner who thinks strategically and builds hands-on. No junior developers. No handoffs. Direct delivery from day one.",
+    pills: [
+      "We implement AI that creates measurable business ROI",
+      "We build and ship in weeks using AI-assisted delivery",
+      "We bring 20+ years of enterprise expertise to every project",
+    ],
+    closing: "If it involves AI, technology, and growth — we're in.",
   },
   services: {
     eyebrow: "What We Do",
     heading1: "AI-First Services.",
     heading2: "Built for Real Business Outcomes.",
+    intro: "We don't just build software. We implement intelligence into your business — and deliver it before your competitor finishes planning.",
+    learnMorePrefix: "Learn more about",
+    cards: [
+      {
+        title: "AI Implementation for Business",
+        desc: "We take AI from buzzword to business tool. Chatbots, automation workflows, intelligent dashboards — scoped, built, and live in 4–6 weeks.",
+        bullets: [
+          "Business process automation",
+          "AI chatbots and assistants",
+          "Workflow automation (n8n, custom)",
+          "OpenAI, Gemini, Claude API integrations",
+          "RAG pipelines and knowledge bases",
+        ],
+        linkLabel: "AI Consulting",
+      },
+      {
+        title: "Fractional CTO",
+        desc: "Senior tech leadership without the full-time cost. We own your technology strategy, make the right architecture decisions, and build alongside you — from week one.",
+        bullets: [
+          "Technology strategy and roadmap",
+          "Architecture and stack decisions",
+          "AI adoption planning for your business",
+          "Vendor and team oversight",
+          "10–20 hrs/week on monthly retainer",
+        ],
+        linkLabel: "Fractional CTO",
+      },
+      {
+        title: "Web & Mobile Development",
+        desc: "High-performance websites and cross-platform mobile apps built with AI-assisted development. React, Next.js, Flutter. Faster delivery, fewer bugs, cleaner code.",
+        bullets: [
+          "React and Next.js web apps",
+          "Flutter mobile (iOS + Android)",
+          "MVP in 3–4 weeks",
+          "Full product in 6–10 weeks",
+          "AI-assisted development throughout",
+        ],
+        linkLabel: "Custom App Development",
+      },
+      {
+        title: "Custom AI Tools & Automation",
+        desc: "Internal tools your team actually uses — AI dashboards, document processors, automated reporting, custom integrations. Built to scale.",
+        bullets: [
+          "Custom AI tools and dashboards",
+          "Document and data automation",
+          "Business intelligence with AI",
+          "API integrations and SaaS MVPs",
+          "Automation frameworks",
+        ],
+        linkLabel: "MVP Development",
+      },
+    ],
   },
   products: {
     eyebrow: "Products",
@@ -72,21 +133,106 @@ export const en = {
     eyebrow: "The Difference",
     heading1: "Weeks, Not Months.",
     heading2: "That's the KlivIQ Difference.",
+    withoutTitle: "Without KlivIQ",
+    withTitle: "With KlivIQ",
+    withoutItems: [
+      "Hire a dev team: 3–6 months",
+      "Build AI strategy: 2–3 months planning",
+      "MVP live: 4–6 months minimum",
+      "Find a CTO: 2–4 month search",
+      "Cost: ₹20L–₹50L+ to get started",
+    ],
+    withItems: [
+      "AI implementation live: 4–6 weeks",
+      "Strategy + execution: same team, week one",
+      "MVP live: 3–5 weeks",
+      "Fractional CTO: engaged from week one",
+      "Cost: fraction of a full-time hire",
+    ],
+    stats: [
+      { value: "20+ Years", label: "Enterprise experience" },
+      { value: "4–6 Weeks", label: "Average delivery" },
+      { value: "Frac. CTO", label: "From week one" },
+      { value: "Fixed Price", label: "Always" },
+      { value: "India + Global", label: "Clients served" },
+    ],
   },
   projects: {
     eyebrow: "Projects",
     heading1: "Proof.",
     heading2: "Not Promises.",
+    techsTitle: "Technologies We Build With",
+    cards: [
+      {
+        title: "FACO",
+        blurb: "Real landing page designed for a coffee store client — Fathima Coffee Works, Kodaikanal.",
+        badge: "CLIENT WORK",
+        cta: "Open live",
+      },
+      {
+        title: "ScopeSnap",
+        blurb: "AI project scoping tool that turns a one-line brief into deliverables, timeline, cost and tech stack. CLIENT WORK.",
+        badge: "CLIENT WORK",
+        cta: "Open Prototype",
+      },
+      {
+        title: "PitchDeckAI",
+        blurb: "Generates investor-ready 10-slide pitch decks in 6 Indian languages from a single idea. Concept work.",
+        badge: "Concept",
+        cta: "Open Prototype",
+      },
+      {
+        title: "ClinicPing",
+        blurb: "Clinic ops dashboard with AI no-show prediction and multilingual patient messaging. CLIENT WORK.",
+        badge: "CLIENT WORK",
+        cta: "Open Prototype",
+      },
+      {
+        title: "Zero Rupees",
+        blurb: "A free fake-shopping experience built for the scroll-and-cart generation — add to cart, checkout, get the 'Order Placed' dopamine hit, spend zero rupees. No card, no signup friction, just the satisfaction loop of online shopping without the bill.",
+        badge: "EXPERIMENT",
+        cta: "Open live",
+      },
+    ],
+    stat: {
+      title: "2 Projects In Delivery",
+      tag: "AI Implementation · In Progress",
+      description: "Client case studies dropping Q3 2026.",
+    },
   },
   testimonials: {
     eyebrow: "Testimonials",
     heading1: "Don't Take Our Word",
     heading2: "For It",
+    linkedInBadge: "LinkedIn Recommendation",
+    items: [
+      {
+        quote:
+          "Sriram is a subject matter expert in Testing. He was brought in to help us automate regression test scripts that can be reused on future software releases for our project. He brings in a wealth of knowledge for test technologies and test processes. We used to run User Acceptance Testing manually and test management was very labor intensive and inefficient. Sriram helped us develop processes on using HP Quality Center for test management. He also helped us train all our users on HP Quality Center. He is very results oriented and collaborates well in a team environment. He also brings in a lot of fresh ideas on how we can improve on our existing test processes.",
+        name: "Jocelyn Ang, MBA",
+        title: "Global Senior Manager of IT Infrastructure Services, Medela",
+      },
+      {
+        quote:
+          "Sriram was an excellent Test Manager for a complex project integrating Software as a Service components with internal systems in R&D IT. He learned quickly, was proactive, and worked with high integrity. He established our offshore test team quickly and had them ready to begin, and coordinated efforts very effectively. Opportunity to work with him again will be much appreciated.",
+        name: "Terri Fleming",
+        title: "IT Program Management, Life Sciences Systems Delivery",
+      },
+    ],
   },
   process: {
     eyebrow: "Process",
     heading1: "How Things Actually",
     heading2: "Get Done",
+    stepPrefix: "Step",
+    steps: [
+      { title: "Understand", desc: "We align on goals, scope, and outcomes. No assumptions." },
+      { title: "Design", desc: "Clear structure, wireframes, and direction before coding begins." },
+      { title: "Build", desc: "Fast iterations with continuous feedback — no black box development." },
+      { title: "Launch", desc: "Tested, stable, and ready to scale." },
+      { title: "Handover", desc: "Complete ownership transferred — source code, hosting access, credentials, and documentation. Plus 30 days post-launch support included." },
+      { title: "Grow (Optional)", desc: "Monthly retainer for updates, new features, and performance monitoring. Most clients stay. Either way — the door's always open." },
+    ],
   },
   pricing: {
     eyebrow: "Pricing",
@@ -95,11 +241,74 @@ export const en = {
     intro: "Fixed price. Milestone payments (30 · 40 · 30). Scoped on a free 30-minute call.",
     regionIndia: "🇮🇳 India (₹)",
     regionGlobal: "🌍 Global ($)",
+    categories: {
+      Web: "Web",
+      Mobile: "Mobile",
+      AI: "AI",
+      Retainer: "Retainer",
+    },
+    items: [
+      { category: "Retainer" as const, title: "Fractional CTO Retainer", indiaPrice: "from ₹40,000/month", globalPrice: "from $800/month" },
+      { category: "AI" as const, title: "AI Implementation", indiaPrice: "from ₹75,000", globalPrice: "from $2,000" },
+      { category: "AI" as const, title: "AI Chatbot / Automation", indiaPrice: "from ₹60,000", globalPrice: "from $1,500" },
+      { category: "Web" as const, title: "Web Platform", indiaPrice: "from ₹75,000", globalPrice: "from $2,000" },
+      { category: "Mobile" as const, title: "Mobile App MVP", indiaPrice: "from ₹2,50,000", globalPrice: "from $5,000" },
+      { category: "AI" as const, title: "Custom AI Tool", indiaPrice: "from ₹2,00,000", globalPrice: "from $5,000" },
+    ],
+    notes: [
+      "✅ Fixed-price · milestone payments (30% · 40% · 30%)",
+      "✅ GST invoices for Indian clients",
+      "✅ International payments via Wise / Payoneer",
+      "📞 Free 30-min scoping call before any commitment",
+    ],
+    cta: "Book a Free Scoping Call →",
   },
   faq: {
     eyebrow: "FAQ",
     heading1: "Questions We Get",
     heading2: "Asked",
+    items: [
+      {
+        q: "What is Seenzo?",
+        a: "Seenzo is KlivIQ's AI Visibility platform that scans and scores how visible your business is to AI engines like ChatGPT, Gemini, and Perplexity — then helps you fix what's broken. Get a free score in under 5 minutes at seenzo.in.",
+      },
+      {
+        q: "What is KlivIQ Connect?",
+        a: "KlivIQ Connect is a customizable WhatsApp chatbot platform built for Indian SMBs — clinics, salons, CA firms, and D2C brands — handling bookings, reminders, broadcasts, and AI-powered customer queries in 7 Indian languages. No code. No per-message markup. Live in 7 working days.",
+      },
+      {
+        q: "What is AI implementation?",
+        a: "We analyse your business processes, identify where AI creates the most value, then build and integrate the tools — chatbots, automation workflows, intelligent dashboards — directly into how you work. You see ROI in weeks, not quarters.",
+      },
+      {
+        q: "What is a Fractional CTO?",
+        a: "A senior technology leader who works with you part-time — typically 10–20 hours/week on retainer. If you're making technology decisions without a senior tech person in the room, you need one. We strategy and build — not just advise.",
+      },
+      {
+        q: "How do you deliver in weeks when others take months?",
+        a: "AI-assisted development, focused sprints, no agency overhead. No account managers, no briefing chains. You work directly with the person building.",
+      },
+      {
+        q: "Do you work with Indian and global clients?",
+        a: "Yes — separate INR and USD pricing, Razorpay for India, Wise/Payoneer internationally. Same quality, same standards.",
+      },
+      {
+        q: "How does pricing work?",
+        a: "Fixed price agreed upfront. 30% to start, 40% mid-project, 30% on delivery. No surprises.",
+      },
+      {
+        q: "Do you sign NDAs?",
+        a: "Immediately and without question.",
+      },
+      {
+        q: "What technologies do you use?",
+        a: "AI: OpenAI, Claude, Gemini, LangChain, n8n. Web: React, Next.js, Node.js. Mobile: Flutter. Backend: Python, PostgreSQL, Firebase. Cloud: AWS, Vercel, Google Cloud.",
+      },
+      {
+        q: "How do I get started?",
+        a: "Book a free 30-minute scoping call. No pitch, no commitment — just an honest conversation.",
+      },
+    ],
   },
   contact: {
     eyebrow: "Contact",
@@ -107,6 +316,7 @@ export const en = {
     heading2: "That Matters",
     intro: "If you're serious about building something impactful — let's talk.",
     cta: "Start Your Project",
+    phoneNote: "+91-9840497937 (WhatsApp Only)",
   },
   footer: {
     tagline: "Build Faster. Launch Smarter. Scale Without Chaos.",
@@ -117,6 +327,12 @@ export const en = {
     privacy: "Privacy Policy",
     terms: "Terms of Service",
     rights: "All rights reserved.",
+    servicesList: ["AI Implementation", "Fractional CTO", "Web & Mobile", "Custom AI Tools"],
+    companyList: ["About", "Work", "Process", "Pricing"],
+    contactCity: "Chennai, India",
+    contactWhatsapp: "WhatsApp",
+    contactLinkedin: "LinkedIn",
+    madeIn: "Made in India 🇮🇳 · Delivered Globally 🌍",
   },
   lang: {
     label: "Language",
@@ -124,4 +340,3 @@ export const en = {
 };
 
 export type Dict = typeof en;
-

@@ -4,63 +4,11 @@ import { useScrollReveal } from "@/hooks/useScrollReveal";
 import { useLang } from "@/i18n/LanguageContext";
 import { Sparkles, Compass, Layers, Zap, ArrowRight } from "lucide-react";
 
-const services = [
-  {
-    icon: Sparkles,
-    title: "AI Implementation for Business",
-    desc: "We take AI from buzzword to business tool. Chatbots, automation workflows, intelligent dashboards — scoped, built, and live in 4–6 weeks.",
-    bullets: [
-      "Business process automation",
-      "AI chatbots and assistants",
-      "Workflow automation (n8n, custom)",
-      "OpenAI, Gemini, Claude API integrations",
-      "RAG pipelines and knowledge bases",
-    ],
-    link: "/services/ai-consulting",
-    linkLabel: "AI Consulting",
-  },
-  {
-    icon: Compass,
-    title: "Fractional CTO",
-    desc: "Senior tech leadership without the full-time cost. We own your technology strategy, make the right architecture decisions, and build alongside you — from week one.",
-    bullets: [
-      "Technology strategy and roadmap",
-      "Architecture and stack decisions",
-      "AI adoption planning for your business",
-      "Vendor and team oversight",
-      "10–20 hrs/week on monthly retainer",
-    ],
-    link: "/services/fractional-cto",
-    linkLabel: "Fractional CTO",
-  },
-  {
-    icon: Layers,
-    title: "Web & Mobile Development",
-    desc: "High-performance websites and cross-platform mobile apps built with AI-assisted development. React, Next.js, Flutter. Faster delivery, fewer bugs, cleaner code.",
-    bullets: [
-      "React and Next.js web apps",
-      "Flutter mobile (iOS + Android)",
-      "MVP in 3–4 weeks",
-      "Full product in 6–10 weeks",
-      "AI-assisted development throughout",
-    ],
-    link: "/services/custom-app-development",
-    linkLabel: "Custom App Development",
-  },
-  {
-    icon: Zap,
-    title: "Custom AI Tools & Automation",
-    desc: "Internal tools your team actually uses — AI dashboards, document processors, automated reporting, custom integrations. Built to scale.",
-    bullets: [
-      "Custom AI tools and dashboards",
-      "Document and data automation",
-      "Business intelligence with AI",
-      "API integrations and SaaS MVPs",
-      "Automation frameworks",
-    ],
-    link: "/services/mvp-development",
-    linkLabel: "MVP Development",
-  },
+const serviceMeta = [
+  { icon: Sparkles, link: "/services/ai-consulting" },
+  { icon: Compass, link: "/services/fractional-cto" },
+  { icon: Layers, link: "/services/custom-app-development" },
+  { icon: Zap, link: "/services/mvp-development" },
 ];
 
 const ServicesSection = () => {

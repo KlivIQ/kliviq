@@ -114,8 +114,8 @@ export const en = {
     company: "Company",
     contact: "Contact",
     legal: "Legal",
-    privacy: "Privacy",
-    terms: "Terms",
+    privacy: "Privacy Policy",
+    terms: "Terms of Service",
     rights: "All rights reserved.",
   },
   lang: {

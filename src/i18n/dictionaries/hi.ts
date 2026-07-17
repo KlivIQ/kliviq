@@ -116,8 +116,8 @@ export const hi: Dict = {
     company: "कंपनी",
     contact: "संपर्क",
     legal: "कानूनी",
-    privacy: "गोपनीयता",
-    terms: "शर्तें",
+    privacy: "गोपनीयता नीति",
+    terms: "सेवा की शर्तें",
     rights: "सर्वाधिकार सुरक्षित।",
   },
   lang: {

@@ -97,7 +97,7 @@ const ProductsSection = () => {
                 </span>
               </div>
 
-              <h3 className="text-2xl md:text-4xl font-extrabold mb-3 text-foreground leading-tight">
+              <h3 className="text-xl md:text-2xl font-extrabold mb-3 text-foreground leading-tight">
                 Does ChatGPT Know Your <span style={{ color: "#F59E0B" }}>Business Exists?</span>
               </h3>
               <p className="text-foreground/85 text-base md:text-lg leading-relaxed mb-3">

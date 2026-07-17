@@ -29,9 +29,9 @@ export const en = {
     heading2: "Your AI & Technology Partner.",
   },
   services: {
-    eyebrow: "Services",
-    heading1: "What We",
-    heading2: "Actually Do",
+    eyebrow: "What We Do",
+    heading1: "AI-First Services.",
+    heading2: "Built for Real Business Outcomes.",
   },
   products: {
     eyebrow: "Products",

@@ -100,7 +100,7 @@ const PricingSection = () => {
                     />
                   )}
                   <span className="relative font-semibold tracking-wide">
-                    {r === "india" ? "🇮🇳 India (₹)" : "🌍 Global ($)"}
+                    {r === "india" ? t.pricing.regionIndia : t.pricing.regionGlobal}
                   </span>
                 </button>
               );

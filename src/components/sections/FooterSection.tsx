@@ -83,7 +83,7 @@ const FooterSection = () => {
           {/* Contact */}
           <div>
             <h4 className="text-sm font-semibold text-foreground mb-4 uppercase tracking-wider">
-              Contact
+              {t.footer.contact}
             </h4>
             <ul className="space-y-2 text-sm text-muted-foreground">
               <li><a href="mailto:hello@kliviq.com" className="hover:text-foreground transition-colors">hello@kliviq.com</a></li>

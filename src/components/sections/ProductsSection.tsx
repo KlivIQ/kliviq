@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
-import { Camera, Sparkles, Users, MessageCircle } from "lucide-react";
+import { Camera, Users, MessageCircle } from "lucide-react";
 
 const seenzoLogo = "data:image/webp;base64,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";
 
@@ -16,23 +16,6 @@ const ProductsSection = () => {
   const { ref, isVisible } = useScrollReveal();
 
   const products: ProductCard[] = [
-    {
-      icon: <Sparkles className="w-6 h-6 text-primary-foreground" />,
-      badge: "Launching 2026",
-      title: "Kroviq Studio",
-      description:
-        "A productised AI studio for rapid design, prototyping and intelligent workflow development. Built for teams who want production-ready AI assets without starting from scratch.",
-      mailSubject: "Waitlist%20for%20Kroviq%20Studio",
-    },
-    {
-      icon: <Camera className="w-6 h-6 text-primary-foreground" />,
-      badge: "In Development",
-      title: "KlivIQ TryOn",
-      description:
-        "An AI-powered online trial room for saree e-commerce. Shoppers upload a photo and instantly see exactly how each saree looks on them — no more guessing before they buy. Built to lift conversions and cut returns for online saree stores.",
-      mailSubject: "Waitlist%20for%20KlivIQ%20TryOn",
-    },
-
     {
       icon: <Users className="w-6 h-6 text-primary-foreground" />,
       badge: "Private Beta",
@@ -59,7 +42,6 @@ const ProductsSection = () => {
           animate={isVisible ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7 }}
         >
-          <span className="text-foreground">Coming Soon.</span>{" "}
           <span style={{ color: "#4ADE80" }}>Productised AI Tools.</span>
         </motion.h2>
         <motion.p
@@ -78,7 +60,7 @@ const ProductsSection = () => {
             href="https://seenzo.in"
             target="_blank"
             rel="noopener noreferrer"
-            className="md:col-span-2 relative rounded-2xl p-8 md:p-10 overflow-hidden group hover:-translate-y-1 transition-transform duration-500 flex flex-col border-2"
+            className="relative rounded-2xl p-8 md:p-10 overflow-hidden group hover:-translate-y-1 transition-transform duration-500 flex flex-col border-2"
             style={{
               borderColor: "rgba(245,158,11,0.55)",
               background:
@@ -115,10 +97,10 @@ const ProductsSection = () => {
                 </span>
               </div>
 
-              <h3 className="text-2xl md:text-4xl font-extrabold mb-3 text-foreground leading-tight">
+              <h3 className="text-xl md:text-2xl font-extrabold mb-3 text-foreground leading-tight">
                 Does ChatGPT Know Your <span style={{ color: "#F59E0B" }}>Business Exists?</span>
               </h3>
-              <p className="text-foreground/85 text-base md:text-lg leading-relaxed mb-3">
+              <p className="text-foreground/85 leading-relaxed mb-3">
                 Get your free AI Visibility Score in under 5 minutes. See exactly how invisible — or visible — you are to ChatGPT, Gemini, and Perplexity.
               </p>
               <p className="text-muted-foreground leading-relaxed mb-6">
@@ -187,9 +169,64 @@ const ProductsSection = () => {
             </div>
           </motion.a>
 
+          {/* KlivIQ TryOn — violet accent */}
+          <motion.a
+            href="https://kliviq-tryon.vercel.app"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="relative rounded-2xl p-8 md:p-10 overflow-hidden group hover:-translate-y-1 transition-transform duration-500 flex flex-col border-2"
+            style={{
+              borderColor: "rgba(168,85,247,0.55)",
+              background:
+                "linear-gradient(135deg, rgba(168,85,247,0.14) 0%, rgba(10,15,30,0.6) 60%)",
+              boxShadow: "0 20px 60px -20px rgba(168,85,247,0.4)",
+            }}
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={isVisible ? { opacity: 1, scale: 1 } : {}}
+            transition={{ delay: 0.45, duration: 0.5 }}
+          >
+            <div className="absolute -top-16 -right-16 w-64 h-64 rounded-full blur-3xl opacity-40" style={{ background: "#A855F7" }} />
+            <div className="relative z-10 flex flex-col h-full">
+              <div className="flex items-center gap-3 mb-5 flex-wrap">
+                <div
+                  className="w-12 h-12 rounded-xl flex items-center justify-center"
+                  style={{ background: "linear-gradient(135deg,#A855F7,#7E22CE)" }}
+                >
+                  <Camera className="w-6 h-6 text-white" />
+                </div>
+                <span className="text-2xl font-extrabold tracking-tight" style={{ color: "#C084FC" }}>
+                  KlivIQ TryOn
+                </span>
+                <span
+                  className="ml-auto inline-block text-[10px] font-semibold uppercase tracking-widest px-2.5 py-1 rounded-full border"
+                  style={{ color: "#C084FC", borderColor: "rgba(192,132,252,0.5)" }}
+                >
+                  Live
+                </span>
+              </div>
+
+              <h3 className="text-xl md:text-2xl font-bold mb-3 text-foreground leading-snug">
+                AI Trial Room for <span style={{ color: "#C084FC" }}>Saree E-Commerce</span>
+              </h3>
+              <p className="text-foreground/85 leading-relaxed mb-3">
+                Shoppers upload a photo and instantly see exactly how each saree looks on them — an online trial room that ends the guesswork before they buy.
+              </p>
+              <p className="text-muted-foreground leading-relaxed mb-6 text-sm">
+                Built for online saree stores to lift conversions and cut returns. No app to install, works right on your product pages.
+              </p>
+
+              <span
+                className="mt-auto inline-flex items-center gap-2 px-5 py-3 rounded-full text-sm font-bold text-background self-start transition-transform group-hover:scale-105"
+                style={{ background: "linear-gradient(135deg,#A855F7,#7E22CE)" }}
+              >
+                Try KlivIQ TryOn →
+              </span>
+            </div>
+          </motion.a>
+
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 gap-6 max-w-md mx-auto">
           {products.map((product, index) => (
             <motion.div
               key={product.title}

@@ -57,7 +57,7 @@ const FooterSection = () => {
           {/* Services */}
           <div>
             <h4 className="text-sm font-semibold text-foreground mb-4 uppercase tracking-wider">
-              Services
+              {t.footer.services}
             </h4>
             <ul className="space-y-2 text-sm text-muted-foreground">
               <li><a href="#services" className="hover:text-foreground transition-colors">AI Implementation</a></li>

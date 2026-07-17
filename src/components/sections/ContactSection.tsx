@@ -12,9 +12,7 @@ const ContactSection = () => {
     { icon: Linkedin, label: "linkedin.com/company/kliviq", href: "https://linkedin.com/company/kliviq" },
   ];
 
-const ContactSection = () => {
-  const { ref, isVisible } = useScrollReveal();
-  const { t } = useLang();
+
 
 
   return (

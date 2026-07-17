@@ -42,7 +42,6 @@ const ProductsSection = () => {
           animate={isVisible ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7 }}
         >
-          <span className="text-foreground">Coming Soon.</span>{" "}
           <span style={{ color: "#4ADE80" }}>Productised AI Tools.</span>
         </motion.h2>
         <motion.p

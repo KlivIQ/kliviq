@@ -226,7 +226,7 @@ const ProductsSection = () => {
 
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:max-w-md md:mx-auto">
           {products.map((product, index) => (
             <motion.div
               key={product.title}

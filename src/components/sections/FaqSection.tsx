@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
+import { useLang } from "@/i18n/LanguageContext";
 import {
   Accordion,
   AccordionContent,
@@ -52,6 +53,8 @@ const faqs = [
 
 const FaqSection = () => {
   const { ref, isVisible } = useScrollReveal();
+  const { t } = useLang();
+
 
   return (
     <section id="faq" className="relative py-32 px-6">
@@ -61,7 +64,7 @@ const FaqSection = () => {
           initial={{ opacity: 0 }}
           animate={isVisible ? { opacity: 1 } : {}}
         >
-          FAQ
+          {t.faq.eyebrow}
         </motion.p>
         <motion.h2
           className="text-3xl md:text-5xl font-bold text-center mb-12"
@@ -69,8 +72,8 @@ const FaqSection = () => {
           animate={isVisible ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7 }}
         >
-          <span className="text-foreground">Questions We Get</span>{" "}
-          <span style={{ color: "#4ADE80" }}>Asked</span>
+          <span className="text-foreground">{t.faq.heading1}</span>{" "}
+          <span style={{ color: "#4ADE80" }}>{t.faq.heading2}</span>
         </motion.h2>
 
         <motion.div

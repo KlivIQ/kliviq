@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
+import { useLang } from "@/i18n/LanguageContext";
 
 const steps = [
   { title: "Understand", desc: "We align on goals, scope, and outcomes. No assumptions." },
@@ -56,6 +57,7 @@ const ProcessStep = ({ step, index }: { step: typeof steps[0]; index: number }) 
 
 const ProcessSection = () => {
   const { ref, isVisible } = useScrollReveal();
+  const { t } = useLang();
 
   return (
     <section id="process" className="relative py-32 px-6">
@@ -66,7 +68,7 @@ const ProcessSection = () => {
             initial={{ opacity: 0 }}
             animate={isVisible ? { opacity: 1 } : {}}
           >
-            Process
+            {t.process.eyebrow}
           </motion.p>
           <motion.h2
             className="text-3xl md:text-5xl font-bold mb-16"
@@ -74,8 +76,8 @@ const ProcessSection = () => {
             animate={isVisible ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.7 }}
           >
-            How Things Actually{" "}
-            <span className="gradient-text">Get Done</span>
+            {t.process.heading1}{" "}
+            <span className="gradient-text">{t.process.heading2}</span>
           </motion.h2>
         </div>
 

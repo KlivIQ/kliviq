@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
+import { useLang } from "@/i18n/LanguageContext";
 import thumbScopeSnap from "@/assets/thumb-scopesnap.png";
 import thumbPitchDeck from "@/assets/thumb-pitchdeck.png";
 import thumbClinicPing from "@/assets/thumb-clinicping.png";
@@ -169,6 +170,8 @@ const StatCardItem = ({ card, index }: { card: StatCard; index: number }) => {
 
 const ProjectsSection = () => {
   const { ref, isVisible } = useScrollReveal();
+  const { t } = useLang();
+
 
   return (
     <section id="projects" className="relative py-32 px-6">
@@ -179,7 +182,7 @@ const ProjectsSection = () => {
             initial={{ opacity: 0 }}
             animate={isVisible ? { opacity: 1 } : {}}
           >
-            Projects
+            {t.projects.eyebrow}
           </motion.p>
           <motion.h2
             className="text-3xl md:text-5xl font-bold text-center mb-16"
@@ -187,7 +190,7 @@ const ProjectsSection = () => {
             animate={isVisible ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.7 }}
           >
-            Proof. <span className="gradient-text">Not Promises.</span>
+            {t.projects.heading1} <span className="gradient-text">{t.projects.heading2}</span>
           </motion.h2>
         </div>
 

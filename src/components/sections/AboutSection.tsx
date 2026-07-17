@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
+import { useLang } from "@/i18n/LanguageContext";
 
 const pills = [
   "We implement AI that creates measurable business ROI",
@@ -9,6 +10,7 @@ const pills = [
 
 const AboutSection = () => {
   const { ref, isVisible } = useScrollReveal();
+  const { t } = useLang();
 
   return (
     <section id="about" className="relative py-32 px-6">
@@ -19,7 +21,7 @@ const AboutSection = () => {
           animate={isVisible ? { opacity: 1 } : {}}
           transition={{ duration: 0.6 }}
         >
-          About
+          {t.about.eyebrow}
         </motion.p>
         <motion.h2
           className="text-3xl md:text-5xl font-bold mb-8"
@@ -27,8 +29,8 @@ const AboutSection = () => {
           animate={isVisible ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7 }}
         >
-          <span className="text-foreground">Not Just a Studio.</span>{" "}
-          <span style={{ color: "#4ADE80" }}>Your AI & Technology Partner.</span>
+          <span className="text-foreground">{t.about.heading1}</span>{" "}
+          <span style={{ color: "#4ADE80" }}>{t.about.heading2}</span>
         </motion.h2>
 
         <motion.div

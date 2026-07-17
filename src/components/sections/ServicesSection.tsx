@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
+import { useLang } from "@/i18n/LanguageContext";
 import { Sparkles, Compass, Layers, Zap, ArrowRight } from "lucide-react";
 
 const services = [
@@ -64,6 +65,7 @@ const services = [
 
 const ServicesSection = () => {
   const { ref, isVisible } = useScrollReveal();
+  const { t } = useLang();
 
   return (
     <section id="services" className="relative py-32 px-6">
@@ -73,7 +75,7 @@ const ServicesSection = () => {
           initial={{ opacity: 0 }}
           animate={isVisible ? { opacity: 1 } : {}}
         >
-          What We Do
+          {t.services.eyebrow}
         </motion.p>
         <motion.h2
           className="text-3xl md:text-5xl font-bold text-center mb-4"
@@ -81,8 +83,8 @@ const ServicesSection = () => {
           animate={isVisible ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7 }}
         >
-          <span className="text-foreground">AI-First Services.</span>{" "}
-          <span style={{ color: "#4ADE80" }}>Built for Real Business Outcomes.</span>
+          <span className="text-foreground">{t.services.heading1}</span>{" "}
+          <span style={{ color: "#4ADE80" }}>{t.services.heading2}</span>
         </motion.h2>
         <motion.p
           className="text-muted-foreground text-center mb-16 text-lg max-w-3xl mx-auto"

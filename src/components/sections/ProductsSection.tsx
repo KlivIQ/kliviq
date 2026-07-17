@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
+import { useLang } from "@/i18n/LanguageContext";
 import { Camera, Users, MessageCircle } from "lucide-react";
 
 const seenzoLogo = "data:image/webp;base64,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";
@@ -14,17 +15,18 @@ interface ProductCard {
 
 const ProductsSection = () => {
   const { ref, isVisible } = useScrollReveal();
+  const { t } = useLang();
 
   const products: ProductCard[] = [
     {
       icon: <Users className="w-6 h-6 text-primary-foreground" />,
-      badge: "Private Beta",
-      title: "Aacharam",
-      description:
-        "A roots and ancestry platform crafted for the Tamil community. Preserve family history, trace lineages and use AI-powered matching to discover relatives already in the network.",
+      badge: t.products.aacharam.badge,
+      title: t.products.aacharam.title,
+      description: t.products.aacharam.body,
       mailSubject: "Waitlist%20for%20Aacharam",
     },
   ];
+
 
   return (
     <section id="products" className="relative py-32 px-6">
@@ -34,7 +36,7 @@ const ProductsSection = () => {
           initial={{ opacity: 0 }}
           animate={isVisible ? { opacity: 1 } : {}}
         >
-          Products
+          {t.products.eyebrow}
         </motion.p>
         <motion.h2
           className="text-3xl md:text-5xl font-bold text-center mb-4"
@@ -42,7 +44,7 @@ const ProductsSection = () => {
           animate={isVisible ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7 }}
         >
-          <span style={{ color: "#4ADE80" }}>Productised AI Tools.</span>
+          <span style={{ color: "#4ADE80" }}>{t.products.heading}</span>
         </motion.h2>
         <motion.p
           className="text-muted-foreground text-center mb-16 text-lg max-w-3xl mx-auto"
@@ -50,7 +52,7 @@ const ProductsSection = () => {
           animate={isVisible ? { opacity: 1 } : {}}
           transition={{ delay: 0.2 }}
         >
-          Building repeatable AI tools that solve real enterprise problems — open-source at the core, commercial where it counts.
+          {t.products.intro}
         </motion.p>
 
         {/* Featured live products: Seenzo (amber ad-callout) + KlivIQ Connect */}
@@ -87,31 +89,31 @@ const ProductsSection = () => {
                   className="inline-block text-[10px] font-semibold uppercase tracking-widest px-2 py-0.5 rounded-full border text-muted-foreground"
                   style={{ borderColor: "rgba(148,163,184,0.35)" }}
                 >
-                  by KlivIQ
+                  {t.products.seenzo.byKliviq}
                 </span>
                 <span
                   className="ml-auto inline-block text-[10px] font-semibold uppercase tracking-widest px-2.5 py-1 rounded-full border"
                   style={{ color: "#F59E0B", borderColor: "rgba(245,158,11,0.5)" }}
                 >
-                  Free • 5 min
+                  {t.products.seenzo.badge}
                 </span>
               </div>
 
               <h3 className="text-xl md:text-2xl font-extrabold mb-3 text-foreground leading-tight">
-                Does ChatGPT Know Your <span style={{ color: "#F59E0B" }}>Business Exists?</span>
+                {t.products.seenzo.title1} <span style={{ color: "#F59E0B" }}>{t.products.seenzo.title2}</span>
               </h3>
               <p className="text-foreground/85 leading-relaxed mb-3">
-                Get your free AI Visibility Score in under 5 minutes. See exactly how invisible — or visible — you are to ChatGPT, Gemini, and Perplexity.
+                {t.products.seenzo.body1}
               </p>
               <p className="text-muted-foreground leading-relaxed mb-6">
-                Seenzo scans your website and scores it 0–100 on AI visibility across 6 categories. Most Indian businesses score below 30. We show you exactly what's broken and fix it.
+                {t.products.seenzo.body2}
               </p>
 
               <span
                 className="mt-auto inline-flex items-center gap-2 self-start px-5 py-3 rounded-full text-sm font-bold text-background transition-transform group-hover:scale-105"
                 style={{ background: "linear-gradient(135deg,#F59E0B,#D97706)" }}
               >
-                Get My Free Seenzo Score →
+                {t.products.seenzo.cta}
               </span>
             </div>
           </motion.a>
@@ -146,25 +148,25 @@ const ProductsSection = () => {
                   className="ml-auto inline-block text-[10px] font-semibold uppercase tracking-widest px-2.5 py-1 rounded-full border"
                   style={{ color: "#60A5FA", borderColor: "rgba(96,165,250,0.5)" }}
                 >
-                  Now Booking
+                  {t.products.connect.badge}
                 </span>
               </div>
 
               <h3 className="text-xl md:text-2xl font-bold mb-3 text-foreground leading-snug">
-                Your Own AI Chatbot on WhatsApp — Built For Your Business
+                {t.products.connect.title}
               </h3>
               <p className="text-foreground/85 leading-relaxed mb-3">
-                Customizable, done-for-you WhatsApp chatbots for clinics, salons, CA firms, and D2C brands. No code. No per-message markup. Just results.
+                {t.products.connect.body1}
               </p>
               <p className="text-muted-foreground leading-relaxed mb-6 text-sm">
-                <span className="text-foreground font-extrabold text-lg" style={{ color: "#60A5FA" }}>KlivIQ Connect</span> is a multi-tenant WhatsApp-first chatbot engine — bookings, reminders, broadcasts, AI-powered answers in 7 Indian languages including Tamil, Hindi, and Sanskrit. Senior-led setup, live in 7 working days.
+                <span className="text-foreground font-extrabold text-lg" style={{ color: "#60A5FA" }}>KlivIQ Connect</span>{t.products.connect.body2Suffix}
               </p>
 
               <span
                 className="mt-auto inline-flex items-center gap-2 px-5 py-3 rounded-full text-sm font-bold text-background self-start transition-transform group-hover:scale-105"
                 style={{ background: "linear-gradient(135deg,#3B82F6,#1D4ED8)" }}
               >
-                Talk to Us About Connect →
+                {t.products.connect.cta}
               </span>
             </div>
           </motion.a>
@@ -201,25 +203,25 @@ const ProductsSection = () => {
                   className="ml-auto inline-block text-[10px] font-semibold uppercase tracking-widest px-2.5 py-1 rounded-full border"
                   style={{ color: "#C084FC", borderColor: "rgba(192,132,252,0.5)" }}
                 >
-                  Live
+                  {t.products.tryon.badge}
                 </span>
               </div>
 
               <h3 className="text-xl md:text-2xl font-bold mb-3 text-foreground leading-snug">
-                AI Trial Room for <span style={{ color: "#C084FC" }}>Saree E-Commerce</span>
+                {t.products.tryon.title1} <span style={{ color: "#C084FC" }}>{t.products.tryon.title2}</span>
               </h3>
               <p className="text-foreground/85 leading-relaxed mb-3">
-                Shoppers upload a photo and instantly see exactly how each saree looks on them — an online trial room that ends the guesswork before they buy.
+                {t.products.tryon.body1}
               </p>
               <p className="text-muted-foreground leading-relaxed mb-6 text-sm">
-                Built for online saree stores to lift conversions and cut returns. No app to install, works right on your product pages.
+                {t.products.tryon.body2}
               </p>
 
               <span
                 className="mt-auto inline-flex items-center gap-2 px-5 py-3 rounded-full text-sm font-bold text-background self-start transition-transform group-hover:scale-105"
                 style={{ background: "linear-gradient(135deg,#A855F7,#7E22CE)" }}
               >
-                Try KlivIQ TryOn →
+                {t.products.tryon.cta}
               </span>
             </div>
           </motion.a>
@@ -262,7 +264,7 @@ const ProductsSection = () => {
                   className="mt-auto inline-flex items-center gap-2 text-sm font-semibold self-start transition-opacity hover:opacity-80"
                   style={{ color: "#4ADE80" }}
                 >
-                  Join the Waitlist →
+                  {t.products.aacharam.cta}
                 </a>
               </div>
             </motion.div>

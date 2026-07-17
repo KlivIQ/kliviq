@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
+import { useLang } from "@/i18n/LanguageContext";
 
 const testimonials = [
   {
@@ -18,6 +19,8 @@ const testimonials = [
 
 const TestimonialsSection = () => {
   const { ref, isVisible } = useScrollReveal();
+  const { t } = useLang();
+
 
   return (
     <section className="relative py-32 px-6">
@@ -27,7 +30,7 @@ const TestimonialsSection = () => {
           initial={{ opacity: 0 }}
           animate={isVisible ? { opacity: 1 } : {}}
         >
-          Testimonials
+          {t.testimonials.eyebrow}
         </motion.p>
         <motion.h2
           className="text-3xl md:text-5xl font-bold mb-16 text-center"
@@ -35,8 +38,8 @@ const TestimonialsSection = () => {
           animate={isVisible ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7 }}
         >
-          <span className="text-foreground">Don't Take Our Word</span>{" "}
-          <span style={{ color: "#4ADE80" }}>For It</span>
+          <span className="text-foreground">{t.testimonials.heading1}</span>{" "}
+          <span style={{ color: "#4ADE80" }}>{t.testimonials.heading2}</span>
         </motion.h2>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

@@ -1,11 +1,14 @@
 import { useState } from "react";
 import { Linkedin, Github, Twitter } from "lucide-react";
 import LegalDialog from "@/components/LegalDialog";
+import { useLang } from "@/i18n/LanguageContext";
 import logoDark from "@/assets/kliviq-logo-dark.png";
 import logoLight from "@/assets/kliviq-logo-light.png";
 
 const FooterSection = () => {
   const [openDialog, setOpenDialog] = useState<"privacy" | "terms" | null>(null);
+  const { t } = useLang();
+
 
   return (
     <footer className="relative py-16 px-6">
@@ -18,7 +21,7 @@ const FooterSection = () => {
               <img src={logoLight} alt="KlivIQ" className="logo-light h-9 w-auto" />
             </div>
             <p className="text-muted-foreground max-w-xs mb-5">
-              Build Faster. Launch Smarter. Scale Without Chaos.
+              {t.footer.tagline}
             </p>
             <div className="flex items-center gap-3">
               <a
@@ -54,7 +57,7 @@ const FooterSection = () => {
           {/* Services */}
           <div>
             <h4 className="text-sm font-semibold text-foreground mb-4 uppercase tracking-wider">
-              Services
+              {t.footer.services}
             </h4>
             <ul className="space-y-2 text-sm text-muted-foreground">
               <li><a href="#services" className="hover:text-foreground transition-colors">AI Implementation</a></li>
@@ -67,7 +70,7 @@ const FooterSection = () => {
           {/* Company */}
           <div>
             <h4 className="text-sm font-semibold text-foreground mb-4 uppercase tracking-wider">
-              Company
+              {t.footer.company}
             </h4>
             <ul className="space-y-2 text-sm text-muted-foreground">
               <li><a href="#about" className="hover:text-foreground transition-colors">About</a></li>
@@ -80,7 +83,7 @@ const FooterSection = () => {
           {/* Contact */}
           <div>
             <h4 className="text-sm font-semibold text-foreground mb-4 uppercase tracking-wider">
-              Contact
+              {t.footer.contact}
             </h4>
             <ul className="space-y-2 text-sm text-muted-foreground">
               <li><a href="mailto:hello@kliviq.com" className="hover:text-foreground transition-colors">hello@kliviq.com</a></li>
@@ -113,7 +116,7 @@ const FooterSection = () => {
         <div className="h-[1px] w-full bg-gradient-to-r from-transparent via-primary/30 to-transparent mb-6" />
 
         <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-muted-foreground">
-          <p>© 2026 KlivIQ Technologies. All rights reserved.</p>
+          <p>© 2026 KlivIQ Technologies. {t.footer.rights}</p>
 
           <div className="flex items-center gap-4">
             <button
@@ -121,7 +124,7 @@ const FooterSection = () => {
               onClick={() => setOpenDialog("privacy")}
               className="hover:text-foreground transition-colors"
             >
-              Privacy Policy
+              {t.footer.privacy}
             </button>
             <span className="opacity-40">·</span>
             <button
@@ -129,7 +132,7 @@ const FooterSection = () => {
               onClick={() => setOpenDialog("terms")}
               className="hover:text-foreground transition-colors"
             >
-              Terms of Service
+              {t.footer.terms}
             </button>
           </div>
 

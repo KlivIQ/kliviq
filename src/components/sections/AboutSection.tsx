@@ -29,8 +29,8 @@ const AboutSection = () => {
           animate={isVisible ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7 }}
         >
-          <span className="text-foreground">Not Just a Studio.</span>{" "}
-          <span style={{ color: "#4ADE80" }}>Your AI & Technology Partner.</span>
+          <span className="text-foreground">{t.about.heading1}</span>{" "}
+          <span style={{ color: "#4ADE80" }}>{t.about.heading2}</span>
         </motion.h2>
 
         <motion.div

@@ -5,31 +5,7 @@ import { useLang } from "@/i18n/LanguageContext";
 
 type Region = "india" | "global";
 
-type PricingItem = {
-  category: "Web" | "Mobile" | "AI" | "Retainer";
-  title: string;
-  price: string;
-};
-
-const INDIA_PRICING: PricingItem[] = [
-  { category: "Retainer", title: "Fractional CTO Retainer", price: "from ₹40,000/month" },
-  { category: "AI", title: "AI Implementation", price: "from ₹75,000" },
-  { category: "AI", title: "AI Chatbot / Automation", price: "from ₹60,000" },
-  { category: "Web", title: "Web Platform", price: "from ₹75,000" },
-  { category: "Mobile", title: "Mobile App MVP", price: "from ₹2,50,000" },
-  { category: "AI", title: "Custom AI Tool", price: "from ₹2,00,000" },
-];
-
-const GLOBAL_PRICING: PricingItem[] = [
-  { category: "Retainer", title: "Fractional CTO Retainer", price: "from $800/month" },
-  { category: "AI", title: "AI Implementation", price: "from $2,000" },
-  { category: "AI", title: "AI Chatbot / Automation", price: "from $1,500" },
-  { category: "Web", title: "Web Platform", price: "from $2,000" },
-  { category: "Mobile", title: "Mobile App MVP", price: "from $5,000" },
-  { category: "AI", title: "Custom AI Tool", price: "from $5,000" },
-];
-
-const categoryStyles: Record<PricingItem["category"], string> = {
+const categoryStyles: Record<"Web" | "Mobile" | "AI" | "Retainer", string> = {
   Web: "bg-primary/15 text-primary border-primary/30",
   Mobile: "bg-secondary/15 text-secondary border-secondary/30",
   AI: "bg-brand-cyan/15 text-brand-cyan border-brand-cyan/30",
@@ -40,8 +16,6 @@ const PricingSection = () => {
   const { ref, isVisible } = useScrollReveal();
   const { t } = useLang();
   const [region, setRegion] = useState<Region>("india");
-  const items = region === "india" ? INDIA_PRICING : GLOBAL_PRICING;
-
 
   return (
     <section id="pricing" className="relative py-32 px-4 sm:px-6 overflow-hidden">
@@ -71,7 +45,6 @@ const PricingSection = () => {
           {t.pricing.intro}
         </motion.p>
 
-        {/* Region toggle */}
         <motion.div
           className="flex justify-center mb-12"
           initial={{ opacity: 0, y: 10 }}
@@ -108,7 +81,6 @@ const PricingSection = () => {
           </div>
         </motion.div>
 
-        {/* Pricing grid */}
         <AnimatePresence mode="wait">
           <motion.div
             key={region}
@@ -118,7 +90,7 @@ const PricingSection = () => {
             exit={{ opacity: 0, y: -12 }}
             transition={{ duration: 0.35 }}
           >
-            {items.map((item, i) => (
+            {t.pricing.items.map((item, i) => (
               <motion.div
                 key={`${region}-${i}`}
                 className="glass-strong rounded-2xl p-5 sm:p-6 flex items-center justify-between gap-3 sm:gap-4 hover:border-primary/40 transition-colors min-w-0"
@@ -130,13 +102,13 @@ const PricingSection = () => {
                   <span
                     className={`inline-block text-[10px] uppercase tracking-widest px-2 py-0.5 rounded-full border mb-2 ${categoryStyles[item.category]}`}
                   >
-                    {item.category}
+                    {t.pricing.categories[item.category]}
                   </span>
                   <h3 className="text-base sm:text-lg font-semibold truncate">{item.title}</h3>
                 </div>
                 <div className="text-right shrink-0">
                   <span className="text-sm sm:text-base md:text-lg font-bold gradient-text whitespace-nowrap">
-                    {item.price}
+                    {region === "india" ? item.indiaPrice : item.globalPrice}
                   </span>
                 </div>
               </motion.div>
@@ -144,7 +116,6 @@ const PricingSection = () => {
           </motion.div>
         </AnimatePresence>
 
-        {/* Notes block */}
         <motion.div
           className="glass rounded-2xl p-6 md:p-8 mb-10 max-w-3xl mx-auto"
           initial={{ opacity: 0 }}
@@ -152,14 +123,12 @@ const PricingSection = () => {
           transition={{ delay: 0.4 }}
         >
           <ul className="space-y-2 text-foreground/80">
-            <li>✅ Fixed-price · milestone payments (30% · 40% · 30%)</li>
-            <li>✅ GST invoices for Indian clients</li>
-            <li>✅ International payments via Wise / Payoneer</li>
-            <li>📞 Free 30-min scoping call before any commitment</li>
+            {t.pricing.notes.map((n, i) => (
+              <li key={i}>{n}</li>
+            ))}
           </ul>
         </motion.div>
 
-        {/* CTA */}
         <motion.div
           className="flex justify-center"
           initial={{ opacity: 0 }}
@@ -170,7 +139,7 @@ const PricingSection = () => {
             href="#contact"
             className="px-8 py-4 rounded-full font-semibold text-primary-foreground bg-gradient-to-r from-primary to-secondary animate-pulse-glow transition-transform hover:scale-105"
           >
-            Book a Free Scoping Call →
+            {t.pricing.cta}
           </a>
         </motion.div>
       </div>

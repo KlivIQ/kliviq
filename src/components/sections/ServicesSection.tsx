@@ -83,8 +83,8 @@ const ServicesSection = () => {
           animate={isVisible ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7 }}
         >
-          <span className="text-foreground">AI-First Services.</span>{" "}
-          <span style={{ color: "#4ADE80" }}>Built for Real Business Outcomes.</span>
+          <span className="text-foreground">{t.services.heading1}</span>{" "}
+          <span style={{ color: "#4ADE80" }}>{t.services.heading2}</span>
         </motion.h2>
         <motion.p
           className="text-muted-foreground text-center mb-16 text-lg max-w-3xl mx-auto"

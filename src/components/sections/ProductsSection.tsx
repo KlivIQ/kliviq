@@ -169,6 +169,61 @@ const ProductsSection = () => {
             </div>
           </motion.a>
 
+          {/* KlivIQ TryOn — violet accent */}
+          <motion.a
+            href="https://kliviq-tryon.vercel.app"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="relative rounded-2xl p-8 md:p-10 overflow-hidden group hover:-translate-y-1 transition-transform duration-500 flex flex-col border-2"
+            style={{
+              borderColor: "rgba(168,85,247,0.55)",
+              background:
+                "linear-gradient(135deg, rgba(168,85,247,0.14) 0%, rgba(10,15,30,0.6) 60%)",
+              boxShadow: "0 20px 60px -20px rgba(168,85,247,0.4)",
+            }}
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={isVisible ? { opacity: 1, scale: 1 } : {}}
+            transition={{ delay: 0.45, duration: 0.5 }}
+          >
+            <div className="absolute -top-16 -right-16 w-64 h-64 rounded-full blur-3xl opacity-40" style={{ background: "#A855F7" }} />
+            <div className="relative z-10 flex flex-col h-full">
+              <div className="flex items-center gap-3 mb-5 flex-wrap">
+                <div
+                  className="w-12 h-12 rounded-xl flex items-center justify-center"
+                  style={{ background: "linear-gradient(135deg,#A855F7,#7E22CE)" }}
+                >
+                  <Camera className="w-6 h-6 text-white" />
+                </div>
+                <span className="text-2xl font-extrabold tracking-tight" style={{ color: "#C084FC" }}>
+                  KlivIQ TryOn
+                </span>
+                <span
+                  className="ml-auto inline-block text-[10px] font-semibold uppercase tracking-widest px-2.5 py-1 rounded-full border"
+                  style={{ color: "#C084FC", borderColor: "rgba(192,132,252,0.5)" }}
+                >
+                  Live
+                </span>
+              </div>
+
+              <h3 className="text-xl md:text-2xl font-bold mb-3 text-foreground leading-snug">
+                AI Trial Room for <span style={{ color: "#C084FC" }}>Saree E-Commerce</span>
+              </h3>
+              <p className="text-foreground/85 leading-relaxed mb-3">
+                Shoppers upload a photo and instantly see exactly how each saree looks on them — an online trial room that ends the guesswork before they buy.
+              </p>
+              <p className="text-muted-foreground leading-relaxed mb-6 text-sm">
+                Built for online saree stores to lift conversions and cut returns. No app to install, works right on your product pages.
+              </p>
+
+              <span
+                className="mt-auto inline-flex items-center gap-2 px-5 py-3 rounded-full text-sm font-bold text-background self-start transition-transform group-hover:scale-105"
+                style={{ background: "linear-gradient(135deg,#A855F7,#7E22CE)" }}
+              >
+                Try KlivIQ TryOn →
+              </span>
+            </div>
+          </motion.a>
+
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">

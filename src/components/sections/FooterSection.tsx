@@ -124,7 +124,7 @@ const FooterSection = () => {
               onClick={() => setOpenDialog("privacy")}
               className="hover:text-foreground transition-colors"
             >
-              Privacy Policy
+              {t.footer.privacy}
             </button>
             <span className="opacity-40">·</span>
             <button

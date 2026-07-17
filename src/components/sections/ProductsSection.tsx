@@ -17,23 +17,6 @@ const ProductsSection = () => {
 
   const products: ProductCard[] = [
     {
-      icon: <Sparkles className="w-6 h-6 text-primary-foreground" />,
-      badge: "Launching 2026",
-      title: "Kroviq Studio",
-      description:
-        "A productised AI studio for rapid design, prototyping and intelligent workflow development. Built for teams who want production-ready AI assets without starting from scratch.",
-      mailSubject: "Waitlist%20for%20Kroviq%20Studio",
-    },
-    {
-      icon: <Camera className="w-6 h-6 text-primary-foreground" />,
-      badge: "In Development",
-      title: "KlivIQ TryOn",
-      description:
-        "An AI-powered online trial room for saree e-commerce. Shoppers upload a photo and instantly see exactly how each saree looks on them — no more guessing before they buy. Built to lift conversions and cut returns for online saree stores.",
-      mailSubject: "Waitlist%20for%20KlivIQ%20TryOn",
-    },
-
-    {
       icon: <Users className="w-6 h-6 text-primary-foreground" />,
       badge: "Private Beta",
       title: "Aacharam",

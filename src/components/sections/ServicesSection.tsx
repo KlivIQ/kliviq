@@ -75,7 +75,7 @@ const ServicesSection = () => {
           initial={{ opacity: 0 }}
           animate={isVisible ? { opacity: 1 } : {}}
         >
-          What We Do
+          {t.services.eyebrow}
         </motion.p>
         <motion.h2
           className="text-3xl md:text-5xl font-bold text-center mb-4"

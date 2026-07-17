@@ -214,7 +214,7 @@ const ProductsSection = () => {
                 {t.products.tryon.body1}
               </p>
               <p className="text-muted-foreground leading-relaxed mb-6 text-sm">
-                Built for online saree stores to lift conversions and cut returns. No app to install, works right on your product pages.
+                {t.products.tryon.body2}
               </p>
 
               <span

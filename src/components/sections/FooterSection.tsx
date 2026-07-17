@@ -132,7 +132,7 @@ const FooterSection = () => {
               onClick={() => setOpenDialog("terms")}
               className="hover:text-foreground transition-colors"
             >
-              Terms of Service
+              {t.footer.terms}
             </button>
           </div>
 

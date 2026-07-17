@@ -221,7 +221,7 @@ const ProductsSection = () => {
                 className="mt-auto inline-flex items-center gap-2 px-5 py-3 rounded-full text-sm font-bold text-background self-start transition-transform group-hover:scale-105"
                 style={{ background: "linear-gradient(135deg,#A855F7,#7E22CE)" }}
               >
-                Try KlivIQ TryOn →
+                {t.products.tryon.cta}
               </span>
             </div>
           </motion.a>

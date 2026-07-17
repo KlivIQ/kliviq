@@ -60,10 +60,9 @@ const FooterSection = () => {
               {t.footer.services}
             </h4>
             <ul className="space-y-2 text-sm text-muted-foreground">
-              <li><a href="#services" className="hover:text-foreground transition-colors">AI Implementation</a></li>
-              <li><a href="#services" className="hover:text-foreground transition-colors">Fractional CTO</a></li>
-              <li><a href="#services" className="hover:text-foreground transition-colors">Web & Mobile</a></li>
-              <li><a href="#services" className="hover:text-foreground transition-colors">Custom AI Tools</a></li>
+              {t.footer.servicesList.map((label) => (
+                <li key={label}><a href="#services" className="hover:text-foreground transition-colors">{label}</a></li>
+              ))}
             </ul>
           </div>
 
@@ -73,10 +72,12 @@ const FooterSection = () => {
               {t.footer.company}
             </h4>
             <ul className="space-y-2 text-sm text-muted-foreground">
-              <li><a href="#about" className="hover:text-foreground transition-colors">About</a></li>
-              <li><a href="#projects" className="hover:text-foreground transition-colors">Work</a></li>
-              <li><a href="#process" className="hover:text-foreground transition-colors">Process</a></li>
-              <li><a href="#pricing" className="hover:text-foreground transition-colors">Pricing</a></li>
+              {t.footer.companyList.map((label, i) => {
+                const href = ["#about", "#projects", "#process", "#pricing"][i];
+                return (
+                  <li key={label}><a href={href} className="hover:text-foreground transition-colors">{label}</a></li>
+                );
+              })}
             </ul>
           </div>
 
@@ -88,7 +89,7 @@ const FooterSection = () => {
             <ul className="space-y-2 text-sm text-muted-foreground">
               <li><a href="mailto:hello@kliviq.com" className="hover:text-foreground transition-colors">hello@kliviq.com</a></li>
               <li><a href="tel:+919840497937" className="hover:text-foreground transition-colors">+91 98404 97937</a></li>
-              <li className="text-muted-foreground/80">Chennai, India</li>
+              <li className="text-muted-foreground/80">{t.footer.contactCity}</li>
               <li>
                 <a
                   href="https://wa.me/919840497937?text=Hi%20KlivIQ%2C%20I%27d%20like%20to%20discuss%20a%20project."
@@ -96,7 +97,7 @@ const FooterSection = () => {
                   rel="noopener noreferrer"
                   className="hover:text-foreground transition-colors"
                 >
-                  WhatsApp
+                  {t.footer.contactWhatsapp}
                 </a>
               </li>
               <li>
@@ -106,11 +107,12 @@ const FooterSection = () => {
                   rel="noopener noreferrer"
                   className="hover:text-foreground transition-colors"
                 >
-                  LinkedIn
+                  {t.footer.contactLinkedin}
                 </a>
               </li>
             </ul>
           </div>
+
         </div>
 
         <div className="h-[1px] w-full bg-gradient-to-r from-transparent via-primary/30 to-transparent mb-6" />

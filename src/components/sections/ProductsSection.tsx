@@ -264,7 +264,7 @@ const ProductsSection = () => {
                   className="mt-auto inline-flex items-center gap-2 text-sm font-semibold self-start transition-opacity hover:opacity-80"
                   style={{ color: "#4ADE80" }}
                 >
-                  Join the Waitlist →
+                  {t.products.aacharam.cta}
                 </a>
               </div>
             </motion.div>

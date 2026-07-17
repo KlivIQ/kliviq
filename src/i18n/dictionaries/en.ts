@@ -69,19 +69,19 @@ export const en = {
     },
   },
   why: {
-    eyebrow: "Why KlivIQ",
-    heading1: "Built Different.",
-    heading2: "On Purpose.",
+    eyebrow: "The Difference",
+    heading1: "Weeks, Not Months.",
+    heading2: "That's the KlivIQ Difference.",
   },
   projects: {
-    eyebrow: "Work",
-    heading1: "Real Products.",
-    heading2: "Real Impact.",
+    eyebrow: "Projects",
+    heading1: "Proof.",
+    heading2: "Not Promises.",
   },
   testimonials: {
     eyebrow: "Testimonials",
-    heading1: "What Clients",
-    heading2: "Say",
+    heading1: "Don't Take Our Word",
+    heading2: "For It",
   },
   process: {
     eyebrow: "Process",
@@ -98,8 +98,8 @@ export const en = {
   },
   faq: {
     eyebrow: "FAQ",
-    heading1: "Questions,",
-    heading2: "Answered.",
+    heading1: "Questions We Get",
+    heading2: "Asked",
   },
   contact: {
     eyebrow: "Contact",

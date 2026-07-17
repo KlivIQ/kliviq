@@ -1,9 +1,11 @@
 import { lazy, Suspense } from "react";
 import { motion } from "framer-motion";
+import { useLang } from "@/i18n/LanguageContext";
 
 const ThreeBackground = lazy(() => import("@/components/ThreeBackground"));
 
 const HeroSection = () => {
+  const { t } = useLang();
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-32 md:pt-28 pb-28 md:pb-20">
       {/* Particle background — hero only */}
@@ -22,9 +24,9 @@ const HeroSection = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7 }}
         >
-          <span className="block text-foreground">Your Business, Running on AI.</span>
+          <span className="block text-foreground">{t.hero.line1}</span>
           <span className="block" style={{ color: "#4ADE80" }}>
-            Delivered in Weeks — Not Months.
+            {t.hero.line2}
           </span>
         </motion.h1>
 
@@ -34,8 +36,7 @@ const HeroSection = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.4, duration: 0.7 }}
         >
-          We implement AI into your business, build the tools to run it, and provide
-          the tech leadership to scale it — without the cost of a full-time hire.
+          {t.hero.sub1}
         </motion.p>
 
         <motion.p
@@ -44,8 +45,7 @@ const HeroSection = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.6, duration: 0.7 }}
         >
-          Serving startups and SMEs across India and globally.
-          Fixed scope. Fixed price. Zero chaos.
+          {t.hero.sub2}
         </motion.p>
 
         <motion.div
@@ -58,7 +58,7 @@ const HeroSection = () => {
             href="#contact"
             className="inline-block px-8 py-4 rounded-full font-semibold text-primary-foreground bg-gradient-to-r from-primary to-secondary animate-pulse-glow transition-transform hover:scale-105"
           >
-            Implement AI in My Business →
+            {t.hero.ctaPrimary}
           </a>
           <a
             href="https://calendly.com/kliviq-tech"
@@ -66,7 +66,7 @@ const HeroSection = () => {
             rel="noopener noreferrer"
             className="inline-block px-8 py-4 rounded-full font-semibold text-foreground border border-border/60 glass hover:border-secondary/60 transition-colors"
           >
-            Book a Free Consultation
+            {t.hero.ctaSecondary}
           </a>
         </motion.div>
 
@@ -80,7 +80,7 @@ const HeroSection = () => {
             href="#process"
             className="text-xs md:text-sm text-muted-foreground hover:text-foreground transition-colors"
           >
-            See how we work ↓
+            {t.hero.seeHow}
           </a>
         </motion.div>
 
@@ -95,7 +95,7 @@ const HeroSection = () => {
             style={{ border: "1px solid #4ADE80" }}
           >
             <span aria-hidden>⚡</span>
-            Currently onboarding 2 new clients for Q3 2026
+            {t.hero.onboarding}
           </span>
         </motion.div>
       </div>

@@ -3,16 +3,9 @@ import { motion } from "framer-motion";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { Link } from "react-router-dom";
 import ThemeToggle from "@/components/ThemeToggle";
+import LangSwitcher from "@/i18n/LangSwitcher";
+import { useLang } from "@/i18n/LanguageContext";
 import { serviceLandingPages } from "@/data/serviceLandingPages";
-
-const links = [
-  { label: "Products", href: "/#products" },
-  { label: "Work", href: "/#projects" },
-  { label: "About", href: "/#about" },
-  { label: "Process", href: "/#process" },
-  { label: "Pricing", href: "/#pricing" },
-  { label: "Contact", href: "/#contact" },
-];
 
 import logoDark from "@/assets/kliviq-logo-dark.png";
 import logoLight from "@/assets/kliviq-logo-light.png";
@@ -31,6 +24,17 @@ const Navbar = () => {
   const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
   const [resourcesOpen, setResourcesOpen] = useState(false);
   const [mobileResourcesOpen, setMobileResourcesOpen] = useState(false);
+  const { t } = useLang();
+
+  const links = [
+    { label: t.nav.products, href: "/#products" },
+    { label: t.nav.work, href: "/#projects" },
+    { label: t.nav.about, href: "/#about" },
+    { label: t.nav.process, href: "/#process" },
+    { label: t.nav.pricing, href: "/#pricing" },
+    { label: t.nav.contact, href: "/#contact" },
+  ];
+
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
@@ -64,7 +68,7 @@ const Navbar = () => {
               aria-expanded={servicesOpen}
               onClick={() => setServicesOpen((s) => !s)}
             >
-              Services <ChevronDown className="w-3.5 h-3.5" />
+              {t.nav.services} <ChevronDown className="w-3.5 h-3.5" />
             </button>
             {servicesOpen && (
               <div className="absolute top-full left-1/2 -translate-x-1/2 pt-3 min-w-[260px]">
@@ -85,7 +89,7 @@ const Navbar = () => {
                     onClick={() => setServicesOpen(false)}
                     className="block px-4 py-2.5 rounded-lg text-sm text-muted-foreground hover:text-foreground hover:bg-foreground/5 transition-colors"
                   >
-                    All services overview →
+                    {t.nav.allServices}
                   </a>
                 </div>
               </div>
@@ -114,7 +118,7 @@ const Navbar = () => {
               aria-expanded={resourcesOpen}
               onClick={() => setResourcesOpen((s) => !s)}
             >
-              Resources <ChevronDown className="w-3.5 h-3.5" />
+              {t.nav.resources} <ChevronDown className="w-3.5 h-3.5" />
             </button>
             {resourcesOpen && (
               <div className="absolute top-full left-1/2 -translate-x-1/2 pt-3 min-w-[200px]">
@@ -124,31 +128,33 @@ const Navbar = () => {
                     onClick={() => setResourcesOpen(false)}
                     className="block px-4 py-2.5 rounded-lg text-sm text-foreground/80 hover:text-foreground hover:bg-foreground/5 transition-colors"
                   >
-                    Blog / Insights
+                    {t.nav.blog}
                   </Link>
                   <Link
                     to="/glossary"
                     onClick={() => setResourcesOpen(false)}
                     className="block px-4 py-2.5 rounded-lg text-sm text-foreground/80 hover:text-foreground hover:bg-foreground/5 transition-colors"
                   >
-                    Glossary
+                    {t.nav.glossary}
                   </Link>
                 </div>
               </div>
             )}
           </div>
 
+          <LangSwitcher />
           <ThemeToggle />
           <a
             href="/#contact"
             className="px-5 py-2 rounded-full text-sm font-semibold text-primary-foreground bg-gradient-to-r from-primary to-secondary transition-transform hover:scale-105"
           >
-            Start a Project →
+            {t.nav.startProject}
           </a>
         </div>
 
         {/* Mobile toggle */}
         <div className="md:hidden flex items-center gap-2">
+          <LangSwitcher />
           <ThemeToggle />
           <button
             className="text-foreground"
@@ -175,7 +181,7 @@ const Navbar = () => {
               onClick={() => setMobileServicesOpen((s) => !s)}
               aria-expanded={mobileServicesOpen}
             >
-              <span>Services</span>
+              <span>{t.nav.services}</span>
               <ChevronDown
                 className={`w-4 h-4 transition-transform ${mobileServicesOpen ? "rotate-180" : ""}`}
               />
@@ -197,7 +203,7 @@ const Navbar = () => {
                   onClick={() => setOpen(false)}
                   className="text-sm text-muted-foreground hover:text-foreground transition-colors"
                 >
-                  All services overview →
+                  {t.nav.allServices}
                 </a>
               </div>
             )}
@@ -221,7 +227,7 @@ const Navbar = () => {
               onClick={() => setMobileResourcesOpen((s) => !s)}
               aria-expanded={mobileResourcesOpen}
             >
-              <span>Resources</span>
+              <span>{t.nav.resources}</span>
               <ChevronDown
                 className={`w-4 h-4 transition-transform ${mobileResourcesOpen ? "rotate-180" : ""}`}
               />
@@ -233,14 +239,14 @@ const Navbar = () => {
                   onClick={() => setOpen(false)}
                   className="text-sm text-foreground/75 hover:text-foreground transition-colors"
                 >
-                  Blog / Insights
+                  {t.nav.blog}
                 </Link>
                 <Link
                   to="/glossary"
                   onClick={() => setOpen(false)}
                   className="text-sm text-foreground/75 hover:text-foreground transition-colors"
                 >
-                  Glossary
+                  {t.nav.glossary}
                 </Link>
               </div>
             )}
@@ -250,7 +256,7 @@ const Navbar = () => {
             onClick={() => setOpen(false)}
             className="mt-2 px-5 py-2 rounded-full text-sm font-semibold text-center text-primary-foreground bg-gradient-to-r from-primary to-secondary"
           >
-            Start a Project →
+            {t.nav.startProject}
           </a>
         </motion.div>
       )}

@@ -116,7 +116,7 @@ const FooterSection = () => {
         <div className="h-[1px] w-full bg-gradient-to-r from-transparent via-primary/30 to-transparent mb-6" />
 
         <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-muted-foreground">
-          <p>© 2026 KlivIQ Technologies. All rights reserved.</p>
+          <p>© 2026 KlivIQ Technologies. {t.footer.rights}</p>
 
           <div className="flex items-center gap-4">
             <button

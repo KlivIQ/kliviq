@@ -78,7 +78,7 @@ const ContactSection = () => {
             animate={isVisible ? { opacity: 1 } : {}}
             transition={{ delay: 0.8 }}
           >
-            Start Your Project
+            {t.contact.cta}
           </motion.a>
         </motion.div>
       </div>

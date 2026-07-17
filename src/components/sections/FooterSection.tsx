@@ -70,7 +70,7 @@ const FooterSection = () => {
           {/* Company */}
           <div>
             <h4 className="text-sm font-semibold text-foreground mb-4 uppercase tracking-wider">
-              Company
+              {t.footer.company}
             </h4>
             <ul className="space-y-2 text-sm text-muted-foreground">
               <li><a href="#about" className="hover:text-foreground transition-colors">About</a></li>

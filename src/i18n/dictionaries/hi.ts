@@ -31,9 +31,9 @@ export const hi: Dict = {
     heading2: "आपका AI और टेक्नोलॉजी पार्टनर।",
   },
   services: {
-    eyebrow: "सेवाएँ",
-    heading1: "हम असल में",
-    heading2: "क्या करते हैं",
+    eyebrow: "हम क्या करते हैं",
+    heading1: "AI-फर्स्ट सेवाएँ।",
+    heading2: "असली बिज़नेस नतीजों के लिए बनी।",
   },
   products: {
     eyebrow: "उत्पाद",

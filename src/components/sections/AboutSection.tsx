@@ -21,7 +21,7 @@ const AboutSection = () => {
           animate={isVisible ? { opacity: 1 } : {}}
           transition={{ duration: 0.6 }}
         >
-          About
+          {t.about.eyebrow}
         </motion.p>
         <motion.h2
           className="text-3xl md:text-5xl font-bold mb-8"

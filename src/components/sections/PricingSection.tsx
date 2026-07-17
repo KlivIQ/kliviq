@@ -38,8 +38,10 @@ const categoryStyles: Record<PricingItem["category"], string> = {
 
 const PricingSection = () => {
   const { ref, isVisible } = useScrollReveal();
+  const { t } = useLang();
   const [region, setRegion] = useState<Region>("india");
   const items = region === "india" ? INDIA_PRICING : GLOBAL_PRICING;
+
 
   return (
     <section id="pricing" className="relative py-32 px-4 sm:px-6 overflow-hidden">

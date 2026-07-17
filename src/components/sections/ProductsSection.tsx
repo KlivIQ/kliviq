@@ -60,7 +60,7 @@ const ProductsSection = () => {
             href="https://seenzo.in"
             target="_blank"
             rel="noopener noreferrer"
-            className="md:col-span-2 relative rounded-2xl p-8 md:p-10 overflow-hidden group hover:-translate-y-1 transition-transform duration-500 flex flex-col border-2"
+            className="relative rounded-2xl p-8 md:p-10 overflow-hidden group hover:-translate-y-1 transition-transform duration-500 flex flex-col border-2"
             style={{
               borderColor: "rgba(245,158,11,0.55)",
               background:

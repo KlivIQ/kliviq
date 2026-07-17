@@ -40,43 +40,47 @@ const ServicesSection = () => {
           animate={isVisible ? { opacity: 1 } : {}}
           transition={{ delay: 0.2 }}
         >
-          We don't just build software. We implement intelligence into your business — and
-          deliver it before your competitor finishes planning.
+          {t.services.intro}
         </motion.p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {services.map((s, i) => (
-            <motion.div
-              key={i}
-              className="glass rounded-2xl p-8 group hover:glow-purple transition-all duration-500 hover:-translate-y-1 flex flex-col"
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={isVisible ? { opacity: 1, scale: 1 } : {}}
-              transition={{ delay: 0.3 + i * 0.12, duration: 0.5 }}
-            >
-              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-primary to-secondary flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                <s.icon className="w-6 h-6 text-primary-foreground" />
-              </div>
-              <h3 className="text-xl font-semibold mb-3 text-foreground">{s.title}</h3>
-              <p className="text-muted-foreground leading-relaxed mb-5">{s.desc}</p>
-              <ul className="space-y-2 mb-6">
-                {s.bullets.map((b, j) => (
-                  <li key={j} className="text-sm text-foreground/80 flex gap-2">
-                    <span style={{ color: "#4ADE80" }}>→</span>
-                    <span>{b}</span>
-                  </li>
-                ))}
-              </ul>
-              <Link
-                to={s.link}
-                className="mt-auto inline-flex items-center gap-1.5 text-sm font-semibold transition-colors hover:opacity-80"
-                style={{ color: "#4ADE80" }}
-                aria-label={`Learn more about ${s.linkLabel}`}
+          {t.services.cards.map((s, i) => {
+            const meta = serviceMeta[i];
+            const Icon = meta.icon;
+            return (
+              <motion.div
+                key={i}
+                className="glass rounded-2xl p-8 group hover:glow-purple transition-all duration-500 hover:-translate-y-1 flex flex-col"
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={isVisible ? { opacity: 1, scale: 1 } : {}}
+                transition={{ delay: 0.3 + i * 0.12, duration: 0.5 }}
               >
-                Learn more about {s.linkLabel} <ArrowRight className="w-4 h-4" />
-              </Link>
-            </motion.div>
-          ))}
+                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-primary to-secondary flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                  <Icon className="w-6 h-6 text-primary-foreground" />
+                </div>
+                <h3 className="text-xl font-semibold mb-3 text-foreground">{s.title}</h3>
+                <p className="text-muted-foreground leading-relaxed mb-5">{s.desc}</p>
+                <ul className="space-y-2 mb-6">
+                  {s.bullets.map((b, j) => (
+                    <li key={j} className="text-sm text-foreground/80 flex gap-2">
+                      <span style={{ color: "#4ADE80" }}>→</span>
+                      <span>{b}</span>
+                    </li>
+                  ))}
+                </ul>
+                <Link
+                  to={meta.link}
+                  className="mt-auto inline-flex items-center gap-1.5 text-sm font-semibold transition-colors hover:opacity-80"
+                  style={{ color: "#4ADE80" }}
+                  aria-label={`${t.services.learnMorePrefix} ${s.linkLabel}`}
+                >
+                  {t.services.learnMorePrefix} {s.linkLabel} <ArrowRight className="w-4 h-4" />
+                </Link>
+              </motion.div>
+            );
+          })}
         </div>
+
       </div>
     </section>
   );

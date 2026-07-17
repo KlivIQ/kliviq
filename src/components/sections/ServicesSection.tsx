@@ -64,6 +64,7 @@ const services = [
 
 const ServicesSection = () => {
   const { ref, isVisible } = useScrollReveal();
+  const { t } = useLang();
 
   return (
     <section id="services" className="relative py-32 px-6">

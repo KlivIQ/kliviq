@@ -51,7 +51,7 @@ const PricingSection = () => {
           initial={{ opacity: 0 }}
           animate={isVisible ? { opacity: 1 } : {}}
         >
-          Pricing
+          {t.pricing.eyebrow}
         </motion.p>
         <motion.h2
           className="text-3xl md:text-5xl font-bold text-center mb-6"
@@ -59,8 +59,8 @@ const PricingSection = () => {
           animate={isVisible ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7 }}
         >
-          Honest Pricing.{" "}
-          <span className="gradient-text">No Surprises.</span>
+          {t.pricing.heading1}{" "}
+          <span className="gradient-text">{t.pricing.heading2}</span>
         </motion.h2>
         <motion.p
           className="text-muted-foreground text-center text-lg mb-10 max-w-2xl mx-auto"
@@ -68,9 +68,7 @@ const PricingSection = () => {
           animate={isVisible ? { opacity: 1 } : {}}
           transition={{ delay: 0.2 }}
         >
-          Fixed price. Milestone payments (30 · 40 · 30).
-          <br />
-          Scoped on a free 30-minute call.
+          {t.pricing.intro}
         </motion.p>
 
         {/* Region toggle */}

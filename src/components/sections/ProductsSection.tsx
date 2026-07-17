@@ -100,7 +100,7 @@ const ProductsSection = () => {
               <h3 className="text-xl md:text-2xl font-extrabold mb-3 text-foreground leading-tight">
                 Does ChatGPT Know Your <span style={{ color: "#F59E0B" }}>Business Exists?</span>
               </h3>
-              <p className="text-foreground/85 text-base md:text-lg leading-relaxed mb-3">
+              <p className="text-foreground/85 leading-relaxed mb-3">
                 Get your free AI Visibility Score in under 5 minutes. See exactly how invisible — or visible — you are to ChatGPT, Gemini, and Perplexity.
               </p>
               <p className="text-muted-foreground leading-relaxed mb-6">

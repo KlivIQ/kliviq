@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
+import { useLang } from "@/i18n/LanguageContext";
 
 const pills = [
   "We implement AI that creates measurable business ROI",
@@ -9,6 +10,7 @@ const pills = [
 
 const AboutSection = () => {
   const { ref, isVisible } = useScrollReveal();
+  const { t } = useLang();
 
   return (
     <section id="about" className="relative py-32 px-6">

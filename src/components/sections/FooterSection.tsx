@@ -1,11 +1,14 @@
 import { useState } from "react";
 import { Linkedin, Github, Twitter } from "lucide-react";
 import LegalDialog from "@/components/LegalDialog";
+import { useLang } from "@/i18n/LanguageContext";
 import logoDark from "@/assets/kliviq-logo-dark.png";
 import logoLight from "@/assets/kliviq-logo-light.png";
 
 const FooterSection = () => {
   const [openDialog, setOpenDialog] = useState<"privacy" | "terms" | null>(null);
+  const { t } = useLang();
+
 
   return (
     <footer className="relative py-16 px-6">

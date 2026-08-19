@@ -22,18 +22,25 @@ const Navbar = () => {
   const [open, setOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
   const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
+  const [workOpen, setWorkOpen] = useState(false);
+  const [mobileWorkOpen, setMobileWorkOpen] = useState(false);
   const [resourcesOpen, setResourcesOpen] = useState(false);
   const [mobileResourcesOpen, setMobileResourcesOpen] = useState(false);
   const { t } = useLang();
 
   const links = [
     { label: t.nav.products, href: "/products" },
-    { label: t.nav.work, href: "/#projects" },
     { label: t.nav.about, href: "/#about" },
-    { label: t.nav.process, href: "/#process" },
     { label: t.nav.pricing, href: "/#pricing" },
     { label: t.nav.contact, href: "/#contact" },
   ];
+
+  const workLinks = [
+    { label: t.nav.portfolio, href: "/portfolio", internal: true },
+    { label: t.nav.caseHighlights, href: "/#projects", internal: false },
+    { label: t.nav.process, href: "/#process", internal: false },
+  ];
+
 
 
   useEffect(() => {

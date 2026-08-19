@@ -158,11 +158,18 @@ export const en = {
     ],
   },
   projects: {
-    eyebrow: "Projects",
+    eyebrow: "Portfolio",
     heading1: "Proof.",
     heading2: "Not Promises.",
     techsTitle: "Technologies We Build With",
+    viewAll: "View full portfolio →",
     cards: [
+      {
+        title: "Selfsame Therapy",
+        blurb: "Online counselling practice for NRIs — a calm, culturally-aware brand site with services, approach, testimonials and free intro-call booking. Built and shipped for a UK-based counsellor.",
+        badge: "CLIENT WORK",
+        cta: "Open live",
+      },
       {
         title: "FACO",
         blurb: "Real landing page designed for a coffee store client — Fathima Coffee Works, Kodaikanal.",
@@ -170,10 +177,10 @@ export const en = {
         cta: "Open live",
       },
       {
-        title: "ScopeSnap",
-        blurb: "AI project scoping tool that turns a one-line brief into deliverables, timeline, cost and tech stack. CLIENT WORK.",
-        badge: "CLIENT WORK",
-        cta: "Open Prototype",
+        title: "Zero Rupees",
+        blurb: "A free fake-shopping experience built for the scroll-and-cart generation — add to cart, checkout, get the 'Order Placed' dopamine hit, spend zero rupees. No card, no signup friction, just the satisfaction loop of online shopping without the bill.",
+        badge: "EXPERIMENT",
+        cta: "Open live",
       },
       {
         title: "PitchDeckAI",
@@ -187,13 +194,8 @@ export const en = {
         badge: "CLIENT WORK",
         cta: "Open Prototype",
       },
-      {
-        title: "Zero Rupees",
-        blurb: "A free fake-shopping experience built for the scroll-and-cart generation — add to cart, checkout, get the 'Order Placed' dopamine hit, spend zero rupees. No card, no signup friction, just the satisfaction loop of online shopping without the bill.",
-        badge: "EXPERIMENT",
-        cta: "Open live",
-      },
     ],
+
     stat: {
       title: "2 Projects In Delivery",
       tag: "AI Implementation · In Progress",

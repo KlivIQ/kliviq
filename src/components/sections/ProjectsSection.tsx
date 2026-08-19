@@ -88,12 +88,15 @@ const ProjectsSection = () => {
     ...c,
     href: cardMeta[i].href,
     image: cardMeta[i].image,
+    external: cardMeta[i].external,
   }));
 
   const { ref: statRef, isVisible: statVisible } = useScrollReveal(0.2);
 
   return (
     <section id="projects" className="relative py-32 px-6">
+      <span id="portfolio" className="block -mt-32 pt-32" aria-hidden="true" />
+
       <div className="max-w-5xl mx-auto">
         <div ref={ref}>
           <motion.p

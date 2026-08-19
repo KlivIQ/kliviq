@@ -58,11 +58,12 @@ const Navbar = () => {
       animate={{ y: 0 }}
       transition={{ delay: 0.2, duration: 0.6 }}
     >
-      <div className="max-w-6xl mx-auto px-6 flex items-center justify-between">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between gap-4">
         <Wordmark />
 
         {/* Desktop */}
-        <div className="hidden md:flex items-center gap-8">
+        <div className="hidden lg:flex items-center gap-4 xl:gap-7 whitespace-nowrap">
+
           {/* Services dropdown */}
           <div
             className="relative"

@@ -116,11 +116,21 @@ const ProjectsSection = () => {
           </motion.h2>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
           {cards.map((item, i) => (
             <ClientWorkCard key={item.title} item={item} index={i} />
           ))}
         </div>
+
+        <div className="text-center mb-16">
+          <Link
+            to="/portfolio"
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-full text-sm font-semibold glass hover:border-secondary/40 hover:text-secondary transition-colors"
+          >
+            {t.projects.viewAll}
+          </Link>
+        </div>
+
 
         <div className="max-w-xl mx-auto">
           <motion.div

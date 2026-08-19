@@ -25,6 +25,7 @@ type CardItem = {
   cta: string;
   href: string;
   image: string;
+  external: boolean;
 };
 
 const ClientWorkCard = ({ item, index }: { item: CardItem; index: number }) => {
@@ -33,13 +34,13 @@ const ClientWorkCard = ({ item, index }: { item: CardItem; index: number }) => {
     <div ref={ref} className="h-full">
       <motion.a
         href={item.href}
-        target="_blank"
-        rel="noopener noreferrer"
+        {...(item.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
         className="group glass rounded-2xl overflow-hidden flex flex-col h-full relative hover:-translate-y-2 transition-all duration-500 hover:shadow-[0_20px_60px_-15px_hsl(var(--secondary)/0.4)] hover:border-secondary/40"
         initial={{ opacity: 0, y: 40 }}
         animate={isVisible ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.6, delay: index * 0.1 }}
       >
+
         <div className="relative aspect-[16/10] overflow-hidden bg-muted">
           <img
             src={item.image}

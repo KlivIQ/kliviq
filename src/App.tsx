@@ -6,6 +6,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import Index from "./pages/Index.tsx";
 import NotFound from "./pages/NotFound.tsx";
 import Products from "./pages/Products";
+import Portfolio from "./pages/Portfolio";
 import ScopeSnap from "./pages/ScopeSnap";
 import ClinicPing from "./pages/ClinicPing";
 import PitchDeckAI from "./pages/PitchDeckAI";
@@ -27,6 +28,7 @@ const App = () => (
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/products" element={<Products />} />
+          <Route path="/portfolio" element={<Portfolio />} />
           <Route path="/scopesnap" element={<ScopeSnap />} />
           <Route path="/clinicping" element={<ClinicPing />} />
           <Route path="/pitchdeck" element={<PitchDeckAI />} />

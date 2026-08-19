@@ -104,6 +104,50 @@ const Navbar = () => {
             )}
           </div>
 
+          {/* Work dropdown */}
+          <div
+            className="relative"
+            onMouseEnter={() => setWorkOpen(true)}
+            onMouseLeave={() => setWorkOpen(false)}
+          >
+            <button
+              className="text-sm text-muted-foreground hover:text-foreground transition-colors duration-300 flex items-center gap-1"
+              aria-haspopup="true"
+              aria-expanded={workOpen}
+              onClick={() => setWorkOpen((s) => !s)}
+            >
+              {t.nav.work} <ChevronDown className="w-3.5 h-3.5" />
+            </button>
+            {workOpen && (
+              <div className="absolute top-full left-1/2 -translate-x-1/2 pt-3 min-w-[210px]">
+                <div className="glass-strong rounded-2xl p-2 shadow-xl">
+                  {workLinks.map((w) =>
+                    w.internal ? (
+                      <Link
+                        key={w.href}
+                        to={w.href}
+                        onClick={() => setWorkOpen(false)}
+                        className="block px-4 py-2.5 rounded-lg text-sm text-foreground/80 hover:text-foreground hover:bg-foreground/5 transition-colors"
+                      >
+                        {w.label}
+                      </Link>
+                    ) : (
+                      <a
+                        key={w.href}
+                        href={w.href}
+                        onClick={() => setWorkOpen(false)}
+                        className="block px-4 py-2.5 rounded-lg text-sm text-foreground/80 hover:text-foreground hover:bg-foreground/5 transition-colors"
+                      >
+                        {w.label}
+                      </a>
+                    ),
+                  )}
+                </div>
+              </div>
+            )}
+          </div>
+
+
           {links.map((link) => (
             <a
               key={link.href}

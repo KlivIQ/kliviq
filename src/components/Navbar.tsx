@@ -262,6 +262,46 @@ const Navbar = () => {
             )}
           </div>
 
+          {/* Mobile work nested */}
+          <div>
+            <button
+              className="w-full flex items-center justify-between text-foreground/80 hover:text-foreground transition-colors"
+              onClick={() => setMobileWorkOpen((s) => !s)}
+              aria-expanded={mobileWorkOpen}
+            >
+              <span>{t.nav.work}</span>
+              <ChevronDown
+                className={`w-4 h-4 transition-transform ${mobileWorkOpen ? "rotate-180" : ""}`}
+              />
+            </button>
+            {mobileWorkOpen && (
+              <div className="mt-3 ml-3 pl-3 border-l border-foreground/15 flex flex-col gap-3">
+                {workLinks.map((w) =>
+                  w.internal ? (
+                    <Link
+                      key={w.href}
+                      to={w.href}
+                      onClick={() => setOpen(false)}
+                      className="text-sm text-foreground/75 hover:text-foreground transition-colors"
+                    >
+                      {w.label}
+                    </Link>
+                  ) : (
+                    <a
+                      key={w.href}
+                      href={w.href}
+                      onClick={() => setOpen(false)}
+                      className="text-sm text-foreground/75 hover:text-foreground transition-colors"
+                    >
+                      {w.label}
+                    </a>
+                  ),
+                )}
+              </div>
+            )}
+          </div>
+
+
           {links.map((link) => (
             <a
               key={link.href}

@@ -198,14 +198,14 @@ const Navbar = () => {
           <ThemeToggle />
           <a
             href="/#contact"
-            className="px-5 py-2 rounded-full text-sm font-semibold text-primary-foreground bg-gradient-to-r from-primary to-secondary transition-transform hover:scale-105"
+            className="px-4 xl:px-5 py-2 rounded-full text-sm font-semibold text-primary-foreground bg-gradient-to-r from-primary to-secondary transition-transform hover:scale-105"
           >
             {t.nav.startProject}
           </a>
         </div>
 
         {/* Mobile toggle */}
-        <div className="md:hidden flex items-center gap-2">
+        <div className="lg:hidden flex items-center gap-2">
           <LangSwitcher />
           <ThemeToggle />
           <button
@@ -222,10 +222,11 @@ const Navbar = () => {
       {/* Mobile menu */}
       {open && (
         <motion.div
-          className="md:hidden glass-strong mt-2 mx-6 rounded-2xl p-6 flex flex-col gap-4"
+          className="lg:hidden glass-strong mt-2 mx-4 sm:mx-6 rounded-2xl p-6 flex flex-col gap-4 max-h-[calc(100vh-6rem)] overflow-y-auto"
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
         >
+
           {/* Mobile services nested */}
           <div>
             <button

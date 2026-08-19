@@ -1,17 +1,30 @@
-import { lazy, Suspense } from "react";
+import { lazy, Suspense, useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { useLang } from "@/i18n/LanguageContext";
 
-const ThreeBackground = lazy(() => import("@/components/ThreeBackground"));
+const CanvasBackground = lazy(() => import("@/components/CanvasBackground"));
 
 const HeroSection = () => {
   const { t } = useLang();
+  // Defer the animated background until after first paint so it never
+  // competes with the hero content for bandwidth or main-thread time.
+  const [showBg, setShowBg] = useState(false);
+  useEffect(() => {
+    const w = window as Window & { requestIdleCallback?: (cb: () => void) => number };
+    const start = () => setShowBg(true);
+    const id = w.requestIdleCallback ? w.requestIdleCallback(start) : window.setTimeout(start, 400);
+    return () => {
+      if (!w.requestIdleCallback) window.clearTimeout(id);
+    };
+  }, []);
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-32 md:pt-28 pb-28 md:pb-20">
       {/* Particle background — hero only */}
-      <Suspense fallback={null}>
-        <ThreeBackground />
-      </Suspense>
+      {showBg && (
+        <Suspense fallback={null}>
+          <CanvasBackground />
+        </Suspense>
+      )}
 
       {/* Gradient orbs */}
       <div className="absolute top-1/4 -left-32 w-96 h-96 rounded-full bg-primary/10 blur-[120px] animate-float pointer-events-none" />

@@ -18,6 +18,7 @@ import PricingSection from "@/components/sections/PricingSection";
 import FaqSection from "@/components/sections/FaqSection";
 import ContactSection from "@/components/sections/ContactSection";
 import FooterSection from "@/components/sections/FooterSection";
+import DeferredSection from "@/components/DeferredSection";
 
 const Index = () => {
   // SSR-safe: render content immediately. Loading screen is skipped on
@@ -135,16 +136,16 @@ const Index = () => {
           <main className="relative">
             <HeroSection />
             <div className="section-bg"><AboutSection /></div>
-            <div className="section-bg-alt"><ServicesSection /></div>
-            <div className="section-bg"><ProductsSection /></div>
-            <div className="section-bg-alt"><WhyKliviqSection /></div>
-            <div className="section-bg-alt"><ProjectsSection /></div>
-            <div className="section-bg"><TestimonialsSection /></div>
-            <div className="section-bg"><ProcessSection /></div>
-            <div className="section-bg-alt"><PricingSection /></div>
-            <div className="section-bg"><FaqSection /></div>
-            <div className="section-bg-alt"><ContactSection /></div>
-            <div className="section-bg"><FooterSection /></div>
+            <DeferredSection className="section-bg-alt"><ServicesSection /></DeferredSection>
+            <DeferredSection className="section-bg"><ProductsSection /></DeferredSection>
+            <DeferredSection className="section-bg-alt"><WhyKliviqSection /></DeferredSection>
+            <DeferredSection className="section-bg-alt"><ProjectsSection /></DeferredSection>
+            <DeferredSection className="section-bg"><TestimonialsSection /></DeferredSection>
+            <DeferredSection className="section-bg"><ProcessSection /></DeferredSection>
+            <DeferredSection className="section-bg-alt"><PricingSection /></DeferredSection>
+            <DeferredSection className="section-bg"><FaqSection /></DeferredSection>
+            <DeferredSection className="section-bg-alt"><ContactSection /></DeferredSection>
+            <DeferredSection className="section-bg"><FooterSection /></DeferredSection>
           </main>
           <FloatingActions />
           <MobileBottomNav />

@@ -5,6 +5,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import Index from "./pages/Index.tsx";
 import NotFound from "./pages/NotFound.tsx";
+import Products from "./pages/Products";
 import ScopeSnap from "./pages/ScopeSnap";
 import ClinicPing from "./pages/ClinicPing";
 import PitchDeckAI from "./pages/PitchDeckAI";
@@ -25,6 +26,7 @@ const App = () => (
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />
+          <Route path="/products" element={<Products />} />
           <Route path="/scopesnap" element={<ScopeSnap />} />
           <Route path="/clinicping" element={<ClinicPing />} />
           <Route path="/pitchdeck" element={<PitchDeckAI />} />

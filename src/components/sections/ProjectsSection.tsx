@@ -2,11 +2,11 @@ import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 import { useLang } from "@/i18n/LanguageContext";
-import thumbScopeSnap from "@/assets/thumb-scopesnap.png";
-import thumbPitchDeck from "@/assets/thumb-pitchdeck.png";
-import thumbClinicPing from "@/assets/thumb-clinicping.png";
-import thumbFaco from "@/assets/thumb-faco.png";
-import thumbZeroRupees from "@/assets/thumb-zero-rupees.jpg";
+import thumbScopeSnap from "@/assets/thumb-scopesnap.webp";
+import thumbPitchDeck from "@/assets/thumb-pitchdeck.webp";
+import thumbClinicPing from "@/assets/thumb-clinicping.webp";
+import thumbFaco from "@/assets/thumb-faco.webp";
+import thumbZeroRupees from "@/assets/thumb-zero-rupees.webp";
 
 const cardMeta = [
   { href: "https://faco-site.lovable.app", image: thumbFaco },
@@ -43,6 +43,7 @@ const ClientWorkCard = ({ item, index }: { item: CardItem; index: number }) => {
             src={item.image}
             alt={`${item.title} preview`}
             loading="lazy"
+            decoding="async"
             className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-110"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-background/0 to-background/0 opacity-60 group-hover:opacity-30 transition-opacity duration-500" />

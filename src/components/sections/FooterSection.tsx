@@ -2,8 +2,8 @@ import { useState } from "react";
 import { Linkedin, Github, Twitter } from "lucide-react";
 import LegalDialog from "@/components/LegalDialog";
 import { useLang } from "@/i18n/LanguageContext";
-import logoDark from "@/assets/kliviq-logo-dark.png";
-import logoLight from "@/assets/kliviq-logo-light.png";
+import logoDark from "@/assets/kliviq-logo-dark.webp";
+import logoLight from "@/assets/kliviq-logo-light.webp";
 
 const FooterSection = () => {
   const [openDialog, setOpenDialog] = useState<"privacy" | "terms" | null>(null);

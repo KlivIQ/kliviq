@@ -1,20 +1,22 @@
 import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
+import { Link } from "react-router-dom";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 import { useLang } from "@/i18n/LanguageContext";
-import thumbScopeSnap from "@/assets/thumb-scopesnap.webp";
+import thumbSelfsame from "@/assets/thumb-selfsame.webp";
 import thumbPitchDeck from "@/assets/thumb-pitchdeck.webp";
 import thumbClinicPing from "@/assets/thumb-clinicping.webp";
 import thumbFaco from "@/assets/thumb-faco.webp";
 import thumbZeroRupees from "@/assets/thumb-zero-rupees.webp";
 
 const cardMeta = [
-  { href: "https://faco-site.lovable.app", image: thumbFaco },
-  { href: "/scopesnap", image: thumbScopeSnap },
-  { href: "/pitchdeck", image: thumbPitchDeck },
-  { href: "/clinicping", image: thumbClinicPing },
-  { href: "https://zero-rupees.vercel.app/", image: thumbZeroRupees },
+  { href: "https://selfsametherapy.com", image: thumbSelfsame, external: true },
+  { href: "https://facocoffee.com", image: thumbFaco, external: true },
+  { href: "https://zero-rupees.vercel.app/", image: thumbZeroRupees, external: true },
+  { href: "/pitchdeck", image: thumbPitchDeck, external: false },
+  { href: "/clinicping", image: thumbClinicPing, external: false },
 ];
+
 
 type CardItem = {
   title: string;

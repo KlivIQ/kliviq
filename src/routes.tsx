@@ -18,6 +18,14 @@ export const routes: RouteRecord[] = [
         entry: "src/pages/Index.tsx",
       },
       {
+        path: "products",
+        lazy: async () => {
+          const m = await import("./pages/Products");
+          return { Component: m.default };
+        },
+        entry: "src/pages/Products.tsx",
+      },
+      {
         path: "scopesnap",
         lazy: async () => {
           const m = await import("./pages/ScopeSnap");

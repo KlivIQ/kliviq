@@ -7,8 +7,8 @@ import LangSwitcher from "@/i18n/LangSwitcher";
 import { useLang } from "@/i18n/LanguageContext";
 import { serviceLandingPages } from "@/data/serviceLandingPages";
 
-import logoDark from "@/assets/kliviq-logo-dark.png";
-import logoLight from "@/assets/kliviq-logo-light.png";
+import logoDark from "@/assets/kliviq-logo-dark.webp";
+import logoLight from "@/assets/kliviq-logo-light.webp";
 
 const Wordmark = () => (
   <Link to="/" aria-label="KlivIQ home" className="flex items-center">
@@ -27,7 +27,7 @@ const Navbar = () => {
   const { t } = useLang();
 
   const links = [
-    { label: t.nav.products, href: "/#products" },
+    { label: t.nav.products, href: "/products" },
     { label: t.nav.work, href: "/#projects" },
     { label: t.nav.about, href: "/#about" },
     { label: t.nav.process, href: "/#process" },

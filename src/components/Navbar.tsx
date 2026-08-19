@@ -22,18 +22,25 @@ const Navbar = () => {
   const [open, setOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
   const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
+  const [workOpen, setWorkOpen] = useState(false);
+  const [mobileWorkOpen, setMobileWorkOpen] = useState(false);
   const [resourcesOpen, setResourcesOpen] = useState(false);
   const [mobileResourcesOpen, setMobileResourcesOpen] = useState(false);
   const { t } = useLang();
 
   const links = [
     { label: t.nav.products, href: "/products" },
-    { label: t.nav.work, href: "/#projects" },
     { label: t.nav.about, href: "/#about" },
-    { label: t.nav.process, href: "/#process" },
     { label: t.nav.pricing, href: "/#pricing" },
     { label: t.nav.contact, href: "/#contact" },
   ];
+
+  const workLinks = [
+    { label: t.nav.portfolio, href: "/portfolio", internal: true },
+    { label: t.nav.caseHighlights, href: "/#projects", internal: false },
+    { label: t.nav.process, href: "/#process", internal: false },
+  ];
+
 
 
   useEffect(() => {
@@ -51,11 +58,12 @@ const Navbar = () => {
       animate={{ y: 0 }}
       transition={{ delay: 0.2, duration: 0.6 }}
     >
-      <div className="max-w-6xl mx-auto px-6 flex items-center justify-between">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between gap-4">
         <Wordmark />
 
         {/* Desktop */}
-        <div className="hidden md:flex items-center gap-8">
+        <div className="hidden lg:flex items-center gap-4 xl:gap-7 whitespace-nowrap">
+
           {/* Services dropdown */}
           <div
             className="relative"
@@ -95,6 +103,50 @@ const Navbar = () => {
               </div>
             )}
           </div>
+
+          {/* Work dropdown */}
+          <div
+            className="relative"
+            onMouseEnter={() => setWorkOpen(true)}
+            onMouseLeave={() => setWorkOpen(false)}
+          >
+            <button
+              className="text-sm text-muted-foreground hover:text-foreground transition-colors duration-300 flex items-center gap-1"
+              aria-haspopup="true"
+              aria-expanded={workOpen}
+              onClick={() => setWorkOpen((s) => !s)}
+            >
+              {t.nav.work} <ChevronDown className="w-3.5 h-3.5" />
+            </button>
+            {workOpen && (
+              <div className="absolute top-full left-1/2 -translate-x-1/2 pt-3 min-w-[210px]">
+                <div className="glass-strong rounded-2xl p-2 shadow-xl">
+                  {workLinks.map((w) =>
+                    w.internal ? (
+                      <Link
+                        key={w.href}
+                        to={w.href}
+                        onClick={() => setWorkOpen(false)}
+                        className="block px-4 py-2.5 rounded-lg text-sm text-foreground/80 hover:text-foreground hover:bg-foreground/5 transition-colors"
+                      >
+                        {w.label}
+                      </Link>
+                    ) : (
+                      <a
+                        key={w.href}
+                        href={w.href}
+                        onClick={() => setWorkOpen(false)}
+                        className="block px-4 py-2.5 rounded-lg text-sm text-foreground/80 hover:text-foreground hover:bg-foreground/5 transition-colors"
+                      >
+                        {w.label}
+                      </a>
+                    ),
+                  )}
+                </div>
+              </div>
+            )}
+          </div>
+
 
           {links.map((link) => (
             <a
@@ -146,14 +198,14 @@ const Navbar = () => {
           <ThemeToggle />
           <a
             href="/#contact"
-            className="px-5 py-2 rounded-full text-sm font-semibold text-primary-foreground bg-gradient-to-r from-primary to-secondary transition-transform hover:scale-105"
+            className="px-4 xl:px-5 py-2 rounded-full text-sm font-semibold text-primary-foreground bg-gradient-to-r from-primary to-secondary transition-transform hover:scale-105"
           >
             {t.nav.startProject}
           </a>
         </div>
 
         {/* Mobile toggle */}
-        <div className="md:hidden flex items-center gap-2">
+        <div className="lg:hidden flex items-center gap-2">
           <LangSwitcher />
           <ThemeToggle />
           <button
@@ -170,10 +222,11 @@ const Navbar = () => {
       {/* Mobile menu */}
       {open && (
         <motion.div
-          className="md:hidden glass-strong mt-2 mx-6 rounded-2xl p-6 flex flex-col gap-4"
+          className="lg:hidden glass-strong mt-2 mx-4 sm:mx-6 rounded-2xl p-6 flex flex-col gap-4 max-h-[calc(100vh-6rem)] overflow-y-auto"
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
         >
+
           {/* Mobile services nested */}
           <div>
             <button
@@ -208,6 +261,46 @@ const Navbar = () => {
               </div>
             )}
           </div>
+
+          {/* Mobile work nested */}
+          <div>
+            <button
+              className="w-full flex items-center justify-between text-foreground/80 hover:text-foreground transition-colors"
+              onClick={() => setMobileWorkOpen((s) => !s)}
+              aria-expanded={mobileWorkOpen}
+            >
+              <span>{t.nav.work}</span>
+              <ChevronDown
+                className={`w-4 h-4 transition-transform ${mobileWorkOpen ? "rotate-180" : ""}`}
+              />
+            </button>
+            {mobileWorkOpen && (
+              <div className="mt-3 ml-3 pl-3 border-l border-foreground/15 flex flex-col gap-3">
+                {workLinks.map((w) =>
+                  w.internal ? (
+                    <Link
+                      key={w.href}
+                      to={w.href}
+                      onClick={() => setOpen(false)}
+                      className="text-sm text-foreground/75 hover:text-foreground transition-colors"
+                    >
+                      {w.label}
+                    </Link>
+                  ) : (
+                    <a
+                      key={w.href}
+                      href={w.href}
+                      onClick={() => setOpen(false)}
+                      className="text-sm text-foreground/75 hover:text-foreground transition-colors"
+                    >
+                      {w.label}
+                    </a>
+                  ),
+                )}
+              </div>
+            )}
+          </div>
+
 
           {links.map((link) => (
             <a

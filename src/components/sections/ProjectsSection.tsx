@@ -1,20 +1,22 @@
 import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
+import { Link } from "react-router-dom";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 import { useLang } from "@/i18n/LanguageContext";
-import thumbScopeSnap from "@/assets/thumb-scopesnap.webp";
+import thumbSelfsame from "@/assets/thumb-selfsame.webp";
 import thumbPitchDeck from "@/assets/thumb-pitchdeck.webp";
 import thumbClinicPing from "@/assets/thumb-clinicping.webp";
 import thumbFaco from "@/assets/thumb-faco.webp";
 import thumbZeroRupees from "@/assets/thumb-zero-rupees.webp";
 
 const cardMeta = [
-  { href: "https://faco-site.lovable.app", image: thumbFaco },
-  { href: "/scopesnap", image: thumbScopeSnap },
-  { href: "/pitchdeck", image: thumbPitchDeck },
-  { href: "/clinicping", image: thumbClinicPing },
-  { href: "https://zero-rupees.vercel.app/", image: thumbZeroRupees },
+  { href: "https://selfsametherapy.com", image: thumbSelfsame, external: true },
+  { href: "https://facocoffee.com", image: thumbFaco, external: true },
+  { href: "https://zero-rupees.vercel.app/", image: thumbZeroRupees, external: true },
+  { href: "/pitchdeck", image: thumbPitchDeck, external: false },
+  { href: "/clinicping", image: thumbClinicPing, external: false },
 ];
+
 
 type CardItem = {
   title: string;
@@ -23,6 +25,7 @@ type CardItem = {
   cta: string;
   href: string;
   image: string;
+  external: boolean;
 };
 
 const ClientWorkCard = ({ item, index }: { item: CardItem; index: number }) => {
@@ -31,13 +34,13 @@ const ClientWorkCard = ({ item, index }: { item: CardItem; index: number }) => {
     <div ref={ref} className="h-full">
       <motion.a
         href={item.href}
-        target="_blank"
-        rel="noopener noreferrer"
+        {...(item.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
         className="group glass rounded-2xl overflow-hidden flex flex-col h-full relative hover:-translate-y-2 transition-all duration-500 hover:shadow-[0_20px_60px_-15px_hsl(var(--secondary)/0.4)] hover:border-secondary/40"
         initial={{ opacity: 0, y: 40 }}
         animate={isVisible ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.6, delay: index * 0.1 }}
       >
+
         <div className="relative aspect-[16/10] overflow-hidden bg-muted">
           <img
             src={item.image}
@@ -85,12 +88,15 @@ const ProjectsSection = () => {
     ...c,
     href: cardMeta[i].href,
     image: cardMeta[i].image,
+    external: cardMeta[i].external,
   }));
 
   const { ref: statRef, isVisible: statVisible } = useScrollReveal(0.2);
 
   return (
     <section id="projects" className="relative py-32 px-6">
+      <span id="portfolio" className="block -mt-32 pt-32" aria-hidden="true" />
+
       <div className="max-w-5xl mx-auto">
         <div ref={ref}>
           <motion.p
@@ -110,11 +116,21 @@ const ProjectsSection = () => {
           </motion.h2>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
           {cards.map((item, i) => (
             <ClientWorkCard key={item.title} item={item} index={i} />
           ))}
         </div>
+
+        <div className="text-center mb-16">
+          <Link
+            to="/portfolio"
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-full text-sm font-semibold glass hover:border-secondary/40 hover:text-secondary transition-colors"
+          >
+            {t.projects.viewAll}
+          </Link>
+        </div>
+
 
         <div className="max-w-xl mx-auto">
           <motion.div

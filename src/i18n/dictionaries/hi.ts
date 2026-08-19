@@ -9,6 +9,8 @@ export const hi: Dict = {
     process: "प्रक्रिया",
     pricing: "मूल्य",
     contact: "संपर्क",
+    portfolio: "पोर्टफोलियो",
+    caseHighlights: "चुनिंदा काम",
     resources: "संसाधन",
     blog: "ब्लॉग",
     glossary: "शब्दकोश",

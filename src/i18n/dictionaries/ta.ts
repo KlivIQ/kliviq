@@ -9,6 +9,8 @@ export const ta: Dict = {
     process: "செயல்முறை",
     pricing: "விலை",
     contact: "தொடர்பு",
+    portfolio: "போர்ட்ஃபோலியோ",
+    caseHighlights: "சிறப்பு வேலைகள்",
     resources: "வளங்கள்",
     blog: "வலைப்பதிவு",
     glossary: "சொற்களஞ்சியம்",

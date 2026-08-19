@@ -7,6 +7,8 @@ export const en = {
     process: "Process",
     pricing: "Pricing",
     contact: "Contact",
+    portfolio: "Portfolio",
+    caseHighlights: "Case Highlights",
     resources: "Resources",
     blog: "Blog / Insights",
     glossary: "Glossary",

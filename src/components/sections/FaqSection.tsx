@@ -37,22 +37,23 @@ const FaqSection = () => {
           animate={isVisible ? { opacity: 1, y: 0 } : {}}
           transition={{ delay: 0.2, duration: 0.6 }}
         >
-          <Accordion type="single" collapsible className="space-y-3">
+          <Accordion type="single" collapsible className="space-y-2">
             {t.faq.items.map((item, i) => (
               <AccordionItem
                 key={i}
                 value={`item-${i}`}
-                className="glass rounded-xl border border-border/50 px-5 data-[state=open]:border-primary/40 transition-colors"
+                className="glass rounded-xl border border-border/50 px-4 data-[state=open]:border-primary/40 transition-colors"
               >
-                <AccordionTrigger className="text-left text-base md:text-lg font-medium hover:no-underline py-5">
+                <AccordionTrigger className="text-left text-base font-medium hover:no-underline py-3">
                   {item.q}
                 </AccordionTrigger>
-                <AccordionContent className="text-muted-foreground text-base leading-relaxed pb-5">
+                <AccordionContent className="text-muted-foreground text-base leading-relaxed pb-4">
                   {item.a}
                 </AccordionContent>
               </AccordionItem>
             ))}
           </Accordion>
+
         </motion.div>
       </div>
     </section>

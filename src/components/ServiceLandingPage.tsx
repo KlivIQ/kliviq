@@ -12,6 +12,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import type { ServiceLandingContent } from "@/data/serviceLandingPages";
+import { generalFaqs } from "@/data/generalFaqs";
 
 const SITE = "https://www.kliviq.com";
 
@@ -83,7 +84,7 @@ const ServiceLandingPage = ({ content }: Props) => {
   const faqSchema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    mainEntity: content.faqs.map((f) => ({
+    mainEntity: [...content.faqs, ...generalFaqs].map((f) => ({
       "@type": "Question",
       name: f.q,
       acceptedAnswer: { "@type": "Answer", text: f.a },
@@ -217,8 +218,25 @@ const ServiceLandingPage = ({ content }: Props) => {
             <Accordion type="single" collapsible className="w-full">
               {content.faqs.map((f, i) => (
                 <AccordionItem key={i} value={`item-${i}`}>
-                  <AccordionTrigger className="text-left text-lg">{f.q}</AccordionTrigger>
+                  <AccordionTrigger className="text-left text-base font-medium py-3">{f.q}</AccordionTrigger>
                   <AccordionContent className="text-muted-foreground text-base leading-relaxed">
+                    {f.a}
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
+          </section>
+
+          {/* General KlivIQ FAQs */}
+          <section className="mt-16">
+            <h2 className="text-2xl md:text-3xl font-semibold mb-8">
+              More questions about working with KlivIQ
+            </h2>
+            <Accordion type="single" collapsible className="w-full space-y-2">
+              {generalFaqs.map((f, i) => (
+                <AccordionItem key={i} value={`general-${i}`} className="glass rounded-xl border border-border/50 px-4">
+                  <AccordionTrigger className="text-left text-base font-medium hover:no-underline py-3">{f.q}</AccordionTrigger>
+                  <AccordionContent className="text-muted-foreground text-base leading-relaxed pb-4">
                     {f.a}
                   </AccordionContent>
                 </AccordionItem>

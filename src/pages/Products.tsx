@@ -7,6 +7,8 @@ import Navbar from "@/components/Navbar";
 import FooterSection from "@/components/sections/FooterSection";
 import { JsonLd } from "@/components/JsonLd";
 import { products } from "@/data/products";
+import { generalFaqs } from "@/data/generalFaqs";
+import FaqBlock from "@/components/FaqBlock";
 
 const SITE = "https://www.kliviq.com";
 
@@ -71,13 +73,11 @@ const Products = () => {
   const faqSchema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    mainEntity: products.flatMap((p) =>
-      p.qa.map((qa) => ({
-        "@type": "Question",
-        name: qa.q,
-        acceptedAnswer: { "@type": "Answer", text: qa.a },
-      })),
-    ),
+    mainEntity: [...products.flatMap((p) => p.qa), ...generalFaqs].map((qa) => ({
+      "@type": "Question",
+      name: qa.q,
+      acceptedAnswer: { "@type": "Answer", text: qa.a },
+    })),
   };
 
   const breadcrumbSchema = {
@@ -268,6 +268,14 @@ const Products = () => {
             </motion.div>
           </section>
         ))}
+
+        <FaqBlock
+          items={generalFaqs}
+          eyebrow="FAQ"
+          title="Questions we get asked"
+          className="py-20 border-b border-border/30"
+          idPrefix="products-faq"
+        />
 
         <section className="px-6 py-20 text-center">
           <h2 className="text-2xl md:text-4xl font-bold mb-4">Want one of these built for your business?</h2>

@@ -1,3 +1,5 @@
+import { generalFaqs } from "@/data/generalFaqs";
+
 export const en = {
   nav: {
     services: "Services",
@@ -271,48 +273,7 @@ export const en = {
     eyebrow: "FAQ",
     heading1: "Questions We Get",
     heading2: "Asked",
-    items: [
-      {
-        q: "What is Seenzo?",
-        a: "Seenzo is KlivIQ's AI Visibility platform that scans and scores how visible your business is to AI engines like ChatGPT, Gemini, and Perplexity — then helps you fix what's broken. Get a free score in under 5 minutes at seenzo.in.",
-      },
-      {
-        q: "What is KlivIQ Connect?",
-        a: "KlivIQ Connect is a customizable WhatsApp chatbot platform built for Indian SMBs — clinics, salons, CA firms, and D2C brands — handling bookings, reminders, broadcasts, and AI-powered customer queries in 7 Indian languages. No code. No per-message markup. Live in 7 working days.",
-      },
-      {
-        q: "What is AI implementation?",
-        a: "We analyse your business processes, identify where AI creates the most value, then build and integrate the tools — chatbots, automation workflows, intelligent dashboards — directly into how you work. You see ROI in weeks, not quarters.",
-      },
-      {
-        q: "What is a Fractional CTO?",
-        a: "A senior technology leader who works with you part-time — typically 10–20 hours/week on retainer. If you're making technology decisions without a senior tech person in the room, you need one. We strategy and build — not just advise.",
-      },
-      {
-        q: "How do you deliver in weeks when others take months?",
-        a: "AI-assisted development, focused sprints, no agency overhead. No account managers, no briefing chains. You work directly with the person building.",
-      },
-      {
-        q: "Do you work with Indian and global clients?",
-        a: "Yes — separate INR and USD pricing, Razorpay for India, Wise/Payoneer internationally. Same quality, same standards.",
-      },
-      {
-        q: "How does pricing work?",
-        a: "Fixed price agreed upfront. 30% to start, 40% mid-project, 30% on delivery. No surprises.",
-      },
-      {
-        q: "Do you sign NDAs?",
-        a: "Immediately and without question.",
-      },
-      {
-        q: "What technologies do you use?",
-        a: "AI: OpenAI, Claude, Gemini, LangChain, n8n. Web: React, Next.js, Node.js. Mobile: Flutter. Backend: Python, PostgreSQL, Firebase. Cloud: AWS, Vercel, Google Cloud.",
-      },
-      {
-        q: "How do I get started?",
-        a: "Book a free 30-minute scoping call. No pitch, no commitment — just an honest conversation.",
-      },
-    ],
+    items: generalFaqs,
   },
   contact: {
     eyebrow: "Contact",

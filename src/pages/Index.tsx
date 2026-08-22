@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Head as Helmet } from "vite-react-ssg";
 import { JsonLd } from "@/components/JsonLd";
+import { generalFaqs } from "@/data/generalFaqs";
 import LoadingScreen from "@/components/LoadingScreen";
 import CustomCursor from "@/components/CustomCursor";
 import FloatingActions from "@/components/FloatingActions";
@@ -115,18 +116,11 @@ const Index = () => {
       <JsonLd data={{
         "@context": "https://schema.org",
         "@type": "FAQPage",
-        "mainEntity": [
-          {"@type":"Question","name":"What is Seenzo?","acceptedAnswer":{"@type":"Answer","text":"Seenzo is KlivIQ's AI Visibility platform that scans and scores how visible your business is to AI engines like ChatGPT, Gemini, and Perplexity — then helps you fix what's broken. Get a free score in under 5 minutes at seenzo.in."}},
-          {"@type":"Question","name":"What is KlivIQ Connect?","acceptedAnswer":{"@type":"Answer","text":"KlivIQ Connect is a customizable WhatsApp chatbot platform built for Indian SMBs — clinics, salons, CA firms, and D2C brands — handling bookings, reminders, broadcasts, and AI-powered customer queries in 7 Indian languages including Tamil, Hindi, and Sanskrit. Live in 7 working days."}},
-          {"@type":"Question","name":"What is AI implementation?","acceptedAnswer":{"@type":"Answer","text":"We analyse your business processes, identify where AI creates the most value, then build and integrate the tools — chatbots, automation workflows, intelligent dashboards — directly into how you work. You see ROI in weeks, not quarters."}},
-          {"@type":"Question","name":"What is a Fractional CTO?","acceptedAnswer":{"@type":"Answer","text":"A senior technology leader who works with you part-time — typically 10–20 hours/week on retainer. If you're making technology decisions without a senior tech person in the room, you need one. We strategy and build — not just advise."}},
-          {"@type":"Question","name":"How do you deliver in weeks when others take months?","acceptedAnswer":{"@type":"Answer","text":"AI-assisted development, focused sprints, no agency overhead. No account managers, no briefing chains. You work directly with the person building."}},
-          {"@type":"Question","name":"Do you work with Indian and global clients?","acceptedAnswer":{"@type":"Answer","text":"Yes — separate INR and USD pricing, Razorpay for India, Wise/Payoneer internationally. Same quality, same standards."}},
-          {"@type":"Question","name":"How does pricing work?","acceptedAnswer":{"@type":"Answer","text":"Fixed price agreed upfront. 30% to start, 40% mid-project, 30% on delivery. No surprises."}},
-          {"@type":"Question","name":"Do you sign NDAs?","acceptedAnswer":{"@type":"Answer","text":"Immediately and without question."}},
-          {"@type":"Question","name":"What technologies do you use?","acceptedAnswer":{"@type":"Answer","text":"AI: OpenAI, Claude, Gemini, LangChain, n8n. Web: React, Next.js, Node.js. Mobile: Flutter. Backend: Python, PostgreSQL, Firebase. Cloud: AWS, Vercel, Google Cloud."}},
-          {"@type":"Question","name":"How do I get started?","acceptedAnswer":{"@type":"Answer","text":"Book a free 30-minute scoping call. No pitch, no commitment — just an honest conversation."}}
-        ]
+        "mainEntity": generalFaqs.map((f) => ({
+          "@type": "Question",
+          "name": f.q,
+          "acceptedAnswer": { "@type": "Answer", "text": f.a },
+        })),
       }} />
       <LoadingScreen isLoading={isLoading} />
       <CustomCursor />

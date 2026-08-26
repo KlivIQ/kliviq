@@ -6,10 +6,10 @@ import { Sparkles, Compass, Layers, Zap, ArrowRight } from "lucide-react";
 
 const serviceMeta = [
   // Bento layout: the first tile is the hero tile, the rest fill around it.
-  { icon: Sparkles, link: "/services/ai-consulting", span: "lg:col-span-4 lg:row-span-2" },
+  { icon: Sparkles, link: "/services/ai-consulting", span: "lg:col-span-4" },
   { icon: Compass, link: "/services/fractional-cto", span: "lg:col-span-2" },
   { icon: Layers, link: "/services/custom-app-development", span: "lg:col-span-2" },
-  { icon: Zap, link: "/services/mvp-development", span: "lg:col-span-6" },
+  { icon: Zap, link: "/services/mvp-development", span: "lg:col-span-4" },
 ];
 
 const ServicesSection = () => {

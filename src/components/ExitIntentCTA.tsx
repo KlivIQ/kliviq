@@ -20,7 +20,13 @@ const ExitIntentCTA = () => {
     if (window.matchMedia("(max-width: 767px)").matches) return;
 
     let done = false;
+    // Give the visitor a few seconds before anything can trigger.
+    let armed = false;
+    const armTimer = window.setTimeout(() => {
+      armed = true;
+    }, 6000);
     const fire = () => {
+      if (!armed) return;
       if (done) return;
       done = true;
       window.localStorage.setItem(STORAGE_KEY, "1");

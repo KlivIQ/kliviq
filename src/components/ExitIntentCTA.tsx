@@ -29,9 +29,11 @@ const ExitIntentCTA = () => {
     };
 
     const onScroll = () => {
+      if (!armed) return;
       const scrolled = window.scrollY + window.innerHeight;
       const total = document.documentElement.scrollHeight;
-      if (total > 0 && scrolled / total >= 0.7) fire();
+      // Require real scrolling — never fire on a tall viewport at page load.
+      if (window.scrollY > 600 && total > 0 && scrolled / total >= 0.7) fire();
     };
     const onLeave = (e: MouseEvent) => {
       if (e.clientY <= 0) fire();

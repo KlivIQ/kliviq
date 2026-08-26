@@ -2,6 +2,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 import { useLang } from "@/i18n/LanguageContext";
+import { availability } from "@/data/availability";
 
 type Region = "india" | "global";
 
@@ -28,7 +29,7 @@ const PricingSection = () => {
           {t.pricing.eyebrow}
         </motion.p>
         <motion.h2
-          className="text-3xl md:text-5xl font-bold text-center mb-6"
+          className="text-4xl md:text-6xl font-extrabold tracking-tight text-center mb-6"
           initial={{ opacity: 0, y: 30 }}
           animate={isVisible ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7 }}
@@ -130,11 +131,21 @@ const PricingSection = () => {
         </motion.div>
 
         <motion.div
-          className="flex justify-center"
+          className="flex flex-col items-center gap-4"
           initial={{ opacity: 0 }}
           animate={isVisible ? { opacity: 1 } : {}}
           transition={{ delay: 0.5 }}
         >
+          <span
+            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs sm:text-sm font-semibold bg-background/60 backdrop-blur-sm"
+            style={{ color: "#4ADE80", border: "1px solid rgba(74,222,128,0.45)" }}
+          >
+            <span aria-hidden>⏳</span>
+            {t.banner.text
+              .replace("{slots}", String(availability.slots))
+              .replace("{quarter}", availability.quarter)
+              .replace("{date}", availability.bookBefore)}
+          </span>
           <a
             href="#contact"
             className="px-8 py-4 rounded-full font-semibold text-primary-foreground bg-gradient-to-r from-primary to-secondary animate-pulse-glow transition-transform hover:scale-105"

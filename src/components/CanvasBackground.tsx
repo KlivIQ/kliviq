@@ -5,12 +5,36 @@ import { useEffect, useRef } from "react";
  * Replaces the previous three.js/@react-three implementation — same drifting,
  * connecting-nodes feel at a fraction of the JS payload.
  */
-const COLORS = ["#4ADE80", "#34D399", "#22D3EE", "#A78BFA"];
+// Weighted toward the KlivIQ brand greens, with a couple of cooler accents.
+const COLORS = ["#4ADE80", "#4ADE80", "#22C55E", "#166534", "#34D399", "#22D3EE", "#A78BFA"];
 
 type P = { x: number; y: number; vx: number; vy: number; r: number; c: string };
 
 const CanvasBackground = () => {
   const ref = useRef<HTMLCanvasElement>(null);
+  const wrapRef = useRef<HTMLDivElement>(null);
+
+  // Parallax: the particle field drifts up at ~35% of scroll speed so the
+  // hero content reads as sitting in front of it.
+  useEffect(() => {
+    const el = wrapRef.current;
+    if (!el) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    let raf = 0;
+    const apply = () => {
+      raf = 0;
+      el.style.transform = `translate3d(0, ${window.scrollY * 0.35}px, 0)`;
+    };
+    const onScroll = () => {
+      if (!raf) raf = requestAnimationFrame(apply);
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    apply();
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      if (raf) cancelAnimationFrame(raf);
+    };
+  }, []);
 
   useEffect(() => {
     const canvas = ref.current;
@@ -43,8 +67,8 @@ const CanvasBackground = () => {
       particles = Array.from({ length: count }, () => ({
         x: Math.random() * width,
         y: Math.random() * height,
-        vx: (Math.random() - 0.5) * 0.22,
-        vy: (Math.random() - 0.5) * 0.22,
+        vx: (Math.random() - 0.5) * 0.16,
+        vy: (Math.random() - 0.5) * 0.16,
         r: Math.random() * 1.6 + 0.6,
         c: COLORS[Math.floor(Math.random() * COLORS.length)],
       }));
@@ -136,7 +160,12 @@ const CanvasBackground = () => {
   }, []);
 
   return (
-    <div className="absolute inset-0 pointer-events-none" style={{ zIndex: 0 }} aria-hidden="true">
+    <div
+      ref={wrapRef}
+      className="absolute inset-0 pointer-events-none will-change-transform"
+      style={{ zIndex: 0 }}
+      aria-hidden="true"
+    >
       <canvas ref={ref} className="w-full h-full" />
     </div>
   );

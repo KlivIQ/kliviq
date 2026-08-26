@@ -299,6 +299,28 @@ export const en = {
     contactLinkedin: "LinkedIn",
     madeIn: "Made in India 🇮🇳 · Delivered Globally 🌍",
   },
+  banner: {
+    text: "Now onboarding {slots} clients for {quarter} — book before {date}.",
+    cta: "Book a free call →",
+    dismiss: "Dismiss banner",
+  },
+  trust: {
+    eyebrow: "Trusted by founders in India and abroad",
+    badges: [
+      "20+ years enterprise experience",
+      "India + Global clients",
+      "50+ projects delivered",
+      "NDA signed on day one",
+      "Fixed price, always",
+    ],
+  },
+  exitCta: {
+    title: "Before you go — is your business visible to AI?",
+    body: "Get your free AI Visibility Score in under 5 minutes, or grab a free 30-minute call and we'll tell you honestly what to build next.",
+    primary: "Get my free AI Visibility Score →",
+    secondary: "Book a free 30-min call",
+    dismiss: "Close",
+  },
   lang: {
     label: "Language",
   },

@@ -17,7 +17,7 @@ const TestimonialsSection = () => {
           {t.testimonials.eyebrow}
         </motion.p>
         <motion.h2
-          className="text-3xl md:text-5xl font-bold mb-16 text-center"
+          className="text-4xl md:text-6xl font-extrabold tracking-tight mb-16 text-center"
           initial={{ opacity: 0, y: 30 }}
           animate={isVisible ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7 }}

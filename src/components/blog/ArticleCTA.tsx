@@ -3,7 +3,7 @@ import { ArrowRight } from "lucide-react";
 
 const ArticleCTA = () => (
   <section className="glass-strong rounded-3xl p-10 md:p-14 text-center">
-    <h2 className="text-2xl md:text-4xl font-bold mb-4 leading-tight">
+    <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight mb-4 leading-tight">
       Need Help Figuring Out Where AI Fits In Your Business?
     </h2>
     <p className="text-muted-foreground max-w-2xl mx-auto mb-8 text-base md:text-lg leading-relaxed">

@@ -20,6 +20,8 @@ import FaqSection from "@/components/sections/FaqSection";
 import ContactSection from "@/components/sections/ContactSection";
 import FooterSection from "@/components/sections/FooterSection";
 import DeferredSection from "@/components/DeferredSection";
+import TrustRow from "@/components/TrustRow";
+import ExitIntentCTA from "@/components/ExitIntentCTA";
 
 const Index = () => {
   // SSR-safe: render content immediately. Loading screen is skipped on
@@ -134,6 +136,7 @@ const Index = () => {
             <DeferredSection className="section-bg"><ProductsSection /></DeferredSection>
             <DeferredSection className="section-bg-alt"><WhyKliviqSection /></DeferredSection>
             <DeferredSection className="section-bg-alt"><ProjectsSection /></DeferredSection>
+            <DeferredSection className="section-bg-alt" minHeight={220}><TrustRow /></DeferredSection>
             <DeferredSection className="section-bg"><TestimonialsSection /></DeferredSection>
             <DeferredSection className="section-bg"><ProcessSection /></DeferredSection>
             <DeferredSection className="section-bg-alt"><PricingSection /></DeferredSection>
@@ -141,6 +144,7 @@ const Index = () => {
             <DeferredSection className="section-bg-alt"><ContactSection /></DeferredSection>
             <DeferredSection className="section-bg"><FooterSection /></DeferredSection>
           </main>
+          <ExitIntentCTA />
           <FloatingActions />
           <MobileBottomNav />
         </>

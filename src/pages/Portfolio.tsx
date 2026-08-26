@@ -74,7 +74,7 @@ const PortfolioPanel = ({ item, index }: { item: PortfolioItem; index: number })
             <span className="text-xs text-muted-foreground">{item.year}</span>
           </div>
 
-          <h2 id={`${item.slug}-title`} className="text-3xl md:text-5xl font-bold tracking-tight mb-3">
+          <h2 id={`${item.slug}-title`} className="text-4xl md:text-6xl font-extrabold tracking-tight mb-3">
             {item.name}
           </h2>
           <p className="text-lg md:text-xl text-foreground/80 mb-5">{item.tagline}</p>
@@ -91,6 +91,25 @@ const PortfolioPanel = ({ item, index }: { item: PortfolioItem; index: number })
               </li>
             ))}
           </ul>
+
+          {item.metrics && (
+            <dl className="grid grid-cols-2 sm:grid-cols-3 gap-3 mb-8">
+              {item.metrics.map((m) => (
+                <div key={m.label} className="glass rounded-xl px-4 py-3">
+                  <dt className="sr-only">{m.label}</dt>
+                  <dd>
+                    <span
+                      className="block text-xl md:text-2xl font-extrabold tracking-tight"
+                      style={{ color: `hsl(${item.accent})` }}
+                    >
+                      {m.value}
+                    </span>
+                    <span className="block text-xs text-muted-foreground mt-0.5">{m.label}</span>
+                  </dd>
+                </div>
+              ))}
+            </dl>
+          )}
 
           <div className="flex flex-wrap gap-2 mb-8">
             {item.stack.map((s) => (
@@ -268,7 +287,7 @@ const Portfolio = () => {
         {/* CTA */}
         <section className="relative px-6 py-24">
           <div className="max-w-3xl mx-auto text-center glass rounded-3xl p-10 md:p-14">
-            <h2 className="text-2xl md:text-4xl font-bold mb-4">Want your project here next?</h2>
+            <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight mb-4">Want your project here next?</h2>
             <p className="text-muted-foreground mb-8">
               Fixed scope, fixed price, delivered in weeks. Start with a free 30-minute scoping call.
             </p>

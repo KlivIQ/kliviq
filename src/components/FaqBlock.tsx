@@ -25,7 +25,7 @@ const FaqBlock = ({ items, title = "Frequently asked questions", eyebrow, classN
           {eyebrow}
         </p>
       )}
-      <h2 className="text-2xl md:text-4xl font-bold text-center mb-8">{title}</h2>
+      <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight text-center mb-8">{title}</h2>
       <Accordion type="single" collapsible className="space-y-2">
         {items.map((item, i) => (
           <AccordionItem

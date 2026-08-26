@@ -3,6 +3,7 @@ import { ArrowUpRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 import { useLang } from "@/i18n/LanguageContext";
+import { portfolioItems } from "@/data/portfolio";
 import thumbSelfsame from "@/assets/thumb-selfsame.webp";
 import thumbPitchDeck from "@/assets/thumb-pitchdeck.webp";
 import thumbClinicPing from "@/assets/thumb-clinicping.webp";
@@ -26,6 +27,7 @@ type CardItem = {
   href: string;
   image: string;
   external: boolean;
+  metrics?: { value: string; label: string }[];
 };
 
 const ClientWorkCard = ({ item, index }: { item: CardItem; index: number }) => {
@@ -65,6 +67,18 @@ const ClientWorkCard = ({ item, index }: { item: CardItem; index: number }) => {
             </span>
           </h3>
           <p className="text-sm text-muted-foreground leading-relaxed">{item.blurb}</p>
+          {item.metrics && (
+            <div className="flex flex-wrap gap-2 mt-1">
+              {item.metrics.map((m) => (
+                <span
+                  key={m.label}
+                  className="text-[11px] px-2.5 py-1 rounded-full bg-secondary/10 border border-secondary/25 text-foreground/80"
+                >
+                  <strong className="font-bold text-secondary">{m.value}</strong> {m.label}
+                </span>
+              ))}
+            </div>
+          )}
           <span className="mt-2 text-xs font-medium text-secondary inline-flex items-center gap-1 opacity-80 group-hover:opacity-100">
             {item.cta}
             <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
@@ -89,6 +103,7 @@ const ProjectsSection = () => {
     href: cardMeta[i].href,
     image: cardMeta[i].image,
     external: cardMeta[i].external,
+    metrics: portfolioItems[i]?.metrics?.slice(0, 2),
   }));
 
   const { ref: statRef, isVisible: statVisible } = useScrollReveal(0.2);
@@ -107,7 +122,7 @@ const ProjectsSection = () => {
             {t.projects.eyebrow}
           </motion.p>
           <motion.h2
-            className="text-3xl md:text-5xl font-bold text-center mb-16"
+            className="text-4xl md:text-6xl font-extrabold tracking-tight text-center mb-16"
             initial={{ opacity: 0, y: 30 }}
             animate={isVisible ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.7 }}

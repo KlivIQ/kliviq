@@ -278,7 +278,7 @@ const Products = () => {
         />
 
         <section className="px-6 py-20 text-center">
-          <h2 className="text-2xl md:text-4xl font-bold mb-4">Want one of these built for your business?</h2>
+          <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight mb-4">Want one of these built for your business?</h2>
           <p className="text-muted-foreground mb-8">Book a free 30-minute scoping call. No pitch, no commitment.</p>
           <Link
             to="/#contact"

@@ -7,7 +7,7 @@ const InsightsCTA = () => (
       <p className="text-[11px] font-semibold uppercase tracking-widest mb-3" style={{ color: "#4ADE80" }}>
         Keep going
       </p>
-      <h2 className="text-2xl md:text-4xl font-bold leading-tight">
+      <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight leading-tight">
         Practical next steps for founders & teams
       </h2>
     </div>

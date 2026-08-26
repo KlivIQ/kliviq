@@ -20,11 +20,17 @@ export type PortfolioItem = {
   thumb: string;
   shot: string;
   accent: string;
+  metrics?: { value: string; label: string }[];
 };
 
 export const portfolioItems: PortfolioItem[] = [
   {
     slug: "selfsame-therapy",
+    metrics: [
+      { value: "3 weeks", label: "Concept to live site" },
+      { value: "6 pages", label: "Shipped with SEO" },
+      { value: "100%", label: "Mobile-first responsive" },
+    ],
     name: "Selfsame Therapy",
     tagline: "A calm home for a counselling practice built for NRIs.",
     summary:
@@ -47,6 +53,11 @@ export const portfolioItems: PortfolioItem[] = [
   },
   {
     slug: "faco",
+    metrics: [
+      { value: "1 week", label: "Design to launch" },
+      { value: "<1s", label: "Mobile load time" },
+      { value: "1 path", label: "Direct enquiry funnel" },
+    ],
     name: "FACO — Fathima Coffee Works",
     tagline: "A Kodaikanal coffee roastery, online.",
     summary:
@@ -68,6 +79,10 @@ export const portfolioItems: PortfolioItem[] = [
   },
   {
     slug: "zero-rupees",
+    metrics: [
+      { value: "1 weekend", label: "Idea to public launch" },
+      { value: "0", label: "Signup steps to first order" },
+    ],
     name: "Zero Rupees",
     tagline: "All the dopamine of online shopping. None of the bill.",
     summary:
@@ -89,6 +104,10 @@ export const portfolioItems: PortfolioItem[] = [
   },
   {
     slug: "pitchdeck-ai",
+    metrics: [
+      { value: "10 slides", label: "Generated per idea" },
+      { value: "6", label: "Indian languages" },
+    ],
     name: "PitchDeckAI",
     tagline: "Investor-ready decks in six Indian languages.",
     summary:
@@ -110,6 +129,10 @@ export const portfolioItems: PortfolioItem[] = [
   },
   {
     slug: "clinicping",
+    metrics: [
+      { value: "AI scoring", label: "No-show risk per booking" },
+      { value: "1 dashboard", label: "For the whole front desk" },
+    ],
     name: "ClinicPing",
     tagline: "Fewer no-shows, in the patient's own language.",
     summary:

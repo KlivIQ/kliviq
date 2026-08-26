@@ -29,7 +29,7 @@ const ContactSection = () => {
           {t.contact.eyebrow}
         </motion.p>
         <motion.h2
-          className="text-3xl md:text-5xl font-bold text-center mb-6"
+          className="text-4xl md:text-6xl font-extrabold tracking-tight text-center mb-6"
           initial={{ opacity: 0, y: 30 }}
           animate={isVisible ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7 }}

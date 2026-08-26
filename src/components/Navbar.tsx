@@ -6,6 +6,7 @@ import ThemeToggle from "@/components/ThemeToggle";
 import LangSwitcher from "@/i18n/LangSwitcher";
 import { useLang } from "@/i18n/LanguageContext";
 import { serviceLandingPages } from "@/data/serviceLandingPages";
+import AvailabilityBanner from "@/components/AvailabilityBanner";
 
 import logoDark from "@/assets/kliviq-logo-dark.webp";
 import logoLight from "@/assets/kliviq-logo-light.webp";
@@ -52,13 +53,18 @@ const Navbar = () => {
   return (
     <motion.nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        scrolled ? "glass-strong py-3" : "py-6"
+        scrolled ? "glass-strong" : ""
       }`}
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ delay: 0.2, duration: 0.6 }}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between gap-4">
+      <AvailabilityBanner />
+      <div
+        className={`max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between gap-4 transition-all duration-500 ${
+          scrolled ? "py-3" : "py-5"
+        }`}
+      >
         <Wordmark />
 
         {/* Desktop */}

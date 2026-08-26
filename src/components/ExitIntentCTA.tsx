@@ -46,6 +46,7 @@ const ExitIntentCTA = () => {
     };
 
     const cleanup = () => {
+      window.clearTimeout(armTimer);
       window.removeEventListener("scroll", onScroll);
       document.removeEventListener("mouseout", onLeave);
     };

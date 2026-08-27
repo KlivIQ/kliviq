@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { ArrowRight, CalendarClock } from "lucide-react";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 import { useLang } from "@/i18n/LanguageContext";
 import { availability } from "@/data/availability";
@@ -136,16 +137,35 @@ const PricingSection = () => {
           animate={isVisible ? { opacity: 1 } : {}}
           transition={{ delay: 0.5 }}
         >
-          <span
-            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs sm:text-sm font-semibold bg-background/60 backdrop-blur-sm"
-            style={{ color: "#4ADE80", border: "1px solid rgba(74,222,128,0.45)" }}
-          >
-            <span aria-hidden>⏳</span>
-            {t.banner.text
-              .replace("{slots}", String(availability.slots))
-              .replace("{quarter}", availability.quarter)
-              .replace("{date}", availability.bookBefore)}
-          </span>
+          <div className="w-full max-w-3xl overflow-hidden rounded-lg border border-secondary/50 bg-secondary/10 shadow-[0_0_32px_hsl(var(--secondary)/0.12)]">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-5 sm:px-6">
+              <div className="flex items-start sm:items-center gap-3 text-left">
+                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-secondary text-secondary-foreground">
+                  <CalendarClock className="h-5 w-5" aria-hidden />
+                </span>
+                <div>
+                  <p className="text-lg font-extrabold text-foreground">{t.pricing.urgency}</p>
+                  <p className="mt-1 text-sm text-muted-foreground">{t.pricing.urgencyDetail}</p>
+                </div>
+              </div>
+              <a
+                href="#contact"
+                className="inline-flex min-h-11 shrink-0 items-center justify-center gap-2 rounded-lg bg-secondary px-5 py-3 text-sm font-bold text-secondary-foreground transition-transform hover:scale-[1.03]"
+              >
+                {t.pricing.urgencyCta}
+                <ArrowRight className="h-4 w-4" aria-hidden />
+              </a>
+            </div>
+            <div className="h-1.5 w-full bg-secondary/15" aria-hidden>
+              <motion.div
+                className="h-full w-3/4 bg-gradient-to-r from-primary to-secondary"
+                initial={{ scaleX: 0 }}
+                animate={isVisible ? { scaleX: 1 } : {}}
+                transition={{ delay: 0.65, duration: 0.8 }}
+                style={{ transformOrigin: "left" }}
+              />
+            </div>
+          </div>
           <a
             href="#contact"
             className="px-8 py-4 rounded-full font-semibold text-primary-foreground bg-gradient-to-r from-primary to-secondary animate-pulse-glow transition-transform hover:scale-105"

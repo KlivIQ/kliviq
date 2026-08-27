@@ -25,7 +25,7 @@ export const en = {
     ctaPrimary: "Implement AI in My Business →",
     ctaSecondary: "Book a Free Consultation",
     seeHow: "See how we work ↓",
-    onboarding: "Currently onboarding 2 new clients for Q3 2026",
+    onboarding: "Q4 2026 slots are filling — book a call now",
   },
   about: {
     eyebrow: "About",
@@ -268,6 +268,9 @@ export const en = {
       "📞 Free 30-min scoping call before any commitment",
     ],
     cta: "Book a Free Scoping Call →",
+    urgency: "Q4 slots are filling — book a call now!",
+    urgencyDetail: "Reserve a free scoping call while this quarter's delivery capacity is still open.",
+    urgencyCta: "Book now",
   },
   faq: {
     eyebrow: "FAQ",
@@ -300,7 +303,7 @@ export const en = {
     madeIn: "Made in India 🇮🇳 · Delivered Globally 🌍",
   },
   banner: {
-    text: "Now onboarding {slots} clients for {quarter} — book before {date}.",
+    text: "{quarter} slots are filling — book a call now!",
     cta: "Book a free call →",
     dismiss: "Dismiss banner",
   },

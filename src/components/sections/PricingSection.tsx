@@ -3,7 +3,6 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, CalendarClock } from "lucide-react";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 import { useLang } from "@/i18n/LanguageContext";
-import { availability } from "@/data/availability";
 
 type Region = "india" | "global";
 

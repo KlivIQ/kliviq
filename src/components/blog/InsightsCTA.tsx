@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { ArrowRight, BookOpen, Compass, CalendarCheck } from "lucide-react";
+import BookingButton from "@/components/booking/BookingButton";
 
 const InsightsCTA = () => (
   <section className="glass-strong rounded-3xl p-10 md:p-14 my-16">
@@ -38,9 +39,9 @@ const InsightsCTA = () => (
           See services <ArrowRight className="w-3.5 h-3.5" />
         </span>
       </Link>
-      <Link
-        to="/#contact"
-        className="group glass rounded-2xl p-6 hover:bg-foreground/5 transition-colors flex flex-col"
+      <BookingButton
+        source="insights"
+        className="group glass rounded-2xl p-6 hover:bg-foreground/5 transition-colors flex flex-col text-left"
       >
         <CalendarCheck className="w-5 h-5 mb-4" style={{ color: "#4ADE80" }} />
         <p className="text-base font-semibold mb-1">Book a Free Consultation</p>
@@ -50,7 +51,7 @@ const InsightsCTA = () => (
         <span className="inline-flex items-center gap-1.5 text-sm font-medium text-foreground mt-4">
           Talk to us <ArrowRight className="w-3.5 h-3.5" />
         </span>
-      </Link>
+      </BookingButton>
     </div>
   </section>
 );

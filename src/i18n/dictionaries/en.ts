@@ -333,6 +333,36 @@ export const en = {
   lang: {
     label: "Language",
   },
+  booking: {
+    title: "Book a Free Consultation",
+    subtitle: "Tell us a little about you. We reply within 24 business hours.",
+    name: "Your name",
+    namePlaceholder: "Priya Raman",
+    email: "Email",
+    emailPlaceholder: "you@company.com",
+    mobile: "Mobile",
+    mobilePlaceholder: "+91 98404 97937",
+    service: "What do you need help with?",
+    message: "Anything else? (optional)",
+    messagePlaceholder: "A line or two about your project…",
+    submit: "Send enquiry",
+    sending: "Sending…",
+    successTitle: "Enquiry sent",
+    successBody: "Thanks! We've emailed you a confirmation and will get back within 24 business hours.",
+    done: "Close",
+    errName: "Please enter your name",
+    errEmail: "Enter a valid email address",
+    errMobile: "Enter a valid mobile number",
+    errService: "Pick at least one option",
+    errSubmit: "Something went wrong. Please email hello@kliviq.com.",
+    services: {
+      aiVisibility: "AI Visibility",
+      aiApps: "AI Apps & Tools",
+      webDesign: "Website Design / Re-design",
+      fractionalCto: "Fractional CTO",
+      others: "Others",
+    },
+  },
 };
 
 export type Dict = typeof en;

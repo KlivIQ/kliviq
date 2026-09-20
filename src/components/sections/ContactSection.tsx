@@ -2,10 +2,12 @@ import { motion } from "framer-motion";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 import { useLang } from "@/i18n/LanguageContext";
 import { Mail, Phone, Linkedin } from "lucide-react";
+import { useBooking } from "@/components/booking/BookingContext";
 
 const ContactSection = () => {
   const { ref, isVisible } = useScrollReveal();
   const { t } = useLang();
+  const { openBooking } = useBooking();
   const contactItems = [
     { icon: Mail, label: "hello@kliviq.com", href: "mailto:hello@kliviq.com" },
     { icon: Phone, label: t.contact.phoneNote, href: "tel:+919840497937" },
@@ -72,15 +74,16 @@ const ContactSection = () => {
             ))}
           </div>
 
-          <motion.a
-            href="mailto:hello@kliviq.com"
+          <motion.button
+            type="button"
+            onClick={() => openBooking("contact")}
             className="inline-block mt-10 px-8 py-4 rounded-full font-semibold text-primary-foreground bg-gradient-to-r from-primary to-secondary animate-pulse-glow transition-transform hover:scale-105"
             initial={{ opacity: 0 }}
             animate={isVisible ? { opacity: 1 } : {}}
             transition={{ delay: 0.8 }}
           >
             {t.contact.cta}
-          </motion.a>
+          </motion.button>
         </motion.div>
       </div>
     </section>

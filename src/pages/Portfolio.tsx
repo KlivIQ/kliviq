@@ -7,6 +7,7 @@ import Navbar from "@/components/Navbar";
 import FooterSection from "@/components/sections/FooterSection";
 import { JsonLd } from "@/components/JsonLd";
 import { portfolioItems, type PortfolioItem } from "@/data/portfolio";
+import BookingButton from "@/components/booking/BookingButton";
 
 const SITE = "https://www.kliviq.com";
 
@@ -292,12 +293,12 @@ const Portfolio = () => {
               Fixed scope, fixed price, delivered in weeks. Start with a free 30-minute scoping call.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
-              <Link
-                to="/#contact"
+              <BookingButton
+                source="portfolio"
                 className="px-7 py-3.5 rounded-full text-sm font-semibold text-primary-foreground bg-gradient-to-r from-primary to-secondary transition-transform hover:scale-105"
               >
                 Book a Free Consultation
-              </Link>
+              </BookingButton>
               <Link
                 to="/products"
                 className="px-7 py-3.5 rounded-full text-sm font-semibold glass hover:border-secondary/40 transition-colors"

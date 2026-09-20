@@ -6,6 +6,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { LanguageProvider } from "@/i18n/LanguageContext";
+import { BookingProvider } from "@/components/booking/BookingContext";
 
 const queryClient = new QueryClient();
 
@@ -22,10 +23,12 @@ const Layout = () => (
     <QueryClientProvider client={queryClient}>
       <LanguageProvider>
         <TooltipProvider>
-          <Toaster />
-          <Sonner />
-          <ScrollToTop />
-          <Outlet />
+          <BookingProvider>
+            <Toaster />
+            <Sonner />
+            <ScrollToTop />
+            <Outlet />
+          </BookingProvider>
         </TooltipProvider>
       </LanguageProvider>
     </QueryClientProvider>

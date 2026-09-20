@@ -28,4 +28,4 @@ Allow: /
 User-agent: *
 Allow: /
 
-Sitemap: https://www.kliviq.com/sitemap.xml
+Sitemap: https://kliviq.lovable.app/sitemap.xml

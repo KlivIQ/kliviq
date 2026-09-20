@@ -54,8 +54,6 @@ const Index = () => {
   return (
     <>
       <Helmet>
-        <title>KlivIQ | AI Consulting, Fractional CTO, AI Visibility Scoring & WhatsApp AI Chatbots</title>
-        <meta name="description" content="KlivIQ helps businesses adopt AI and build high-performance software. AI consulting, fractional CTO, AI Visibility Scoring (Seenzo), WhatsApp AI Chatbots (KlivIQ Connect), web, mobile & AI tools. Delivered in weeks." />
         <link rel="canonical" href="https://www.kliviq.com/" />
         <meta property="og:title" content="KlivIQ | AI Consulting, Fractional CTO, AI Visibility & WhatsApp AI Chatbots" />
         <meta property="og:description" content="KlivIQ helps businesses adopt AI and build high-performance software. AI consulting, fractional CTO, AI Visibility Scoring, WhatsApp AI Chatbots, web, mobile & AI tools." />

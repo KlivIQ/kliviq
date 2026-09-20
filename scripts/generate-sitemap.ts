@@ -5,7 +5,7 @@ import { serviceLandingPages } from "../src/data/serviceLandingPages";
 import { glossaryTerms } from "../src/data/glossary";
 import { blogPosts } from "../src/data/blog";
 
-const BASE_URL = "https://www.kliviq.com";
+const BASE_URL = "https://kliviq.lovable.app";
 
 interface SitemapEntry {
   path: string;

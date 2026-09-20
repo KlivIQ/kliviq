@@ -169,6 +169,12 @@ export const en = {
     viewAll: "View full portfolio →",
     cards: [
       {
+        title: "Mathavan Traders",
+        blurb: "A bilingual Tamil and English fireworks catalogue for a Sivakasi business — searchable categories, 2026 pricing, cart-style selection and direct enquiries. Designed and delivered in just two days.",
+        badge: "CLIENT WORK",
+        cta: "Open live",
+      },
+      {
         title: "Selfsame Therapy",
         blurb: "Online counselling practice for NRIs — a calm, culturally-aware brand site with services, approach, testimonials and free intro-call booking. Built and shipped for a UK-based counsellor.",
         badge: "CLIENT WORK",

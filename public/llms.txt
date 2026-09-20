@@ -7,6 +7,10 @@ KlivIQ helps businesses implement AI and build software. Services include AI int
 ## Pages
 
 - [Home](/): Services, work, pricing, FAQ, and contact for KlivIQ Technologies.
-- [ScopeSnap](/scopesnap): AI tool that turns a project brief into a complete scope of work, cost estimate, timeline, and tech stack.
+- [Services](/services/ai-consulting): AI consulting and implementation services for businesses.
+- [Products](/products): KlivIQ AI products for visibility, customer conversations, and retail experiences.
+- [Portfolio](/portfolio): Client websites, AI products, and rapid digital deliveries, including Mathavan Traders.
+- [Insights](/blog): Practical guidance on AI implementation, automation, technology leadership, and business strategy.
+- [Glossary](/glossary): Plain-language definitions for AI, GEO, automation, and technology leadership terms.
 - [ClinicPing](/clinicping): AI-powered clinic management demo — appointment reminders, no-show prediction, patient communication.
 - [PitchDeck AI](/pitchdeck): Generates investor pitch decks from a business idea in English plus Hindi, Tamil, Telugu, Kannada, and Malayalam.

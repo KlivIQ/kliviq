@@ -23,10 +23,12 @@ const Layout = () => (
     <QueryClientProvider client={queryClient}>
       <LanguageProvider>
         <TooltipProvider>
-          <Toaster />
-          <Sonner />
-          <ScrollToTop />
-          <Outlet />
+          <BookingProvider>
+            <Toaster />
+            <Sonner />
+            <ScrollToTop />
+            <Outlet />
+          </BookingProvider>
         </TooltipProvider>
       </LanguageProvider>
     </QueryClientProvider>

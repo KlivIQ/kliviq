@@ -4,7 +4,7 @@ import thumbFaco from "@/assets/thumb-faco.webp";
 import thumbZeroRupees from "@/assets/thumb-zero-rupees.webp";
 import thumbPitchDeck from "@/assets/thumb-pitchdeck.webp";
 import thumbClinicPing from "@/assets/thumb-clinicping.webp";
-import thumbMathavanTraders from "@/assets/thumb-mathavan-traders.asset.json";
+import thumbMathavanTraders from "@/assets/thumb-mathavan-traders.webp";
 
 export type PortfolioItem = {
   slug: string;
@@ -48,8 +48,8 @@ export const portfolioItems: PortfolioItem[] = [
     href: "https://www.mathavantraders.com",
     external: true,
     ctaLabel: "Visit mathavantraders.com",
-    thumb: thumbMathavanTraders.url,
-    shot: thumbMathavanTraders.url,
+    thumb: thumbMathavanTraders,
+    shot: thumbMathavanTraders,
     accent: "45 95% 55%",
   },
   {

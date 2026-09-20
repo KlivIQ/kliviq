@@ -4,6 +4,7 @@ import thumbFaco from "@/assets/thumb-faco.webp";
 import thumbZeroRupees from "@/assets/thumb-zero-rupees.webp";
 import thumbPitchDeck from "@/assets/thumb-pitchdeck.webp";
 import thumbClinicPing from "@/assets/thumb-clinicping.webp";
+import thumbMathavanTraders from "@/assets/thumb-mathavan-traders.asset.json";
 
 export type PortfolioItem = {
   slug: string;
@@ -24,6 +25,33 @@ export type PortfolioItem = {
 };
 
 export const portfolioItems: PortfolioItem[] = [
+  {
+    slug: "mathavan-traders",
+    metrics: [
+      { value: "2 days", label: "Designed and delivered" },
+      { value: "2 languages", label: "Tamil and English" },
+      { value: "2026", label: "Catalogue pricing" },
+    ],
+    name: "Mathavan Traders",
+    tagline: "A bilingual fireworks catalogue built and launched in two days.",
+    summary:
+      "A fast, mobile-first catalogue for a Sivakasi fireworks business, helping customers browse searchable product categories, compare current pricing, build a cart-style selection and enquire directly in Tamil or English.",
+    highlights: [
+      "Designed, developed and delivered in two days",
+      "Tamil and English browsing for local customers",
+      "Searchable categories with current catalogue pricing",
+      "Cart-style selection and direct enquiry flow",
+    ],
+    category: "Client Work · Ecommerce Catalogue",
+    year: "2026",
+    stack: ["React", "Vite", "Tailwind", "i18n"],
+    href: "https://www.mathavantraders.com",
+    external: true,
+    ctaLabel: "Visit mathavantraders.com",
+    thumb: thumbMathavanTraders.url,
+    shot: thumbMathavanTraders.url,
+    accent: "45 95% 55%",
+  },
   {
     slug: "selfsame-therapy",
     metrics: [

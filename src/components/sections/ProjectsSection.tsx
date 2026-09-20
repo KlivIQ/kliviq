@@ -4,18 +4,9 @@ import { Link } from "react-router-dom";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 import { useLang } from "@/i18n/LanguageContext";
 import { portfolioItems } from "@/data/portfolio";
-import thumbSelfsame from "@/assets/thumb-selfsame.webp";
-import thumbPitchDeck from "@/assets/thumb-pitchdeck.webp";
-import thumbClinicPing from "@/assets/thumb-clinicping.webp";
-import thumbFaco from "@/assets/thumb-faco.webp";
-import thumbZeroRupees from "@/assets/thumb-zero-rupees.webp";
 
 const cardMeta = [
-  { href: "https://selfsametherapy.com", image: thumbSelfsame, external: true },
-  { href: "https://facocoffee.com", image: thumbFaco, external: true },
-  { href: "https://zero-rupees.vercel.app/", image: thumbZeroRupees, external: true },
-  { href: "/pitchdeck", image: thumbPitchDeck, external: false },
-  { href: "/clinicping", image: thumbClinicPing, external: false },
+  ...portfolioItems.map(({ href, thumb: image, external }) => ({ href, image, external })),
 ];
 
 
@@ -131,7 +122,7 @@ const ProjectsSection = () => {
           </motion.h2>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
           {cards.map((item, i) => (
             <ClientWorkCard key={item.title} item={item} index={i} />
           ))}

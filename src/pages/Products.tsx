@@ -9,6 +9,7 @@ import { JsonLd } from "@/components/JsonLd";
 import { products } from "@/data/products";
 import { generalFaqs } from "@/data/generalFaqs";
 import FaqBlock from "@/components/FaqBlock";
+import BookingButton from "@/components/booking/BookingButton";
 
 const SITE = "https://www.kliviq.com";
 
@@ -280,12 +281,12 @@ const Products = () => {
         <section className="px-6 py-20 text-center">
           <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight mb-4">Want one of these built for your business?</h2>
           <p className="text-muted-foreground mb-8">Book a free 30-minute scoping call. No pitch, no commitment.</p>
-          <Link
-            to="/#contact"
+          <BookingButton
+            source="products"
             className="inline-block px-8 py-4 rounded-full font-semibold text-primary-foreground bg-gradient-to-r from-primary to-secondary transition-transform hover:scale-105"
           >
             Book a free consultation
-          </Link>
+          </BookingButton>
         </section>
       </main>
 

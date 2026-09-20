@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { X } from "lucide-react";
 import { useLang } from "@/i18n/LanguageContext";
+import BookingButton from "@/components/booking/BookingButton";
 
 const STORAGE_KEY = "kliviq-exit-cta-shown";
 
@@ -100,14 +101,12 @@ const ExitIntentCTA = () => {
           >
             {t.exitCta.primary}
           </a>
-          <a
-            href="https://calendly.com/kliviq-tech"
-            target="_blank"
-            rel="noopener noreferrer"
+          <BookingButton
+            source="exit-intent"
             className="px-6 py-3 rounded-full font-semibold border border-border/60 glass hover:border-secondary/60 transition-colors"
           >
             {t.exitCta.secondary}
-          </a>
+          </BookingButton>
         </div>
       </div>
     </div>

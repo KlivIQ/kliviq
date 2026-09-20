@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
+import BookingButton from "@/components/booking/BookingButton";
 
 const ArticleCTA = () => (
   <section className="glass-strong rounded-3xl p-10 md:p-14 text-center">
@@ -11,12 +12,12 @@ const ArticleCTA = () => (
       and growing companies evaluate opportunities, prioritise initiatives and implement practical solutions.
     </p>
     <div className="flex flex-col sm:flex-row gap-3 justify-center items-center">
-      <Link
-        to="/#contact"
+      <BookingButton
+        source="blog-article"
         className="inline-flex items-center gap-2 px-6 py-3 rounded-full text-sm font-semibold text-primary-foreground bg-gradient-to-r from-primary to-secondary transition-transform hover:scale-105"
       >
         Book a Free Consultation <ArrowRight className="w-4 h-4" />
-      </Link>
+      </BookingButton>
       <Link
         to="/services/ai-consulting"
         className="inline-flex items-center gap-2 px-6 py-3 rounded-full text-sm font-semibold text-foreground border border-border hover:bg-foreground/5 transition-colors"

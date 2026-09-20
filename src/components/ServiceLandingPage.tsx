@@ -13,6 +13,7 @@ import {
 } from "@/components/ui/accordion";
 import type { ServiceLandingContent } from "@/data/serviceLandingPages";
 import { generalFaqs } from "@/data/generalFaqs";
+import BookingButton from "@/components/booking/BookingButton";
 
 const SITE = "https://www.kliviq.com";
 
@@ -248,12 +249,12 @@ const ServiceLandingPage = ({ content }: Props) => {
           <section className="mt-20 text-center glass-strong rounded-2xl p-10 md:p-14">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">{content.cta.headline}</h2>
             <p className="text-muted-foreground text-lg mb-8 max-w-xl mx-auto">{content.cta.body}</p>
-            <Link
-              to="/#contact"
+            <BookingButton
+              source="service-page"
               className="inline-flex items-center gap-2 px-6 py-3 rounded-full text-sm font-semibold text-primary-foreground bg-gradient-to-r from-primary to-secondary transition-transform hover:scale-105"
             >
               Book a free scoping call <ArrowRight className="w-4 h-4" />
-            </Link>
+            </BookingButton>
           </section>
         </div>
       </main>

@@ -1,6 +1,7 @@
 import { lazy, Suspense, useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { useLang } from "@/i18n/LanguageContext";
+import BookingButton from "@/components/booking/BookingButton";
 
 const CanvasBackground = lazy(() => import("@/components/CanvasBackground"));
 
@@ -73,14 +74,12 @@ const HeroSection = () => {
           >
             {t.hero.ctaPrimary}
           </a>
-          <a
-            href="https://calendly.com/kliviq-tech"
-            target="_blank"
-            rel="noopener noreferrer"
+          <BookingButton
+            source="hero"
             className="inline-block px-8 py-4 rounded-full font-semibold text-foreground border border-border/60 glass hover:border-secondary/60 transition-colors"
           >
             {t.hero.ctaSecondary}
-          </a>
+          </BookingButton>
         </motion.div>
 
         <motion.div

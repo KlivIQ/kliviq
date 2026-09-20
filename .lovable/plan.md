@@ -1,35 +1,45 @@
-# Mathavan Traders Portfolio and Services Layout Refresh
+# Consultation Booking Popup
 
-## Changes
+Replace every "Book a Free Consultation" link with a single popup form that emails you the enquiry and emails the visitor a confirmation.
 
-1. **Add Mathavan Traders to the portfolio**
-   - Add **Mathavan Traders** as a new client-work entry linking to `https://www.mathavantraders.com`.
-   - Describe it as a bilingual Tamil/English Sivakasi fireworks catalogue with searchable categories, current pricing, cart-style selection, and a direct enquiry journey.
-   - Feature the verified two-day delivery as a portfolio metric, alongside concise outcome-focused highlights.
-   - Create an optimized website thumbnail from the live site’s visual identity and use it on both the homepage Portfolio section and the full Portfolio page.
-   - Add matching native-quality English, Tamil, and Hindi homepage card copy.
+## The popup
 
-2. **Keep portfolio data and presentation aligned**
-   - Update the homepage card mapping so the added project’s image, link, copy, and metrics stay paired correctly.
-   - Include Mathavan Traders in the full Portfolio page, structured portfolio list, and portfolio SEO description.
-   - Preserve all existing portfolio projects and their current order, placing Mathavan Traders first as the newest delivery.
+Opens instantly over the page (no new tab), matching the site's dark theme and green accent, fully responsive.
 
-3. **Rebalance the “What We Do” cards**
-   - Replace the oversized two-row AI Implementation tile with a tighter, balanced mosaic that gives all four services deliberate visual weight.
-   - Use a clean desktop arrangement with one featured wide card and three compact supporting cards, without leaving empty interior space.
-   - Keep the selective two-column mobile treatment while ensuring longer translated titles and descriptions fit cleanly.
-   - Preserve every service’s copy, bullets, link, animation, and language support; adjust hierarchy, spacing, and which details are shown at each size rather than deleting content.
+Fields:
+- Name — required, live validation
+- Email — required, live email-format check
+- Mobile — required, live number check (international format allowed)
+- Service interest — animated selectable chips: AI Visibility, AI Apps & Tools, Website Design / Re-design, Fractional CTO, Others (one required; chips glow/scale on select)
+- Optional one-line message
 
-## Verification
+Behaviour: the submit button stays disabled until the form is valid, shows a sending state, then a short success screen ("Thanks — we'll reply within 24 business hours"). Errors show inline, nothing gets lost. Labels available in English, Tamil and Hindi like the rest of the site.
 
-- Check the homepage Portfolio and What We Do sections at desktop, tablet, and mobile widths.
-- Check English, Tamil, and Hindi for overflow and correct project-to-link alignment.
-- Confirm the Mathavan Traders card and full portfolio action open the correct external site.
-- Confirm the full Portfolio page, structured data, and metadata include the new project.
-- Verify the production build and prerendered pages complete without errors.
+## Emails
 
-## Technical details
+1. To you at hello@kliviq.com — a neatly formatted enquiry with name, email, mobile, selected service, message, time and which page they came from. Reply-to is set to the visitor so you can reply directly.
+2. To the visitor — a short branded confirmation that their enquiry was received and KlivIQ will get back within 24 business hours.
 
-- Extend the shared portfolio data and translated homepage card arrays together to avoid index mismatches.
-- Add a locally stored, compressed WebP thumbnail; do not hotlink the client website image.
-- Rework the existing responsive grid spans and content density in the Services section without changing service routes or business copy.
+## Where it appears
+
+Every booking entry point opens the same popup:
+- Hero "Book a Free Consultation"
+- Exit-intent popup CTA
+- Portfolio page CTA
+- Products page CTA
+- All service pages CTA
+- Insights/blog article CTAs
+
+The old calendly.com/kliviq-tech links are removed.
+
+## What I need from you
+
+Sending email needs the backend turned on and your domain verified for sending. I'll enable the backend, then show you a short setup step for kliviq.com (adding a couple of DNS records at your domain provider). Emails start flowing once that's verified; everything else works immediately.
+
+## Technical notes
+
+- New `ConsultationDialog` component (shadcn Dialog + react-hook-form + zod), opened via a small React context so any button can trigger it.
+- Framer Motion for chip select animation; existing design tokens only, no hardcoded colours.
+- Lovable Cloud enabled; email domain setup + email infrastructure; one edge function `send-consultation` that validates input server-side and enqueues both emails from two React Email templates.
+- Honeypot field + basic per-session throttle to block bots. No database table — email only.
+- Verify with a build and Playwright pass at mobile/tablet/desktop before finishing.

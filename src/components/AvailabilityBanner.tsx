@@ -3,7 +3,7 @@ import { X } from "lucide-react";
 import { availability } from "@/data/availability";
 import { useLang } from "@/i18n/LanguageContext";
 
-const STORAGE_KEY = "kliviq-banner-dismissed";
+const STORAGE_KEY = "kliviq-q1-2027-banner-dismissed";
 
 /**
  * Slim, dismissible availability banner. Rendered as the top strip of the

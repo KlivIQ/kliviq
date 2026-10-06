@@ -20,4 +20,4 @@
 - [x] Replace Q4 availability urgency with Q1 2027 project availability in English, Tamil, and Hindi
 - [x] Remove PitchDeckAI from homepage and full portfolio listings while retaining its standalone prototype
 - [x] Make footer, banner, hero, and pricing section links work from sub-pages
-- [ ] Verify translated layouts, sub-page navigation, and production build
+- [x] Verify translated layouts, sub-page navigation, and production build

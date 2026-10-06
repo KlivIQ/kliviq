@@ -31,7 +31,7 @@ const AvailabilityBanner = () => {
         <p className="text-xs sm:text-sm font-semibold leading-snug">
           <span aria-hidden className="mr-1.5">⚡</span>
           {text}{" "}
-          <a href="#contact" className="underline underline-offset-2 font-bold whitespace-nowrap">
+          <a href="/#contact" className="underline underline-offset-2 font-bold whitespace-nowrap">
             {t.banner.cta}
           </a>
         </p>

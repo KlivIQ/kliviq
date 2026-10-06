@@ -154,7 +154,7 @@ const Portfolio = () => {
   const canonical = `${SITE}/portfolio`;
   const title = "KlivIQ Portfolio | AI Products, Client Websites & Web App Projects";
   const description =
-    "Selected KlivIQ work — Mathavan Traders, Selfsame Therapy, FACO, Zero Rupees, PitchDeckAI and ClinicPing. AI products, web apps and brand websites delivered in days or weeks.";
+    "Selected KlivIQ work — Mathavan Traders, Selfsame Therapy, FACO, Zero Rupees and ClinicPing. AI products, web apps and brand websites delivered in days or weeks.";
 
   const [active, setActive] = useState(portfolioItems[0].slug);
 

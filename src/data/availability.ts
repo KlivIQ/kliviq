@@ -4,6 +4,6 @@
  */
 export const availability = {
   slots: 2,
-  quarter: "Q4 2026",
-  bookBefore: "31 Dec 2026",
+  quarter: "Q1 2027",
+  bookBefore: "31 Mar 2027",
 };

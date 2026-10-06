@@ -15,3 +15,9 @@
 
 ## Open
 - [ ] (Optional) notify.kliviq.com custom sending domain — deferred by user; Gmail route in use
+
+## Q1 2027 content and navigation
+- [x] Replace Q4 availability urgency with Q1 2027 project availability in English, Tamil, and Hindi
+- [x] Remove PitchDeckAI from homepage and full portfolio listings while retaining its standalone prototype
+- [x] Make footer, banner, hero, and pricing section links work from sub-pages
+- [x] Verify translated layouts, sub-page navigation, and production build

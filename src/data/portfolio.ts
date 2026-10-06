@@ -2,7 +2,6 @@ import thumbSelfsame from "@/assets/thumb-selfsame.webp";
 import shotSelfsame from "@/assets/portfolio-selfsame.webp";
 import thumbFaco from "@/assets/thumb-faco.webp";
 import thumbZeroRupees from "@/assets/thumb-zero-rupees.webp";
-import thumbPitchDeck from "@/assets/thumb-pitchdeck.webp";
 import thumbClinicPing from "@/assets/thumb-clinicping.webp";
 import thumbMathavanTraders from "@/assets/thumb-mathavan-traders.webp";
 
@@ -129,31 +128,6 @@ export const portfolioItems: PortfolioItem[] = [
     thumb: thumbZeroRupees,
     shot: thumbZeroRupees,
     accent: "265 70% 60%",
-  },
-  {
-    slug: "pitchdeck-ai",
-    metrics: [
-      { value: "10 slides", label: "Generated per idea" },
-      { value: "6", label: "Indian languages" },
-    ],
-    name: "PitchDeckAI",
-    tagline: "Investor-ready decks in six Indian languages.",
-    summary:
-      "Turns a single idea into a structured 10-slide investor pitch deck, generated in six Indian languages. Concept work exploring how far AI can take founder storytelling.",
-    highlights: [
-      "One-line idea to 10-slide narrative",
-      "Six Indian languages out of the box",
-      "Structured slide model, not freeform text",
-    ],
-    category: "Concept",
-    year: "2025",
-    stack: ["React", "OpenAI", "Tailwind"],
-    href: "/pitchdeck",
-    external: false,
-    ctaLabel: "Open the prototype",
-    thumb: thumbPitchDeck,
-    shot: thumbPitchDeck,
-    accent: "200 80% 55%",
   },
   {
     slug: "clinicping",

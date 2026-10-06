@@ -69,7 +69,7 @@ const HeroSection = () => {
           transition={{ delay: 0.9, duration: 0.6 }}
         >
           <a
-            href="#contact"
+            href="/#contact"
             className="inline-block px-8 py-4 rounded-full font-semibold text-primary-foreground bg-gradient-to-r from-primary to-secondary animate-pulse-glow transition-transform hover:scale-105"
           >
             {t.hero.ctaPrimary}
@@ -89,7 +89,7 @@ const HeroSection = () => {
           transition={{ delay: 1.0, duration: 0.6 }}
         >
           <a
-            href="#process"
+            href="/#process"
             className="text-xs md:text-sm text-muted-foreground hover:text-foreground transition-colors"
           >
             {t.hero.seeHow}

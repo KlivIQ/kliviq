@@ -25,7 +25,7 @@ export const en = {
     ctaPrimary: "Implement AI in My Business →",
     ctaSecondary: "Book a Free Consultation",
     seeHow: "See how we work ↓",
-    onboarding: "Q4 2026 slots are filling — book a call now",
+    onboarding: "Q1 2027 project slots are now open",
   },
   about: {
     eyebrow: "About",
@@ -193,12 +193,6 @@ export const en = {
         cta: "Open live",
       },
       {
-        title: "PitchDeckAI",
-        blurb: "Generates investor-ready 10-slide pitch decks in 6 Indian languages from a single idea. Concept work.",
-        badge: "Concept",
-        cta: "Open Prototype",
-      },
-      {
         title: "ClinicPing",
         blurb: "Clinic ops dashboard with AI no-show prediction and multilingual patient messaging. CLIENT WORK.",
         badge: "CLIENT WORK",
@@ -209,7 +203,7 @@ export const en = {
     stat: {
       title: "2 Projects In Delivery",
       tag: "AI Implementation · In Progress",
-      description: "Client case studies dropping Q3 2026.",
+      description: "New client case studies are on the way.",
     },
   },
   testimonials: {
@@ -274,9 +268,9 @@ export const en = {
       "📞 Free 30-min scoping call before any commitment",
     ],
     cta: "Book a Free Scoping Call →",
-    urgency: "Q4 slots are filling — book a call now!",
-    urgencyDetail: "Reserve a free scoping call while this quarter's delivery capacity is still open.",
-    urgencyCta: "Book now",
+    urgency: "Q1 2027 project slots are now open",
+    urgencyDetail: "Reserve a free scoping call to discuss your project and secure an early Q1 start.",
+    urgencyCta: "Discuss your project",
   },
   faq: {
     eyebrow: "FAQ",
@@ -309,7 +303,7 @@ export const en = {
     madeIn: "Made in India 🇮🇳 · Delivered Globally 🌍",
   },
   banner: {
-    text: "{quarter} slots are filling — book a call now!",
+    text: "{quarter} project slots are now open.",
     cta: "Book a free call →",
     dismiss: "Dismiss banner",
   },

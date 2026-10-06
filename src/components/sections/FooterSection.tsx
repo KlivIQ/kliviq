@@ -61,7 +61,7 @@ const FooterSection = () => {
             </h4>
             <ul className="space-y-2 text-sm text-muted-foreground">
               {t.footer.servicesList.map((label) => (
-                <li key={label}><a href="#services" className="hover:text-foreground transition-colors">{label}</a></li>
+                <li key={label}><a href="/#services" className="hover:text-foreground transition-colors">{label}</a></li>
               ))}
             </ul>
           </div>
@@ -73,7 +73,7 @@ const FooterSection = () => {
             </h4>
             <ul className="space-y-2 text-sm text-muted-foreground">
               {t.footer.companyList.map((label, i) => {
-                const href = ["#about", "#projects", "#process", "#pricing"][i];
+                const href = ["/#about", "/#projects", "/#process", "/#pricing"][i];
                 return (
                   <li key={label}><a href={href} className="hover:text-foreground transition-colors">{label}</a></li>
                 );

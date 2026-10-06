@@ -148,7 +148,7 @@ const PricingSection = () => {
                 </div>
               </div>
               <a
-                href="#contact"
+                href="/#contact"
                 className="inline-flex min-h-11 shrink-0 items-center justify-center gap-2 rounded-lg bg-secondary px-5 py-3 text-sm font-bold text-secondary-foreground transition-transform hover:scale-[1.03]"
               >
                 {t.pricing.urgencyCta}
@@ -166,7 +166,7 @@ const PricingSection = () => {
             </div>
           </div>
           <a
-            href="#contact"
+            href="/#contact"
             className="px-8 py-4 rounded-full font-semibold text-primary-foreground bg-gradient-to-r from-primary to-secondary animate-pulse-glow transition-transform hover:scale-105"
           >
             {t.pricing.cta}

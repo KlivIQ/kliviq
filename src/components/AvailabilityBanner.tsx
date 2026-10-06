@@ -3,7 +3,7 @@ import { X } from "lucide-react";
 import { availability } from "@/data/availability";
 import { useLang } from "@/i18n/LanguageContext";
 
-const STORAGE_KEY = "kliviq-banner-dismissed";
+const STORAGE_KEY = "kliviq-q1-2027-banner-dismissed";
 
 /**
  * Slim, dismissible availability banner. Rendered as the top strip of the
@@ -31,7 +31,7 @@ const AvailabilityBanner = () => {
         <p className="text-xs sm:text-sm font-semibold leading-snug">
           <span aria-hidden className="mr-1.5">⚡</span>
           {text}{" "}
-          <a href="#contact" className="underline underline-offset-2 font-bold whitespace-nowrap">
+          <a href="/#contact" className="underline underline-offset-2 font-bold whitespace-nowrap">
             {t.banner.cta}
           </a>
         </p>

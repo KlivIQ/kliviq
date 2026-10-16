@@ -1,365 +1,264 @@
-import { useState, useEffect } from "react";
-import { motion } from "framer-motion";
-import { Menu, X, ChevronDown } from "lucide-react";
-import { Link } from "react-router-dom";
+import { useEffect, useRef, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
+import { ArrowRight, ChevronDown, Menu, X } from "lucide-react";
+import { Link, useLocation } from "react-router-dom";
 import ThemeToggle from "@/components/ThemeToggle";
 import LangSwitcher from "@/i18n/LangSwitcher";
 import { useLang } from "@/i18n/LanguageContext";
-import { serviceLandingPages } from "@/data/serviceLandingPages";
-import AvailabilityBanner from "@/components/AvailabilityBanner";
-
+import { useBooking } from "@/components/booking/BookingContext";
+import { catalogIndustries, catalogProducts, catalogServices, STATUS_LABEL } from "@/data/catalog";
 import logoDark from "@/assets/kliviq-logo-dark.webp";
 import logoLight from "@/assets/kliviq-logo-light.webp";
 
+type MenuKey = "products" | "industries" | "services" | null;
+
 const Wordmark = () => (
-  <Link to="/" aria-label="KlivIQ home" className="flex items-center">
-    <img src={logoDark} alt="KlivIQ — AI Business Solutions" className="logo-dark h-9 md:h-10 w-auto" />
-    <img src={logoLight} alt="KlivIQ — AI Business Solutions" className="logo-light h-9 md:h-10 w-auto" />
+  <Link to="/" aria-label="KlivIQ home" className="flex shrink-0 items-center">
+    <img src={logoLight} alt="KlivIQ" className="logo-light h-8 w-auto md:h-9" />
+    <img src={logoDark} alt="KlivIQ" className="logo-dark h-8 w-auto md:h-9" />
   </Link>
 );
 
 const Navbar = () => {
-  const [scrolled, setScrolled] = useState(false);
-  const [open, setOpen] = useState(false);
-  const [servicesOpen, setServicesOpen] = useState(false);
-  const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
-  const [workOpen, setWorkOpen] = useState(false);
-  const [mobileWorkOpen, setMobileWorkOpen] = useState(false);
-  const [resourcesOpen, setResourcesOpen] = useState(false);
-  const [mobileResourcesOpen, setMobileResourcesOpen] = useState(false);
   const { t } = useLang();
-
-  const links = [
-    { label: t.nav.products, href: "/products" },
-    { label: t.nav.about, href: "/#about" },
-    { label: t.nav.pricing, href: "/#pricing" },
-    { label: t.nav.contact, href: "/#contact" },
-  ];
-
-  const workLinks = [
-    { label: t.nav.portfolio, href: "/portfolio", internal: true },
-    { label: t.nav.caseHighlights, href: "/#projects", internal: false },
-    { label: t.nav.process, href: "/#process", internal: false },
-  ];
-
-
+  const { openBooking } = useBooking();
+  const { pathname } = useLocation();
+  const [scrolled, setScrolled] = useState(false);
+  const [menu, setMenu] = useState<MenuKey>(null);
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const [mobileSection, setMobileSection] = useState<MenuKey>(null);
+  const closeTimer = useRef<number>();
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 50);
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    const onScroll = () => setScrolled(window.scrollY > 24);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  useEffect(() => {
+    setMenu(null);
+    setMobileOpen(false);
+  }, [pathname]);
+
+  useEffect(() => {
+    document.body.style.overflow = mobileOpen ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [mobileOpen]);
+
+  const openMenu = (k: MenuKey) => {
+    window.clearTimeout(closeTimer.current);
+    setMenu(k);
+  };
+  const scheduleClose = () => {
+    closeTimer.current = window.setTimeout(() => setMenu(null), 120);
+  };
+
+  const groups: { key: Exclude<MenuKey, null>; label: string; all: { label: string; href: string }; items: { href: string; title: string; desc: string; badge?: string }[] }[] = [
+    {
+      key: "products",
+      label: t.nav.products,
+      all: { label: t.nav.allProducts, href: "/products" },
+      items: catalogProducts.map((p) => ({
+        href: `/products/${p.slug}`,
+        title: p.name,
+        desc: p.tagline,
+        badge: p.status === "live" ? undefined : STATUS_LABEL[p.status],
+      })),
+    },
+    {
+      key: "industries",
+      label: t.nav.industries,
+      all: { label: t.nav.allIndustries, href: "/industries" },
+      items: catalogIndustries.map((i) => ({ href: `/industries/${i.slug}`, title: i.name, desc: i.short })),
+    },
+    {
+      key: "services",
+      label: t.nav.services,
+      all: { label: t.nav.allServicesShort, href: "/services" },
+      items: catalogServices.map((s) => ({ href: `/services/${s.slug}`, title: s.name, desc: s.short })),
+    },
+  ];
+
+  const plain = [
+    { label: t.nav.work, href: "/work" },
+    { label: t.nav.pricing, href: "/pricing" },
+    { label: t.nav.about, href: "/about" },
+  ];
+
+  const active = (href: string) => pathname === href || pathname.startsWith(href + "/");
+  const activeGroup = groups.find((g) => g.key === menu);
+
   return (
-    <motion.nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        scrolled ? "glass-strong" : ""
+    <header
+      className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
+        scrolled || menu ? "glass-strong border-x-0 border-t-0" : "border-b border-transparent"
       }`}
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      transition={{ delay: 0.2, duration: 0.6 }}
+      onMouseLeave={scheduleClose}
     >
-      <AvailabilityBanner />
-      <div
-        className={`max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between gap-4 transition-all duration-500 ${
-          scrolled ? "py-3" : "py-5"
-        }`}
-      >
+      <div className="container-x flex h-16 items-center justify-between gap-4 md:h-[72px]">
         <Wordmark />
 
-        {/* Desktop */}
-        <div className="hidden lg:flex items-center gap-4 xl:gap-7 whitespace-nowrap">
-
-          {/* Services dropdown */}
-          <div
-            className="relative"
-            onMouseEnter={() => setServicesOpen(true)}
-            onMouseLeave={() => setServicesOpen(false)}
-          >
+        <nav aria-label="Main" className="hidden items-center gap-1 lg:flex">
+          {groups.map((g) => (
             <button
-              className="text-sm text-muted-foreground hover:text-foreground transition-colors duration-300 flex items-center gap-1"
-              aria-haspopup="true"
-              aria-expanded={servicesOpen}
-              onClick={() => setServicesOpen((s) => !s)}
+              key={g.key}
+              type="button"
+              onMouseEnter={() => openMenu(g.key)}
+              onClick={() => setMenu(menu === g.key ? null : g.key)}
+              aria-expanded={menu === g.key}
+              className={`flex items-center gap-1 rounded-full px-3.5 py-2 text-sm font-medium transition-colors ${
+                menu === g.key || active(g.all.href) ? "text-foreground" : "text-muted-foreground hover:text-foreground"
+              }`}
             >
-              {t.nav.services} <ChevronDown className="w-3.5 h-3.5" />
+              {g.label}
+              <ChevronDown className={`h-3.5 w-3.5 transition-transform ${menu === g.key ? "rotate-180" : ""}`} />
             </button>
-            {servicesOpen && (
-              <div className="absolute top-full left-1/2 -translate-x-1/2 pt-3 min-w-[260px]">
-                <div className="glass-strong rounded-2xl p-2 shadow-xl">
-                  {serviceLandingPages.map((s) => (
-                    <Link
-                      key={s.slug}
-                      to={s.path}
-                      onClick={() => setServicesOpen(false)}
-                      className="block px-4 py-2.5 rounded-lg text-sm text-foreground/80 hover:text-foreground hover:bg-foreground/5 transition-colors"
-                    >
-                      {s.navLabel}
-                    </Link>
-                  ))}
-                  <div className="border-t border-foreground/15 my-2" />
-                  <a
-                    href="/#services"
-                    onClick={() => setServicesOpen(false)}
-                    className="block px-4 py-2.5 rounded-lg text-sm text-muted-foreground hover:text-foreground hover:bg-foreground/5 transition-colors"
-                  >
-                    {t.nav.allServices}
-                  </a>
-                </div>
-              </div>
-            )}
-          </div>
-
-          {/* Work dropdown */}
-          <div
-            className="relative"
-            onMouseEnter={() => setWorkOpen(true)}
-            onMouseLeave={() => setWorkOpen(false)}
-          >
-            <button
-              className="text-sm text-muted-foreground hover:text-foreground transition-colors duration-300 flex items-center gap-1"
-              aria-haspopup="true"
-              aria-expanded={workOpen}
-              onClick={() => setWorkOpen((s) => !s)}
-            >
-              {t.nav.work} <ChevronDown className="w-3.5 h-3.5" />
-            </button>
-            {workOpen && (
-              <div className="absolute top-full left-1/2 -translate-x-1/2 pt-3 min-w-[210px]">
-                <div className="glass-strong rounded-2xl p-2 shadow-xl">
-                  {workLinks.map((w) =>
-                    w.internal ? (
-                      <Link
-                        key={w.href}
-                        to={w.href}
-                        onClick={() => setWorkOpen(false)}
-                        className="block px-4 py-2.5 rounded-lg text-sm text-foreground/80 hover:text-foreground hover:bg-foreground/5 transition-colors"
-                      >
-                        {w.label}
-                      </Link>
-                    ) : (
-                      <a
-                        key={w.href}
-                        href={w.href}
-                        onClick={() => setWorkOpen(false)}
-                        className="block px-4 py-2.5 rounded-lg text-sm text-foreground/80 hover:text-foreground hover:bg-foreground/5 transition-colors"
-                      >
-                        {w.label}
-                      </a>
-                    ),
-                  )}
-                </div>
-              </div>
-            )}
-          </div>
-
-
-          {links.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              className="text-sm text-muted-foreground hover:text-foreground transition-colors duration-300"
-            >
-              {link.label}
-            </a>
           ))}
-
-          {/* Resources dropdown */}
-          <div
-            className="relative"
-            onMouseEnter={() => setResourcesOpen(true)}
-            onMouseLeave={() => setResourcesOpen(false)}
-          >
-            <button
-              className="text-sm text-muted-foreground hover:text-foreground transition-colors duration-300 flex items-center gap-1"
-              aria-haspopup="true"
-              aria-expanded={resourcesOpen}
-              onClick={() => setResourcesOpen((s) => !s)}
+          {plain.map((l) => (
+            <Link
+              key={l.href}
+              to={l.href}
+              onMouseEnter={() => openMenu(null)}
+              className={`rounded-full px-3.5 py-2 text-sm font-medium transition-colors ${
+                active(l.href) ? "text-foreground" : "text-muted-foreground hover:text-foreground"
+              }`}
             >
-              {t.nav.resources} <ChevronDown className="w-3.5 h-3.5" />
-            </button>
-            {resourcesOpen && (
-              <div className="absolute top-full left-1/2 -translate-x-1/2 pt-3 min-w-[200px]">
-                <div className="glass-strong rounded-2xl p-2 shadow-xl">
-                  <Link
-                    to="/blog"
-                    onClick={() => setResourcesOpen(false)}
-                    className="block px-4 py-2.5 rounded-lg text-sm text-foreground/80 hover:text-foreground hover:bg-foreground/5 transition-colors"
-                  >
-                    {t.nav.blog}
-                  </Link>
-                  <Link
-                    to="/glossary"
-                    onClick={() => setResourcesOpen(false)}
-                    className="block px-4 py-2.5 rounded-lg text-sm text-foreground/80 hover:text-foreground hover:bg-foreground/5 transition-colors"
-                  >
-                    {t.nav.glossary}
-                  </Link>
-                </div>
-              </div>
-            )}
-          </div>
+              {l.label}
+            </Link>
+          ))}
+        </nav>
 
+        <div className="hidden items-center gap-2 lg:flex">
           <LangSwitcher />
           <ThemeToggle />
-          <a
-            href="/#contact"
-            className="px-4 xl:px-5 py-2 rounded-full text-sm font-semibold text-primary-foreground bg-gradient-to-r from-primary to-secondary transition-transform hover:scale-105"
-          >
-            {t.nav.startProject}
-          </a>
+          <button type="button" onClick={() => openBooking("nav")} className="btn-primary ml-1 px-5 py-2.5">
+            {t.nav.bookCall}
+          </button>
         </div>
 
-        {/* Mobile toggle */}
-        <div className="lg:hidden flex items-center gap-2">
+        <div className="flex items-center gap-2 lg:hidden">
           <LangSwitcher />
           <ThemeToggle />
           <button
-            className="text-foreground"
-            onClick={() => setOpen(!open)}
-            aria-label="Toggle menu"
-            aria-expanded={open}
+            type="button"
+            onClick={() => setMobileOpen((o) => !o)}
+            aria-label={mobileOpen ? "Close menu" : "Open menu"}
+            aria-expanded={mobileOpen}
+            className="flex h-9 w-9 items-center justify-center rounded-full border border-border text-foreground"
           >
-            {open ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </button>
         </div>
       </div>
 
-      {/* Mobile menu */}
-      {open && (
-        <motion.div
-          className="lg:hidden glass-strong mt-2 mx-4 sm:mx-6 rounded-2xl p-6 flex flex-col gap-4 max-h-[calc(100vh-6rem)] overflow-y-auto"
-          initial={{ opacity: 0, y: -10 }}
-          animate={{ opacity: 1, y: 0 }}
-        >
-
-          {/* Mobile services nested */}
-          <div>
-            <button
-              className="w-full flex items-center justify-between text-foreground/80 hover:text-foreground transition-colors"
-              onClick={() => setMobileServicesOpen((s) => !s)}
-              aria-expanded={mobileServicesOpen}
-            >
-              <span>{t.nav.services}</span>
-              <ChevronDown
-                className={`w-4 h-4 transition-transform ${mobileServicesOpen ? "rotate-180" : ""}`}
-              />
-            </button>
-            {mobileServicesOpen && (
-              <div className="mt-3 ml-3 pl-3 border-l border-foreground/15 flex flex-col gap-3">
-                {serviceLandingPages.map((s) => (
-                  <Link
-                    key={s.slug}
-                    to={s.path}
-                    onClick={() => setOpen(false)}
-                    className="text-sm text-foreground/75 hover:text-foreground transition-colors"
-                  >
-                    {s.navLabel}
-                  </Link>
-                ))}
-                <a
-                  href="/#services"
-                  onClick={() => setOpen(false)}
-                  className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-                >
-                  {t.nav.allServices}
-                </a>
-              </div>
-            )}
-          </div>
-
-          {/* Mobile work nested */}
-          <div>
-            <button
-              className="w-full flex items-center justify-between text-foreground/80 hover:text-foreground transition-colors"
-              onClick={() => setMobileWorkOpen((s) => !s)}
-              aria-expanded={mobileWorkOpen}
-            >
-              <span>{t.nav.work}</span>
-              <ChevronDown
-                className={`w-4 h-4 transition-transform ${mobileWorkOpen ? "rotate-180" : ""}`}
-              />
-            </button>
-            {mobileWorkOpen && (
-              <div className="mt-3 ml-3 pl-3 border-l border-foreground/15 flex flex-col gap-3">
-                {workLinks.map((w) =>
-                  w.internal ? (
-                    <Link
-                      key={w.href}
-                      to={w.href}
-                      onClick={() => setOpen(false)}
-                      className="text-sm text-foreground/75 hover:text-foreground transition-colors"
-                    >
-                      {w.label}
-                    </Link>
-                  ) : (
-                    <a
-                      key={w.href}
-                      href={w.href}
-                      onClick={() => setOpen(false)}
-                      className="text-sm text-foreground/75 hover:text-foreground transition-colors"
-                    >
-                      {w.label}
-                    </a>
-                  ),
-                )}
-              </div>
-            )}
-          </div>
-
-
-          {links.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              onClick={() => setOpen(false)}
-              className="text-foreground/80 hover:text-foreground transition-colors"
-            >
-              {link.label}
-            </a>
-          ))}
-
-          {/* Mobile resources nested */}
-          <div>
-            <button
-              className="w-full flex items-center justify-between text-foreground/80 hover:text-foreground transition-colors"
-              onClick={() => setMobileResourcesOpen((s) => !s)}
-              aria-expanded={mobileResourcesOpen}
-            >
-              <span>{t.nav.resources}</span>
-              <ChevronDown
-                className={`w-4 h-4 transition-transform ${mobileResourcesOpen ? "rotate-180" : ""}`}
-              />
-            </button>
-            {mobileResourcesOpen && (
-              <div className="mt-3 ml-3 pl-3 border-l border-foreground/15 flex flex-col gap-3">
-                <Link
-                  to="/blog"
-                  onClick={() => setOpen(false)}
-                  className="text-sm text-foreground/75 hover:text-foreground transition-colors"
-                >
-                  {t.nav.blog}
-                </Link>
-                <Link
-                  to="/glossary"
-                  onClick={() => setOpen(false)}
-                  className="text-sm text-foreground/75 hover:text-foreground transition-colors"
-                >
-                  {t.nav.glossary}
-                </Link>
-              </div>
-            )}
-          </div>
-          <a
-            href="/#contact"
-            onClick={() => setOpen(false)}
-            className="mt-2 px-5 py-2 rounded-full text-sm font-semibold text-center text-primary-foreground bg-gradient-to-r from-primary to-secondary"
+      {/* Desktop mega menu */}
+      <AnimatePresence>
+        {activeGroup && (
+          <motion.div
+            key={activeGroup.key}
+            initial={{ opacity: 0, y: -8 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -8 }}
+            transition={{ duration: 0.2 }}
+            onMouseEnter={() => openMenu(activeGroup.key)}
+            className="hidden border-t border-border lg:block"
           >
-            {t.nav.startProject}
-          </a>
-        </motion.div>
-      )}
-    </motion.nav>
+            <div className="container-x grid grid-cols-12 gap-8 py-8">
+              <div className="col-span-3">
+                <p className="eyebrow mb-3 flex">{activeGroup.label}</p>
+                <Link to={activeGroup.all.href} className="group inline-flex items-center gap-2 font-display text-2xl font-semibold">
+                  {activeGroup.all.label}
+                  <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
+                </Link>
+              </div>
+              <ul className="col-span-9 grid grid-cols-2 gap-2 xl:grid-cols-3">
+                {activeGroup.items.map((it) => (
+                  <li key={it.href}>
+                    <Link
+                      to={it.href}
+                      className="block rounded-2xl p-4 transition-colors hover:bg-accent"
+                    >
+                      <span className="flex items-center gap-2 font-semibold text-foreground">
+                        {it.title}
+                        {it.badge && (
+                          <span className="rounded-full border border-border px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">
+                            {it.badge}
+                          </span>
+                        )}
+                      </span>
+                      <span className="mt-1 block text-sm leading-snug text-muted-foreground">{it.desc}</span>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Mobile full-screen menu */}
+      <AnimatePresence>
+        {mobileOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-x-0 bottom-0 top-16 overflow-y-auto bg-background lg:hidden"
+          >
+            <div className="container-x flex flex-col py-6">
+              {groups.map((g) => (
+                <div key={g.key} className="border-b border-border">
+                  <button
+                    type="button"
+                    onClick={() => setMobileSection(mobileSection === g.key ? null : g.key)}
+                    aria-expanded={mobileSection === g.key}
+                    className="flex w-full items-center justify-between py-4 font-display text-2xl font-semibold"
+                  >
+                    {g.label}
+                    <ChevronDown className={`h-5 w-5 transition-transform ${mobileSection === g.key ? "rotate-180" : ""}`} />
+                  </button>
+                  {mobileSection === g.key && (
+                    <ul className="pb-4">
+                      {g.items.map((it) => (
+                        <li key={it.href}>
+                          <Link to={it.href} className="flex items-center gap-2 py-2.5 text-base text-muted-foreground hover:text-foreground">
+                            {it.title}
+                            {it.badge && <span className="text-[10px] font-semibold uppercase tracking-wider">· {it.badge}</span>}
+                          </Link>
+                        </li>
+                      ))}
+                      <li>
+                        <Link to={g.all.href} className="mt-1 inline-flex items-center gap-1 py-2 text-sm font-semibold text-brand">
+                          {g.all.label} <ArrowRight className="h-4 w-4" />
+                        </Link>
+                      </li>
+                    </ul>
+                  )}
+                </div>
+              ))}
+              {plain.map((l) => (
+                <Link key={l.href} to={l.href} className="border-b border-border py-4 font-display text-2xl font-semibold">
+                  {l.label}
+                </Link>
+              ))}
+              <button
+                type="button"
+                onClick={() => {
+                  setMobileOpen(false);
+                  openBooking("nav-mobile");
+                }}
+                className="btn-primary mt-8 py-4 text-base"
+              >
+                {t.nav.bookCall}
+              </button>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </header>
   );
 };
 

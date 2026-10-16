@@ -27,7 +27,7 @@ const InsightsCTA = () => (
         </span>
       </Link>
       <Link
-        to="/services/ai-consulting"
+        to="/services/ai-implementation"
         className="group glass rounded-2xl p-6 hover:bg-foreground/5 transition-colors flex flex-col"
       >
         <Compass className="w-5 h-5 mb-4" style={{ color: "#4ADE80" }} />

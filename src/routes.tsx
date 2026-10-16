@@ -1,114 +1,61 @@
 import type { RouteRecord } from "vite-react-ssg";
 import Layout from "./Layout";
-import { serviceLandingPages } from "./data/serviceLandingPages";
+import RedirectTo from "./pages/RedirectTo";
 import { glossaryTerms } from "./data/glossary";
 import { blogPosts } from "./data/blog";
+import { catalogIndustries, catalogProducts, catalogServices } from "./data/catalog";
+
+const page = (path: string | undefined, loader: () => Promise<{ default: React.ComponentType }>, entry: string, extra: Partial<RouteRecord> = {}): RouteRecord => ({
+  ...(path === undefined ? { index: true } : { path }),
+  lazy: async () => ({ Component: (await loader()).default }),
+  entry,
+  ...extra,
+} as RouteRecord);
+
+/** Old URL -> new URL. Mirrored as 301s in vercel.json. */
+export const redirects: Record<string, string> = {
+  portfolio: "/work",
+  clinicping: "/products/clinicping",
+  scopesnap: "/work",
+  pitchdeck: "/work",
+  "services/ai-consulting": "/services/ai-implementation",
+  "services/ai-strategy": "/services/ai-implementation",
+  "services/custom-app-development": "/services/web-mobile-development",
+  "services/mvp-development": "/services/web-mobile-development",
+};
 
 export const routes: RouteRecord[] = [
   {
     path: "/",
     Component: Layout,
     children: [
-      {
-        index: true,
-        lazy: async () => {
-          const m = await import("./pages/Index");
-          return { Component: m.default };
-        },
-        entry: "src/pages/Index.tsx",
-      },
-      {
-        path: "products",
-        lazy: async () => {
-          const m = await import("./pages/Products");
-          return { Component: m.default };
-        },
-        entry: "src/pages/Products.tsx",
-      },
-      {
-        path: "portfolio",
-        lazy: async () => {
-          const m = await import("./pages/Portfolio");
-          return { Component: m.default };
-        },
-        entry: "src/pages/Portfolio.tsx",
-      },
-      {
-        path: "scopesnap",
-        lazy: async () => {
-          const m = await import("./pages/ScopeSnap");
-          return { Component: m.default };
-        },
-        entry: "src/pages/ScopeSnap.tsx",
-      },
-      {
-        path: "clinicping",
-        lazy: async () => {
-          const m = await import("./pages/ClinicPing");
-          return { Component: m.default };
-        },
-        entry: "src/pages/ClinicPing.tsx",
-      },
-      {
-        path: "pitchdeck",
-        lazy: async () => {
-          const m = await import("./pages/PitchDeckAI");
-          return { Component: m.default };
-        },
-        entry: "src/pages/PitchDeckAI.tsx",
-      },
-      {
-        path: "services/:slug",
-        lazy: async () => {
-          const m = await import("./pages/ServicePage");
-          return { Component: m.default };
-        },
-        entry: "src/pages/ServicePage.tsx",
-        getStaticPaths: () =>
-          serviceLandingPages.map((s) => `services/${s.slug}`),
-      },
-      {
-        path: "glossary",
-        lazy: async () => {
-          const m = await import("./pages/GlossaryIndex");
-          return { Component: m.default };
-        },
-        entry: "src/pages/GlossaryIndex.tsx",
-      },
-      {
-        path: "glossary/:slug",
-        lazy: async () => {
-          const m = await import("./pages/GlossaryTerm");
-          return { Component: m.default };
-        },
-        entry: "src/pages/GlossaryTerm.tsx",
+      page(undefined, () => import("./pages/Index"), "src/pages/Index.tsx"),
+      page("products", () => import("./pages/ProductsIndex"), "src/pages/ProductsIndex.tsx"),
+      page("products/:slug", () => import("./pages/ProductDetail"), "src/pages/ProductDetail.tsx", {
+        getStaticPaths: () => catalogProducts.map((p) => `products/${p.slug}`),
+      }),
+      page("industries", () => import("./pages/IndustriesIndex"), "src/pages/IndustriesIndex.tsx"),
+      page("industries/:slug", () => import("./pages/IndustryDetail"), "src/pages/IndustryDetail.tsx", {
+        getStaticPaths: () => catalogIndustries.map((i) => `industries/${i.slug}`),
+      }),
+      page("services", () => import("./pages/ServicesIndex"), "src/pages/ServicesIndex.tsx"),
+      page("services/:slug", () => import("./pages/ServicePage"), "src/pages/ServicePage.tsx", {
+        getStaticPaths: () => catalogServices.map((s) => `services/${s.slug}`),
+      }),
+      page("pricing", () => import("./pages/Pricing"), "src/pages/Pricing.tsx"),
+      page("work", () => import("./pages/Work"), "src/pages/Work.tsx"),
+      page("about", () => import("./pages/About"), "src/pages/About.tsx"),
+      page("contact", () => import("./pages/Contact"), "src/pages/Contact.tsx"),
+      page("glossary", () => import("./pages/GlossaryIndex"), "src/pages/GlossaryIndex.tsx"),
+      page("glossary/:slug", () => import("./pages/GlossaryTerm"), "src/pages/GlossaryTerm.tsx", {
         getStaticPaths: () => glossaryTerms.map((t) => `glossary/${t.slug}`),
-      },
-      {
-        path: "blog",
-        lazy: async () => {
-          const m = await import("./pages/BlogIndex");
-          return { Component: m.default };
-        },
-        entry: "src/pages/BlogIndex.tsx",
-      },
-      {
-        path: "blog/:slug",
-        lazy: async () => {
-          const m = await import("./pages/BlogPost");
-          return { Component: m.default };
-        },
-        entry: "src/pages/BlogPost.tsx",
+      }),
+      page("blog", () => import("./pages/BlogIndex"), "src/pages/BlogIndex.tsx"),
+      page("blog/:slug", () => import("./pages/BlogPost"), "src/pages/BlogPost.tsx", {
         getStaticPaths: () => blogPosts.map((p) => `blog/${p.slug}`),
-      },
-      {
-        path: "*",
-        lazy: async () => {
-          const m = await import("./pages/NotFound");
-          return { Component: m.default };
-        },
-        entry: "src/pages/NotFound.tsx",
-      },
+      }),
+      ...Object.entries(redirects).map(([from, to]) => ({ path: from, element: <RedirectTo to={to} /> }) as RouteRecord),
+      page("*", () => import("./pages/NotFound"), "src/pages/NotFound.tsx"),
     ],
   },
 ];

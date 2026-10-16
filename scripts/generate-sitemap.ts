@@ -1,7 +1,7 @@
 // Runs before `vite dev` and `vite build` (predev/prebuild hooks); writes public/sitemap.xml.
 import { writeFileSync } from "fs";
 import { resolve } from "path";
-import { serviceLandingPages } from "../src/data/serviceLandingPages";
+import { catalogProducts, catalogServices, catalogIndustries } from "../src/data/catalog";
 import { glossaryTerms } from "../src/data/glossary";
 import { blogPosts } from "../src/data/blog";
 
@@ -15,28 +15,20 @@ interface SitemapEntry {
 
 const entries: SitemapEntry[] = [
   { path: "/", changefreq: "weekly", priority: "1.0" },
-  ...serviceLandingPages.map((s) => ({
-    path: s.path,
-    changefreq: "monthly" as const,
-    priority: "0.9",
-  })),
   { path: "/products", changefreq: "monthly", priority: "0.9" },
-  { path: "/portfolio", changefreq: "monthly", priority: "0.9" },
-  { path: "/scopesnap", changefreq: "monthly", priority: "0.8" },
-  { path: "/clinicping", changefreq: "monthly", priority: "0.8" },
-  { path: "/pitchdeck", changefreq: "monthly", priority: "0.8" },
-  { path: "/glossary", changefreq: "monthly", priority: "0.7" },
-  ...glossaryTerms.map((t) => ({
-    path: t.path,
-    changefreq: "monthly" as const,
-    priority: "0.6",
-  })),
-  { path: "/blog", changefreq: "weekly", priority: "0.8" },
-  ...blogPosts.map((p) => ({
-    path: p.path,
-    changefreq: "monthly" as const,
-    priority: "0.7",
-  })),
+  ...catalogProducts.map((p) => ({ path: `/products/${p.slug}`, changefreq: "monthly" as const, priority: "0.9" })),
+  { path: "/industries", changefreq: "monthly", priority: "0.8" },
+  ...catalogIndustries.map((i) => ({ path: `/industries/${i.slug}`, changefreq: "monthly" as const, priority: "0.8" })),
+  { path: "/services", changefreq: "monthly", priority: "0.8" },
+  ...catalogServices.map((s) => ({ path: `/services/${s.slug}`, changefreq: "monthly" as const, priority: "0.9" })),
+  { path: "/pricing", changefreq: "monthly", priority: "0.8" },
+  { path: "/work", changefreq: "monthly", priority: "0.8" },
+  { path: "/about", changefreq: "yearly", priority: "0.6" },
+  { path: "/contact", changefreq: "yearly", priority: "0.6" },
+  { path: "/glossary", changefreq: "monthly", priority: "0.6" },
+  ...glossaryTerms.map((t) => ({ path: t.path, changefreq: "monthly" as const, priority: "0.5" })),
+  { path: "/blog", changefreq: "weekly", priority: "0.7" },
+  ...blogPosts.map((p) => ({ path: p.path, changefreq: "monthly" as const, priority: "0.6" })),
 ];
 
 function generateSitemap(entries: SitemapEntry[]) {

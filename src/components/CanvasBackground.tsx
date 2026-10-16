@@ -5,8 +5,8 @@ import { useEffect, useRef } from "react";
  * Replaces the previous three.js/@react-three implementation — same drifting,
  * connecting-nodes feel at a fraction of the JS payload.
  */
-// Weighted toward the KlivIQ brand greens, with a couple of cooler accents.
-const COLORS = ["#4ADE80", "#4ADE80", "#22C55E", "#166534", "#34D399", "#22D3EE", "#A78BFA"];
+// KlivIQ brand greens only (no purple/cyan).
+const COLORS = ["#4ADE80", "#22C55E", "#166534", "#166534", "#15803D", "#86EFAC"];
 
 type P = { x: number; y: number; vx: number; vy: number; r: number; c: string };
 

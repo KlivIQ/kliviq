@@ -1,7 +1,7 @@
 // Single source of truth for products, services and industries.
 // Pages, navigation, structured data and the sitemap all read from here.
 import { seenzoLogo, connectLogo, tryonLogo, aacharamLogo } from "./productLogos";
-import clinicpingThumb from "@/assets/thumb-clinicping.webp";
+const clinicpingThumb = "/products/clinicping.webp";
 
 export const SITE_URL = "https://www.kliviq.com";
 

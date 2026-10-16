@@ -6,3 +6,4 @@
 - Moved URLs are listed in `redirects` in `src/routes.tsx` and mirrored as 301s in `vercel.json` — keep both lists identical.
 - Theme: light is the `:root` default, dark is the `.dark` class (key `kliviq-theme-v2`), set pre-paint by an inline script in index.html.
 - Booking: `ConsultationForm` is the single form (popup via BookingContext, inline on /contact); it posts to the `send-consultation` edge function.
+- Inner-page and catalog copy is translated via English-keyed maps in `src/i18n/content/{ta,hi}.json` using `tr()`/`loc()` from `useLang`; when English copy changes, add the new string to both maps or it silently shows English. SEO/JSON-LD stay English.

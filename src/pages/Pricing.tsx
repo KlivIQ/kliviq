@@ -7,6 +7,7 @@ import PageHero from "@/components/site/PageHero";
 import Reveal from "@/components/site/Reveal";
 import Faq from "@/components/site/Faq";
 import { FinalCta } from "./Index";
+import { useLang } from "@/i18n/LanguageContext";
 import { pricingFaqs, pricingRows, SITE_URL } from "@/data/catalog";
 
 const milestones = [
@@ -17,6 +18,7 @@ const milestones = [
 
 const Pricing = () => {
   const [region, setRegion] = useState<"inr" | "usd">("inr");
+  const { tr, loc } = useLang();
   return (
     <SiteShell>
       <Seo
@@ -42,9 +44,9 @@ const Pricing = () => {
         ]}
       />
       <PageHero
-        eyebrow="Pricing"
-        title={<>Know the number <span className="gradient-text">before we start.</span></>}
-        lede="Starting prices for every kind of project. After a short call you get a fixed quote for a written list of deliverables."
+        eyebrow={tr("Pricing")}
+        title={<>{tr("Know the number")} <span className="gradient-text">{tr("before we start.")}</span></>}
+        lede={tr("Starting prices for every kind of project. After a short call you get a fixed quote for a written list of deliverables.")}
         crumbs={[{ name: "Pricing", path: "/pricing" }]}
       />
 
@@ -61,23 +63,23 @@ const Pricing = () => {
                   region === r ? "bg-foreground text-background" : "text-muted-foreground hover:text-foreground"
                 }`}
               >
-                {r === "inr" ? "India (₹)" : "Global ($)"}
+                {tr(r === "inr" ? "India (₹)" : "Global ($)")}
               </button>
             ))}
           </div>
 
           <div className="overflow-hidden rounded-[2rem] border border-border bg-card">
-            {pricingRows.map((row, i) => (
+            {loc(pricingRows).map((row, i) => (
               <Reveal key={row.name} delay={i * 0.03}>
                 <div className="grid items-center gap-2 border-b border-border px-6 py-6 last:border-b-0 md:grid-cols-12 md:px-10">
                   <div className="md:col-span-6">
                     <h2 className="text-xl font-bold">{row.name}</h2>
                     {row.note && <p className="mt-1 text-sm text-muted-foreground">{row.note}</p>}
                   </div>
-                  <p className="font-display text-2xl font-semibold md:col-span-4">{region === "inr" ? row.inr : row.usd}</p>
+                  <p className="font-display text-2xl font-semibold md:col-span-4">{tr(region === "inr" ? row.inr : row.usd)}</p>
                   {row.service && (
                     <Link to={`/services/${row.service}`} className="inline-flex items-center gap-1 text-sm font-semibold text-brand md:col-span-2 md:justify-end">
-                      Details <ArrowRight className="h-4 w-4" />
+                      {tr("Details")} <ArrowRight className="h-4 w-4" />
                     </Link>
                   )}
                 </div>
@@ -85,7 +87,7 @@ const Pricing = () => {
             ))}
           </div>
           <p className="mt-4 text-sm text-muted-foreground">
-            {region === "inr" ? "Prices exclude GST." : "International clients are billed in US dollars."} Third-party costs such as hosting, messaging fees and AI usage are extra.
+            {tr(region === "inr" ? "Prices exclude GST." : "International clients are billed in US dollars.")} {tr("Third-party costs such as hosting, messaging fees and AI usage are extra.")}
           </p>
         </div>
       </section>
@@ -93,11 +95,11 @@ const Pricing = () => {
       <section className="bg-surface py-20 md:py-28">
         <div className="container-x">
           <Reveal>
-            <p className="eyebrow mb-4">How payment works</p>
-            <h2 className="mb-12 text-3xl font-bold md:text-5xl">30 / 40 / 30 milestones.</h2>
+            <p className="eyebrow mb-4">{tr("How payment works")}</p>
+            <h2 className="mb-12 text-3xl font-bold md:text-5xl">{tr("30 / 40 / 30 milestones.")}</h2>
           </Reveal>
           <div className="grid gap-5 md:grid-cols-3">
-            {milestones.map((m, i) => (
+            {loc(milestones).map((m, i) => (
               <Reveal key={m.label} delay={i * 0.08}>
                 <div className="h-full rounded-[1.75rem] border border-border bg-card p-8">
                   <p className="font-display text-6xl font-bold text-brand">{m.pct}</p>
@@ -110,7 +112,7 @@ const Pricing = () => {
           <Reveal>
             <div className="mt-8 flex items-start gap-4 rounded-[1.75rem] border border-border bg-card p-6">
               <FileText className="mt-0.5 h-6 w-6 shrink-0 text-brand" />
-              <p><span className="font-semibold">GST invoices for every payment.</span> <span className="text-muted-foreground">Indian clients receive GST-compliant tax invoices. International clients receive standard invoices in USD.</span></p>
+              <p><span className="font-semibold">{tr("GST invoices for every payment.")}</span> <span className="text-muted-foreground">{tr("Indian clients receive GST-compliant tax invoices. International clients receive standard invoices in USD.")}</span></p>
             </div>
           </Reveal>
         </div>

@@ -4,9 +4,12 @@ import PageHero from "@/components/site/PageHero";
 import Reveal from "@/components/site/Reveal";
 import { ServiceCard } from "@/components/site/Cards";
 import { FinalCta } from "./Index";
+import { useLang } from "@/i18n/LanguageContext";
 import { catalogServices, SITE_URL } from "@/data/catalog";
 
-const ServicesIndex = () => (
+const ServicesIndex = () => {
+  const { tr } = useLang();
+  return (
   <SiteShell>
     <Seo
       title="Services | AI Implementation, AI Visibility (GEO), Web & Mobile, Fractional CTO | KlivIQ"
@@ -28,9 +31,9 @@ const ServicesIndex = () => (
       ]}
     />
     <PageHero
-      eyebrow="Services"
-      title={<>Built by senior hands, <span className="gradient-text">priced up front.</span></>}
-      lede="Four ways to work with us. Every engagement has a fixed scope and a clear starting price."
+      eyebrow={tr("Services")}
+      title={<>{tr("Built by senior hands,")} <span className="gradient-text">{tr("priced up front.")}</span></>}
+      lede={tr("Four ways to work with us. Every engagement has a fixed scope and a clear starting price.")}
       crumbs={[{ name: "Services", path: "/services" }]}
     />
     <section className="pb-24">
@@ -43,5 +46,6 @@ const ServicesIndex = () => (
     <FinalCta source="services-index" />
   </SiteShell>
 );
+};
 
 export default ServicesIndex;

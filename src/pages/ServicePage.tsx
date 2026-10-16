@@ -8,6 +8,7 @@ import Faq from "@/components/site/Faq";
 import { ProductCard } from "@/components/site/Cards";
 import { FinalCta } from "./Index";
 import NotFound from "./NotFound";
+import { useLang } from "@/i18n/LanguageContext";
 import { useBooking } from "@/components/booking/BookingContext";
 import { getCatalogService, SITE_URL } from "@/data/catalog";
 
@@ -17,7 +18,9 @@ const ServicePage = () => {
   const { slug = "" } = useParams();
   const s = getCatalogService(slug);
   const { openBooking } = useBooking();
+  const { tr, loc } = useLang();
   if (!s) return <NotFound />;
+  const ls = loc(s);
   const path = `/services/${s.slug}`;
   const crumbs = [
     { name: "Services", path: "/services" },
@@ -51,11 +54,11 @@ const ServicePage = () => {
           faqSchema(s.faqs),
         ]}
       />
-      <PageHero eyebrow="Service" title={s.tagline} lede={s.summary} crumbs={crumbs}>
+      <PageHero eyebrow={tr("Service")} title={ls.tagline} lede={ls.summary} crumbs={crumbs}>
         <button type="button" onClick={() => openBooking(`service-${s.slug}`)} className="btn-primary px-7 py-3.5 text-base">
-          Book a call <ArrowRight className="h-4 w-4" />
+          {tr("Book a call")} <ArrowRight className="h-4 w-4" />
         </button>
-        <Link to="/pricing" className="btn-ghost px-7 py-3.5 text-base">See pricing</Link>
+        <Link to="/pricing" className="btn-ghost px-7 py-3.5 text-base">{tr("See pricing")}</Link>
       </PageHero>
 
       <section className="pb-8">
@@ -63,12 +66,12 @@ const ServicePage = () => {
           <Reveal>
             <div className="flex flex-col gap-6 rounded-[2rem] border border-border bg-card p-8 shadow-soft md:flex-row md:items-center md:justify-between md:p-10">
               <div>
-                <p className="text-sm uppercase tracking-wider text-muted-foreground">Starting from</p>
-                <p className="mt-2 font-display text-4xl font-bold md:text-5xl">{s.priceInr}</p>
-                <p className="mt-1 text-muted-foreground">International: {s.priceUsd}</p>
+                <p className="text-sm uppercase tracking-wider text-muted-foreground">{tr("Starting from")}</p>
+                <p className="mt-2 font-display text-4xl font-bold md:text-5xl">{tr(s.priceInr)}</p>
+                <p className="mt-1 text-muted-foreground">{tr("International:")} {tr(s.priceUsd)}</p>
               </div>
               <p className="max-w-md text-sm text-muted-foreground">
-                {s.priceNote ? `${s.priceNote} ` : ""}Fixed price after scoping. 30/40/30 milestone payments with GST invoices.
+                {ls.priceNote ? `${ls.priceNote} ` : ""}{tr("Fixed price after scoping. 30/40/30 milestone payments with GST invoices.")}
               </p>
             </div>
           </Reveal>
@@ -78,16 +81,16 @@ const ServicePage = () => {
       <section className="py-20 md:py-28">
         <div className="container-x grid gap-12 lg:grid-cols-2">
           <Reveal>
-            <p className="eyebrow mb-4">What you get</p>
-            <h2 className="text-3xl font-bold md:text-5xl">Deliverables.</h2>
+            <p className="eyebrow mb-4">{tr("What you get")}</p>
+            <h2 className="text-3xl font-bold md:text-5xl">{tr("Deliverables.")}</h2>
             <ul className="mt-8 space-y-3">
-              {s.deliverables.map((d) => (
+              {ls.deliverables.map((d) => (
                 <li key={d} className="flex items-start gap-3 text-lg"><Check className="mt-1.5 h-4 w-4 shrink-0 text-brand" />{d}</li>
               ))}
             </ul>
           </Reveal>
           <div className="grid gap-5">
-            {s.outcomes.map((o, i) => (
+            {ls.outcomes.map((o, i) => (
               <Reveal key={o.title} delay={i * 0.06}>
                 <div className="rounded-[1.75rem] border border-border bg-card p-7">
                   <h3 className="text-xl font-bold">{o.title}</h3>
@@ -101,9 +104,9 @@ const ServicePage = () => {
 
       <section className="bg-surface py-20 md:py-28">
         <div className="container-x">
-          <Reveal><p className="eyebrow mb-4">Process</p><h2 className="mb-12 text-3xl font-bold md:text-5xl">How it runs.</h2></Reveal>
+          <Reveal><p className="eyebrow mb-4">{tr("Process")}</p><h2 className="mb-12 text-3xl font-bold md:text-5xl">{tr("How it runs.")}</h2></Reveal>
           <ol className={`grid gap-8 sm:grid-cols-2 ${s.process.length === 4 ? "lg:grid-cols-4" : "lg:grid-cols-3"}`}>
-            {s.process.map((p, i) => (
+            {ls.process.map((p, i) => (
               <Reveal key={p.step} delay={i * 0.08}>
                 <li>
                   <span className="font-display text-5xl font-bold text-brand">0{i + 1}</span>
@@ -119,7 +122,7 @@ const ServicePage = () => {
       {s.relatedProducts.length > 0 && (
         <section className="py-20 md:py-28">
           <div className="container-x">
-            <h2 className="mb-8 text-2xl font-bold md:text-3xl">Related products</h2>
+            <h2 className="mb-8 text-2xl font-bold md:text-3xl">{tr("Related products")}</h2>
             <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
               {s.relatedProducts.map((p) => <ProductCard key={p} slug={p} />)}
             </div>

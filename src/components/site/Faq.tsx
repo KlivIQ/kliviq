@@ -1,14 +1,18 @@
 import { Plus } from "lucide-react";
 import Reveal from "./Reveal";
+import { useLang } from "@/i18n/LanguageContext";
 import type { QA } from "@/data/catalog";
 
 /** SSR-friendly FAQ (native details/summary). Answers are in the HTML for crawlers. */
-const Faq = ({ items, title = "Questions, answered" }: { items: QA[]; title?: string }) => (
+const Faq = ({ items: rawItems, title = "Questions, answered" }: { items: QA[]; title?: string }) => {
+  const { tr, loc } = useLang();
+  const items = loc(rawItems);
+  return (
   <section className="py-20 md:py-28">
     <div className="container-x grid gap-10 lg:grid-cols-12">
       <Reveal className="lg:col-span-4">
         <p className="eyebrow mb-4">FAQ</p>
-        <h2 className="text-3xl font-bold md:text-5xl">{title}</h2>
+        <h2 className="text-3xl font-bold md:text-5xl">{tr(title)}</h2>
       </Reveal>
       <div className="lg:col-span-8">
         {items.map((f) => (
@@ -24,5 +28,6 @@ const Faq = ({ items, title = "Questions, answered" }: { items: QA[]; title?: st
     </div>
   </section>
 );
+};
 
 export default Faq;

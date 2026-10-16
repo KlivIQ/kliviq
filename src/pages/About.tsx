@@ -17,7 +17,7 @@ const principles = [
 ];
 
 const About = () => {
-  const { t } = useLang();
+  const { t, tr, loc } = useLang();
   return (
     <SiteShell>
       <Seo
@@ -45,28 +45,28 @@ const About = () => {
         ]}
       />
       <PageHero
-        eyebrow="About"
-        title={<>Enterprise experience, <span className="gradient-text">startup speed.</span></>}
-        lede="KlivIQ Technologies is an AI product and engineering company based in Chennai, building for businesses in India and around the world."
+        eyebrow={tr("About")}
+        title={<>{tr("Enterprise experience,")} <span className="gradient-text">{tr("startup speed.")}</span></>}
+        lede={tr("KlivIQ Technologies is an AI product and engineering company based in Chennai, building for businesses in India and around the world.")}
         crumbs={[{ name: "About", path: "/about" }]}
       />
 
       <section className="pb-20 md:pb-28">
         <div className="container-x grid gap-12 lg:grid-cols-12">
           <Reveal className="lg:col-span-4">
-            <p className="eyebrow mb-4">Founder story</p>
+            <p className="eyebrow mb-4">{tr("Founder story")}</p>
             <h2 className="text-3xl font-bold md:text-4xl">Sriram Ramkumar</h2>
-            <p className="mt-2 text-muted-foreground">Founder, KlivIQ Technologies</p>
+            <p className="mt-2 text-muted-foreground">{tr("Founder, KlivIQ Technologies")}</p>
           </Reveal>
           <Reveal delay={0.1} className="space-y-5 text-lg leading-relaxed lg:col-span-8">
             <p>
-              Sriram spent more than twenty years inside enterprise IT, delivering and leading software programmes for organisations in banking, retail, healthcare, life sciences and logistics. He built and ran teams across countries, and learned what makes technology projects succeed or quietly fail.
+              {tr("Sriram spent more than twenty years inside enterprise IT, delivering and leading software programmes for organisations in banking, retail, healthcare, life sciences and logistics. He built and ran teams across countries, and learned what makes technology projects succeed or quietly fail.")}
             </p>
             <p className="text-muted-foreground">
-              Over those years one pattern kept repeating: large companies got senior expertise and modern tools, while growing businesses got templates, junior teams and long timelines. AI changed the maths. A small, senior team can now build in weeks what used to take a department months.
+              {tr("Over those years one pattern kept repeating: large companies got senior expertise and modern tools, while growing businesses got templates, junior teams and long timelines. AI changed the maths. A small, senior team can now build in weeks what used to take a department months.")}
             </p>
             <p className="text-muted-foreground">
-              KlivIQ was started to close that gap. We build our own AI products for problems we see every day in India, and we bring the same enterprise discipline to every client project, priced so growing businesses can actually use it.
+              {tr("KlivIQ was started to close that gap. We build our own AI products for problems we see every day in India, and we bring the same enterprise discipline to every client project, priced so growing businesses can actually use it.")}
             </p>
           </Reveal>
         </div>
@@ -74,9 +74,9 @@ const About = () => {
 
       <section className="bg-surface py-20 md:py-28">
         <div className="container-x">
-          <Reveal><p className="eyebrow mb-4">Principles</p><h2 className="mb-12 text-3xl font-bold md:text-5xl">How we choose to work.</h2></Reveal>
+          <Reveal><p className="eyebrow mb-4">{tr("Principles")}</p><h2 className="mb-12 text-3xl font-bold md:text-5xl">{tr("How we choose to work.")}</h2></Reveal>
           <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {principles.map((p, i) => (
+            {loc(principles).map((p, i) => (
               <Reveal key={p.title} delay={i * 0.05}>
                 <div className="h-full rounded-[1.75rem] border border-border bg-card p-7">
                   <span className="font-display text-sm font-semibold text-brand">0{i + 1}</span>
@@ -91,7 +91,7 @@ const About = () => {
 
       <section id="recommendations" className="scroll-mt-24 py-20 md:py-28">
         <div className="container-x">
-          <Reveal><p className="eyebrow mb-4">{t.testimonials.linkedInBadge}</p><h2 className="mb-12 text-3xl font-bold md:text-5xl">What colleagues say.</h2></Reveal>
+          <Reveal><p className="eyebrow mb-4">{t.testimonials.linkedInBadge}</p><h2 className="mb-12 text-3xl font-bold md:text-5xl">{tr("What colleagues say.")}</h2></Reveal>
           <div className="grid gap-6 md:grid-cols-2">
             {t.testimonials.items.map((item, i) => (
               <Reveal key={item.name} delay={i * 0.1}>

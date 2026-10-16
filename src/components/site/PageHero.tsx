@@ -2,6 +2,7 @@ import type { ReactNode } from "react";
 import { Link } from "react-router-dom";
 import { ChevronRight } from "lucide-react";
 import Reveal from "./Reveal";
+import { useLang } from "@/i18n/LanguageContext";
 
 interface Props {
   eyebrow?: string;
@@ -11,20 +12,22 @@ interface Props {
   children?: ReactNode;
 }
 
-const PageHero = ({ eyebrow, title, lede, crumbs, children }: Props) => (
+const PageHero = ({ eyebrow, title, lede, crumbs, children }: Props) => {
+  const { tr } = useLang();
+  return (
   <section className="relative overflow-hidden pt-36 pb-16 md:pt-44 md:pb-24">
     <div className="pointer-events-none absolute inset-0 kolam-grid opacity-60 [mask-image:radial-gradient(ellipse_at_top,black_20%,transparent_70%)]" />
     <div className="container-x relative">
       {crumbs && (
         <nav aria-label="Breadcrumb" className="mb-8 flex flex-wrap items-center gap-1 text-sm text-muted-foreground">
-          <Link to="/" className="hover:text-foreground">Home</Link>
+          <Link to="/" className="hover:text-foreground">{tr("Home")}</Link>
           {crumbs.map((c, i) => (
             <span key={c.path} className="flex items-center gap-1">
               <ChevronRight className="h-3.5 w-3.5" />
               {i === crumbs.length - 1 ? (
-                <span className="text-foreground">{c.name}</span>
+                <span className="text-foreground">{tr(c.name)}</span>
               ) : (
-                <Link to={c.path} className="hover:text-foreground">{c.name}</Link>
+                <Link to={c.path} className="hover:text-foreground">{tr(c.name)}</Link>
               )}
             </span>
           ))}
@@ -39,5 +42,6 @@ const PageHero = ({ eyebrow, title, lede, crumbs, children }: Props) => (
     </div>
   </section>
 );
+};
 
 export default PageHero;

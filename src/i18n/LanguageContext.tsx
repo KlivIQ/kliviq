@@ -19,7 +19,7 @@ const contentLoaders: Record<Exclude<Lang, "en">, () => Promise<ContentMap>> = {
   hi: () => import("./content/hi.json").then((m) => m.default as ContentMap),
 };
 // Keys whose values are identifiers, URLs or brand data, never translated.
-const SKIP_KEYS = new Set(["slug", "logo", "hue", "href", "externalUrl", "keywords", "appCategory", "industries", "products", "services", "relatedProducts", "service", "thumb", "shot", "accent", "stack", "year", "kind", "name", "priceInr", "priceUsd", "inr", "usd", "pct", "action", "key", "image", "value"]);
+const SKIP_KEYS = new Set(["slug", "logo", "hue", "href", "externalUrl", "keywords", "appCategory", "industries", "products", "services", "relatedProducts", "service", "thumb", "shot", "accent", "stack", "year", "kind", "priceInr", "priceUsd", "inr", "usd", "pct", "action", "key", "image", "value"]);
 
 type Ctx = {
   lang: Lang;

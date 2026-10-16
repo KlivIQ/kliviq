@@ -168,7 +168,7 @@ const Navbar = () => {
           >
             <div className="container-x grid grid-cols-12 gap-8 py-8">
               <div className="col-span-3">
-                <p className="eyebrow mb-3">{activeGroup.label}</p>
+                <p className="eyebrow mb-3 flex">{activeGroup.label}</p>
                 <Link to={activeGroup.all.href} className="group inline-flex items-center gap-2 font-display text-2xl font-semibold">
                   {activeGroup.all.label}
                   <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />

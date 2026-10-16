@@ -31,7 +31,7 @@ const PageHero = ({ eyebrow, title, lede, crumbs, children }: Props) => (
         </nav>
       )}
       <Reveal>
-        {eyebrow && <p className="eyebrow mb-5">{eyebrow}</p>}
+        {eyebrow && <p className="eyebrow mb-5 flex">{eyebrow}</p>}
         <h1 className="max-w-4xl text-4xl font-bold leading-[1.02] sm:text-5xl md:text-7xl">{title}</h1>
         {lede && <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground md:text-xl">{lede}</p>}
         {children && <div className="mt-9 flex flex-wrap gap-3">{children}</div>}

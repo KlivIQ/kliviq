@@ -19,7 +19,7 @@ const ArticleCTA = () => (
         Book a Free Consultation <ArrowRight className="w-4 h-4" />
       </BookingButton>
       <Link
-        to="/services/ai-consulting"
+        to="/services/ai-implementation"
         className="inline-flex items-center gap-2 px-6 py-3 rounded-full text-sm font-semibold text-foreground border border-border hover:bg-foreground/5 transition-colors"
       >
         Explore AI Services

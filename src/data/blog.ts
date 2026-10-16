@@ -87,7 +87,7 @@ export const SRI_RAM: BlogAuthor = {
 
 const STANDARD_RELATED: BlogRelatedResource[] = [
   { label: "Fractional CTO", description: "Senior tech leadership without the full-time cost.", path: "/services/fractional-cto", kind: "service" },
-  { label: "AI Consulting", description: "Find where AI creates real value in your business.", path: "/services/ai-consulting", kind: "service" },
+  { label: "AI Implementation", description: "Put AI to work inside your business.", path: "/services/ai-implementation", kind: "service" },
   { label: "AI Implementation", description: "What it really takes to put AI into production.", path: "/glossary/ai-implementation", kind: "glossary" },
   { label: "Workflow Automation", description: "How modern automation removes repetitive work.", path: "/glossary/workflow-automation", kind: "glossary" },
   { label: "Digital Transformation", description: "A practical view of modernising operations.", path: "/glossary/digital-transformation", kind: "glossary" },

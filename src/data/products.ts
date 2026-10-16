@@ -65,7 +65,7 @@ export const products: Product[] = [
     statusLabel: "Live",
     accent: "#3B82F6",
     logo: connectLogo,
-    href: "/#contact",
+    href: "/contact",
     cta: "Book a Connect demo",
     benefits: [
       { label: "Bookings & reminders", detail: "Handled end to end on WhatsApp" },
@@ -127,7 +127,7 @@ export const products: Product[] = [
     statusLabel: "Waitlist",
     accent: "#D97706",
     logo: aacharamLogo,
-    href: "/#contact",
+    href: "/contact",
     cta: "Join the waitlist",
     benefits: [
       { label: "Build your family tree", detail: "Names, places, kovil, kulam" },

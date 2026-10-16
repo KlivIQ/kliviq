@@ -75,7 +75,7 @@ export const glossaryTerms: GlossaryTerm[] = [
     ],
     kliviqUse:
       "KlivIQ's AI consulting practice is built around shipping, not slides. We scope, build, and deploy production AI systems in weeks — owned end-to-end by senior engineers.",
-    kliviqLink: { label: "See our AI Consulting service", path: "/services/ai-consulting" },
+    kliviqLink: { label: "See our AI Implementation service", path: "/services/ai-implementation" },
     faqs: [
       {
         q: "How is AI consulting different from regular IT consulting?",
@@ -110,7 +110,7 @@ export const glossaryTerms: GlossaryTerm[] = [
     ],
     kliviqUse:
       "KlivIQ specialises in AI implementation for teams that already know what they want and need senior engineers to ship it. We handle model selection, integration, deployment, and monitoring.",
-    kliviqLink: { label: "Talk to us about AI implementation", path: "/services/ai-consulting" },
+    kliviqLink: { label: "Talk to us about AI implementation", path: "/services/ai-implementation" },
     faqs: [
       {
         q: "Why do most AI implementation projects fail?",
@@ -146,7 +146,7 @@ export const glossaryTerms: GlossaryTerm[] = [
     ],
     kliviqUse:
       "KlivIQ ships production-quality MVPs in 4–8 weeks. We scope ruthlessly, design clean architecture from day one, and launch live products — not prototypes.",
-    kliviqLink: { label: "Explore our MVP Development service", path: "/services/mvp-development" },
+    kliviqLink: { label: "Explore Web & Mobile Development", path: "/services/web-mobile-development" },
     faqs: [
       {
         q: "How fast can you build an MVP?",
@@ -183,7 +183,7 @@ export const glossaryTerms: GlossaryTerm[] = [
     ],
     kliviqUse:
       "KlivIQ builds RAG-powered assistants for customer support, internal knowledge, and document Q&A — integrated with your existing systems and tuned for accuracy.",
-    kliviqLink: { label: "Talk to us about AI consulting", path: "/services/ai-consulting" },
+    kliviqLink: { label: "Talk to us about AI consulting", path: "/services/ai-implementation" },
     faqs: [
       {
         q: "Why use RAG instead of fine-tuning an AI model?",
@@ -218,7 +218,7 @@ export const glossaryTerms: GlossaryTerm[] = [
     ],
     kliviqUse:
       "KlivIQ runs focused AI strategy sprints for SMEs and growth-stage companies — turning ambition into a clear, costed, prioritised plan you can execute.",
-    kliviqLink: { label: "See our AI Strategy service", path: "/services/ai-strategy" },
+    kliviqLink: { label: "See our AI Implementation service", path: "/services/ai-implementation" },
     faqs: [
       {
         q: "How long does it take to build an AI strategy?",
@@ -255,7 +255,7 @@ export const glossaryTerms: GlossaryTerm[] = [
     ],
     kliviqUse:
       "KlivIQ builds business systems on top of leading LLMs — selecting the right model per use case and wrapping them in production-grade architecture, RAG, and evaluation.",
-    kliviqLink: { label: "Talk to us about AI consulting", path: "/services/ai-consulting" },
+    kliviqLink: { label: "Talk to us about AI consulting", path: "/services/ai-implementation" },
     faqs: [
       {
         q: "Which LLM is best for business use?",
@@ -290,7 +290,7 @@ export const glossaryTerms: GlossaryTerm[] = [
     ],
     kliviqUse:
       "KlivIQ designs and ships AI-powered workflow automation for ops, finance, sales, and support teams — using n8n, Zapier, custom code, and LLMs where they add real value.",
-    kliviqLink: { label: "Talk to us about automation", path: "/services/ai-consulting" },
+    kliviqLink: { label: "Talk to us about automation", path: "/services/ai-implementation" },
     faqs: [
       {
         q: "What's the difference between Zapier and a custom automation?",
@@ -326,7 +326,7 @@ export const glossaryTerms: GlossaryTerm[] = [
     ],
     kliviqUse:
       "KlivIQ builds custom web and mobile applications for businesses that need software shaped exactly to their operations — designed to scale, documented to hand off.",
-    kliviqLink: { label: "See our Custom App Development service", path: "/services/custom-app-development" },
+    kliviqLink: { label: "Explore Web & Mobile Development", path: "/services/web-mobile-development" },
     faqs: [
       {
         q: "When does custom software make more sense than off-the-shelf?",
@@ -397,7 +397,7 @@ export const glossaryTerms: GlossaryTerm[] = [
     ],
     kliviqUse:
       "KlivIQ built Seenzo to make AI Visibility measurable in under 5 minutes — free — and then implements the fixes across your site so ChatGPT, Gemini, and Perplexity actually cite you.",
-    kliviqLink: { label: "Get your free Seenzo score", path: "/#products" },
+    kliviqLink: { label: "Get your free Seenzo score", path: "/products/seenzo" },
     faqs: [
       {
         q: "How is AI Visibility different from SEO?",
@@ -436,7 +436,7 @@ export const glossaryTerms: GlossaryTerm[] = [
     ],
     kliviqUse:
       "KlivIQ practices GEO on every project we ship — structured data, pre-rendered HTML, semantic content — and productises it through Seenzo, our free AI Visibility scoring platform.",
-    kliviqLink: { label: "Score your site with Seenzo", path: "/#products" },
+    kliviqLink: { label: "Score your site with Seenzo", path: "/products/seenzo" },
     faqs: [
       {
         q: "Is GEO replacing SEO?",

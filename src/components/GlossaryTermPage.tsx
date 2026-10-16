@@ -249,7 +249,7 @@ const GlossaryTermPage = ({ term }: { term: GlossaryTerm }) => {
               Talk to a senior KlivIQ engineer about how this applies to your business.
             </p>
             <Link
-              to="/#contact"
+              to="/contact"
               className="inline-flex items-center gap-2 px-6 py-3 rounded-full text-sm font-semibold text-primary-foreground bg-gradient-to-r from-primary to-secondary transition-transform hover:scale-105"
             >
               Talk to a KlivIQ expert <ArrowRight className="w-4 h-4" />

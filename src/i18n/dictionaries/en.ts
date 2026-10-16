@@ -54,6 +54,13 @@ export const en = {
     ctaLede: "Tell us what you have in mind. You will hear back from a senior person within one business day.",
     ctaWhatsapp: "WhatsApp us",
     learnMore: "Learn more",
+    status: { live: "Live", pilot: "Pilot", soon: "Coming soon" },
+    productCards: {
+      seenzo: { tagline: "Your AI visibility score.", summary: "Seenzo checks how ChatGPT, Gemini and Perplexity talk about your business, gives you a score from 0 to 100 across six areas, and hands you a ranked list of fixes." },
+      connect: { tagline: "WhatsApp automation and an AI assistant that speaks your customer's language.", summary: "KlivIQ Connect puts an AI assistant on your WhatsApp number. It answers questions, takes bookings, sends reminders and runs broadcasts in seven Indian languages, trained on your own business." },
+      tryon: { tagline: "An AI trial room for online saree stores.", summary: "KlivIQ TryOn lets a shopper upload one photo and see how a saree looks on them before they buy. It plugs into any online store and respects drape, fall and pleats." },
+      clinicping: { tagline: "A clinic dashboard that predicts no-shows before they happen.", summary: "ClinicPing gives the front desk one view of the day, flags appointments likely to be missed using AI, and sends reminders in the patient's own language." },
+    } as Record<string, { tagline: string; summary: string }>,
   },
   hero: {
     line1: "Your Business, Running on AI.",

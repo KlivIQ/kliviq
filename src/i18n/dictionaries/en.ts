@@ -16,6 +16,11 @@ export const en = {
     glossary: "Glossary",
     allServices: "All services overview →",
     startProject: "Start a Project →",
+    industries: "Industries",
+    bookCall: "Book a call",
+    allProducts: "All products",
+    allIndustries: "All industries",
+    allServicesShort: "All services",
   },
   hero: {
     line1: "Your Business, Running on AI.",

@@ -16,6 +16,11 @@ export const ta: Dict = {
     glossary: "சொற்களஞ்சியம்",
     allServices: "அனைத்து சேவைகளும் →",
     startProject: "திட்டத்தைத் தொடங்குக →",
+    industries: "துறைகள்",
+    bookCall: "அழைப்பை முன்பதிவு செய்க",
+    allProducts: "அனைத்து தயாரிப்புகள்",
+    allIndustries: "அனைத்து துறைகள்",
+    allServicesShort: "அனைத்து சேவைகள்",
   },
   hero: {
     line1: "உங்கள் வணிகம், AI-ஆல் இயங்குகிறது.",

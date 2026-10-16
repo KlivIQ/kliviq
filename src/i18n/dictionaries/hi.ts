@@ -16,6 +16,11 @@ export const hi: Dict = {
     glossary: "शब्दकोश",
     allServices: "सभी सेवाएँ देखें →",
     startProject: "प्रोजेक्ट शुरू करें →",
+    industries: "उद्योग",
+    bookCall: "कॉल बुक करें",
+    allProducts: "सभी प्रोडक्ट्स",
+    allIndustries: "सभी उद्योग",
+    allServicesShort: "सभी सेवाएँ",
   },
   hero: {
     line1: "आपका बिज़नेस, AI पर चल रहा है।",

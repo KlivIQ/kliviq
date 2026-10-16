@@ -102,12 +102,12 @@ const Products = () => {
           </div>
         </div>
         <div className="space-y-6 lg:col-span-7">
-          {catalogProducts.map((p, i) => (
-            <div key={p.slug} className="lg:sticky" style={{ top: `${110 + i * 18}px` }}>
+          {catalogProducts.filter((p) => p.slug !== "aacharam").map((p, i) => (
+            <div key={p.slug} className="sticky [top:var(--stack-top-m)] lg:[top:var(--stack-top)]" style={{ "--stack-top-m": `${80 + i * 12}px`, "--stack-top": `${110 + i * 18}px` } as React.CSSProperties}>
               <Reveal delay={0.05}>
                 <Link
                   to={`/products/${p.slug}`}
-                  className="group relative block overflow-hidden rounded-[2rem] border border-border bg-card p-7 shadow-soft transition-all hover:-translate-y-1 hover:shadow-lift md:p-10"
+                  className="group relative block overflow-hidden rounded-[2rem] border border-border bg-card p-6 shadow-soft sm:p-7 transition-all hover:-translate-y-1 hover:shadow-lift md:p-10"
                 >
                   <div
                     className="pointer-events-none absolute -right-20 -top-20 h-64 w-64 rounded-full opacity-[0.12] blur-3xl transition-opacity group-hover:opacity-25"
@@ -116,12 +116,12 @@ const Products = () => {
                   <div className="relative flex items-start justify-between gap-4">
                     <img src={p.logo} alt={`${p.name} logo`} loading="lazy" className="h-14 w-14 rounded-2xl object-cover md:h-16 md:w-16" />
                     <span className="rounded-full border border-border px-3 py-1 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
-                      {STATUS_LABEL[p.status]}
+                      {t.home.status[p.status] ?? STATUS_LABEL[p.status]}
                     </span>
                   </div>
                   <h3 className="relative mt-8 text-2xl font-bold md:text-4xl">{p.name}</h3>
-                  <p className="relative mt-2 text-lg font-medium text-foreground/80">{p.tagline}</p>
-                  <p className="relative mt-4 max-w-xl text-muted-foreground">{p.summary}</p>
+                  <p className="relative mt-2 text-lg font-medium text-foreground/80">{t.home.productCards[p.slug]?.tagline ?? p.tagline}</p>
+                  <p className="relative mt-4 max-w-xl text-muted-foreground">{t.home.productCards[p.slug]?.summary ?? p.summary}</p>
                   <span className="relative mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-brand">
                     {t.home.learnMore} <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                   </span>

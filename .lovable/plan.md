@@ -9,7 +9,7 @@ A full visual and structural rebuild based on your brief. Delivered in phases so
 - **Visuals:** abstract illustrations and product mockups with an Indian feel (kolam-style line patterns, WhatsApp screens in Tamil, saree try-on frames, a clinic dashboard). No stock photos of people and no emojis.
 
 ## What gets removed
-- Pricing table and LinkedIn testimonials come off the home page (the testimonials move to About).
+- Pricing table and LinkedIn testimonials come off the home page (both recommendations appear in full on About, and home keeps one short quote with a "Read more" link to About, so home still shows outside proof for search and AI engines).
 - The Q1 2027 availability banner, the pricing "urgency" callout and the exit-intent popup all go, per "no urgency banners".
 - Any number that isn't proven, such as trust-row figures. Only real facts stay (for example "delivered in 2 days" for Mathavan Traders).
 - Emoji flags in the currency labels.

@@ -4,9 +4,12 @@ import PageHero from "@/components/site/PageHero";
 import Reveal from "@/components/site/Reveal";
 import { IndustryCard } from "@/components/site/Cards";
 import { FinalCta } from "./Index";
+import { useLang } from "@/i18n/LanguageContext";
 import { catalogIndustries, SITE_URL } from "@/data/catalog";
 
-const IndustriesIndex = () => (
+const IndustriesIndex = () => {
+  const { tr } = useLang();
+  return (
   <SiteShell>
     <Seo
       title="Industries | AI for Clinics, CA Firms, Saree & D2C Retail and Manufacturing | KlivIQ"
@@ -28,9 +31,9 @@ const IndustriesIndex = () => (
       ]}
     />
     <PageHero
-      eyebrow="Industries"
-      title={<>Deep in a few industries, <span className="gradient-text">not shallow in all.</span></>}
-      lede="We focus on sectors where we know the daily work, the customers and the languages they speak."
+      eyebrow={tr("Industries")}
+      title={<>{tr("Deep in a few industries,")} <span className="gradient-text">{tr("not shallow in all.")}</span></>}
+      lede={tr("We focus on sectors where we know the daily work, the customers and the languages they speak.")}
       crumbs={[{ name: "Industries", path: "/industries" }]}
     />
     <section className="pb-24">
@@ -43,5 +46,6 @@ const IndustriesIndex = () => (
     <FinalCta source="industries-index" />
   </SiteShell>
 );
+};
 
 export default IndustriesIndex;

@@ -8,6 +8,7 @@ import PageHero from "@/components/site/PageHero";
 import { FinalCta } from "./Index";
 import { portfolioItems, type WorkKind } from "@/data/portfolio";
 import { catalogProducts, SITE_URL } from "@/data/catalog";
+import { useLang } from "@/i18n/LanguageContext";
 
 type Card = {
   key: string;
@@ -66,7 +67,8 @@ const FILTERS: { key: "all" | WorkKind; label: string }[] = [
 
 const Work = () => {
   const [filter, setFilter] = useState<"all" | WorkKind>("all");
-  const shown = cards.filter((c) => filter === "all" || c.kind === filter);
+  const { tr, loc } = useLang();
+  const shown = loc(cards).filter((c) => filter === "all" || c.kind === filter);
 
   return (
     <SiteShell>
@@ -94,9 +96,9 @@ const Work = () => {
         ]}
       />
       <PageHero
-        eyebrow="Work"
-        title={<>Products we run. <span className="gradient-text">Sites we shipped.</span></>}
-        lede="Everything here is live and in use, except the one we clearly label as an experiment."
+        eyebrow={tr("Work")}
+        title={<>{tr("Products we run.")} <span className="gradient-text">{tr("Sites we shipped.")}</span></>}
+        lede={tr("Everything here is live and in use, except the one we clearly label as an experiment.")}
         crumbs={[{ name: "Work", path: "/work" }]}
       />
 
@@ -113,7 +115,7 @@ const Work = () => {
                   filter === f.key ? "border-foreground bg-foreground text-background" : "border-border text-muted-foreground hover:text-foreground"
                 }`}
               >
-                {f.label}
+                {tr(f.label)}
               </button>
             ))}
           </div>
@@ -134,12 +136,12 @@ const Work = () => {
                         </div>
                       )}
                       {c.experiment && (
-                        <span className="absolute left-4 top-4 rounded-full bg-background/90 px-3 py-1 text-xs font-semibold uppercase tracking-wider">Experiment</span>
+                        <span className="absolute left-4 top-4 rounded-full bg-background/90 px-3 py-1 text-xs font-semibold uppercase tracking-wider">{tr("Experiment")}</span>
                       )}
                     </div>
                     <div className="mt-5">
                       <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
-                        {c.category}{c.year ? ` · ${c.year}` : ""}
+                        {c.category.split(" · ").map(tr).join(" · ")}{c.year ? ` · ${c.year}` : ""}
                       </p>
                       <div className="mt-2 flex items-start justify-between gap-3">
                         <h2 className="text-2xl font-bold">{c.name}</h2>

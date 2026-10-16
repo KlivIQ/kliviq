@@ -4,9 +4,12 @@ import PageHero from "@/components/site/PageHero";
 import Reveal from "@/components/site/Reveal";
 import { ProductCard } from "@/components/site/Cards";
 import { FinalCta } from "./Index";
+import { useLang } from "@/i18n/LanguageContext";
 import { catalogProducts, SITE_URL } from "@/data/catalog";
 
-const ProductsIndex = () => (
+const ProductsIndex = () => {
+  const { tr } = useLang();
+  return (
   <SiteShell>
     <Seo
       title="Products | Seenzo, KlivIQ Connect, KlivIQ TryOn, ClinicPing & Aacharam"
@@ -28,9 +31,9 @@ const ProductsIndex = () => (
       ]}
     />
     <PageHero
-      eyebrow="Products"
-      title={<>AI products for <span className="gradient-text">real Indian problems.</span></>}
-      lede="Built in Chennai, used by businesses and families. Three are live, one is in pilot and one is on the way."
+      eyebrow={tr("Products")}
+      title={<>{tr("AI products for")} <span className="gradient-text">{tr("real Indian problems.")}</span></>}
+      lede={tr("Built in Chennai, used by businesses and families. Three are live, one is in pilot and one is on the way.")}
       crumbs={[{ name: "Products", path: "/products" }]}
     />
     <section className="pb-24">
@@ -45,5 +48,6 @@ const ProductsIndex = () => (
     <FinalCta source="products-index" />
   </SiteShell>
 );
+};
 
 export default ProductsIndex;

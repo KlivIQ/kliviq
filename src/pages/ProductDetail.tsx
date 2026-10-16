@@ -8,6 +8,7 @@ import Faq from "@/components/site/Faq";
 import { IndustryCard, ProductCard } from "@/components/site/Cards";
 import { FinalCta } from "./Index";
 import NotFound from "./NotFound";
+import { useLang } from "@/i18n/LanguageContext";
 import { useBooking } from "@/components/booking/BookingContext";
 import { catalogProducts, getCatalogProduct, SITE_URL, STATUS_LABEL } from "@/data/catalog";
 
@@ -15,7 +16,9 @@ const ProductDetail = () => {
   const { slug = "" } = useParams();
   const p = getCatalogProduct(slug);
   const { openBooking } = useBooking();
+  const { tr, loc } = useLang();
   if (!p) return <NotFound />;
+  const lp = loc(p);
 
   const path = `/products/${p.slug}`;
   const crumbs = [
@@ -25,7 +28,7 @@ const ProductDetail = () => {
 
   const cta = p.primaryCta.href ? (
     <a href={p.primaryCta.href} target="_blank" rel="noopener noreferrer" className="btn-primary px-7 py-3.5 text-base">
-      {p.primaryCta.label} <ArrowUpRight className="h-4 w-4" />
+      {lp.primaryCta.label} <ArrowUpRight className="h-4 w-4" />
     </a>
   ) : (
     <button
@@ -33,7 +36,7 @@ const ProductDetail = () => {
       onClick={() => openBooking(p.primaryCta.action === "waitlist" ? `waitlist-${p.slug}` : `product-${p.slug}`)}
       className="btn-primary px-7 py-3.5 text-base"
     >
-      {p.primaryCta.label} <ArrowRight className="h-4 w-4" />
+      {lp.primaryCta.label} <ArrowRight className="h-4 w-4" />
     </button>
   );
 
@@ -65,14 +68,14 @@ const ProductDetail = () => {
         ]}
       />
       <PageHero
-        eyebrow={`${STATUS_LABEL[p.status]} product`}
+        eyebrow={`${tr(STATUS_LABEL[p.status])} · ${tr("Product")}`}
         title={
           <span className="flex flex-col gap-6">
             <img src={p.logo} alt={`${p.name} logo`} className="h-16 w-16 rounded-2xl object-cover md:h-20 md:w-20" />
             <span>{p.name}</span>
           </span>
         }
-        lede={<><span className="block font-semibold text-foreground">{p.tagline}</span><span className="mt-3 block">{p.summary}</span></>}
+        lede={<><span className="block font-semibold text-foreground">{lp.tagline}</span><span className="mt-3 block">{lp.summary}</span></>}
         crumbs={crumbs}
       >
         {cta}
@@ -80,7 +83,7 @@ const ProductDetail = () => {
 
       <section className="bg-surface py-20 md:py-28">
         <div className="container-x grid gap-5 sm:grid-cols-2">
-          {p.features.map((f, i) => (
+          {lp.features.map((f, i) => (
             <Reveal key={f.title} delay={i * 0.06}>
               <div className="h-full rounded-[1.75rem] border border-border bg-card p-8">
                 <span className="flex h-10 w-10 items-center justify-center rounded-full bg-accent text-accent-foreground">
@@ -97,10 +100,10 @@ const ProductDetail = () => {
       <section className="py-20 md:py-28">
         <div className="container-x grid gap-12 lg:grid-cols-2">
           <Reveal>
-            <p className="eyebrow mb-4">How it works</p>
-            <h2 className="text-3xl font-bold md:text-5xl">Three steps to value.</h2>
+            <p className="eyebrow mb-4">{tr("How it works")}</p>
+            <h2 className="text-3xl font-bold md:text-5xl">{tr("Three steps to value.")}</h2>
             <ol className="mt-10 space-y-6">
-              {p.howItWorks.map((s, i) => (
+              {lp.howItWorks.map((s, i) => (
                 <li key={s} className="flex gap-5">
                   <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-border font-display font-semibold">{i + 1}</span>
                   <p className="pt-2 text-lg">{s}</p>
@@ -109,9 +112,9 @@ const ProductDetail = () => {
             </ol>
           </Reveal>
           <Reveal delay={0.1}>
-            <p className="eyebrow mb-4">Who it is for</p>
+            <p className="eyebrow mb-4">{tr("Who it is for")}</p>
             <ul className="mt-6 space-y-3">
-              {p.forWho.map((w) => (
+              {lp.forWho.map((w) => (
                 <li key={w} className="flex items-center gap-3 rounded-2xl border border-border bg-card px-5 py-4 font-medium">
                   <Check className="h-4 w-4 text-brand" /> {w}
                 </li>
@@ -124,7 +127,7 @@ const ProductDetail = () => {
       {p.industries.length > 0 && (
         <section className="bg-surface py-20 md:py-28">
           <div className="container-x">
-            <Reveal><p className="eyebrow mb-4">Industries</p><h2 className="mb-10 text-3xl font-bold md:text-5xl">Where {p.name} fits.</h2></Reveal>
+            <Reveal><p className="eyebrow mb-4">{tr("Industries")}</p><h2 className="mb-10 text-3xl font-bold md:text-5xl">{tr("Where {name} fits.").replace("{name}", p.name)}</h2></Reveal>
             <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
               {p.industries.map((s) => <IndustryCard key={s} slug={s} />)}
             </div>
@@ -136,7 +139,7 @@ const ProductDetail = () => {
 
       <section className="pb-20">
         <div className="container-x">
-          <h2 className="mb-8 text-2xl font-bold md:text-3xl">More from KlivIQ</h2>
+          <h2 className="mb-8 text-2xl font-bold md:text-3xl">{tr("More from KlivIQ")}</h2>
           <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {others.map((o) => <ProductCard key={o.slug} slug={o.slug} />)}
           </div>

@@ -1,154 +1,380 @@
-import { useState, useEffect } from "react";
-import { Head as Helmet } from "vite-react-ssg";
-import { JsonLd } from "@/components/JsonLd";
-import { generalFaqs } from "@/data/generalFaqs";
-import LoadingScreen from "@/components/LoadingScreen";
-import CustomCursor from "@/components/CustomCursor";
-import FloatingActions from "@/components/FloatingActions";
-import MobileBottomNav from "@/components/MobileBottomNav";
-import Navbar from "@/components/Navbar";
-import HeroSection from "@/components/sections/HeroSection";
-import ProductsSection from "@/components/sections/ProductsSection";
-import AboutSection from "@/components/sections/AboutSection";
-import ServicesSection from "@/components/sections/ServicesSection";
-import ProjectsSection from "@/components/sections/ProjectsSection";
-import WhyKliviqSection from "@/components/sections/WhyKliviqSection";
-import TestimonialsSection from "@/components/sections/TestimonialsSection";
-import ProcessSection from "@/components/sections/ProcessSection";
-import PricingSection from "@/components/sections/PricingSection";
-import FaqSection from "@/components/sections/FaqSection";
-import ContactSection from "@/components/sections/ContactSection";
-import FooterSection from "@/components/sections/FooterSection";
-import DeferredSection from "@/components/DeferredSection";
-import TrustRow from "@/components/TrustRow";
-import ExitIntentCTA from "@/components/ExitIntentCTA";
+import { useRef } from "react";
+import { Link } from "react-router-dom";
+import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
+import { ArrowRight, ArrowUpRight, MessageCircle, Quote } from "lucide-react";
+import Seo, { ORG_REF } from "@/components/site/Seo";
+import SiteShell from "@/components/site/SiteShell";
+import Reveal from "@/components/site/Reveal";
+import CanvasBackground from "@/components/CanvasBackground";
+import { useLang } from "@/i18n/LanguageContext";
+import { useBooking } from "@/components/booking/BookingContext";
+import { catalogIndustries, catalogProducts, catalogServices, SITE_URL, STATUS_LABEL } from "@/data/catalog";
+import { portfolioItems } from "@/data/portfolio";
 
-const Index = () => {
-  // SSR-safe: render content immediately. Loading screen is skipped on
-  // statically-rendered pages so crawlers and first-paint see real HTML.
-  const [isLoading, setIsLoading] = useState(false);
+const WA = "https://wa.me/919840497937?text=Hi%20KlivIQ%2C%20I%27d%20like%20to%20discuss%20a%20project.";
 
-  useEffect(() => {
-    if (!isLoading) return;
-    const timer = setTimeout(() => setIsLoading(false), 2200);
-    return () => clearTimeout(timer);
-  }, [isLoading]);
-
-  useEffect(() => {
-    if (isLoading) return;
-    const hash = window.location.hash;
-    if (!hash) return;
-    // Wait a tick for sections to mount
-    const id = hash.replace("#", "");
-    const tryScroll = (attempt = 0) => {
-      const el = document.getElementById(id);
-      if (el) {
-        el.scrollIntoView({ behavior: "smooth", block: "start" });
-      } else if (attempt < 10) {
-        setTimeout(() => tryScroll(attempt + 1), 100);
-      }
-    };
-    tryScroll();
-  }, [isLoading]);
+const Hero = () => {
+  const { t } = useLang();
+  const { openBooking } = useBooking();
+  const ref = useRef<HTMLElement>(null);
+  const reduce = useReducedMotion();
+  const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
+  const y = useTransform(scrollYProgress, [0, 1], [0, reduce ? 0 : 140]);
+  const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
+  const scale = useTransform(scrollYProgress, [0, 1], [1, reduce ? 1 : 0.94]);
 
   return (
-    <>
-      <Helmet>
-        <link rel="canonical" href="https://www.kliviq.com/" />
-        <meta property="og:title" content="KlivIQ | AI Consulting, Fractional CTO, AI Visibility & WhatsApp AI Chatbots" />
-        <meta property="og:description" content="KlivIQ helps businesses adopt AI and build high-performance software. AI consulting, fractional CTO, AI Visibility Scoring, WhatsApp AI Chatbots, web, mobile & AI tools." />
-        <meta property="og:url" content="https://www.kliviq.com/" />
-        <meta property="og:type" content="website" />
-      </Helmet>
-      <JsonLd data={{
-        "@context": "https://schema.org",
-        "@type": "Organization",
-        "name": "KlivIQ",
-        "url": "https://www.kliviq.com/",
-        "logo": "https://www.kliviq.com/kliviq-og.png",
-        "description": "KlivIQ helps businesses adopt AI and build high-performance software. AI consulting, fractional CTO, AI Visibility Scoring (Seenzo), WhatsApp AI Chatbots (KlivIQ Connect), web, mobile, and AI tools.",
-        "sameAs": ["https://twitter.com/kliviq", "https://www.linkedin.com/company/117713997"],
-        "hasOfferCatalog": {
-          "@type": "OfferCatalog",
-          "name": "KlivIQ Products & Services",
-          "itemListElement": [
-            {
-              "@type": "Offer",
-              "itemOffered": {
-                "@type": "Product",
-                "name": "Seenzo",
-                "url": "https://seenzo.in",
-                "brand": { "@type": "Brand", "name": "KlivIQ" },
-                "description": "AI Visibility scoring platform that scans and scores how visible your business is to ChatGPT, Gemini, and Perplexity across 6 categories, 0–100."
-              }
-            },
-            {
-              "@type": "Offer",
-              "itemOffered": {
-                "@type": "Product",
-                "name": "KlivIQ Connect",
-                "url": "https://www.kliviq.com/#contact",
-                "brand": { "@type": "Brand", "name": "KlivIQ" },
-                "description": "Customizable WhatsApp AI chatbot platform for Indian SMBs — bookings, reminders, broadcasts, and AI answers in 7 Indian languages including Tamil, Hindi, and Sanskrit."
-              }
-            }
-          ]
-        }
-      }} />
-      <JsonLd data={{
-        "@context": "https://schema.org",
-        "@type": "WebSite",
-        "name": "KlivIQ",
-        "url": "https://www.kliviq.com/"
-      }} />
-      <JsonLd data={{
-        "@context": "https://schema.org",
-        "@type": "ProfessionalService",
-        "name": "KlivIQ Technologies",
-        "url": "https://www.kliviq.com",
-        "description": "KlivIQ helps businesses adopt AI and build high-performance software. AI consulting that actually ships, fractional CTO services, web, mobile, and AI tools. India-based, globally positioned.",
-        "founder": { "@type": "Person", "name": "Sriram Ramkumar" },
-        "areaServed": ["India", "Global"],
-        "serviceType": ["AI Consulting", "Fractional CTO", "AI Visibility Scoring", "WhatsApp AI Chatbot Development", "Generative Engine Optimisation (GEO)", "Web Development", "Mobile App Development", "AI Tools"],
-        "priceRange": "$$",
-        "email": "hello@kliviq.com"
-      }} />
-      <JsonLd data={{
-        "@context": "https://schema.org",
-        "@type": "FAQPage",
-        "mainEntity": generalFaqs.map((f) => ({
-          "@type": "Question",
-          "name": f.q,
-          "acceptedAnswer": { "@type": "Answer", "text": f.a },
-        })),
-      }} />
-      <LoadingScreen isLoading={isLoading} />
-      <CustomCursor />
-      {!isLoading && (
-        <>
-          <Navbar />
-          <main className="relative">
-            <HeroSection />
-            <div className="section-bg"><AboutSection /></div>
-            <DeferredSection className="section-bg-alt"><ServicesSection /></DeferredSection>
-            <DeferredSection className="section-bg"><ProductsSection /></DeferredSection>
-            <DeferredSection className="section-bg-alt"><WhyKliviqSection /></DeferredSection>
-            <DeferredSection className="section-bg-alt"><ProjectsSection /></DeferredSection>
-            <DeferredSection className="section-bg-alt" minHeight={220}><TrustRow /></DeferredSection>
-            <DeferredSection className="section-bg"><TestimonialsSection /></DeferredSection>
-            <DeferredSection className="section-bg"><ProcessSection /></DeferredSection>
-            <DeferredSection className="section-bg-alt"><PricingSection /></DeferredSection>
-            <DeferredSection className="section-bg"><FaqSection /></DeferredSection>
-            <DeferredSection className="section-bg-alt"><ContactSection /></DeferredSection>
-            <DeferredSection className="section-bg"><FooterSection /></DeferredSection>
-          </main>
-          <ExitIntentCTA />
-          <FloatingActions />
-          <MobileBottomNav />
-        </>
-      )}
-    </>
+    <section ref={ref} className="relative flex min-h-[100svh] items-center overflow-hidden pt-24">
+      <CanvasBackground />
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_30%,hsl(var(--background))_75%)]" />
+      <motion.div style={{ y, opacity, scale }} className="container-x relative z-10 py-16">
+        <motion.p
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="eyebrow mb-6"
+        >
+          <span className="h-1.5 w-1.5 rounded-full bg-secondary" />
+          {t.home.heroEyebrow}
+        </motion.p>
+        <h1 className="max-w-5xl text-[2.6rem] font-bold leading-[0.98] sm:text-6xl md:text-7xl lg:text-[6.5rem]">
+          {[t.home.heroTitle1, t.home.heroTitle2].map((line, i) => (
+            <span key={i} className="block overflow-hidden pb-2">
+              <motion.span
+                className={`block ${i === 1 ? "gradient-text" : ""}`}
+                initial={{ y: reduce ? 0 : "105%", opacity: reduce ? 0 : 1 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ duration: 1, delay: 0.15 + i * 0.12, ease: [0.16, 1, 0.3, 1] }}
+              >
+                {line}
+              </motion.span>
+            </span>
+          ))}
+        </h1>
+        <motion.p
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.5 }}
+          className="mt-8 max-w-2xl text-lg leading-relaxed text-muted-foreground md:text-xl"
+        >
+          {t.home.heroLede}
+        </motion.p>
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.65 }}
+          className="mt-10 flex flex-wrap gap-3"
+        >
+          <button type="button" onClick={() => openBooking("home-hero")} className="btn-primary px-7 py-3.5 text-base">
+            {t.home.heroPrimary} <ArrowRight className="h-4 w-4" />
+          </button>
+          <Link to="/products" className="btn-ghost px-7 py-3.5 text-base">
+            {t.home.heroSecondary}
+          </Link>
+        </motion.div>
+      </motion.div>
+    </section>
   );
 };
+
+const SectionHead = ({ eyebrow, title, lede, action }: { eyebrow: string; title: string; lede?: string; action?: React.ReactNode }) => (
+  <Reveal className="mb-12 flex flex-col justify-between gap-6 md:mb-16 md:flex-row md:items-end">
+    <div className="max-w-3xl">
+      <p className="eyebrow mb-4">{eyebrow}</p>
+      <h2 className="text-3xl font-bold leading-[1.05] sm:text-4xl md:text-6xl">{title}</h2>
+      {lede && <p className="mt-5 max-w-xl text-lg text-muted-foreground">{lede}</p>}
+    </div>
+    {action}
+  </Reveal>
+);
+
+const Products = () => {
+  const { t } = useLang();
+  return (
+    <section className="relative py-24 md:py-36">
+      <div className="container-x grid gap-12 lg:grid-cols-12">
+        <div className="lg:col-span-5">
+          <div className="lg:sticky lg:top-32">
+            <SectionHead eyebrow={t.home.productsEyebrow} title={t.home.productsTitle} lede={t.home.productsLede} />
+            <Link to="/products" className="btn-ghost -mt-4">
+              {t.nav.allProducts} <ArrowRight className="h-4 w-4" />
+            </Link>
+          </div>
+        </div>
+        <div className="space-y-6 lg:col-span-7">
+          {catalogProducts.map((p, i) => (
+            <div key={p.slug} className="lg:sticky" style={{ top: `${110 + i * 18}px` }}>
+              <Reveal delay={0.05}>
+                <Link
+                  to={`/products/${p.slug}`}
+                  className="group relative block overflow-hidden rounded-[2rem] border border-border bg-card p-7 shadow-soft transition-all hover:-translate-y-1 hover:shadow-lift md:p-10"
+                >
+                  <div
+                    className="pointer-events-none absolute -right-20 -top-20 h-64 w-64 rounded-full opacity-[0.12] blur-3xl transition-opacity group-hover:opacity-25"
+                    style={{ background: `hsl(${p.hue})` }}
+                  />
+                  <div className="relative flex items-start justify-between gap-4">
+                    <img src={p.logo} alt={`${p.name} logo`} loading="lazy" className="h-14 w-14 rounded-2xl object-cover md:h-16 md:w-16" />
+                    <span className="rounded-full border border-border px-3 py-1 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+                      {STATUS_LABEL[p.status]}
+                    </span>
+                  </div>
+                  <h3 className="relative mt-8 text-2xl font-bold md:text-4xl">{p.name}</h3>
+                  <p className="relative mt-2 text-lg font-medium text-foreground/80">{p.tagline}</p>
+                  <p className="relative mt-4 max-w-xl text-muted-foreground">{p.summary}</p>
+                  <span className="relative mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-brand">
+                    {t.home.learnMore} <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                  </span>
+                </Link>
+              </Reveal>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+const Industries = () => {
+  const { t } = useLang();
+  return (
+    <section className="bg-surface py-24 md:py-36">
+      <div className="container-x">
+        <SectionHead
+          eyebrow={t.home.industriesEyebrow}
+          title={t.home.industriesTitle}
+          action={<Link to="/industries" className="btn-ghost">{t.nav.allIndustries} <ArrowRight className="h-4 w-4" /></Link>}
+        />
+        <div className="grid gap-4 sm:grid-cols-2">
+          {catalogIndustries.map((ind, i) => (
+            <Reveal key={ind.slug} delay={i * 0.06}>
+              <Link
+                to={`/industries/${ind.slug}`}
+                className="group relative flex min-h-[260px] flex-col justify-between overflow-hidden rounded-[2rem] border border-border bg-card p-8 transition-all hover:shadow-lift"
+              >
+                <div className="pointer-events-none absolute inset-0 kolam-grid opacity-0 transition-opacity duration-500 group-hover:opacity-70" />
+                <span className="relative font-display text-sm font-semibold text-muted-foreground">0{i + 1}</span>
+                <div className="relative">
+                  <h3 className="text-2xl font-bold md:text-3xl">{ind.name}</h3>
+                  <p className="mt-2 text-muted-foreground">{ind.short}</p>
+                  <div className="mt-5 flex flex-wrap gap-2">
+                    {ind.products.map((slug) => {
+                      const p = catalogProducts.find((x) => x.slug === slug);
+                      return p ? (
+                        <span key={slug} className="rounded-full bg-accent px-3 py-1 text-xs font-semibold text-accent-foreground">{p.name}</span>
+                      ) : null;
+                    })}
+                  </div>
+                </div>
+                <ArrowUpRight className="absolute right-8 top-8 h-6 w-6 text-muted-foreground transition-all group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:text-foreground" />
+              </Link>
+            </Reveal>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+const Services = () => {
+  const { t } = useLang();
+  return (
+    <section className="py-24 md:py-36">
+      <div className="container-x">
+        <SectionHead
+          eyebrow={t.home.servicesEyebrow}
+          title={t.home.servicesTitle}
+          action={<Link to="/pricing" className="btn-ghost">{t.nav.pricing} <ArrowRight className="h-4 w-4" /></Link>}
+        />
+        <ul className="border-t border-border">
+          {catalogServices.map((s, i) => (
+            <Reveal key={s.slug} delay={i * 0.05}>
+              <li className="border-b border-border">
+                <Link to={`/services/${s.slug}`} className="group grid items-center gap-3 py-8 md:grid-cols-12 md:gap-6 md:py-10">
+                  <span className="font-display text-sm text-muted-foreground md:col-span-1">0{i + 1}</span>
+                  <h3 className="text-2xl font-bold transition-colors group-hover:text-brand md:col-span-5 md:text-4xl">{s.name}</h3>
+                  <p className="text-muted-foreground md:col-span-4">{s.short}</p>
+                  <div className="flex items-center justify-between md:col-span-2 md:flex-col md:items-end">
+                    <span className="text-xs uppercase tracking-wider text-muted-foreground">{t.home.startingFrom}</span>
+                    <span className="font-display text-lg font-semibold">{s.priceInr}</span>
+                  </div>
+                </Link>
+              </li>
+            </Reveal>
+          ))}
+        </ul>
+      </div>
+    </section>
+  );
+};
+
+const Work = () => {
+  const { t } = useLang();
+  const picks = portfolioItems.filter((p) => ["mathavan-traders", "sri-aishwarya-sarees", "selfsame-therapy"].includes(p.slug));
+  return (
+    <section className="bg-surface py-24 md:py-36">
+      <div className="container-x">
+        <SectionHead
+          eyebrow={t.home.workEyebrow}
+          title={t.home.workTitle}
+          action={<Link to="/work" className="btn-ghost">{t.home.viewAllWork} <ArrowRight className="h-4 w-4" /></Link>}
+        />
+        <div className="grid gap-6 md:grid-cols-3">
+          {picks.map((w, i) => (
+            <Reveal key={w.slug} delay={i * 0.08}>
+              <a href={w.href} target="_blank" rel="noopener noreferrer" className="group block">
+                <div className="overflow-hidden rounded-[1.5rem] border border-border bg-card">
+                  <img
+                    src={w.thumb}
+                    alt={`${w.name} website`}
+                    loading="lazy"
+                    width={1200}
+                    height={720}
+                    className="aspect-[5/3] w-full object-cover object-top transition-transform duration-700 group-hover:scale-[1.04]"
+                  />
+                </div>
+                <div className="mt-5 flex items-start justify-between gap-3">
+                  <div>
+                    <h3 className="text-xl font-bold">{w.name}</h3>
+                    <p className="mt-1 text-sm text-muted-foreground">{w.tagline}</p>
+                  </div>
+                  <ArrowUpRight className="mt-1 h-5 w-5 shrink-0 text-muted-foreground transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+                </div>
+              </a>
+            </Reveal>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+const Process = () => {
+  const { t } = useLang();
+  const ref = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({ target: ref, offset: ["start 80%", "end 50%"] });
+  const scaleX = useTransform(scrollYProgress, [0, 1], [0, 1]);
+  return (
+    <section className="py-24 md:py-36">
+      <div className="container-x" ref={ref}>
+        <SectionHead eyebrow={t.home.processEyebrow} title={t.home.processTitle} />
+        <div className="relative">
+          <div className="absolute left-0 right-0 top-5 hidden h-px bg-border md:block" />
+          <motion.div style={{ scaleX }} className="absolute left-0 right-0 top-5 hidden h-px origin-left bg-primary md:block" />
+          <ol className="grid gap-10 md:grid-cols-4 md:gap-8">
+            {t.home.processSteps.map((s, i) => (
+              <Reveal key={s.title} delay={i * 0.1}>
+                <li className="relative">
+                  <span className="relative z-10 flex h-10 w-10 items-center justify-center rounded-full border border-border bg-background font-display text-sm font-semibold">
+                    {i + 1}
+                  </span>
+                  <h3 className="mt-6 text-xl font-bold">{s.title}</h3>
+                  <p className="mt-2 text-muted-foreground">{s.body}</p>
+                </li>
+              </Reveal>
+            ))}
+          </ol>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+const QuoteBlock = () => {
+  const { t } = useLang();
+  const item = t.testimonials.items[0];
+  if (!item) return null;
+  return (
+    <section className="pb-24 md:pb-36">
+      <div className="container-x">
+        <Reveal className="mx-auto max-w-4xl text-center">
+          <Quote className="mx-auto h-10 w-10 text-brand" />
+          <p className="eyebrow mt-6 justify-center">{t.home.quoteEyebrow}</p>
+          <blockquote className="mt-6 line-clamp-5 font-display text-2xl font-medium leading-snug md:text-3xl">
+            {item.quote}
+          </blockquote>
+          <p className="mt-6 font-semibold">{item.name}</p>
+          <p className="text-sm text-muted-foreground">{item.title}</p>
+          <Link to="/about#recommendations" className="mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-brand">
+            {t.home.readMore} <ArrowRight className="h-4 w-4" />
+          </Link>
+        </Reveal>
+      </div>
+    </section>
+  );
+};
+
+export const FinalCta = ({ source = "final-cta" }: { source?: string }) => {
+  const { t } = useLang();
+  const { openBooking } = useBooking();
+  return (
+    <section className="px-4 pb-16 sm:px-6 md:pb-24">
+      <Reveal>
+        <div className="relative mx-auto max-w-7xl overflow-hidden rounded-[2.5rem] bg-foreground px-6 py-20 text-center text-background md:px-16 md:py-28">
+          <div className="pointer-events-none absolute -left-24 -top-24 h-80 w-80 rounded-full bg-secondary/30 blur-3xl" />
+          <div className="pointer-events-none absolute -bottom-24 -right-24 h-80 w-80 rounded-full bg-secondary/20 blur-3xl" />
+          <h2 className="relative mx-auto max-w-3xl text-4xl font-bold leading-[1.02] md:text-6xl">{t.home.ctaTitle}</h2>
+          <p className="relative mx-auto mt-6 max-w-xl text-lg opacity-75">{t.home.ctaLede}</p>
+          <div className="relative mt-10 flex flex-wrap justify-center gap-3">
+            <button type="button" onClick={() => openBooking(source)} className="btn-brand px-7 py-3.5 text-base">
+              {t.nav.bookCall} <ArrowRight className="h-4 w-4" />
+            </button>
+            <a href={WA} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-full border border-background/30 px-7 py-3.5 text-base font-semibold transition-colors hover:border-background/70">
+              <MessageCircle className="h-4 w-4" /> {t.home.ctaWhatsapp}
+            </a>
+          </div>
+        </div>
+      </Reveal>
+    </section>
+  );
+};
+
+const Index = () => (
+  <SiteShell>
+    <Seo
+      title="KlivIQ | AI Products, AI Implementation & Web Development from India"
+      description="KlivIQ builds AI products (Seenzo, KlivIQ Connect, KlivIQ TryOn, ClinicPing, Aacharam) and delivers AI implementation, AI visibility (GEO), web and mobile development and fractional CTO services for growing businesses."
+      path="/"
+      schema={[
+        {
+          "@context": "https://schema.org",
+          "@type": "Organization",
+          name: "KlivIQ Technologies",
+          alternateName: "KlivIQ",
+          url: `${SITE_URL}/`,
+          logo: `${SITE_URL}/kliviq-og.png`,
+          email: "hello@kliviq.com",
+          founder: { "@type": "Person", name: "Sriram Ramkumar" },
+          address: { "@type": "PostalAddress", addressLocality: "Chennai", addressCountry: "IN" },
+          sameAs: ["https://www.linkedin.com/company/117713997", "https://x.com/kliviq"],
+          makesOffer: catalogServices.map((s) => ({
+            "@type": "Offer",
+            itemOffered: { "@type": "Service", name: s.name, url: `${SITE_URL}/services/${s.slug}` },
+          })),
+        },
+        { "@context": "https://schema.org", "@type": "WebSite", name: "KlivIQ", url: `${SITE_URL}/`, publisher: ORG_REF },
+        {
+          "@context": "https://schema.org",
+          "@type": "ItemList",
+          name: "KlivIQ products",
+          itemListElement: catalogProducts.map((p, i) => ({
+            "@type": "ListItem",
+            position: i + 1,
+            url: `${SITE_URL}/products/${p.slug}`,
+            name: p.name,
+          })),
+        },
+      ]}
+    />
+    <Hero />
+    <Products />
+    <Industries />
+    <Services />
+    <Work />
+    <Process />
+    <QuoteBlock />
+    <FinalCta />
+  </SiteShell>
+);
 
 export default Index;

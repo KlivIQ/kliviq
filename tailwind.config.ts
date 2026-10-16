@@ -50,6 +50,13 @@ export default {
         "neon-purple": "hsl(var(--neon-purple))",
         "neon-teal": "hsl(var(--neon-teal))",
         "brand-cyan": "hsl(var(--brand-cyan))",
+        surface: "hsl(var(--surface))",
+        sand: "hsl(var(--sand))",
+        brand: "hsl(var(--brand-ink))",
+      },
+      fontFamily: {
+        display: ['"Space Grotesk"', '"DM Sans"', "system-ui", "sans-serif"],
+        sans: ['"DM Sans"', "system-ui", "sans-serif"],
       },
       borderRadius: {
         lg: "var(--radius)",

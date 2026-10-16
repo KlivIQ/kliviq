@@ -26,7 +26,7 @@ const LangSwitcher = ({ className = "" }: { className?: string }) => {
             aria-label={o.aria}
             className={`relative px-2.5 py-1 text-xs font-semibold rounded-full transition-all duration-300 min-w-[2rem] ${
               active
-                ? "text-primary-foreground bg-gradient-to-r from-primary to-secondary shadow-sm"
+                ? "text-background bg-foreground text-background shadow-sm"
                 : "text-muted-foreground hover:text-foreground"
             }`}
           >

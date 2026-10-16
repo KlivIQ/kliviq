@@ -14,7 +14,7 @@ const ArticleCTA = () => (
     <div className="flex flex-col sm:flex-row gap-3 justify-center items-center">
       <BookingButton
         source="blog-article"
-        className="inline-flex items-center gap-2 px-6 py-3 rounded-full text-sm font-semibold text-primary-foreground bg-gradient-to-r from-primary to-secondary transition-transform hover:scale-105"
+        className="inline-flex items-center gap-2 px-6 py-3 rounded-full text-sm font-semibold text-background bg-foreground text-background transition-transform hover:scale-105"
       >
         Book a Free Consultation <ArrowRight className="w-4 h-4" />
       </BookingButton>

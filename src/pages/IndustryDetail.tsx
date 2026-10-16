@@ -57,7 +57,7 @@ const IndustryDetail = () => {
         <div className="container-x grid gap-12 lg:grid-cols-12">
           <Reveal className="lg:col-span-5">
             <p className="eyebrow mb-4">The everyday problems</p>
-            <h2 className="text-3xl font-bold md:text-5xl">What slows {ind.name.split(" ")[0].toLowerCase() === "ca" ? "firms" : "teams"} down.</h2>
+            <h2 className="text-3xl font-bold md:text-5xl">What slows you down.</h2>
             <ul className="mt-8 space-y-4">
               {ind.challenges.map((c) => (
                 <li key={c} className="border-l-2 border-primary pl-4 text-lg">{c}</li>

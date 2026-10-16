@@ -282,7 +282,7 @@ const Process = () => {
 
 const QuoteBlock = () => {
   const { t } = useLang();
-  const item = t.testimonials.items[0];
+  const item = t.testimonials.items[1] ?? t.testimonials.items[0];
   if (!item) return null;
   return (
     <section className="pb-24 md:pb-36">

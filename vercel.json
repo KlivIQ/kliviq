@@ -1,4 +1,46 @@
 {
   "cleanUrls": true,
-  "trailingSlash": false
+  "trailingSlash": false,
+  "redirects": [
+    {
+      "source": "/portfolio",
+      "destination": "/work",
+      "permanent": true
+    },
+    {
+      "source": "/clinicping",
+      "destination": "/products/clinicping",
+      "permanent": true
+    },
+    {
+      "source": "/scopesnap",
+      "destination": "/work",
+      "permanent": true
+    },
+    {
+      "source": "/pitchdeck",
+      "destination": "/work",
+      "permanent": true
+    },
+    {
+      "source": "/services/ai-consulting",
+      "destination": "/services/ai-implementation",
+      "permanent": true
+    },
+    {
+      "source": "/services/ai-strategy",
+      "destination": "/services/ai-implementation",
+      "permanent": true
+    },
+    {
+      "source": "/services/custom-app-development",
+      "destination": "/services/web-mobile-development",
+      "permanent": true
+    },
+    {
+      "source": "/services/mvp-development",
+      "destination": "/services/web-mobile-development",
+      "permanent": true
+    }
+  ]
 }

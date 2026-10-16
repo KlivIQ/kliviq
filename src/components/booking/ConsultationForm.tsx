@@ -95,7 +95,7 @@ const ConsultationForm = ({ source, onDone, defaultServices = [], defaultMessage
   };
 
   const inputClass =
-    "w-full rounded-xl bg-background/60 border border-border/60 px-4 py-3 text-base text-foreground placeholder:text-muted-foreground/60 outline-none transition-colors focus:border-secondary/70 focus:ring-2 focus:ring-secondary/20";
+    "w-full rounded-xl bg-background/60 border border-border/60 px-4 py-3 text-base text-foreground placeholder:text-muted-foreground/60 outline-none transition-colors focus:border-primary focus:ring-2 focus:ring-ring/20";
 
   return (
         <AnimatePresence mode="wait">
@@ -110,9 +110,9 @@ const ConsultationForm = ({ source, onDone, defaultServices = [], defaultMessage
                 initial={{ scale: 0.5, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
                 transition={{ type: "spring", stiffness: 220, damping: 16 }}
-                className="mx-auto mb-5 flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-br from-primary/25 to-secondary/25"
+                className="mx-auto mb-5 flex h-14 w-14 items-center justify-center rounded-full bg-accent"
               >
-                <CheckCircle2 className="h-7 w-7 text-secondary" />
+                <CheckCircle2 className="h-7 w-7 text-brand" />
               </motion.div>
               <h3 className="text-2xl font-extrabold tracking-tight mb-2">{t.booking.successTitle}</h3>
               <p className="text-muted-foreground leading-relaxed px-2">{t.booking.successBody}</p>
@@ -147,7 +147,7 @@ const ConsultationForm = ({ source, onDone, defaultServices = [], defaultMessage
 
                 <div>
                   <label htmlFor="booking-name" className="block text-sm font-medium mb-1.5">
-                    {t.booking.name} <span className="text-secondary">*</span>
+                    {t.booking.name} <span className="text-brand">*</span>
                   </label>
                   <input
                     id="booking-name"
@@ -162,7 +162,7 @@ const ConsultationForm = ({ source, onDone, defaultServices = [], defaultMessage
                 <div className="grid gap-4 sm:grid-cols-2">
                   <div>
                     <label htmlFor="booking-email" className="block text-sm font-medium mb-1.5">
-                      {t.booking.email} <span className="text-secondary">*</span>
+                      {t.booking.email} <span className="text-brand">*</span>
                     </label>
                     <input
                       id="booking-email"
@@ -177,7 +177,7 @@ const ConsultationForm = ({ source, onDone, defaultServices = [], defaultMessage
                   </div>
                   <div>
                     <label htmlFor="booking-mobile" className="block text-sm font-medium mb-1.5">
-                      {t.booking.mobile} <span className="text-secondary">*</span>
+                      {t.booking.mobile} <span className="text-brand">*</span>
                     </label>
                     <input
                       id="booking-mobile"
@@ -194,7 +194,7 @@ const ConsultationForm = ({ source, onDone, defaultServices = [], defaultMessage
 
                 <div>
                   <span className="block text-sm font-medium mb-2">
-                    {t.booking.service} <span className="text-secondary">*</span>
+                    {t.booking.service} <span className="text-brand">*</span>
                   </span>
                   <div className="flex flex-wrap gap-2">
                     {SERVICE_KEYS.map((key) => {
@@ -211,7 +211,7 @@ const ConsultationForm = ({ source, onDone, defaultServices = [], defaultMessage
                           className={`relative inline-flex items-center gap-1.5 rounded-full border px-4 py-2 text-sm font-medium transition-colors ${
                             active
                               ? "border-primary bg-accent text-accent-foreground"
-                              : "border-border/60 text-muted-foreground hover:text-foreground hover:border-secondary/40"
+                              : "border-border/60 text-muted-foreground hover:text-foreground hover:border-foreground/40"
                           }`}
                         >
                           <AnimatePresence initial={false}>

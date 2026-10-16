@@ -27,20 +27,6 @@ type Card = {
 };
 
 const cards: Card[] = [
-  ...catalogProducts
-    .filter((p) => p.slug !== "clinicping")
-    .map<Card>((p) => ({
-      key: p.slug,
-      kind: "ai",
-      name: p.name,
-      tagline: p.tagline,
-      summary: p.summary,
-      category: `AI & Products · ${p.status === "live" ? "Live" : p.status === "pilot" ? "Pilot" : "Coming soon"}`,
-      href: `/products/${p.slug}`,
-      external: false,
-      logo: p.logo,
-      hue: p.hue,
-    })),
   ...portfolioItems.map<Card>((w) => ({
     key: w.slug,
     kind: w.kind,
@@ -56,6 +42,20 @@ const cards: Card[] = [
     metrics: w.metrics,
     experiment: w.experiment,
   })),
+  ...catalogProducts
+    .filter((p) => p.slug !== "clinicping")
+    .map<Card>((p) => ({
+      key: p.slug,
+      kind: "ai",
+      name: p.name,
+      tagline: p.tagline,
+      summary: p.summary,
+      category: `AI & Products · ${p.status === "live" ? "Live" : p.status === "pilot" ? "Pilot" : "Coming soon"}`,
+      href: `/products/${p.slug}`,
+      external: false,
+      logo: p.logo,
+      hue: p.hue,
+    })),
 ];
 
 const FILTERS: { key: "all" | WorkKind; label: string }[] = [

@@ -5,7 +5,7 @@ import { ArrowRight, ArrowUpRight, MessageCircle, Quote } from "lucide-react";
 import Seo, { ORG_REF } from "@/components/site/Seo";
 import SiteShell from "@/components/site/SiteShell";
 import Reveal from "@/components/site/Reveal";
-import CanvasBackground from "@/components/CanvasBackground";
+import LivingCircuit from "@/components/hero/LivingCircuit";
 import { useLang } from "@/i18n/LanguageContext";
 import { useBooking } from "@/components/booking/BookingContext";
 import { catalogIndustries, catalogProducts, catalogServices, SITE_URL, STATUS_LABEL } from "@/data/catalog";
@@ -16,63 +16,33 @@ const WA = "https://wa.me/919840497937?text=Hi%20KlivIQ%2C%20I%27d%20like%20to%2
 const Hero = () => {
   const { t } = useLang();
   const { openBooking } = useBooking();
-  const ref = useRef<HTMLElement>(null);
-  const reduce = useReducedMotion();
-  const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
-  const y = useTransform(scrollYProgress, [0, 1], [0, reduce ? 0 : 140]);
-  const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
-  const scale = useTransform(scrollYProgress, [0, 1], [1, reduce ? 1 : 0.94]);
 
   return (
-    <section ref={ref} className="relative flex min-h-[100svh] items-center overflow-hidden pt-24">
-      <CanvasBackground />
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_30%,hsl(var(--background))_75%)]" />
-      <motion.div style={{ y, opacity, scale }} className="container-x relative z-10 py-16">
-        <motion.p
-          initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="eyebrow mb-6"
-        >
-          <span className="h-1.5 w-1.5 rounded-full bg-secondary" />
-          {t.home.heroEyebrow}
-        </motion.p>
-        <h1 className="max-w-5xl text-[2.6rem] font-bold leading-[0.98] sm:text-6xl md:text-7xl lg:text-[6.5rem]">
-          {[t.home.heroTitle1, t.home.heroTitle2].map((line, i) => (
-            <span key={i} className="block overflow-hidden pb-2">
-              <motion.span
-                className={`block ${i === 1 ? "gradient-text" : ""}`}
-                initial={{ y: reduce ? 0 : "105%", opacity: reduce ? 0 : 1 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ duration: 1, delay: 0.15 + i * 0.12, ease: [0.16, 1, 0.3, 1] }}
-              >
-                {line}
-              </motion.span>
-            </span>
-          ))}
-        </h1>
-        <motion.p
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.5 }}
-          className="mt-8 max-w-2xl text-lg leading-relaxed text-muted-foreground md:text-xl"
-        >
-          {t.home.heroLede}
-        </motion.p>
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.65 }}
-          className="mt-10 flex flex-wrap gap-3"
-        >
-          <button type="button" onClick={() => openBooking("home-hero")} className="btn-primary px-7 py-3.5 text-base">
-            {t.home.heroPrimary} <ArrowRight className="h-4 w-4" />
-          </button>
-          <Link to="/products" className="btn-ghost px-7 py-3.5 text-base">
-            {t.home.heroSecondary}
-          </Link>
-        </motion.div>
-      </motion.div>
+    <section className="relative flex min-h-[100svh] items-center overflow-hidden pt-24">
+      <div className="container-x relative z-10 grid items-center gap-10 py-12 lg:grid-cols-12 lg:py-16">
+        <div className="lg:col-span-7">
+          <p className="eyebrow mb-6">
+            <span className="h-1.5 w-1.5 rounded-full bg-secondary" />
+            {t.home.heroEyebrow}
+          </p>
+          <h1 className="max-w-5xl text-[2.6rem] font-bold leading-[0.98] sm:text-6xl md:text-7xl lg:text-[4.75rem] xl:text-[5.5rem]">
+            <span className="block pb-2">{t.home.heroTitle1}</span>
+            <span className="gradient-text block pb-2">{t.home.heroTitle2}</span>
+          </h1>
+          <p className="mt-8 max-w-2xl text-lg leading-relaxed text-muted-foreground md:text-xl">{t.home.heroLede}</p>
+          <div className="mt-10 flex flex-wrap gap-3">
+            <button type="button" onClick={() => openBooking("home-hero")} className="btn-primary px-7 py-3.5 text-base">
+              {t.home.heroPrimary} <ArrowRight className="h-4 w-4" />
+            </button>
+            <Link to="/products" className="btn-ghost px-7 py-3.5 text-base">
+              {t.home.heroSecondary}
+            </Link>
+          </div>
+        </div>
+        <div className="lg:col-span-5">
+          <LivingCircuit />
+        </div>
+      </div>
     </section>
   );
 };

@@ -12,3 +12,7 @@
 ## Open
 - [ ] Confirm international ($) price for AI Visibility — shown as "On request"
 - [ ] (Optional) notify.kliviq.com custom sending domain — deferred by user
+
+## Hero Living Circuit
+- [x] Animated Circuit K hero (user's SVG), product nodes + demos, Tamil/Hindi strings approved
+- [ ] Mobile Lighthouse score check on the published site (needs live URL)

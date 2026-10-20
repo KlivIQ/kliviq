@@ -12,10 +12,10 @@ import CircuitDemoCard, { type DemoKey } from "./CircuitDemoCard";
 // Logo sits at (50,20) in a 200x200 canvas; IQ node = (126,102).
 const IQ = { x: 126, y: 102 };
 const NODES: { key: DemoKey; name: string; x: number; y: number; path: string }[] = [
-  { key: "seenzo", name: "Seenzo", x: 22, y: 160, path: "M126 102 L112 130 L40 130 L22 160" },
+  { key: "seenzo", name: "Seenzo", x: 30, y: 160, path: "M126 102 L112 130 L44 130 L30 160" },
   { key: "connect", name: "KlivIQ Connect", x: 78, y: 186, path: "M126 102 L118 150 L78 150 L78 186" },
-  { key: "tryon", name: "KlivIQ TryOn", x: 146, y: 186, path: "M126 102 L134 150 L146 160 L146 186" },
-  { key: "clinicping", name: "ClinicPing", x: 184, y: 140, path: "M126 102 L150 102 L184 120 L184 140" },
+  { key: "tryon", name: "KlivIQ TryOn", x: 140, y: 186, path: "M126 102 L134 150 L140 160 L140 186" },
+  { key: "clinicping", name: "ClinicPing", x: 172, y: 146, path: "M126 102 L150 102 L172 120 L172 146" },
 ];
 
 const LivingCircuit = () => {
@@ -162,14 +162,17 @@ const LivingCircuit = () => {
 
         {/* Product nodes (HTML for crisp labels and accessible tap targets) */}
         {NODES.map((n, i) => (
-          <button
+          <div
             key={n.key}
-            type="button"
-            className="lc-node lc-fade absolute -translate-x-1/2 -translate-y-1/2"
+            className="lc-fade absolute -translate-x-1/2 -translate-y-1/2"
             style={{ left: `${(n.x / 200) * 100}%`, top: `${(n.y / 200) * 100}%`, animationDelay: `${1.7 + i * 0.12}s` }}
+          >
+          <button
+            type="button"
+            className="lc-node block"
             onMouseEnter={() => setActive(n.key)}
             onFocus={() => setActive(n.key)}
-            onClick={() => setActive((a) => (a === n.key ? null : n.key))}
+            onClick={() => setActive(n.key)}
             aria-expanded={active === n.key}
             aria-label={`${n.name} — ${tr("Tap a node to see it work")}`}
           >
@@ -178,6 +181,7 @@ const LivingCircuit = () => {
               {n.name}
             </span>
           </button>
+          </div>
         ))}
       </div>
 

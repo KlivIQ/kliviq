@@ -221,3 +221,22 @@
     to { transform: translateX(-50%); }
   }
 }
+
+/* Hero Living Circuit — CSS intro runs from first paint and ends on the finished logo */
+@layer components {
+  .living-circuit .lc-draw { stroke-dasharray: 1; stroke-dashoffset: 1; animation: lc-draw 0.45s cubic-bezier(.65,0,.35,1) forwards; }
+  .living-circuit .lc-sig { animation-duration: 0.55s; }
+  .living-circuit .lc-pop { transform-box: fill-box; transform-origin: center; opacity: 0; animation: lc-pop 0.35s cubic-bezier(.34,1.56,.64,1) forwards; }
+  .living-circuit .lc-iq { animation: lc-pop 0.35s cubic-bezier(.34,1.56,.64,1) forwards, lc-iq 0.8s ease-out 1.3s 1; }
+  .living-circuit .lc-fade { opacity: 0; animation: lc-fade 0.4s ease-out forwards; }
+  .living-circuit .lc-card { animation: lc-fade 0.25s ease-out; }
+  @keyframes lc-draw { to { stroke-dashoffset: 0; } }
+  @keyframes lc-pop { from { opacity: 0; transform: scale(.6); } to { opacity: 1; transform: scale(1); } }
+  @keyframes lc-iq { 0%,100% { transform: scale(1); } 50% { transform: scale(1.12); } }
+  @keyframes lc-fade { from { opacity: 0; } to { opacity: 1; } }
+  @media (prefers-reduced-motion: reduce) {
+    .living-circuit .lc-draw, .living-circuit .lc-pop, .living-circuit .lc-iq, .living-circuit .lc-fade, .living-circuit .lc-card {
+      animation: none !important; opacity: 1; stroke-dashoffset: 0; transform: none;
+    }
+  }
+}

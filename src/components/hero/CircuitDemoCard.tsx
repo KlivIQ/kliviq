@@ -114,8 +114,8 @@ const ClinicDemo = () => {
 
 const META: Record<DemoKey, { name: string; href: string; Demo: () => JSX.Element }> = {
   seenzo: { name: "Seenzo", href: "/products/seenzo", Demo: SeenzoDemo },
-  connect: { name: "KlivIQ Connect", href: "/products/kliviq-connect", Demo: ConnectDemo },
-  tryon: { name: "KlivIQ TryOn", href: "/products/kliviq-tryon", Demo: TryOnDemo },
+  connect: { name: "KlivIQ Connect", href: "/products/connect", Demo: ConnectDemo },
+  tryon: { name: "KlivIQ TryOn", href: "/products/tryon", Demo: TryOnDemo },
   clinicping: { name: "ClinicPing", href: "/products/clinicping", Demo: ClinicDemo },
 };
 

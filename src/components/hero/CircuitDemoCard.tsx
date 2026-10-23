@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { ArrowRight, X } from "lucide-react";
+import { ArrowRight, Check, X } from "lucide-react";
 import { useLang } from "@/i18n/LanguageContext";
 
-export type DemoKey = "seenzo" | "connect" | "tryon" | "clinicping";
+export type DemoKey = "seo" | "seenzo" | "connect" | "tryon" | "agents" | "web";
 
 const reduced = () => typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
@@ -177,18 +177,18 @@ const META: Record<DemoKey, { name: string; href: string; Demo: () => JSX.Elemen
 
 const CircuitDemoCard = ({ demo, onClose }: { demo: DemoKey; onClose: () => void }) => {
   const { tr } = useLang();
-  const { name, href, Demo } = META[demo];
+  const { name, href, Demo, service } = META[demo];
   return (
     <div className="lc-card absolute left-1/2 top-2 z-20 w-[min(300px,92%)] -translate-x-1/2 rounded-2xl border border-border bg-card p-4 shadow-lift" role="dialog" aria-label={name}>
       <div className="mb-3 flex items-center justify-between">
-        <p className="text-sm font-bold">{name}</p>
+        <p className="text-sm font-bold">{service ? tr(name) : name}</p>
         <button type="button" onClick={onClose} aria-label="Close" className="rounded-full p-1 text-muted-foreground hover:text-foreground">
           <X className="h-4 w-4" />
         </button>
       </div>
       <Demo key={demo} />
       <Link to={href} className="mt-3 inline-flex items-center gap-1 text-xs font-semibold text-brand">
-        {tr("See product")} <ArrowRight className="h-3.5 w-3.5" />
+        {tr(service ? "See service" : "See product")} <ArrowRight className="h-3.5 w-3.5" />
       </Link>
     </div>
   );

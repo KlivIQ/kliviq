@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { ArrowRight, X } from "lucide-react";
+import { ArrowRight, Check, X } from "lucide-react";
 import { useLang } from "@/i18n/LanguageContext";
 
-export type DemoKey = "seenzo" | "connect" | "tryon" | "clinicping";
+export type DemoKey = "seo" | "seenzo" | "connect" | "tryon" | "agents" | "web";
 
 const reduced = () => typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
@@ -91,48 +91,104 @@ const TryOnDemo = () => {
   );
 };
 
-const ClinicDemo = () => {
-  const { tr } = useLang();
-  const [flag, setFlag] = useState(reduced());
+// Reveals items one by one (all at once for reduced motion).
+const useStagger = (count: number, gap: number) => {
+  const [n, setN] = useState(reduced() ? count : 0);
   useEffect(() => {
     if (reduced()) return;
-    const id = window.setTimeout(() => setFlag(true), 500);
-    return () => window.clearTimeout(id);
-  }, []);
+    const id = window.setInterval(() => setN((x) => (x >= count ? x : x + 1)), gap);
+    return () => window.clearInterval(id);
+  }, [count, gap]);
+  return n;
+};
+
+const AgentsDemo = () => {
+  const { tr } = useLang();
+  const steps = ["Read the invoice", "Extract GST details", "Update the sheet", "Notify the team on WhatsApp"];
+  const n = useStagger(steps.length, 450);
+  return (
+    <ul className="space-y-1.5 text-sm">
+      {steps.map((s, i) => (
+        <li key={s} className="flex items-center gap-2 transition-opacity duration-300" style={{ opacity: i < n ? 1 : 0.35 }}>
+          <span className={`flex h-4 w-4 items-center justify-center rounded-full text-[10px] font-bold transition-colors ${i < n ? "bg-primary text-primary-foreground" : "border border-border"}`}>
+            {i < n ? <Check className="h-3 w-3" /> : null}
+          </span>
+          {tr(s)}
+        </li>
+      ))}
+      <li className="pt-1 text-xs text-muted-foreground">{tr("Your AI agent, working 24/7")}</li>
+    </ul>
+  );
+};
+
+const SeoDemo = () => {
+  const { tr } = useLang();
+  const rows = [
+    { label: "Google search", w: 88 },
+    { label: "ChatGPT answer", w: 76 },
+    { label: "Perplexity citation", w: 70 },
+  ];
+  const n = useStagger(rows.length, 350);
   return (
     <div className="space-y-2 text-sm">
-      <div className="rounded-xl border border-border px-3 py-2 font-medium">{tr("Next appointment, 4:30 PM")}</div>
-      <div
-        className="rounded-xl border border-destructive/40 bg-destructive/10 px-3 py-2 text-xs font-semibold text-destructive transition-all duration-500"
-        style={{ opacity: flag ? 1 : 0, transform: flag ? "none" : "translateX(-12px)" }}
-      >
-        {tr("High no-show risk — reminder sent")}
+      {rows.map((r, i) => (
+        <div key={r.label}>
+          <div className="mb-1 flex justify-between text-xs"><span>{tr(r.label)}</span><span className="font-semibold text-brand">{i < n ? tr("Found") : "…"}</span></div>
+          <div className="h-1.5 rounded-full bg-muted">
+            <div className="h-1.5 rounded-full bg-primary transition-all duration-700 ease-out" style={{ width: i < n ? `${r.w}%` : "0%" }} />
+          </div>
+        </div>
+      ))}
+      <p className="text-xs text-muted-foreground">{tr("Found on search and AI answers")}</p>
+    </div>
+  );
+};
+
+const WebDemo = () => {
+  const { tr } = useLang();
+  const n = useStagger(4, 300);
+  const block = (i: number, cls: string) => (
+    <div className={`${cls} rounded bg-muted transition-all duration-500`} style={{ opacity: i < n ? 1 : 0, transform: i < n ? "none" : "translateY(6px)" }} />
+  );
+  return (
+    <div className="flex items-center gap-4">
+      <div className="w-32 rounded-lg border border-border p-2">
+        <div className="mb-2 flex gap-1"><span className="h-1.5 w-1.5 rounded-full bg-border" /><span className="h-1.5 w-1.5 rounded-full bg-border" /><span className="h-1.5 w-1.5 rounded-full bg-border" /></div>
+        {block(0, "mb-1.5 h-2 w-3/4 !bg-primary")}
+        {block(1, "mb-1.5 h-8 w-full")}
+        <div className="flex gap-1">{block(2, "h-5 flex-1")}{block(3, "h-5 flex-1")}</div>
+      </div>
+      <div>
+        <p className="text-2xl font-bold tabular-nums">{n >= 4 ? "0.9s" : "…"}</p>
+        <p className="text-xs text-muted-foreground">{tr("Mobile-first, loads in under a second")}</p>
       </div>
     </div>
   );
 };
 
-const META: Record<DemoKey, { name: string; href: string; Demo: () => JSX.Element }> = {
+const META: Record<DemoKey, { name: string; href: string; Demo: () => JSX.Element; service?: boolean }> = {
+  seo: { name: "SEO · GEO · AEO", href: "/services/ai-visibility", Demo: SeoDemo, service: true },
   seenzo: { name: "Seenzo", href: "/products/seenzo", Demo: SeenzoDemo },
   connect: { name: "KlivIQ Connect", href: "/products/connect", Demo: ConnectDemo },
   tryon: { name: "KlivIQ TryOn", href: "/products/tryon", Demo: TryOnDemo },
-  clinicping: { name: "ClinicPing", href: "/products/clinicping", Demo: ClinicDemo },
+  agents: { name: "AI Agents & Skills", href: "/services/ai-implementation", Demo: AgentsDemo, service: true },
+  web: { name: "Web & Mobile Apps", href: "/services/web-mobile-development", Demo: WebDemo, service: true },
 };
 
 const CircuitDemoCard = ({ demo, onClose }: { demo: DemoKey; onClose: () => void }) => {
   const { tr } = useLang();
-  const { name, href, Demo } = META[demo];
+  const { name, href, Demo, service } = META[demo];
   return (
     <div className="lc-card absolute left-1/2 top-2 z-20 w-[min(300px,92%)] -translate-x-1/2 rounded-2xl border border-border bg-card p-4 shadow-lift" role="dialog" aria-label={name}>
       <div className="mb-3 flex items-center justify-between">
-        <p className="text-sm font-bold">{name}</p>
+        <p className="text-sm font-bold">{service ? tr(name) : name}</p>
         <button type="button" onClick={onClose} aria-label="Close" className="rounded-full p-1 text-muted-foreground hover:text-foreground">
           <X className="h-4 w-4" />
         </button>
       </div>
       <Demo key={demo} />
       <Link to={href} className="mt-3 inline-flex items-center gap-1 text-xs font-semibold text-brand">
-        {tr("See product")} <ArrowRight className="h-3.5 w-3.5" />
+        {tr(service ? "See service" : "See product")} <ArrowRight className="h-3.5 w-3.5" />
       </Link>
     </div>
   );

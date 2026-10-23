@@ -11,11 +11,13 @@ import CircuitDemoCard, { type DemoKey } from "./CircuitDemoCard";
 
 // Logo sits at (50,20) in a 200x200 canvas; IQ node = (126,102).
 const IQ = { x: 126, y: 102 };
-const NODES: { key: DemoKey; name: string; x: number; y: number; path: string }[] = [
+const NODES: { key: DemoKey; name: string; x: number; y: number; path: string; service?: boolean; anchor?: "l" | "r" }[] = [
+  { key: "seo", name: "SEO · GEO · AEO", x: 6, y: 8, path: "M126 102 L120 126 L36 126 L36 8 L6 8", service: true, anchor: "l" },
   { key: "seenzo", name: "Seenzo", x: 30, y: 160, path: "M126 102 L112 130 L44 130 L30 160" },
   { key: "connect", name: "KlivIQ Connect", x: 78, y: 186, path: "M126 102 L118 150 L78 150 L78 186" },
   { key: "tryon", name: "KlivIQ TryOn", x: 140, y: 186, path: "M126 102 L134 150 L140 160 L140 186" },
-  { key: "clinicping", name: "ClinicPing", x: 172, y: 146, path: "M126 102 L150 102 L172 120 L172 146" },
+  { key: "agents", name: "AI Agents & Skills", x: 196, y: 140, path: "M126 102 L150 102 L170 120 L170 140 L196 140", service: true, anchor: "r" },
+  { key: "web", name: "Web & Mobile Apps", x: 196, y: 8, path: "M126 102 L150 96 L166 80 L166 8 L196 8", service: true, anchor: "r" },
 ];
 
 const LivingCircuit = () => {
@@ -164,7 +166,7 @@ const LivingCircuit = () => {
         {NODES.map((n, i) => (
           <div
             key={n.key}
-            className="lc-fade absolute -translate-x-1/2 -translate-y-1/2"
+            className={`lc-fade absolute -translate-y-1/2 ${n.anchor === "l" ? "" : n.anchor === "r" ? "-translate-x-full" : "-translate-x-1/2"}`}
             style={{ left: `${(n.x / 200) * 100}%`, top: `${(n.y / 200) * 100}%`, animationDelay: `${1.7 + i * 0.12}s` }}
           >
           <button
@@ -177,8 +179,8 @@ const LivingCircuit = () => {
             aria-label={`${n.name} — ${tr("Tap a node to see it work")}`}
           >
             <span className="flex items-center gap-1.5 whitespace-nowrap rounded-full border border-border bg-card/90 px-2.5 py-1 text-[11px] font-semibold text-foreground shadow-soft backdrop-blur transition-colors hover:border-primary sm:text-xs">
-              <span className="h-2 w-2 rounded-full bg-primary" />
-              {n.name}
+              <span className={n.service ? "h-2 w-2 rounded-sm bg-brand" : "h-2 w-2 rounded-full bg-primary"} />
+              {n.service ? tr(n.name) : n.name}
             </span>
           </button>
           </div>

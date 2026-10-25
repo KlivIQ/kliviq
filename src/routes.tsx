@@ -46,6 +46,8 @@ export const routes: RouteRecord[] = [
       page("work", () => import("./pages/Work"), "src/pages/Work.tsx"),
       page("about", () => import("./pages/About"), "src/pages/About.tsx"),
       page("contact", () => import("./pages/Contact"), "src/pages/Contact.tsx"),
+      page("privacy-policy", () => import("./pages/PrivacyPolicy"), "src/pages/PrivacyPolicy.tsx"),
+      page("terms", () => import("./pages/Terms"), "src/pages/Terms.tsx"),
       page("glossary", () => import("./pages/GlossaryIndex"), "src/pages/GlossaryIndex.tsx"),
       page("glossary/:slug", () => import("./pages/GlossaryTerm"), "src/pages/GlossaryTerm.tsx", {
         getStaticPaths: () => glossaryTerms.map((t) => `glossary/${t.slug}`),

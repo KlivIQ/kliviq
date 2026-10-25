@@ -1,14 +1,12 @@
-import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Linkedin, Twitter } from "lucide-react";
-import LegalDialog from "@/components/LegalDialog";
+import { BUSINESS_CONTACT } from "@/data/business";
 import { useLang } from "@/i18n/LanguageContext";
 import { catalogIndustries, catalogProducts, catalogServices } from "@/data/catalog";
 import logoDark from "@/assets/kliviq-logo-dark.webp";
 import logoLight from "@/assets/kliviq-logo-light.webp";
 
 const FooterSection = () => {
-  const [openDialog, setOpenDialog] = useState<"privacy" | "terms" | null>(null);
   const { t } = useLang();
 
   const cols = [
@@ -48,6 +46,7 @@ const FooterSection = () => {
                   +91 98404 97937 <span className="text-muted-foreground">(WhatsApp only)</span>
                 </a>
               </li>
+              <li><a href={BUSINESS_CONTACT.telephoneHref} className="text-foreground hover:text-brand">{BUSINESS_CONTACT.telephone}</a> <span className="text-muted-foreground">(WhatsApp only)</span></li>
               <li className="text-muted-foreground">{t.footer.contactCity}</li>
             </ul>
             <div className="mt-6 flex gap-2">
@@ -76,14 +75,13 @@ const FooterSection = () => {
         <div className="mt-14 flex flex-col items-start justify-between gap-4 border-t border-border pt-6 text-sm text-muted-foreground md:flex-row md:items-center">
           <p>© {new Date().getFullYear()} KlivIQ Technologies. {t.footer.rights}</p>
           <div className="flex items-center gap-4">
-            <button type="button" onClick={() => setOpenDialog("privacy")} className="hover:text-foreground">{t.footer.privacy}</button>
-            <button type="button" onClick={() => setOpenDialog("terms")} className="hover:text-foreground">{t.footer.terms}</button>
+            <Link to="/privacy-policy" className="hover:text-foreground">{t.footer.privacy}</Link>
+            <Link to="/terms" className="hover:text-foreground">{t.footer.terms}</Link>
           </div>
           <p>Made in Chennai, India. Delivered worldwide.</p>
         </div>
       </div>
 
-      <LegalDialog open={openDialog !== null} onOpenChange={(o) => !o && setOpenDialog(null)} type={openDialog ?? "privacy"} />
     </footer>
   );
 };

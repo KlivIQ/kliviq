@@ -25,6 +25,8 @@ const entries: SitemapEntry[] = [
   { path: "/work", changefreq: "monthly", priority: "0.8" },
   { path: "/about", changefreq: "yearly", priority: "0.6" },
   { path: "/contact", changefreq: "yearly", priority: "0.6" },
+  { path: "/privacy-policy", changefreq: "yearly", priority: "0.3" },
+  { path: "/terms", changefreq: "yearly", priority: "0.3" },
   { path: "/glossary", changefreq: "monthly", priority: "0.6" },
   ...glossaryTerms.map((t) => ({ path: t.path, changefreq: "monthly" as const, priority: "0.5" })),
   { path: "/blog", changefreq: "weekly", priority: "0.7" },

@@ -1,5 +1,11 @@
 # Roadmap
 
+## Seenzo visibility fixes
+- [ ] Add ProfessionalService schema and shorten the homepage title
+- [ ] Add visible telephone links while retaining WhatsApp-only labeling
+- [ ] Publish existing legal content at /privacy-policy and /terms; link footer and sitemap
+- [ ] Audit unique titles and verify the affected pages
+
 ## Redesign (approved plan)
 - [x] Phase 1: light-default design system + dark toggle, new nav (mega menus) + footer, redirects
 - [x] Phase 2: Home showpiece (hero, products, industries, services, work, how we work, CTA, one short quote)

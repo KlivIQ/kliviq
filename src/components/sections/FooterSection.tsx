@@ -37,16 +37,18 @@ const FooterSection = () => {
             <ul className="mt-6 space-y-2 text-sm">
               <li><a href="mailto:hello@kliviq.com" className="text-foreground hover:text-brand">hello@kliviq.com</a></li>
               <li>
+                <a href={BUSINESS_CONTACT.telephoneHref} className="text-foreground hover:text-brand">
+                  {BUSINESS_CONTACT.telephone} <span className="text-muted-foreground">(WhatsApp only)</span>
+                </a>{" "}
                 <a
                   href="https://wa.me/919840497937?text=Hi%20KlivIQ%2C%20I%27d%20like%20to%20discuss%20a%20project."
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-foreground hover:text-brand"
+                  className="text-xs text-muted-foreground hover:text-brand"
                 >
-                  +91 98404 97937 <span className="text-muted-foreground">(WhatsApp only)</span>
+                  Chat on WhatsApp
                 </a>
               </li>
-              <li><a href={BUSINESS_CONTACT.telephoneHref} className="text-foreground hover:text-brand">{BUSINESS_CONTACT.telephone}</a> <span className="text-muted-foreground">(WhatsApp only)</span></li>
               <li className="text-muted-foreground">{t.footer.contactCity}</li>
             </ul>
             <div className="mt-6 flex gap-2">

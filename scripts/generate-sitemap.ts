@@ -1,11 +1,10 @@
 // Runs before `vite dev` and `vite build` (predev/prebuild hooks); writes public/sitemap.xml.
 import { writeFileSync } from "fs";
 import { resolve } from "path";
-import { catalogProducts, catalogServices, catalogIndustries } from "../src/data/catalog";
+import { SITE_URL, catalogProducts, catalogServices, catalogIndustries } from "../src/data/catalog";
 import { glossaryTerms } from "../src/data/glossary";
 import { blogPosts } from "../src/data/blog";
 
-const BASE_URL = "https://kliviq.lovable.app";
 
 interface SitemapEntry {
   path: string;
@@ -37,7 +36,7 @@ function generateSitemap(entries: SitemapEntry[]) {
   const urls = entries.map((e) =>
     [
       `  <url>`,
-      `    <loc>${BASE_URL}${e.path}</loc>`,
+      `    <loc>${SITE_URL}${e.path}</loc>`,
       e.changefreq ? `    <changefreq>${e.changefreq}</changefreq>` : null,
       e.priority ? `    <priority>${e.priority}</priority>` : null,
       `  </url>`,

@@ -10,6 +10,7 @@ import { useLang } from "@/i18n/LanguageContext";
 import { useBooking } from "@/components/booking/BookingContext";
 import { catalogIndustries, catalogProducts, catalogServices, SITE_URL, STATUS_LABEL } from "@/data/catalog";
 import { portfolioItems } from "@/data/portfolio";
+import { BUSINESS_PROFILES, professionalServiceSchema } from "@/data/business";
 
 const WA = "https://wa.me/919840497937?text=Hi%20KlivIQ%2C%20I%27d%20like%20to%20discuss%20a%20project.";
 
@@ -302,7 +303,7 @@ export const FinalCta = ({ source = "final-cta" }: { source?: string }) => {
 const Index = () => (
   <SiteShell>
     <Seo
-      title="KlivIQ | AI Products, AI Implementation & Web Development from India"
+      title="KlivIQ | AI Products & Implementation in India"
       description="KlivIQ builds AI products (Seenzo, KlivIQ Connect, KlivIQ TryOn, ClinicPing, Aacharam) and delivers AI implementation, AI visibility (GEO), web and mobile development and fractional CTO services for growing businesses."
       path="/"
       schema={[
@@ -316,12 +317,13 @@ const Index = () => (
           email: "hello@kliviq.com",
           founder: { "@type": "Person", name: "Sriram Ramkumar" },
           address: { "@type": "PostalAddress", addressLocality: "Chennai", addressCountry: "IN" },
-          sameAs: ["https://www.linkedin.com/company/117713997", "https://x.com/kliviq"],
+          sameAs: BUSINESS_PROFILES,
           makesOffer: catalogServices.map((s) => ({
             "@type": "Offer",
             itemOffered: { "@type": "Service", name: s.name, url: `${SITE_URL}/services/${s.slug}` },
           })),
         },
+        professionalServiceSchema(ORG_REF),
         { "@context": "https://schema.org", "@type": "WebSite", name: "KlivIQ", url: `${SITE_URL}/`, publisher: ORG_REF },
         {
           "@context": "https://schema.org",

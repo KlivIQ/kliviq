@@ -5,6 +5,7 @@ import PageHero from "@/components/site/PageHero";
 import Reveal from "@/components/site/Reveal";
 import ConsultationForm from "@/components/booking/ConsultationForm";
 import { SITE_URL } from "@/data/catalog";
+import { BUSINESS_CONTACT } from "@/data/business";
 import { useLang } from "@/i18n/LanguageContext";
 
 const WA = "https://wa.me/919840497937?text=Hi%20KlivIQ%2C%20I%27d%20like%20to%20discuss%20a%20project.";
@@ -60,6 +61,10 @@ const Contact = () => {
               <span className="block text-sm text-muted-foreground">{tr("WhatsApp messages only, no calls")}</span>
             </span>
           </a>
+          <p className="text-sm">
+            <a href={BUSINESS_CONTACT.telephoneHref} className="text-foreground hover:text-brand">{BUSINESS_CONTACT.telephone}</a>
+            {" — "}<span className="text-muted-foreground">{tr("WhatsApp messages only, no calls")}</span>
+          </p>
           <a href="mailto:hello@kliviq.com" className="flex items-start gap-4 rounded-[1.75rem] border border-border bg-card p-6 transition-shadow hover:shadow-lift">
             <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-accent text-accent-foreground"><Mail className="h-5 w-5" /></span>
             <span>

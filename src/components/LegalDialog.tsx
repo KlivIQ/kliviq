@@ -9,7 +9,7 @@ interface LegalDialogProps {
 
 const lastUpdated = "May 17, 2026";
 
-const PrivacyContent = () => (
+export const PrivacyContent = () => (
   <div className="space-y-5 text-sm leading-relaxed text-muted-foreground">
     <p className="text-xs uppercase tracking-wider text-foreground/60">Last updated: {lastUpdated}</p>
     <p>
@@ -122,7 +122,7 @@ const PrivacyContent = () => (
   </div>
 );
 
-const TermsContent = () => (
+export const TermsContent = () => (
   <div className="space-y-5 text-sm leading-relaxed text-muted-foreground">
     <p className="text-xs uppercase tracking-wider text-foreground/60">Last updated: {lastUpdated}</p>
     <p>

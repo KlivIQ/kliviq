@@ -12,12 +12,12 @@ import CircuitDemoCard, { type DemoKey } from "./CircuitDemoCard";
 // Logo sits at (50,20) in a 200x200 canvas; IQ node = (126,102).
 const IQ = { x: 126, y: 102 };
 const NODES: { key: DemoKey; name: string; x: number; y: number; path: string; service?: boolean; anchor?: "l" | "r" }[] = [
-  { key: "seo", name: "SEO · GEO · AEO", x: 6, y: 8, path: "M126 102 L120 126 L36 126 L36 8 L6 8", service: true, anchor: "l" },
-  { key: "seenzo", name: "Seenzo", x: 30, y: 160, path: "M126 102 L112 130 L44 130 L30 160" },
-  { key: "connect", name: "KlivIQ Connect", x: 78, y: 186, path: "M126 102 L118 150 L78 150 L78 186" },
-  { key: "tryon", name: "KlivIQ TryOn", x: 140, y: 186, path: "M126 102 L134 150 L140 160 L140 186" },
-  { key: "agents", name: "AI Agents & Skills", x: 196, y: 140, path: "M126 102 L150 102 L170 120 L170 140 L196 140", service: true, anchor: "r" },
-  { key: "web", name: "Web & Mobile Apps", x: 196, y: 8, path: "M126 102 L150 96 L166 80 L166 8 L196 8", service: true, anchor: "r" },
+  { key: "seo", name: "SEO · GEO · AEO", x: 4, y: 138, path: "M126 102 L118 130 L22 130 L22 138", service: true, anchor: "l" },
+  { key: "seenzo", name: "Seenzo", x: 30, y: 170, path: "M126 102 L112 134 L44 150 L30 170" },
+  { key: "connect", name: "KlivIQ Connect", x: 78, y: 188, path: "M126 102 L118 150 L78 168 L78 188" },
+  { key: "tryon", name: "KlivIQ TryOn", x: 158, y: 176, path: "M126 102 L134 150 L158 160 L158 176" },
+  { key: "agents", name: "AI Agents & Skills", x: 100, y: 152, path: "M126 102 L112 126 L100 140 L100 152", service: true },
+  { key: "web", name: "Web & Mobile Apps", x: 196, y: 136, path: "M126 102 L150 112 L180 112 L180 136", service: true, anchor: "r" },
 ];
 
 const LivingCircuit = () => {

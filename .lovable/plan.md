@@ -1,7 +1,7 @@
 # Living Circuit: put all labels below the logo
 
 ## What changes
-- All six labels sit neatly under the Circuit K in two tidy rows, so lines no longer spread out in every direction.
+- All six labels sit neatly under the Circuit K in a loose spread below and to the sides (none above the logo), so lines no longer spread out in every direction.
   - Row 1, services: SEO · GEO · AEO, AI Agents & Skills, Web & Mobile Apps
   - Row 2, products: Seenzo, KlivIQ Connect, KlivIQ TryOn
 - Signal lines drop down from the IQ dot, run along a shared line, then branch straight down to each label. It looks like a circuit board, not a spider.

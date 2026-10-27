@@ -4,9 +4,9 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "predev": "bunx tsx scripts/generate-sitemap.ts",
+    "predev": "bunx tsx scripts/prepare-social-assets.ts && bunx tsx scripts/generate-sitemap.ts",
     "dev": "vite",
-    "prebuild": "bunx tsx scripts/generate-sitemap.ts",
+    "prebuild": "bunx tsx scripts/prepare-social-assets.ts && bunx tsx scripts/generate-sitemap.ts",
     "build": "vite-react-ssg build",
     "build:dev": "vite-react-ssg build --mode development",
     "lint": "eslint .",

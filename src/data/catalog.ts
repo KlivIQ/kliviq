@@ -171,7 +171,7 @@ export const catalogProducts: CatalogProduct[] = [
     summary:
       "Paramparai is a roots and ancestry app for the Tamil community. Record your family, village, kovil and kulam, and let AI surface relatives who are already on the platform.",
     status: "soon",
-    logo: "/products/paramparai-logo.svg",
+    logo: "/og/paramparai-logo.svg",
     hue: "28 80% 45%",
     primaryCta: { label: "Join the waitlist", action: "waitlist" },
     features: [

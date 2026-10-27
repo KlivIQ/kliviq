@@ -1,7 +1,7 @@
 # Roadmap
 
 ## Google Analytics 4
-- [ ] Add requested head script, route tracking, and non-personal conversion events; verify tests and preview
+- [x] Add requested head script, route tracking, and non-personal conversion events; verify tests and preview
 
 ## Seenzo visibility fixes
 - [x] Add ProfessionalService schema and shorten the homepage title

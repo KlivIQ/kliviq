@@ -7,6 +7,7 @@ import ConsultationForm from "@/components/booking/ConsultationForm";
 import { SITE_URL } from "@/data/catalog";
 import { BUSINESS_CONTACT } from "@/data/business";
 import { useLang } from "@/i18n/LanguageContext";
+import { trackEvent } from "@/lib/analytics";
 
 const WA = "https://wa.me/919840497937?text=Hi%20KlivIQ%2C%20I%27d%20like%20to%20discuss%20a%20project.";
 
@@ -53,7 +54,7 @@ const Contact = () => {
           </div>
         </Reveal>
         <Reveal delay={0.1} className="space-y-4 lg:col-span-5">
-          <a href={WA} target="_blank" rel="noopener noreferrer" className="group flex items-start gap-4 rounded-[1.75rem] border border-border bg-card p-6 transition-shadow hover:shadow-lift">
+          <a href={WA} onClick={() => trackEvent("whatsapp_click", { location: "contact-page" })} target="_blank" rel="noopener noreferrer" className="group flex items-start gap-4 rounded-[1.75rem] border border-border bg-card p-6 transition-shadow hover:shadow-lift">
             <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-accent text-accent-foreground"><MessageCircle className="h-5 w-5" /></span>
             <span>
               <span className="block font-semibold">WhatsApp</span>
@@ -62,7 +63,7 @@ const Contact = () => {
             </span>
           </a>
           <p className="text-sm">
-            <a href={BUSINESS_CONTACT.telephoneHref} className="text-foreground hover:text-brand">{BUSINESS_CONTACT.telephone}</a>
+            <a href={BUSINESS_CONTACT.telephoneHref} onClick={() => trackEvent("phone_click", { location: "contact-page" })} className="text-foreground hover:text-brand">{BUSINESS_CONTACT.telephone}</a>
             {" — "}<span className="text-muted-foreground">{tr("WhatsApp messages only, no calls")}</span>
           </p>
           <a href="mailto:hello@kliviq.com" className="flex items-start gap-4 rounded-[1.75rem] border border-border bg-card p-6 transition-shadow hover:shadow-lift">

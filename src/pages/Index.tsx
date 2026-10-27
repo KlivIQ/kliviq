@@ -11,6 +11,7 @@ import { useBooking } from "@/components/booking/BookingContext";
 import { catalogIndustries, catalogProducts, catalogServices, SITE_URL, STATUS_LABEL } from "@/data/catalog";
 import { portfolioItems } from "@/data/portfolio";
 import { BUSINESS_PROFILES, professionalServiceSchema } from "@/data/business";
+import { trackEvent } from "@/lib/analytics";
 
 const WA = "https://wa.me/919840497937?text=Hi%20KlivIQ%2C%20I%27d%20like%20to%20discuss%20a%20project.";
 
@@ -290,7 +291,7 @@ export const FinalCta = ({ source = "final-cta" }: { source?: string }) => {
             <button type="button" onClick={() => openBooking(source)} className="btn-brand px-7 py-3.5 text-base">
               {t.nav.bookCall} <ArrowRight className="h-4 w-4" />
             </button>
-            <a href={WA} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-full border border-background/30 px-7 py-3.5 text-base font-semibold transition-colors hover:border-background/70">
+            <a href={WA} onClick={() => trackEvent("whatsapp_click", { location: source })} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-full border border-background/30 px-7 py-3.5 text-base font-semibold transition-colors hover:border-background/70">
               <MessageCircle className="h-4 w-4" /> {t.home.ctaWhatsapp}
             </a>
           </div>

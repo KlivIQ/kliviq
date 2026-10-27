@@ -1,4 +1,5 @@
 import { createContext, useCallback, useContext, useMemo, useState, ReactNode, lazy, Suspense } from "react";
+import { trackEvent } from "@/lib/analytics";
 
 const ConsultationDialog = lazy(() => import("./ConsultationDialog"));
 
@@ -16,6 +17,7 @@ export const BookingProvider = ({ children }: { children: ReactNode }) => {
   const [source, setSource] = useState("site");
 
   const openBooking = useCallback((s?: string) => {
+    trackEvent("book_call_click", { source: s || "site" });
     if (s) setSource(s);
     setOpen(true);
   }, []);

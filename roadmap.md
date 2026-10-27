@@ -1,7 +1,7 @@
 # Roadmap
 
 ## Page-sharing images
-- [ ] Correct all seven cards with centered original logos, emerald backgrounds and crop-safe text; verify page previews
+- [x] Correct all seven cards with centered original logos, emerald backgrounds and crop-safe text; verify page previews
 - [x] Prepare five authentic product images, shared company image and shared services image
 - [x] Apply Paramparai name and kolam tree logo, preserving existing URLs
 - [x] Add per-page prerendered sharing metadata and verify images and routes

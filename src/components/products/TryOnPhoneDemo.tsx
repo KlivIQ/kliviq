@@ -27,6 +27,7 @@ const TryOnPhoneDemo = () => {
       <div className="relative rounded-[2.6rem] border-[10px] border-foreground/90 bg-card shadow-2xl">
         <div className="absolute left-1/2 top-2 z-20 h-5 w-20 -translate-x-1/2 rounded-full bg-foreground/90" />
         <div className="overflow-hidden rounded-[1.9rem]">
+          <div className="h-8 bg-card" />
           <div className="relative aspect-[3/4] bg-muted">
             <AnimatePresence initial={false}>
               <motion.img

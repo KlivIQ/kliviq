@@ -18,6 +18,6 @@ describe("approved sharing image tiers", () => {
     expect(shareImageForPath(path)).toBe("/og/kliviq.jpg");
   });
   it("makes share image URLs absolute on the canonical host", () => {
-    expect(absoluteShareImage("/og/seenzo.jpg")).toBe("https://www.kliviq.com/og/seenzo.jpg");
+    expect(absoluteShareImage("/og/seenzo.jpg")).toBe("https://www.kliviq.com/og/seenzo.jpg?v=20261027-centered");
   });
 });

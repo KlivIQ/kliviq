@@ -17,4 +17,11 @@ export const shareImageForPath = (path: string) => {
   return "/og/kliviq.jpg";
 };
 
-export const absoluteShareImage = (image: string) => new URL(image, `${SITE_URL}/`).href;
+export const absoluteShareImage = (image: string) => {
+  const url = new URL(image, `${SITE_URL}/`);
+  // A new artwork version prompts sharing crawlers to fetch the corrected cards.
+  if (url.origin === SITE_URL && url.pathname.startsWith("/og/")) {
+    url.searchParams.set("v", "20261027-centered");
+  }
+  return url.href;
+};

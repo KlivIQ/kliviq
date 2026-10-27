@@ -1,5 +1,10 @@
 # Roadmap
 
+## Page-sharing images
+- [ ] Prepare five authentic product images, shared company image and shared services image
+- [ ] Apply Paramparai name and kolam tree logo, preserving existing URLs
+- [ ] Add per-page prerendered sharing metadata and verify images and routes
+
 ## Google Analytics 4
 - [x] Add requested head script, route tracking, and non-personal conversion events; verify tests and preview
 

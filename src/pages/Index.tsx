@@ -305,7 +305,7 @@ const Index = () => (
   <SiteShell>
     <Seo
       title="KlivIQ | AI Products & Implementation in India"
-      description="KlivIQ builds AI products (Seenzo, KlivIQ Connect, KlivIQ TryOn, ClinicPing, Aacharam) and delivers AI implementation, AI visibility (GEO), web and mobile development and fractional CTO services for growing businesses."
+      description="KlivIQ builds AI products (Seenzo, KlivIQ Connect, KlivIQ TryOn, ClinicPing, Paramparai) and delivers AI implementation, AI visibility (GEO), web and mobile development and fractional CTO services for growing businesses."
       path="/"
       schema={[
         {

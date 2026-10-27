@@ -173,7 +173,7 @@ export const en = {
     },
     aacharam: {
       badge: "Private Beta",
-      title: "Aacharam",
+      title: "Paramparai",
       body: "A roots and ancestry platform crafted for the Tamil community. Preserve family history, trace lineages and use AI-powered matching to discover relatives already in the network.",
       cta: "Join the Waitlist →",
     },

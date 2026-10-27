@@ -18,6 +18,7 @@ import RelatedResources from "@/components/blog/RelatedResources";
 import RelatedArticles from "@/components/blog/RelatedArticles";
 import ArticleCTA from "@/components/blog/ArticleCTA";
 import { blogPosts, type BlogPost } from "@/data/blog";
+import { shareImageTags } from "@/components/site/ShareImageMeta";
 
 const SITE = "https://www.kliviq.com";
 
@@ -104,16 +105,11 @@ const BlogPostPage = ({ post }: { post: BlogPost }) => {
         <meta property="og:title" content={post.seo.ogTitle} />
         <meta property="og:description" content={post.seo.ogDescription} />
         <meta property="og:url" content={canonical} />
-        <meta property="og:image" content={heroAbs} />
-        <meta property="og:image:width" content="1920" />
-        <meta property="og:image:height" content="1080" />
-        <meta property="og:image:alt" content={post.heroAlt} />
+        {shareImageTags(post.path, post.seo.title)}
         <meta property="og:site_name" content="KlivIQ Technologies" />
-        <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:site" content="@kliviq" />
         <meta name="twitter:title" content={post.seo.ogTitle} />
         <meta name="twitter:description" content={post.seo.ogDescription} />
-        <meta name="twitter:image" content={heroAbs} />
         <script type="application/ld+json">{JSON.stringify(articleSchema)}</script>
         <script type="application/ld+json">{JSON.stringify(breadcrumbSchema)}</script>
         <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>

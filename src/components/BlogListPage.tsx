@@ -8,6 +8,7 @@ import ArticleCard from "@/components/blog/ArticleCard";
 import InsightsCTA from "@/components/blog/InsightsCTA";
 import AuthorBio from "@/components/blog/AuthorBio";
 import { blogPosts, SRI_RAM } from "@/data/blog";
+import { shareImageTags } from "@/components/site/ShareImageMeta";
 
 const SITE = "https://www.kliviq.com";
 
@@ -58,7 +59,7 @@ const BlogListPage = () => {
         <meta property="og:description" content={description} />
         <meta property="og:url" content={canonical} />
         <meta property="og:type" content="website" />
-        <meta name="twitter:card" content="summary_large_image" />
+        {shareImageTags("/blog", title)}
         <meta name="twitter:title" content={title} />
         <meta name="twitter:description" content={description} />
         <script type="application/ld+json">{JSON.stringify(breadcrumbSchema)}</script>

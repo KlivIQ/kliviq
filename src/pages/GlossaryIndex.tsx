@@ -5,6 +5,7 @@ import { ArrowRight, ChevronRight } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import FooterSection from "@/components/sections/FooterSection";
 import { glossaryTerms } from "@/data/glossary";
+import { shareImageTags } from "@/components/site/ShareImageMeta";
 
 const SITE = "https://www.kliviq.com";
 
@@ -33,6 +34,7 @@ const GlossaryIndex = () => {
         <meta property="og:description" content={description} />
         <meta property="og:url" content={canonical} />
         <meta property="og:type" content="website" />
+        {shareImageTags("/glossary", title)}
         <script type="application/ld+json">{JSON.stringify(breadcrumbSchema)}</script>
       </Helmet>
 

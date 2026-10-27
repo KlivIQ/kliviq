@@ -1,6 +1,6 @@
 // Single source of truth for products, services and industries.
 // Pages, navigation, structured data and the sitemap all read from here.
-import { seenzoLogo, connectLogo, tryonLogo, aacharamLogo } from "./productLogos";
+import { seenzoLogo, connectLogo, tryonLogo } from "./productLogos";
 const clinicpingThumb = "/products/clinicping.webp";
 
 export const SITE_URL = "https://www.kliviq.com";
@@ -166,17 +166,17 @@ export const catalogProducts: CatalogProduct[] = [
   },
   {
     slug: "aacharam",
-    name: "Aacharam",
+    name: "Paramparai",
     tagline: "Find your roots. Keep your traditions.",
     summary:
-      "Aacharam is a roots and ancestry app for the Tamil community. Record your family, village, kovil and kulam, and let AI surface relatives who are already on the platform.",
+      "Paramparai is a roots and ancestry app for the Tamil community. Record your family, village, kovil and kulam, and let AI surface relatives who are already on the platform.",
     status: "soon",
-    logo: aacharamLogo,
+    logo: "/og/paramparai-logo.svg",
     hue: "28 80% 45%",
     primaryCta: { label: "Join the waitlist", action: "waitlist" },
     features: [
       { title: "Your family tree", body: "Names, places, kovil and kulam, recorded the way Tamil families remember them." },
-      { title: "AI relative matching", body: "Suggests possible relatives already on Aacharam based on shared details." },
+      { title: "AI relative matching", body: "Suggests possible relatives already on Paramparai based on shared details." },
       { title: "Search by village or temple", body: "Find family by native place, kula deivam or lineage." },
       { title: "Traditions kept properly", body: "Space for customs, rituals and stories alongside the tree." },
     ],
@@ -190,8 +190,8 @@ export const catalogProducts: CatalogProduct[] = [
     appCategory: "LifestyleApplication",
     keywords: ["Tamil ancestry app", "Tamil family tree", "find relatives by native place", "kulam and kovil family tree"],
     faqs: [
-      { q: "What is Aacharam?", a: "Aacharam is an upcoming ancestry app for the Tamil community. You record family details and AI matching suggests relatives already on the platform." },
-      { q: "When does it launch?", a: "Aacharam is in build. Join the waitlist to be invited when the first release opens." },
+      { q: "What is Paramparai?", a: "Paramparai is an upcoming ancestry app for the Tamil community. You record family details and AI matching suggests relatives already on the platform." },
+      { q: "When does it launch?", a: "Paramparai is in build. Join the waitlist to be invited when the first release opens." },
     ],
   },
 ];

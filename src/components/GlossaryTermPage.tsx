@@ -12,6 +12,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import type { GlossaryTerm } from "@/data/glossary";
+import { shareImageTags } from "@/components/site/ShareImageMeta";
 
 const SITE = "https://www.kliviq.com";
 
@@ -138,6 +139,7 @@ const GlossaryTermPage = ({ term }: { term: GlossaryTerm }) => {
         <meta property="og:description" content={term.metaDescription} />
         <meta property="og:url" content={canonical} />
         <meta property="og:type" content="article" />
+        {shareImageTags(term.path, term.metaTitle)}
         <meta name="twitter:title" content={term.metaTitle} />
         <meta name="twitter:description" content={term.metaDescription} />
         <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>

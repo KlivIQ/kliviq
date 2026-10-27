@@ -24,6 +24,8 @@ export interface CatalogProduct {
   hue: string;
   externalUrl?: string;
   primaryCta: { label: string; href?: string; action?: "booking" | "waitlist" };
+  /** Temporarily hide the hero button on the product page */
+  hidePrimaryCta?: boolean;
   features: { title: string; body: string }[];
   howItWorks: string[];
   forWho: string[];
@@ -114,6 +116,7 @@ export const catalogProducts: CatalogProduct[] = [
     hue: "345 65% 42%",
     externalUrl: "https://kliviq-tryon.vercel.app",
     primaryCta: { label: "Try KlivIQ TryOn", href: "https://kliviq-tryon.vercel.app" },
+    hidePrimaryCta: true,
     features: [
       { title: "One photo, instant preview", body: "No app download and no studio shoot. The shopper sees the saree on themselves in seconds." },
       { title: "Built for sarees first", body: "Tuned for drape, fall and pleats rather than generic western garments." },

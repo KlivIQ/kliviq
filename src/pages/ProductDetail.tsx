@@ -8,6 +8,7 @@ import Faq from "@/components/site/Faq";
 import { IndustryCard, ProductCard } from "@/components/site/Cards";
 import { FinalCta } from "./Index";
 import NotFound from "./NotFound";
+import TryOnPhoneDemo from "@/components/products/TryOnPhoneDemo";
 import { useLang } from "@/i18n/LanguageContext";
 import { useBooking } from "@/components/booking/BookingContext";
 import { catalogProducts, getCatalogProduct, SITE_URL, STATUS_LABEL } from "@/data/catalog";
@@ -77,8 +78,9 @@ const ProductDetail = () => {
         }
         lede={<><span className="block font-semibold text-foreground">{lp.tagline}</span><span className="mt-3 block">{lp.summary}</span></>}
         crumbs={crumbs}
+        aside={p.slug === "tryon" ? <TryOnPhoneDemo /> : undefined}
       >
-        {cta}
+        {p.hidePrimaryCta ? null : cta}
       </PageHero>
 
       <section className="bg-surface py-20 md:py-28">

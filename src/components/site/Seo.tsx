@@ -1,6 +1,7 @@
 import { Head } from "vite-react-ssg";
 import { JsonLd } from "@/components/JsonLd";
 import { SITE_URL } from "@/data/catalog";
+import { absoluteShareImage, shareImageForPath } from "@/data/socialImages";
 
 type Crumb = { name: string; path: string };
 
@@ -11,11 +12,14 @@ interface SeoProps {
   type?: "website" | "article" | "product";
   crumbs?: Crumb[];
   schema?: object[];
+  image?: string;
+  imageAlt?: string;
 }
 
 /** Per-page head + JSON-LD. Rendered into static HTML at build time. */
-const Seo = ({ title, description, path, type = "website", crumbs, schema = [] }: SeoProps) => {
+const Seo = ({ title, description, path, type = "website", crumbs, schema = [], image, imageAlt }: SeoProps) => {
   const url = `${SITE_URL}${path === "/" ? "/" : path}`;
+  const shareImage = absoluteShareImage(image ?? shareImageForPath(path));
   const breadcrumb =
     crumbs && crumbs.length
       ? {
@@ -40,6 +44,13 @@ const Seo = ({ title, description, path, type = "website", crumbs, schema = [] }
         <meta property="og:description" content={description} />
         <meta property="og:url" content={url} />
         <meta property="og:type" content={type} />
+        <meta property="og:image" content={shareImage} />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:alt" content={imageAlt ?? title} />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:image" content={shareImage} />
+        <meta name="twitter:image:alt" content={imageAlt ?? title} />
         <meta name="twitter:title" content={title} />
         <meta name="twitter:description" content={description} />
       </Head>

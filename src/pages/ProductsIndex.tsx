@@ -12,8 +12,8 @@ const ProductsIndex = () => {
   return (
   <SiteShell>
     <Seo
-      title="Products | Seenzo, KlivIQ Connect, KlivIQ TryOn, ClinicPing & Aacharam"
-      description="KlivIQ's AI products: Seenzo AI visibility score, KlivIQ Connect WhatsApp automation in 7 Indian languages, KlivIQ TryOn saree virtual try-on, ClinicPing no-show prediction and the Aacharam Tamil ancestry app."
+      title="Products | Seenzo, KlivIQ Connect, KlivIQ TryOn, ClinicPing & Paramparai"
+      description="KlivIQ's AI products: Seenzo AI visibility score, KlivIQ Connect WhatsApp automation in 7 Indian languages, KlivIQ TryOn saree virtual try-on, ClinicPing no-show prediction and the Paramparai Tamil ancestry app."
       path="/products"
       crumbs={[{ name: "Products", path: "/products" }]}
       schema={[

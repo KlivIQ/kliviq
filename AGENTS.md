@@ -1,5 +1,9 @@
 # AGENTS
 
+- Sharing images are mapped centrally in `src/data/socialImages.ts` and emitted by Seo; static image tags must not live in index.html because they would mask prerendered route images.
+- Sharing artwork and the imported ancestry logo use asset pointers materialised into public before dev/build, so external static deployments serve them without relying on Lovable asset proxy paths.
+- Paramparai keeps the legacy aacharam slug and waitlist identifiers so existing shared URLs and integrations remain compatible with brand-name changes.
+
 - Products, services, industries and pricing live in `src/data/catalog.ts`; pages, nav, footer, JSON-LD and the sitemap all read from it — one source keeps them in sync.
 - Local business identity and telephone links use `src/data/business.ts`; the homepage adds ProfessionalService alongside Organization so contact facts stay consistent.
 - Privacy and terms pages reuse the exported legal content from `LegalDialog.tsx`; footer navigation and the sitemap expose their URLs without duplicating legal text.

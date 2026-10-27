@@ -7,6 +7,7 @@ import { Check, CheckCircle2, Loader2 } from "lucide-react";
 import { DialogHeading } from "./DialogHeading";
 import { supabase } from "@/integrations/supabase/client";
 import { useLang } from "@/i18n/LanguageContext";
+import { trackEvent } from "@/lib/analytics";
 
 export const SERVICE_KEYS = ["aiVisibility", "aiApps", "webDesign", "fractionalCto", "others"] as const;
 export type ServiceKey = (typeof SERVICE_KEYS)[number];
@@ -86,6 +87,7 @@ const ConsultationForm = ({ source, onDone, defaultServices = [], defaultMessage
       setServerError(t.booking.errSubmit);
       return;
     }
+    trackEvent("generate_lead", { source });
     setSent(true);
   };
 

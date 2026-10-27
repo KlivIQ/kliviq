@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { trackEvent } from "@/lib/analytics";
 import { Linkedin, Twitter } from "lucide-react";
 import { BUSINESS_CONTACT } from "@/data/business";
 import { useLang } from "@/i18n/LanguageContext";
@@ -37,11 +38,12 @@ const FooterSection = () => {
             <ul className="mt-6 space-y-2 text-sm">
               <li><a href="mailto:hello@kliviq.com" className="text-foreground hover:text-brand">hello@kliviq.com</a></li>
               <li>
-                <a href={BUSINESS_CONTACT.telephoneHref} className="text-foreground hover:text-brand">
+                <a href={BUSINESS_CONTACT.telephoneHref} onClick={() => trackEvent("phone_click", { location: "footer" })} className="text-foreground hover:text-brand">
                   {BUSINESS_CONTACT.telephone} <span className="text-muted-foreground">(WhatsApp only)</span>
                 </a>{" "}
                 <a
                   href="https://wa.me/919840497937?text=Hi%20KlivIQ%2C%20I%27d%20like%20to%20discuss%20a%20project."
+                  onClick={() => trackEvent("whatsapp_click", { location: "footer" })}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-xs text-muted-foreground hover:text-brand"

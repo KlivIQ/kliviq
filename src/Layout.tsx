@@ -7,6 +7,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { LanguageProvider } from "@/i18n/LanguageContext";
 import { BookingProvider } from "@/components/booking/BookingContext";
+import RouteTracker from "@/components/analytics/RouteTracker";
 
 const queryClient = new QueryClient();
 
@@ -27,6 +28,7 @@ const Layout = () => (
             <Toaster />
             <Sonner />
             <ScrollToTop />
+            <RouteTracker />
             <Outlet />
           </BookingProvider>
         </TooltipProvider>

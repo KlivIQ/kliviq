@@ -1,5 +1,8 @@
 # Roadmap
 
+## Google Analytics 4
+- [x] Add requested head script, route tracking, and non-personal conversion events; verify tests and preview
+
 ## Seenzo visibility fixes
 - [x] Add ProfessionalService schema and shorten the homepage title
 - [x] Add visible telephone links while retaining WhatsApp-only labeling

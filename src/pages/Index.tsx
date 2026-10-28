@@ -74,7 +74,7 @@ const Products = () => {
           </div>
         </div>
         <div className="space-y-6 lg:col-span-7">
-          {catalogProducts.filter((p) => p.slug !== "aacharam").map((p, i) => (
+          {catalogProducts.filter((p) => p.slug !== "paramparai").map((p, i) => (
             <div key={p.slug} className="sticky [top:var(--stack-top-m)] lg:[top:var(--stack-top)]" style={{ "--stack-top-m": `${80 + i * 12}px`, "--stack-top": `${110 + i * 18}px` } as React.CSSProperties}>
               <Reveal delay={0.05}>
                 <Link

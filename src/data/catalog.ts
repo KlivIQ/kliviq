@@ -168,7 +168,7 @@ export const catalogProducts: CatalogProduct[] = [
     ],
   },
   {
-    slug: "aacharam",
+    slug: "paramparai",
     name: "Paramparai",
     tagline: "Find your roots. Keep your traditions.",
     summary:

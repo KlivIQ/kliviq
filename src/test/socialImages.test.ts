@@ -7,9 +7,9 @@ describe("approved sharing image tiers", () => {
     expect(shareImageForPath(`/products/${slug}`)).toBe(`/og/${slug}.jpg`);
   });
   it("uses the Paramparai image and name on the existing ancestry URL", () => {
-    expect(shareImageForPath("/products/aacharam")).toBe("/og/paramparai.jpg");
-    expect(getCatalogProduct("aacharam")?.name).toBe("Paramparai");
-    expect(getCatalogProduct("aacharam")?.logo).toBe("/og/paramparai-logo.svg");
+    expect(shareImageForPath("/products/paramparai")).toBe("/og/paramparai.jpg");
+    expect(getCatalogProduct("paramparai")?.name).toBe("Paramparai");
+    expect(getCatalogProduct("paramparai")?.logo).toBe("/og/paramparai-logo.svg");
   });
   it.each(["/services", "/services/ai-visibility", "/services/ai-implementation", "/services/web-mobile-development", "/services/fractional-cto"])("uses the shared services image on %s", (path) => {
     expect(shareImageForPath(path)).toBe("/og/services.jpg");

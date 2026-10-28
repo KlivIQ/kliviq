@@ -171,7 +171,7 @@ export const en = {
       body2: "Built for online saree stores to lift conversions and cut returns. No app to install, works right on your product pages.",
       cta: "Try KlivIQ TryOn →",
     },
-    aacharam: {
+    paramparai: {
       badge: "Private Beta",
       title: "Paramparai",
       body: "A roots and ancestry platform crafted for the Tamil community. Preserve family history, trace lineages and use AI-powered matching to discover relatives already in the network.",
@@ -265,7 +265,7 @@ export const en = {
       },
       {
         quote:
-          "Sriram was an excellent Test Manager for a complex project integrating Software as a Service components with internal systems in R&D IT. He learned quickly, was proactive, and worked with high integrity. He established our offshore test team quickly and had them ready to begin, and coordinated efforts very effectively. Opportunity to work with him again will be much appreciated.",
+          "Sriram was an excellent Project Manager for a complex project integrating Software as a Service components with internal systems in R&D IT. He learned quickly, was proactive, and worked with high integrity. He established our offshore test team quickly and had them ready to begin, and coordinated efforts very effectively. Opportunity to work with him again will be much appreciated.",
         name: "Terri Fleming",
         title: "IT Program Management, Life Sciences Systems Delivery",
       },

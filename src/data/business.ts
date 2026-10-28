@@ -17,6 +17,7 @@ export const BUSINESS_CONTACT = {
 export const BUSINESS_PROFILES = [
   "https://www.linkedin.com/company/117713997",
   "https://x.com/kliviq",
+  "https://instagram.com/kliviq",
 ];
 
 export const professionalServiceSchema = (organization: { name: string; url: string }) => ({

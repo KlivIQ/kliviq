@@ -9,6 +9,8 @@ import { IndustryCard, ProductCard } from "@/components/site/Cards";
 import { FinalCta } from "./Index";
 import NotFound from "./NotFound";
 import TryOnPhoneDemo from "@/components/products/TryOnPhoneDemo";
+import ProductHeroDemo from "@/components/products/ProductHeroDemo";
+import { glowStyle } from "@/components/site/Cards";
 import { useLang } from "@/i18n/LanguageContext";
 import { useBooking } from "@/components/booking/BookingContext";
 import { catalogProducts, getCatalogProduct, SITE_URL, STATUS_LABEL } from "@/data/catalog";
@@ -78,7 +80,7 @@ const ProductDetail = () => {
         }
         lede={<><span className="block font-semibold text-foreground">{lp.tagline}</span><span className="mt-3 block">{lp.summary}</span></>}
         crumbs={crumbs}
-        aside={p.slug === "tryon" ? <TryOnPhoneDemo /> : undefined}
+        aside={p.slug === "tryon" ? <TryOnPhoneDemo /> : <ProductHeroDemo slug={p.slug} hue={p.hue} />}
       >
         {p.hidePrimaryCta ? null : cta}
       </PageHero>

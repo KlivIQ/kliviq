@@ -155,7 +155,7 @@ const ParamparaiDemo = ({ hue }: { hue: string }) => {
             d={`M${nodes[a].x} ${nodes[a].y} C${nodes[a].x} ${(nodes[a].y + nodes[b].y) / 2}, ${nodes[b].x} ${(nodes[a].y + nodes[b].y) / 2}, ${nodes[b].x} ${nodes[b].y}`}
             fill="none" stroke={`hsl(${hue})`} strokeWidth="2"
             initial={false}
-            animate={{ pathLength: phase > nodes[b].l - 1 && phase >= nodes[b].l ? 1 : 0 }}
+            animate={{ pathLength: phase >= nodes[b].l ? 1 : 0 }}
             transition={{ duration: 0.8 }}
           />
         ))}

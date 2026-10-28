@@ -53,7 +53,7 @@ const SectionHead = ({ eyebrow, title, lede, action }: { eyebrow: string; title:
   <Reveal className="mb-12 flex flex-col justify-between gap-6 md:mb-16 md:flex-row md:items-end">
     <div className="max-w-3xl">
       <p className="eyebrow mb-4">{eyebrow}</p>
-      <h2 className="text-3xl font-bold leading-[1.05] sm:text-4xl md:text-6xl">{title}</h2>
+      <h2 className="text-4xl font-extrabold leading-[1.05] sm:text-5xl md:text-7xl">{title}</h2>
       {lede && <p className="mt-5 max-w-xl text-lg text-muted-foreground">{lede}</p>}
     </div>
     {action}
@@ -74,7 +74,7 @@ const Products = () => {
           </div>
         </div>
         <div className="space-y-6 lg:col-span-7">
-          {catalogProducts.filter((p) => p.slug !== "aacharam").map((p, i) => (
+          {catalogProducts.filter((p) => p.slug !== "paramparai").map((p, i) => (
             <div key={p.slug} className="sticky [top:var(--stack-top-m)] lg:[top:var(--stack-top)]" style={{ "--stack-top-m": `${80 + i * 12}px`, "--stack-top": `${110 + i * 18}px` } as React.CSSProperties}>
               <Reveal delay={0.05}>
                 <Link
@@ -156,7 +156,7 @@ const Services = () => {
         <SectionHead
           eyebrow={t.home.servicesEyebrow}
           title={t.home.servicesTitle}
-          action={<Link to="/pricing" className="btn-ghost">{t.nav.pricing} <ArrowRight className="h-4 w-4" /></Link>}
+          action={<Link to="/services" className="btn-ghost">{t.nav.services} <ArrowRight className="h-4 w-4" /></Link>}
         />
         <ul className="border-t border-border">
           {catalogServices.map((s, i) => (
@@ -165,11 +165,7 @@ const Services = () => {
                 <Link to={`/services/${s.slug}`} className="group grid items-center gap-3 py-8 md:grid-cols-12 md:gap-6 md:py-10">
                   <span className="font-display text-sm text-muted-foreground md:col-span-1">0{i + 1}</span>
                   <h3 className="text-2xl font-bold transition-colors group-hover:text-brand md:col-span-5 md:text-4xl">{s.name}</h3>
-                  <p className="text-muted-foreground md:col-span-4">{s.short}</p>
-                  <div className="flex items-center justify-between md:col-span-2 md:flex-col md:items-end">
-                    <span className="text-xs uppercase tracking-wider text-muted-foreground">{t.home.startingFrom}</span>
-                    <span className="font-display text-lg font-semibold">{s.priceInr}</span>
-                  </div>
+                  <p className="text-muted-foreground md:col-span-6">{s.short}</p>
                 </Link>
               </li>
             </Reveal>

@@ -1,6 +1,7 @@
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { useBooking } from "./BookingContext";
 import ConsultationForm from "./ConsultationForm";
+import WaitlistForm from "./WaitlistForm";
 
 const ConsultationDialog = () => {
   const { open, closeBooking, source } = useBooking();
@@ -9,15 +10,7 @@ const ConsultationDialog = () => {
       <DialogContent className="bg-card border-border sm:max-w-lg max-h-[90vh] overflow-y-auto rounded-3xl">
         {open &&
           (source.startsWith("waitlist-") ? (
-            <ConsultationForm
-              key={source}
-              source={source}
-              onDone={closeBooking}
-              heading="Join the Paramparai waitlist"
-              subheading="We will invite you as soon as the first release opens."
-              defaultServices={["others"]}
-              defaultMessage="Please add me to the Paramparai waitlist."
-            />
+            <WaitlistForm key={source} product={source.replace("waitlist-", "")} onDone={closeBooking} />
           ) : (
             <ConsultationForm key={source} source={source} onDone={closeBooking} />
           ))}

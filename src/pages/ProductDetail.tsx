@@ -9,6 +9,8 @@ import { IndustryCard, ProductCard } from "@/components/site/Cards";
 import { FinalCta } from "./Index";
 import NotFound from "./NotFound";
 import TryOnPhoneDemo from "@/components/products/TryOnPhoneDemo";
+import ProductHeroDemo from "@/components/products/ProductHeroDemo";
+import { glowStyle } from "@/components/site/Cards";
 import { useLang } from "@/i18n/LanguageContext";
 import { useBooking } from "@/components/booking/BookingContext";
 import { catalogProducts, getCatalogProduct, SITE_URL, STATUS_LABEL } from "@/data/catalog";
@@ -78,7 +80,7 @@ const ProductDetail = () => {
         }
         lede={<><span className="block font-semibold text-foreground">{lp.tagline}</span><span className="mt-3 block">{lp.summary}</span></>}
         crumbs={crumbs}
-        aside={p.slug === "tryon" ? <TryOnPhoneDemo /> : undefined}
+        aside={p.slug === "tryon" ? <TryOnPhoneDemo /> : <ProductHeroDemo slug={p.slug} hue={p.hue} />}
       >
         {p.hidePrimaryCta ? null : cta}
       </PageHero>
@@ -87,7 +89,7 @@ const ProductDetail = () => {
         <div className="container-x grid gap-5 sm:grid-cols-2">
           {lp.features.map((f, i) => (
             <Reveal key={f.title} delay={i * 0.06}>
-              <div className="h-full rounded-[1.75rem] border border-border bg-card p-8">
+              <div className="h-full rounded-[1.75rem] border border-border bg-card p-8" style={glowStyle(p.hue)}>
                 <span className="flex h-10 w-10 items-center justify-center rounded-full bg-accent text-accent-foreground">
                   <Check className="h-5 w-5" />
                 </span>
@@ -117,7 +119,7 @@ const ProductDetail = () => {
             <p className="eyebrow mb-4">{tr("Who it is for")}</p>
             <ul className="mt-6 space-y-3">
               {lp.forWho.map((w) => (
-                <li key={w} className="flex items-center gap-3 rounded-2xl border border-border bg-card px-5 py-4 font-medium">
+                <li key={w} className="flex items-center gap-3 rounded-2xl border border-border bg-card px-5 py-4 font-medium" style={glowStyle(p.hue)}>
                   <Check className="h-4 w-4 text-brand" /> {w}
                 </li>
               ))}
@@ -131,7 +133,7 @@ const ProductDetail = () => {
           <div className="container-x">
             <Reveal><p className="eyebrow mb-4">{tr("Industries")}</p><h2 className="mb-10 text-3xl font-bold md:text-5xl">{tr("Where {name} fits.").replace("{name}", p.name)}</h2></Reveal>
             <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-              {p.industries.map((s) => <IndustryCard key={s} slug={s} />)}
+              {p.industries.map((s) => <IndustryCard key={s} slug={s} hue={p.hue} />)}
             </div>
           </div>
         </section>

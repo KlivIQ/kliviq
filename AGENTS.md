@@ -2,7 +2,8 @@
 
 - Sharing images are mapped centrally in `src/data/socialImages.ts` and emitted by Seo; static image tags must not live in index.html because they would mask prerendered route images.
 - Sharing artwork and the imported ancestry logo use asset pointers materialised into public before dev/build, so external static deployments serve them without relying on Lovable asset proxy paths.
-- Paramparai keeps the legacy aacharam slug and waitlist identifiers so existing shared URLs and integrations remain compatible with brand-name changes.
+- Paramparai lives at /products/paramparai; the old /products/aacharam URL is a 301 redirect so previously shared links keep working.
+- Product waitlist sign-ups are stored in the `waitlist` table (insert-only for visitors) rather than emailed, so entries can be exported as CSV.
 
 - Products, services, industries and pricing live in `src/data/catalog.ts`; pages, nav, footer, JSON-LD and the sitemap all read from it — one source keeps them in sync.
 - Local business identity and telephone links use `src/data/business.ts`; the homepage adds ProfessionalService alongside Organization so contact facts stay consistent.

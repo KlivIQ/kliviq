@@ -6,7 +6,7 @@ export const PRODUCT_SHARE_IMAGES: Record<string, string> = {
   connect: "/og/connect.jpg",
   tryon: "/og/tryon.jpg",
   clinicping: "/og/clinicping.jpg",
-  aacharam: "/og/paramparai.jpg",
+  paramparai: "/og/paramparai.jpg",
 };
 
 export const shareImageForPath = (path: string) => {

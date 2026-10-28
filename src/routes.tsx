@@ -18,6 +18,7 @@ export const redirects: Record<string, string> = {
   clinicping: "/products/clinicping",
   scopesnap: "/work",
   pitchdeck: "/work",
+  "products/aacharam": "/products/paramparai",
   "services/ai-consulting": "/services/ai-implementation",
   "services/ai-strategy": "/services/ai-implementation",
   "services/custom-app-development": "/services/web-mobile-development",

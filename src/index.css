@@ -216,6 +216,13 @@
     @apply inline-flex items-center justify-center gap-2 rounded-full border border-border bg-card/60 px-6 py-3 text-sm font-semibold text-foreground transition-all hover:border-foreground/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring;
   }
 
+  .demo-glow { animation: demo-glow 2.4s ease-in-out infinite; }
+  @keyframes demo-glow {
+    0%, 100% { box-shadow: 0 0 0 0 hsl(var(--secondary) / 0.45); }
+    50% { box-shadow: 0 0 0 8px hsl(var(--secondary) / 0), 0 0 28px 2px hsl(var(--secondary) / 0.35); }
+  }
+  @media (prefers-reduced-motion: reduce) { .demo-glow { animation: none; } }
+
   @keyframes scroll {
     from { transform: translateX(0); }
     to { transform: translateX(-50%); }

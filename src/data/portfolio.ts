@@ -2,7 +2,7 @@ import thumbSelfsame from "@/assets/thumb-selfsame.webp";
 import shotSelfsame from "@/assets/portfolio-selfsame.webp";
 import thumbFaco from "@/assets/thumb-faco.webp";
 import thumbZeroRupees from "@/assets/thumb-zero-rupees.webp";
-import thumbClinicPing from "@/assets/thumb-clinicping.webp";
+import thumbClinicPing from "@/assets/clinicping-logo.svg";
 import thumbMathavanTraders from "@/assets/thumb-mathavan-traders.webp";
 import thumbSriAishwarya from "@/assets/thumb-sri-aishwarya.webp";
 

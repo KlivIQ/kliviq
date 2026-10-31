@@ -96,7 +96,7 @@ const ProductDetail = () => {
               const win = window.open(CLINICPING_DEMO, "clinicping-demo", `popup=yes,width=${w},height=${h},left=${left},top=${top}`);
               if (win) e.preventDefault();
             }}
-            className="btn-ghost inline-flex items-center gap-2 rounded-full border border-border px-7 py-3.5 text-base font-semibold"
+            className="btn-primary demo-glow px-7 py-3.5 text-base"
           >
             {tr("Try the live demo")} <ArrowUpRight className="h-4 w-4" />
           </a>

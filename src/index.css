@@ -218,8 +218,8 @@
 
   .demo-glow { animation: demo-glow 2.4s ease-in-out infinite; }
   @keyframes demo-glow {
-    0%, 100% { box-shadow: 0 0 0 0 hsl(var(--brand) / 0.45); }
-    50% { box-shadow: 0 0 0 8px hsl(var(--brand) / 0), 0 0 28px 2px hsl(var(--brand) / 0.35); }
+    0%, 100% { box-shadow: 0 0 0 0 hsl(var(--secondary) / 0.45); }
+    50% { box-shadow: 0 0 0 8px hsl(var(--secondary) / 0), 0 0 28px 2px hsl(var(--secondary) / 0.35); }
   }
   @media (prefers-reduced-motion: reduce) { .demo-glow { animation: none; } }
 

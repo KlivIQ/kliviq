@@ -38,7 +38,7 @@ const ProductDetail = () => {
     <button
       type="button"
       onClick={() => openBooking(p.primaryCta.action === "waitlist" ? `waitlist-${p.slug}` : `product-${p.slug}`)}
-      className="btn-primary px-7 py-3.5 text-base"
+      className={`${p.slug === "clinicping" ? "btn-ghost" : "btn-primary"} px-7 py-3.5 text-base`}
     >
       {lp.primaryCta.label} <ArrowRight className="h-4 w-4" />
     </button>

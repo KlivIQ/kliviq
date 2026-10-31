@@ -23,6 +23,7 @@ const ProductDetail = () => {
   if (!p) return <NotFound />;
   const lp = loc(p);
 
+  const CLINICPING_DEMO = "https://clinicping-xi.vercel.app/";
   const path = `/products/${p.slug}`;
   const crumbs = [
     { name: "Products", path: "/products" },
@@ -83,6 +84,23 @@ const ProductDetail = () => {
         aside={p.slug === "tryon" ? <TryOnPhoneDemo /> : <ProductHeroDemo slug={p.slug} hue={p.hue} />}
       >
         {p.hidePrimaryCta ? null : cta}
+        {p.slug === "clinicping" && (
+          <a
+            href={CLINICPING_DEMO}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={(e) => {
+              const w = 390, h = 844;
+              const left = Math.max(0, (window.screen.width - w) / 2);
+              const top = Math.max(0, (window.screen.height - h) / 2);
+              const win = window.open(CLINICPING_DEMO, "clinicping-demo", `popup=yes,width=${w},height=${h},left=${left},top=${top}`);
+              if (win) e.preventDefault();
+            }}
+            className="btn-ghost inline-flex items-center gap-2 rounded-full border border-border px-7 py-3.5 text-base font-semibold"
+          >
+            {tr("Try the live demo")} <ArrowUpRight className="h-4 w-4" />
+          </a>
+        )}
       </PageHero>
 
       <section className="bg-surface py-20 md:py-28">

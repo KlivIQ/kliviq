@@ -27,13 +27,12 @@ const IntroLoader = () => {
     };
     const morph = () => {
       const el = logo.current;
-      const target = document.querySelector<HTMLElement>(".living-circuit");
+      const target = document.querySelector<SVGRectElement>(".living-circuit svg rect");
       if (el && target) {
         const t = target.getBoundingClientRect();
-        // Logo occupies x 25–75%, y 10–60% of the 200x200 circuit canvas.
-        const size = t.width * 0.5;
-        const tx = t.left + t.width * 0.25 + size / 2 - window.innerWidth / 2;
-        const ty = t.top + t.height * 0.1 + size / 2 - window.innerHeight / 2;
+        const size = t.width;
+        const tx = t.left + size / 2 - window.innerWidth / 2;
+        const ty = t.top + t.height / 2 - window.innerHeight / 2;
         const s = size / el.getBoundingClientRect().width;
         el.style.transition = "transform 700ms cubic-bezier(.7,0,.2,1), opacity 250ms ease 650ms";
         el.style.transform = `translate(${tx}px, ${ty}px) scale(${s})`;
@@ -61,7 +60,7 @@ const IntroLoader = () => {
   if (done) return null;
 
   return (
-    <div className="intro-loader fixed inset-0 z-[100] pointer-events-auto" aria-hidden="true">
+    <div className="intro-loader fixed inset-0 z-[9999] pointer-events-auto" aria-hidden="true">
       <div ref={curtain} className="absolute inset-0 bg-[hsl(150_62%_6%)] transition-opacity duration-700 ease-out" />
       <div className="absolute inset-0 grid place-items-center">
         <div ref={logo} className="relative h-28 w-28 sm:h-36 sm:w-36">

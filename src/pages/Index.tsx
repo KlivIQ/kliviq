@@ -43,7 +43,6 @@ const Hero = () => {
           </div>
         </div>
         <div className="lg:col-span-5">
-          <IntroLoader />
           <LivingCircuit />
         </div>
       </div>
@@ -301,6 +300,7 @@ export const FinalCta = ({ source = "final-cta" }: { source?: string }) => {
 
 const Index = () => (
   <SiteShell>
+    <IntroLoader />
     <Seo
       title="KlivIQ | AI Products & Implementation in India"
       description="KlivIQ builds AI products (Seenzo, KlivIQ Connect, KlivIQ TryOn, ClinicPing, Paramparai) and delivers AI implementation, AI visibility (GEO), web and mobile development and fractional CTO services for growing businesses."

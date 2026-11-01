@@ -6,6 +6,7 @@ import Seo, { ORG_REF } from "@/components/site/Seo";
 import SiteShell from "@/components/site/SiteShell";
 import Reveal from "@/components/site/Reveal";
 import LivingCircuit from "@/components/hero/LivingCircuit";
+import IntroLoader from "@/components/hero/IntroLoader";
 import { useLang } from "@/i18n/LanguageContext";
 import { useBooking } from "@/components/booking/BookingContext";
 import { catalogIndustries, catalogProducts, catalogServices, SITE_URL, STATUS_LABEL } from "@/data/catalog";
@@ -299,6 +300,7 @@ export const FinalCta = ({ source = "final-cta" }: { source?: string }) => {
 
 const Index = () => (
   <SiteShell>
+    <IntroLoader />
     <Seo
       title="KlivIQ | AI Products & Implementation in India"
       description="KlivIQ builds AI products (Seenzo, KlivIQ Connect, KlivIQ TryOn, ClinicPing, Paramparai) and delivers AI implementation, AI visibility (GEO), web and mobile development and fractional CTO services for growing businesses."

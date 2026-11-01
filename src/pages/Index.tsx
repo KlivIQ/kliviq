@@ -6,6 +6,7 @@ import Seo, { ORG_REF } from "@/components/site/Seo";
 import SiteShell from "@/components/site/SiteShell";
 import Reveal from "@/components/site/Reveal";
 import LivingCircuit from "@/components/hero/LivingCircuit";
+import IntroLoader from "@/components/hero/IntroLoader";
 import { useLang } from "@/i18n/LanguageContext";
 import { useBooking } from "@/components/booking/BookingContext";
 import { catalogIndustries, catalogProducts, catalogServices, SITE_URL, STATUS_LABEL } from "@/data/catalog";
@@ -42,6 +43,7 @@ const Hero = () => {
           </div>
         </div>
         <div className="lg:col-span-5">
+          <IntroLoader />
           <LivingCircuit />
         </div>
       </div>

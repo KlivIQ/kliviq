@@ -4,8 +4,8 @@ import CircuitDemoCard, { type DemoKey } from "./CircuitDemoCard";
 
 /**
  * Hero "Living Circuit".
- * The intro (K draw, signal lines, product nodes) is pure CSS in the prerendered SVG,
- * so it starts with first paint and always ends on the finished state — no flash.
+ * CSS holds the hero until IntroLoader lands, then reveals the finished mark
+ * and starts signal lines and nodes — never a second logo draw.
  * anime.js is lazy-loaded afterwards for rings, ambient pulse, cursor drift and scroll unfold.
  */
 
@@ -33,7 +33,7 @@ const LivingCircuit = () => {
     const cleanups: (() => void)[] = [];
     const fine = window.matchMedia("(pointer: fine)").matches;
 
-    // Start after CSS intro (~2.3s) and when idle, so it stays off the critical path.
+    // Start ambient motion only after the hand-off and signal reveal.
     const start = () =>
       import("animejs").then(({ animate, svg, onScroll }) => {
         if (cancelled) return;
@@ -96,14 +96,20 @@ const LivingCircuit = () => {
         }
       });
 
-    const t = window.setTimeout(() => {
-      const ric = (window as unknown as { requestIdleCallback?: (cb: () => void) => void }).requestIdleCallback;
-      ric ? ric(start) : start();
-    }, 2300);
+    let t: number | undefined;
+    const schedule = () => {
+      if (t !== undefined) return;
+      t = window.setTimeout(start, 1500);
+    };
+    window.addEventListener("intro-complete", schedule);
+    if (document.documentElement.hasAttribute("data-intro-skip") ||
+        document.documentElement.hasAttribute("data-intro-complete") ||
+        !document.querySelector(".intro-loader")) schedule();
 
     return () => {
       cancelled = true;
       window.clearTimeout(t);
+      window.removeEventListener("intro-complete", schedule);
       cleanups.forEach((c) => c());
     };
   }, []);
@@ -120,7 +126,7 @@ const LivingCircuit = () => {
               d={n.path}
               pathLength={1}
               className="lc-draw lc-sig"
-              style={{ animationDelay: `${1.2 + i * 0.12}s` }}
+              style={{ animationDelay: `${0.12 + i * 0.12}s` }}
               fill="none"
               stroke="hsl(var(--primary))"
               strokeOpacity="0.55"
@@ -137,7 +143,7 @@ const LivingCircuit = () => {
           <circle className="lc-ring" cx={IQ.x} cy={IQ.y} r="14" fill="none" stroke="#4ADE80" strokeWidth="1" opacity="0" />
 
           {/* Original KlivIQ Circuit K mark (uploaded SVG geometry), offset to (50,20) */}
-          <g transform="translate(50 20)">
+          <g className="lc-logo" transform="translate(50 20)">
             <rect width="100" height="100" rx="19" fill="#166534" className="lc-pop" style={{ animationDelay: "0s" }} />
             <line x1="28" y1="18" x2="28" y2="82" stroke="white" strokeWidth="7" strokeLinecap="round" pathLength={1} className="lc-draw" style={{ animationDelay: "0.15s" }} />
             <line x1="28" y1="50" x2="72" y2="18" stroke="white" strokeWidth="6.5" strokeLinecap="round" pathLength={1} className="lc-draw" style={{ animationDelay: "0.4s" }} />
@@ -167,7 +173,7 @@ const LivingCircuit = () => {
           <div
             key={n.key}
             className={`lc-fade absolute -translate-y-1/2 ${n.anchor === "l" ? "" : n.anchor === "r" ? "-translate-x-full" : "-translate-x-1/2"}`}
-            style={{ left: `${(n.x / 200) * 100}%`, top: `${(n.y / 200) * 100}%`, animationDelay: `${1.7 + i * 0.12}s` }}
+            style={{ left: `${(n.x / 200) * 100}%`, top: `${(n.y / 200) * 100}%`, animationDelay: `${0.5 + i * 0.12}s` }}
           >
           <button
             type="button"
@@ -187,7 +193,7 @@ const LivingCircuit = () => {
         ))}
       </div>
 
-      <p className="lc-fade absolute -bottom-2 left-0 right-0 text-center text-xs text-muted-foreground" style={{ animationDelay: "2.2s" }}>
+      <p className="lc-fade absolute -bottom-2 left-0 right-0 text-center text-xs text-muted-foreground" style={{ animationDelay: "1.3s" }}>
         {tr("Tap a node to see it work")}
       </p>
 

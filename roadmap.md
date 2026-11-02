@@ -29,5 +29,6 @@
 - [ ] (Optional) notify.kliviq.com custom sending domain — deferred by user
 
 ## Hero Living Circuit
+- [x] Coordinate intro hand-off: 700ms glide, hide destination logo until landing, then start signals; verify first visit, skip and reduced motion
 - [x] Animated Circuit K hero (user's SVG), product nodes + demos, Tamil/Hindi strings approved
 - [ ] Mobile Lighthouse score check on the published site (needs live URL)

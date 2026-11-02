@@ -49,6 +49,7 @@
 
     --shadow-soft: 0 1px 2px hsl(150 30% 7% / 0.04), 0 12px 32px -12px hsl(150 30% 7% / 0.12);
     --shadow-lift: 0 2px 4px hsl(150 30% 7% / 0.05), 0 30px 60px -20px hsl(142 64% 24% / 0.25);
+    --intro-curtain: 150 62% 6%;
   }
 
   .dark {
@@ -229,7 +230,7 @@
   }
 }
 
-/* Hero Living Circuit — CSS intro runs from first paint and ends on the finished logo */
+/* Hero Living Circuit — signal reveal starts only when the intro hands off. */
 @layer components {
   .living-circuit .lc-draw { stroke-dasharray: 1; stroke-dashoffset: 1; animation: lc-draw 0.45s cubic-bezier(.65,0,.35,1) forwards; }
   .living-circuit .lc-sig { animation-duration: 0.55s; }
@@ -250,6 +251,24 @@
 
 /* Homepage intro loader (see IntroLoader.tsx) */
 html[data-intro-skip] .intro-loader { display: none; }
+.intro-curtain { background: hsl(var(--intro-curtain)); }
+/* The destination mark is complete at hand-off, never drawn a second time. */
+.living-circuit .lc-logo .lc-draw,
+.living-circuit .lc-logo .lc-pop {
+  animation: none; opacity: 1; stroke-dashoffset: 0; transform: none;
+}
+html:not([data-intro-skip]):not([data-intro-complete]) main:has(> .intro-loader) .living-circuit {
+  visibility: hidden;
+}
+html:not([data-intro-skip]):not([data-intro-complete]) main:has(> .intro-loader) .living-circuit .lc-draw,
+html:not([data-intro-skip]):not([data-intro-complete]) main:has(> .intro-loader) .living-circuit .lc-fade {
+  animation-play-state: paused;
+}
+html[data-intro-skip] .living-circuit .lc-draw,
+html[data-intro-skip] .living-circuit .lc-pop,
+html[data-intro-skip] .living-circuit .lc-fade {
+  animation: none; opacity: 1; stroke-dashoffset: 0; transform: none;
+}
 .intro-loader .lc-draw { stroke-dasharray: 1; stroke-dashoffset: 1; animation: lc-draw 0.45s cubic-bezier(.65,0,.35,1) forwards; }
 .intro-loader .lc-pop { transform-box: fill-box; transform-origin: center; opacity: 0; animation: lc-pop 0.35s cubic-bezier(.34,1.56,.64,1) forwards; }
 .intro-loader .intro-iq { transform-box: fill-box; transform-origin: center; animation: lc-iq 0.8s ease-out 1s 1; }

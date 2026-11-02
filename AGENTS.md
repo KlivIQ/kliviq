@@ -15,4 +15,4 @@
 - Booking: `ConsultationForm` is the single form (popup via BookingContext, inline on /contact); it posts to the `send-consultation` edge function.
 - Analytics events use `src/lib/analytics.ts`; `RouteTracker` skips initial page views and events carry no personal data, keeping GA4 safe when blocked or prerendering.
 - Inner-page and catalog copy is translated via English-keyed maps in `src/i18n/content/{ta,hi}.json` using `tr()`/`loc()` from `useLang`; when English copy changes, add the new string to both maps or it silently shows English. SEO/JSON-LD stay English.
-- Homepage intro (`IntroLoader`) is prerendered and hidden pre-paint by an inline index.html script (session repeat or reduced motion) so it never flashes in or blocks content.
+- Homepage intro (`IntroLoader`) is prerendered and hidden pre-paint by an inline index.html script (session repeat or reduced motion); CSS gates the hero while the curtain exists, and an `intro-complete` event starts ambient animation only after hand-off so independent timers cannot race.
